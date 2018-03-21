@@ -24,3 +24,4 @@ jobs:
       script: npm run security:vulnerable-packages
     - stage: unit-tests
       script: npm run test:unit
+
