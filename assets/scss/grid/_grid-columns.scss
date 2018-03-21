@@ -1,0 +1,34 @@
+.column-quarter,
+.column-one-quarter,
+.column-half,
+.column-one-half,
+.column-third,
+.column-one-third,
+.column-two-thirds,
+.column-full {
+    padding: 0 15px;
+}
+
+header .column-third {
+    padding: 0;
+}
+
+header .column-two-thirds {
+    padding: 10px 0 0 0;
+}
+
+@media (min-width: 641px) {
+    .column-quarter,
+    .column-one-quarter { float: left; width: 25%; }
+    .column-half,
+    .column-one-half      { float: left; width: 50%; }
+    .column-third,
+    .column-one-third    { float: left; width: 33.3333333333%; }
+    .column-two-thirds  { float: left; width: 66.6666666667%; }
+    .column-full               { float: left; width: 100%; }
+
+    header .column-third,
+    header .column-two-thirds {
+        padding: 0;
+    }
+}

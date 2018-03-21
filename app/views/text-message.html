@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+<script>
+    ga('send', 'pageview');
+
+    {% if errors %}
+        {% for error, value in errors %}
+            ga("send", "event", "Error - validation", '{{value.field}}', '{{value.message}}' );
+        {% endfor %}
+    {% endif %}
+</script>
+
+{% endblock %}
+
+{% block body %}
+    {% include "includes/error-summary.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-large">{{ t('text-message:h1') }}</h1>
+            <form action="/send-text-message" method="post" class="form" name="text-messageForm" id="formData" data-form="text-message" autocomplete="off" onsubmit="return submitForm();">
+                <div class="form-group{{ ' error' if errors.radioMessage }}">
+                    <fieldset class="inline">
+                        <legend>
+                            <span class="display-offscreen">{{ t('text-message:legend') }}</span>
+                            <span class="gds-red bold display-b" aria-hidden="true" id="error-message-radio">{{ t('errors:text-message.missing') }}</span>
+                            {% if errors.radioMessage %}
+                            <span class="gds-red bold display-b" id="error-message-radio">{{ t('errors:text-message.missing') }}</span>
+                            {% endif %}
+                        </legend>
+                        
+                        <label class="block-label selection-button-radio" id="yesLabel" for="radioYes">
+                            <input id="radioYes" type="radio" name="textReminder" value="Yes">
+                            {{ t('text-message:yes') }}
+                        </label>
+                        
+                        <label class="block-label selection-button-radio" id="noLabel" for="radioNo">
+                            <input id="radioNo" type="radio" name="textReminder" value="No">
+                            {{ t('text-message:no') }}
+                        </label>
+                        
+                        <div class="panel form-group {% if errors.textMessage %}error{% endif %}" id="mobileNumberPanel" aria-hidden="true">
+                            <label for="mobileNumberID" class="form-label">{{ t('text-message:mobile-number') }}</label>
+                            <span class="gds-red bold display-b" aria-hidden="true" id="error-message-text-messageFieldID">{{ t('app:required') }}</span>
+                            {% if errors.textMessage %}
+                                <span class="gds-red bold  display-b" id="error-message-text-messageFieldID">{{ t('app:required') }}</span>
+                            {% endif %}
+                            <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="form-control" value="{{mobValue}}"  maxlength="15">
+                        </div>
+
+                        <div class="form-group" aria-hidden="true">
+                            <label for="landlineID" aria-hidden="true">Landline</label>
+                            <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value="" autofill="off">
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="add-your-details" class="button primary-button" value="{{ t('text-message:submit') }}">
+                </div>
+            </form>
+        </div>
+        {% include "includes/sidebar.html" %}
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    <script> var errorDictionary = {{ validationErrors | safe }}</script>
+    <script src="/javascript/validate-text-message.js?version={{assetsVersion}}" defer></script>
+    <script>
+        var lang = '{{ lang }}';
+        var expires = '{{ exp }}';
+    </script>
+    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

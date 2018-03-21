@@ -1,0 +1,27 @@
+.divider-after::after{
+    display: inline-block;
+    content:"|";
+    padding-left: 10px;
+    width: 3px;
+    color: brand(gds-grey-1);
+}
+
+.equals-after::after,
+.multiply-after::after{
+    display: inline-block;
+    float: right;
+    width:20px;
+    height: 20px;
+    color:  brand(gds-grey-1);
+    position: relative;
+    top: 5px;
+}
+
+
+.multiply-after::after{
+    content: 'x';
+}
+
+.equals-after::after{
+    content: '=';
+}

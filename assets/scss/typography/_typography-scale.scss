@@ -1,0 +1,37 @@
+// GDS Typography styling following:
+// http://govuk-elements.herokuapp.com/typography/#typography-font
+
+.font-xlarge  { font-size: 32px; line-height: 1.09375; }
+.govuk   { font-size: 30px;  line-height: 1.1;}
+.font-large,
+.heading-large {  font-size: 24px; line-height: 1.2;  margin-top: 1.875em; }
+.heading-medium { font-size: 18px; line-height: 1.2;  margin-top: 1.875em; margin-bottom: 0.83333em; }
+.heading-large { margin-top: 1.875em; margin-bottom: 0.83333em; }
+.service-name { font-size: 18px;  line-height: 33px; }
+.bold { font-weight: 700; }
+.font-xsmall {
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+    line-height: 1.14286;
+}
+.govuk-related-items .heading-medium {
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+}
+@media (min-width: 641px) {
+    .font-xlarge  { font-size: 48px; line-height: 1.0416666667; }
+    .heading-large,
+    .font-large { font-size: 36px; line-height: 1.1111111111; margin-top: 1.25em; }
+    .govuk { font-size: 30px;  line-height: 1.1;}
+    .heading-medium,
+    .service-name { font-size: 24px; line-height: 1.25; }
+    .service-name { float:none; clear: none; }
+    .font-xsmall {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+}
+
+

@@ -1,0 +1,6 @@
+//DONT Show if JS is not available available.
+.js-show{ display: block; }
+.js-hide{ display: none; }
+
+/* shown with JS, always on for non-JS */
+.js-enabled .active { @extend .bold; }

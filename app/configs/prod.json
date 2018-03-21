@@ -1,0 +1,38 @@
+{
+    "service" : {
+        "port" : "8008",
+        "logs" : "logs/",
+        "key" : "./ssl/192.168.105.5.key.pem",
+        "cert" : "./ssl/192.168.105.5.cert.pem",
+        "ca" : {
+            "intermediate" : "./ssl/ca-inter.cert.pem",
+            "root" : "./ssl/ca-root.cert.pem"
+        },
+        "minFileSize" : 500000
+    },
+    "logger":{
+        "tag": "fitnote",
+        "host": "127.0.0.1",
+        "port": 514
+    },
+    "api" : {
+        "protocol" : "https://",
+        "hostname" : "fitnote-controller",
+        "port" : "9100"
+    } ,
+    "auth" : {
+        "protocol" : "https://",
+        "hostname" : "fitnote-controller",
+        "port" : "9100",
+        "key" : "./ssl/192.168.105.5.key.pem",
+        "cert" : "./ssl/192.168.105.5.cert.pem",
+        "ca" : {
+            "intermediate" : "./ssl/ca-inter.cert.pem",
+            "root" : "./ssl/ca-root.cert.pem"
+        }
+    },
+    "notify": {
+        "mailto": "",
+        "api_key": ""
+    }
+}

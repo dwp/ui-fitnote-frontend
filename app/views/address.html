@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+    <script>
+        ga('send', 'pageview');
+        {% if errors.houseNumber %}
+            ga("send", "event", "Error - validation", '{{errors.houseNumber.field}}', '{{errors.houseNumber.message}}' );
+        {% endif %}
+
+        {% if errors.postcode %}
+            ga("send", "event", "Error - validation", '{{errors.postcode.field}}', '{{errors.postcode.message}}' );
+        {% endif %}
+    </script>
+{% endblock %}
+
+{% block body %}
+    {% include "includes/error-summary.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-large">{{ t('address:h1') }}</h1>
+            <form action="/send-address" method="post" class="form" name="amendAddress" id="formData" data-form="updateAddress" autocomplete="off" onsubmit="return submitForm();">
+                <fieldset class="form-group">
+                    <legend class="display-offscreen">{{ t('address:legend') }}</legend>
+
+                    <div class="form-group {% if errors.houseNumber %}error{% endif %}">
+                        <label for="houseNumberID" class="form-label">{{ t('address:house-number') }}</label>
+                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-houseNumberID">{{ t('app:required') }}</span>
+                        {% if errors.houseNumber %}
+                            <span class="gds-red bold display-b" id="error-message-houseNumberID">{{ t('app:required') }}</span>
+                        {% endif %}
+                        <input type="text" name="houseNumberField" id="houseNumberID" class="form-control {{error.houseNumberCompleted}}" value="{{houseNumberValue}}" data-required="required" maxlength="35">
+                    </div>
+
+                    <div class="form-group {% if errors.postcode %}error{% endif %}">
+                        <label for="postcodeID" class="form-label">{{ t('address:postcode') }}</label>
+                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-postcodeID">{{ t('app:required') }}</span>
+                        {% if errors.postcode %}
+                            <span class="gds-red bold display-b" id="error-message-postcodeID">{{ t('app:required') }}</span>
+                        {% endif %}
+                        <input type="text" name="postcodeField" id="postcodeID" class="form-control {{error.postcodeCompleted}}" value="{{postcodeValue}}" data-required="required" maxlength="8">
+                    </div>
+
+                    <div class="form-group" aria-hidden="true">
+                        <label for="countyID" aria-hidden="true">Leave blank</label>
+                        <input type="text"  name="countyField" id="countyID" aria-hidden="true" value="" autofill="off">
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <input type="submit" id="amendAddressButton" class="button primary-button" value="{{ t('app:continue') }}">
+                </div>
+            </form>
+        </div>
+        {% include "includes/sidebar.html" %}
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    <script> var errorDictionary = {{ validationErrors | safe }}</script>
+    <script src="/javascript/validate-address.js?version={{assetsVersion}}"></script>
+    <script>
+        var lang = '{{ lang }}';
+        var expires = '{{ exp }}';
+    </script>
+    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% macro currentPhase(phase='') %}
+
+ {% if phase == "alpha" or phase == "ALPHA" %}
+    <strong class="phase-tag">ALPHA</strong>
+{% endif %}
+
+{% if phase == "beta" or phase == "BETA" %}
+    <strong class="beta-badge">BETA</strong>
+{% endif %}
+
+{% endmacro %}

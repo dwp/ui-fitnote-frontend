@@ -1,0 +1,55 @@
+/*Default link colur behaviour*/
+
+a:link      { color: brand(govuk-blue); }
+a:visited { color: brand(govuk-blue); }
+a:hover   { color: semanticName(link-hover-colour);  cursor: pointer;}
+
+a.gds-white:link,
+a.gds-white:visited,
+a.gds-white:hover,
+a.gds-white:active  { color: brand(gds-white);  }
+
+a.gds-black:link,
+a.gds-black:visited,
+a.gds-black:active  { color: brand(footer-link);  }
+
+a.gds-black:hover { color: brand(footer-link-hover);  }
+
+a.gds-red:link,
+a.gds-red:visited,
+a.gds-red:hover,
+a.gds-red:active  { color: brand(gds-red);  }
+
+a.service-logo,
+a.service-logo:visited,
+a.service-logo:active  {
+     color: brand(gds-white);
+    text-decoration:none;
+    border-bottom: 1px solid brand(gds-black);
+}
+
+a.service-logo:hover {
+     color: brand(gds-white);
+    text-decoration:none;
+    border-bottom: 1px solid brand(gds-white);
+}
+
+a:focus {
+    background-color: brand(gds-yellow);
+    outline: 3px solid brand(gds-yellow);
+}
+
+a.current {
+    text-decoration: none;
+}
+
+footer a:link,
+footer a:active,
+footer a:visited {
+    color: brand(footer-link);
+}
+
+footer a:hover {
+    color: brand(footer-link-hover);
+}
+

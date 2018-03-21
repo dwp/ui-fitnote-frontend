@@ -1,0 +1,13 @@
+{
+    "h1": "Save and upload your fit note",
+    "li1": "Take a photo of your fit note or scan it to your computer",
+    "li2": "Make sure:",
+    "li2-1": "you're in a well lit place",
+    "li2-2": "all of your fit note is in the image",
+    "li3": "Save the photo or scan of your fit note somewhere you can easily find it on your computer",
+    "info": "Your photo or scan will be automatically checked to make sure it's good enough.",
+    "p": "Uploading...",
+    "upload": "Upload",
+    "button": "Choose a file to upload",
+    "alt1": "Examples of good and bad photos of a fit note"
+}

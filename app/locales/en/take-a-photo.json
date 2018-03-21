@@ -1,0 +1,18 @@
+{
+    "h1": "Take a photo of you fit note",
+    "li1": "Put your fit note on a flat surface like a table.",
+    "li2": "Make sure you're in a well lit place.",
+    "li3": "Hold your phone above the paper, and make sure it's sideways or 'landscape'.",
+    "info": "Your photo will be automatically checked to make sure it's good enough.",
+    "p": "Uploading...",
+    "send": "Send",
+    "button": "Open camera or choose file",
+    "alt1": "A person is stood over their form pointing their smartphone down towards the fit note",
+
+    "error-summary": "We’re having problems with your photo.",
+    "try-again" :"You can try again, or post your fit note to Freepost DWP ESA 38.",
+    "failed-ocr": "Try again",
+    "invalid": "We are unable to read that image, please try again",
+    "missing": "Upload a photo",
+    "connection": "There was a problem uploading the image, please retry using a Wifi connection"
+}

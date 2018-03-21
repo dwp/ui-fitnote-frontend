@@ -1,0 +1,4 @@
+//semantic naming, but otherwise is a clearfix.
+.grid-row             {  @include clearfix; margin: 0 -15px; }
+.grid-row:before {  @include clearfix-before; }
+.grid-row:after    {  @include clearfix-after; }

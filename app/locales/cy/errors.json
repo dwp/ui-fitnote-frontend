@@ -1,0 +1,32 @@
+{
+    "error-summary-h2": "Mae problem",
+    "error-summary-p": "Edrychwch dros eich ffurflen. Mae'n rhaid i chi:",
+
+    "nino": {
+        "nino": "Rhoi eich rhif Yswiriant Gwladol",
+        "nino-format": "Rhowch rif Yswiriant Gwladol mewn ffurf dilys. Er enghraifft, QQ123456C"
+    },
+
+    "address": {
+        "house-number": "Rhoi rhif eich tŷ",
+        "postcode" : "Rhoi eich cod post",
+        "postcode-format": "Edrych dros ffurf y cod post"
+    },
+
+    "text-message": {
+        "missing": "Dewiswch ydw neu na",
+        "mobile": "Rhoi eich rhif ffôn symudol",
+        "format": "Edrych dros ffurf y rhif ffôn symudol"
+    },
+
+    "device": {
+        "missing": "Dewiswch y math o ddyfais rydych yn ei ddefnyddio"
+    },
+
+    "feedback": {
+        "required": "Dewiswch gyfradd bodlonrwydd",
+        "maxlength": "Rhowch awgrymiadau gwelliant drwy ddefnyddio 1200 nod neu lai",
+        "phone": "Rhowch rif ffôn dilys",
+        "name": "Rhowch enw byrach (mwyafswm o 1000 nod)"
+    }
+}

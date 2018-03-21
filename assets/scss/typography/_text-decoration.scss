@@ -1,0 +1,8 @@
+/*By default links have decoration:underline.
+In general, we don't want to alter default behaviour,
+we only need styles when inverting */
+:hover{ text-decoration: none; }
+
+a.inverted-link                  { text-decoration: none; }
+a.inverted-link:hover       { text-decoration: underline; }
+a.text-decoration-none  { text-decoration: none; }

@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+<script>
+    ga('send', 'pageview');
+
+    {% if errors.photo.message %}
+        ga('send', 'event', 'Error - validation', 'userPhotoID', '{{errors.photo.message}}', { 'metric2':  1 });
+    {% endif %}
+
+    {% if errors.photoOCR.message %}
+        ga('send', 'event', 'Error - validation', 'userPhotoID', '{{errors.photoOCR.message}}', { 'metric2':  1 });
+    {% endif %}
+</script>
+{% endblock %}
+
+{% block body %}
+    {% if errors.photo.message %}
+        {% include "includes/error-summary.html" %}
+    {% endif %}
+
+    {% if errors.photoOCR %}
+        {% include "includes/ocr-summary.html" %}
+    {% endif %}
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-large">{{ t('take-a-photo:h1') }}</h1>
+
+            <div class="grid-row">
+                <div class="column-half">
+                    <ol class="list list-number">
+                        <li>{{ t('take-a-photo:li1') }}</li>
+                        <li>{{ t('take-a-photo:li2') }}</li>
+                        <li>{{ t('take-a-photo:li3') }}</li>
+                    </ol>
+                    <p>{{ t('take-a-photo:info') }}<p>
+                </div>
+
+                <div class="column-half">
+                    <img src="/images/guideline-photo.jpg" class="guide" alt="{{ t('take-a-photo:alt1') }}">
+                </div>
+            </div>
+
+            <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData" data-form="takeAPhoto" autocomplete="off">
+                <div class="button-controls">
+                    <label id="userPhotoIDLabel" class="button primary-button" for="userPhotoID">{{ t('take-a-photo:button') }}
+                        <input type="file" accept="image/*"  id="userPhotoID" name="userPhoto" class="display-offscreen" onclick = "ga('send', 'event', 'Button - click', 'Photo', 'Take Photo' , {'metric1':  1 }); ga('send', 'pageview', '/camera');">
+                    </label>
+
+                    <div class="form-group" aria-hidden="true">
+                        <label for="imageNameID" aria-hidden="true">Leave blank</label>
+                        <input type="text"  name="imageNameField" id="imageNameID" aria-hidden="true" value="" autofill="off">
+                    </div>
+
+                    <div id="js-loading-message" class="display-offscreen">
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                        <p>{{ t('take-a-photo:p') }}</p>
+                    </div>
+                    <div id="js-submitButtonContainer" class="clearfix">
+                        <input type="submit" class="button primary-button" value="{{ t('take-a-photo:send') }}" id="submitButton">
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% include "includes/sidebar.html" %}
+    </div>
+        
+
+{% endblock %}
+
+{% block body_end %}
+    <script src="/javascript/take-a-photo.js?version={{assetsVersion}}"></script>
+    <script>
+        var lang = '{{ lang }}';
+        var expires = '{{ exp }}';
+    </script>
+    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

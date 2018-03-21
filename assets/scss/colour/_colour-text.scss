@@ -1,0 +1,13 @@
+// // Generate a class for each colour in the format:
+// // uses values from: maps/colour-map
+// @each $color, $value in $brands {
+//     .#{$color} {
+//         color: #{$value};
+//     }
+// }
+
+.govuk-blue { color: brand(govuk-blue); }
+.gds-red { color: brand(gds-red); }
+.gds-black { color: brand(gds-black); }
+.gds-white { color: brand(gds-white); }
+.gds-grey { color: brand(gds-grey-1); }

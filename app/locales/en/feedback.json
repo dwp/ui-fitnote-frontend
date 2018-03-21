@@ -1,0 +1,19 @@
+{
+    "h1": "Give feedback",
+    "rating": "Overall, how did you feel about the service you received today?",
+    "very-satisfied": "Very satisfied",
+    "satisfied": "Satisfied",
+    "neither": "Neither satisfied or dissatisfied",
+    "dissatisfied": "Dissatisfied",
+    "very-dissatisfied": "Very dissatisfied",
+    "improvements": "How could we improve this service?",
+    "limit": "(Limit is 1200 characters)",
+    "info": "Please don't include any personal or financial information, for example your National Insurance or credit card numbers.",
+    
+    "helpMore": "Do you want to help some more?",
+    "helpMoreText":"To make this service better we'd like to ask you a few short questions about your experience today. Only give your contact details if you agree to this.",
+    "yourName": "Your name",
+    "phone": "Your phone number",
+    
+    "button": "Send feedback"
+}

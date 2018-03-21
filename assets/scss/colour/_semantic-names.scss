@@ -1,0 +1,24 @@
+// Colours for the site, as per:
+// http://alphagov.github.com/design/gov.uk.colours/
+
+$semanticNames: (
+    link-active-colour : #2e8aca,
+    link-hover-colour : #2e8aca,
+    link-visited-colour : #4c2c92,
+    button-colour : #00823b,
+    button-shadow : #003618,
+    banner-text-colour : #000000,
+    error-background : #fef7f7,
+    footer-border-colour : #a1acb2
+  );
+
+//Handy function so we can shorten map-get like so:
+// color: organisation(ministry-of-defence);
+@function semanticName($key) {
+    @if map-has-key($semanticNames, $key) {
+        @return map-get($semanticNames, $key);
+    }
+
+    @warn "Unknown `#{$key}` in $semanticNames.";
+    @return null;
+}

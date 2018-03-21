@@ -1,0 +1,32 @@
+{
+    "error-summary-h2": "There's a problem",
+    "error-summary-p": "Check your form. You must:",
+
+    "nino": {
+        "nino": "Enter your National Insurance number",
+        "nino-format": "Enter a valid National Insurance number format. For example, QQ123456C"
+    },
+
+    "address": {
+        "house-number": "Enter your house number",
+        "postcode" : "Enter your postcode",
+        "postcode-format": "Check postcode format"
+    },
+
+    "text-message": {
+        "missing": "Select Yes or No",
+        "mobile": "Enter your mobile number",
+        "format": "Check mobile phone number format"
+    },
+
+    "device": {
+        "missing": "Select the type of device you are using"
+    },
+
+    "feedback": {
+        "required": "Select a satisfaction rating",
+        "maxlength": "Enter improvement suggestions using 1200 characters or less",
+        "phone": "Enter a valid phone number",
+        "name": "Enter a shorter name (maximum 1000 characters)"
+    }
+}

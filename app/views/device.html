@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+<script>
+    ga('send', 'pageview');
+
+    {% if errors %}
+        {% for error, value in errors %}
+            ga("send", "event", "Error - validation", '{{value.field}}', '{{value.message}}' );
+        {% endfor %}
+    {% endif %}
+</script>
+
+{% endblock %}
+
+{% block body %}
+    {% include "includes/error-summary.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-large">{{ t('device:h1') }}</h1>
+            <form action="/device" method="post" class="form" name="deviceForm" id="formData" data-form="device" autocomplete="off" onsubmit="return submitForm();">
+                <div class="form-group{{ ' error' if errors }}">
+                    <fieldset>
+                        <legend>
+                            <span class="display-offscreen">{{ t('device:legend') }}</span>
+                            <span class="gds-red bold display-b" aria-hidden="true" id="error-message-radioPhone">{{ t('app:required') }}</span>
+                            {% if errors %}
+                            <span class="gds-red bold display-b" id="error-message-radioPhone">{{ t('app:required') }}</span>
+                            {% endif %}
+                        </legend>
+
+                        <label style="margin-bottom:0" class="block-label selection-button-radio" id="phoneLabel" for="radioPhone">
+                            <input id="radioPhone" type="radio" name="device" value="phone">
+                            {{ t('device:phone') }}
+                        </label>
+                        <div class="panel" id="phone-panel">
+                            {{ t('device:phone-panel') }}
+                        </div>
+
+                        <label style="margin-bottom:0" class="block-label selection-button-radio" id="desktopLabel" for="radioDesktop">
+                            <input id="radioDesktop" type="radio" name="device" value="desktop">
+                            {{ t('device:desktop') }}
+                        </label>
+                        <div class="panel" id="desktop-panel">
+                            {{ t('device:desktop-panel') }}
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="button primary-button" value="{{ t('device:button') }}">
+                </div>
+            </form>
+        </div>
+        {% include "includes/sidebar.html" %}
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    <script> var errorDictionary = {{ validationErrors | safe }}</script>
+    <script src="/javascript/validate-device.js?version={{assetsVersion}}" defer></script>
+    <script>
+        var lang = '{{ lang }}';
+        var expires = '{{ exp }}';
+    </script>
+    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

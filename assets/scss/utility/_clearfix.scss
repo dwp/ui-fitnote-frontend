@@ -1,0 +1,22 @@
+// Nicolas Gallaghers Clearfix solution
+// http://nicolasgallagher.com/micro-clearfix-hack/
+
+.clearfix::before,
+.clearfix::after     { display: table; content: " ";}
+.clearfix::after     { clear: both; }
+// .clearfix               {  *zoom: 1; } //IE8 only
+
+@mixin clearfix{
+    zoom: 1;
+}
+
+@mixin clearfix-before{
+    display: table;
+    content: " ";
+}
+
+@mixin clearfix-after{
+    display: table;
+    content: " ";
+    clear: both;
+}

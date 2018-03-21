@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ language }}">
+<head>
+    <meta charset="utf-8" />
+    {% set assetsVersion = timeStamp %}
+    {% if environment == 'prod' %}
+        {% set assetsVersion = version %}
+    {% endif %}
+    {% set cssPath ='/stylesheets' %}
+    {% set imagePath ='/images' %}
+    {% set jsPath ='/javascript' %}
+    <title>{% block pageTitle %}GOV.UK{% endblock %}</title>
+    <!--
+    {% if environment == 'test' %}Current Page: {{currentPage}}{% endif %}
+    -->
+    {% include "includes/meta.html" %}
+    {% block meta %}{% endblock %}
+
+    <link href="{{ cssPath }}/application.css?version={{assetsVersion}}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{ cssPath }}/font.css?version={{assetsVersion}}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{ cssPath }}/govuk-template-print.css?version={{assetsVersion}}" media="print" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+        <script src="/javascript/govuk.js?version={{assetsVersion}}"></script>
+    <![endif]-->
+{% include "includes/google-tracking.html" %}
+{% block googleTags %}{% endblock %}
+</head>
+
+<body class="js-disabled {% block body_classes %}{% endblock %}">
+<script>
+    document.body.className = document.body.className.replace("js-disabled","js-enabled");
+</script>
+    {% block body_start %}{% endblock %}
+
+    <div id="skiplink-container" class="bg-gds-black">
+        <div class="margin-centre  column-maxw-960">
+            <a href="#content" class="margin-vertical-15  display-offscreen gds-white bg-gds-black">{{ t('app:skip') }}</a>
+        </div>
+    </div>
+
+    {% if viewedMessage == undefined %}
+    <div class="global-cookie-message bg-gds-light-blue-25 pad-horizontal-10 pad-vertical-15">
+        {% include "includes/cookie-message.html" %}
+        {% block cookie_message %}{% endblock %}
+    </div>
+    {% endif %}
+
+    {% include "includes/header.html" %}
+    {% block header %}{% endblock %}
+
+    <main id="content" class="container">
+        {% set blueBorder = "border-top-solid border-top-colour-govuk-blue border-top-10" %}
+        <div class="phase-banner-beta {{blueBorder}}"></div>
+        {% block body %}{% endblock %}
+    </main>
+
+    {% include "includes/footer.html" %}
+    {% block footer %}{% endblock %}
+
+    {% block body_end %}{% endblock %}
+</body>
+</html>

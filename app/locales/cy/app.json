@@ -1,0 +1,26 @@
+{
+    "service-name": "Anfon eich nodyn ffitrwydd",
+    "alt":"Symbol y Goron",
+    "cookie-banner-1": "Mae'r gwasanaeth hwn yn defnyddio",
+    "cookie-banner-2": "cwcis",
+    "cookie-banner-3": "i wneud y safle'n symlach.",
+    "cookie-banner-4": "Rwy'n cytuno",
+    "skip": "Neidio i'r prif gynnwys",
+    "support-links": "Dolenni cymorth",
+    "ogl": "Open Government Licence",
+    "ogl-1": "Mae'r holl gynnwys ar gael o dan yr",
+    "ogl-2": "Open Government Licence v3.0",
+    "ogl-3": "ac eithro ble y dywedir yn wahanol",
+    "crown-copyright": "Hawlfraint y goron",
+    "cookies": "Cwcis",
+    "privacy": "Preifatrwydd",
+    "continue": "Parhau",
+    "required": "Mae angen maes",
+    "feedback": "Adborth",
+    "timeout": {
+        "h2": "Mae'r dudlaen hon ar fin cau.",
+        "p": "Bydd y dudalen rydych arni yn cau mewn <span id=\"timeout-expires\">5</span> munud oherwydd segurdod a bydd angen i chi ddechrau eto.",
+        "refresh": "Cael 30 munud arall",
+        "start-again": "Dechrau eto"
+    }
+}

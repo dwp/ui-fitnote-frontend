@@ -1,0 +1,29 @@
+{
+    "h1": "Cookies",
+
+    "h3-service": "Service cookies",
+
+    "th1": "Name",
+    "th2": "Purpose",
+    "th3": "Expires",
+
+    "td1": "cookies_agreed",
+    "td2": "Records if the cookies message at the top of the site has been viewed, upon your first visit, so it isn't redisplayed on each subsequent visit.",
+    "td3": "1 month",
+
+    "td4": "sessionID",
+    "td5": "This is your unique generated session cookie. The service requires this to work. It will expire 30 minutes after beginning, or at the end of the service, which ever occurs first.",
+    "td6": "30 minutes",
+
+    "h3-ga": "Google analytics",
+
+    "td7": "_ga",
+    "td8": "Counts how many people have visited the service by tracking if you've visited before.",
+    "td9": "2 years",
+
+    "td10": "_gat",
+    "td11": "Used to count how many pages are viewed and how often.",
+    "td12": "10 minutes",
+
+    "a": "Go back to cookies page"
+}

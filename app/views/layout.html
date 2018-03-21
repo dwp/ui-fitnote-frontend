@@ -1,0 +1,30 @@
+{% extends "govuk-template-nunjucks.html" %}
+
+{% block meta %}{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block cookie_message %}{% endblock %}
+
+{% block footer  %}
+<div id="timeout" class="timeout-closed">
+  <div id="timeout-bg"></div>
+  <div id="timeout-panel">
+    <h2 class="heading-medium" style="margin-top:0">{{ t('app:timeout.h2') }}</h2>
+    <p>{{ t('app:timeout.p') | safe }}</p>
+    <div style="margin-bottom:30px">
+      <form action="/refresh-session" method="post" autocomplete="off">
+        <input type="hidden" name="page" value="{{ currentPage }}">
+        <button id="timeout-refresh" class="button primary-button" onclick="ga('send', 'event', 'Button - click', 'Timeout', 'Get another 30 minutes' )">
+          {{ t('app:timeout.refresh') }}
+        </button>
+      </form>
+    </div>
+    <a id="timeout-start-again" href="/index" onclick="ga('send', 'event', 'Button - click', 'Timeout', 'Start again', {'hitCallback': function(){document.location = '/index';}} ); return false;">{{ t('app:timeout.start-again') }}</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block body_end %}
+
+{% endblock %}

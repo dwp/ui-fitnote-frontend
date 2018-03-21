@@ -1,0 +1,29 @@
+language: node_js
+
+branches:
+  only:
+  - master
+  
+stages:
+  - compliance-tests
+  - security-tests
+  - unit-tests
+  - quality-tests
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - script: npm outdated
+
+jobs:
+  include:
+    - stage: compliance-tests
+      script: npm run quality:lint
+    - stage: security-tests
+      script: npm outdated
+    - stage: security-tests
+      script: npm run security:vulnerable-packages
+    - stage: unit-tests
+      script: npm run test:unit
+    - stage: quality-tests
+      script: npm run quality:sonarqube

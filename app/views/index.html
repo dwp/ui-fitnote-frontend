@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+    <script>
+        ga('send', 'pageview');
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-large">{{ t('index:h1') }}</h1>
+            <p>{{ t('index:p') }}</p>
+            <ul class="list">
+                <li>{{ t('index:li1') }}</li>
+                <li>{{ t('index:li2') }}</li>
+                <li>{{ t('index:li3') }}</li>
+            </ul>
+            <form action="/index" method="post" id="formData" autocomplete="off">
+                <input type="submit" class="button primary-button" value="{{ t('index:button') }}" id="startButton">
+            </form>
+            <div class="panel-border-wide">
+                <span>{{ t('index:language') | safe }}</span>
+            </div>
+        </div>
+        {% include "includes/sidebar.html" %}
+    </div>
+
+{% endblock %}

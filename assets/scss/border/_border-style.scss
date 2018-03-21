@@ -1,0 +1,9 @@
+.border-all-solid { border-style: solid; }
+.border-top-solid { border-top-style: solid; }
+.border-bottom-solid { border-bottom-style: solid; }
+.border-none { border : none; }
+
+.focus-border-none:focus{
+    border : none;
+    outline: none;
+}

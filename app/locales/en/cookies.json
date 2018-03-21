@@ -1,0 +1,47 @@
+{
+    "h1": "Cookies",
+    "p1": "The Send your Fit Note service puts small files (known as 'cookies') on to your computer.",
+    "p2": "These cookies are used to:",
+    "li1": "understand how you use the service to make improvements",
+    "li2": "remember any notifications you've seen so that you're not shown them more than once",
+    "li3": "keep your information secure as you move through the service",
+    "p3": "You must have cookies enabled on your computer to apply for the Send your Fit Note service online.",
+
+    "h2-switched-off": "If your cookies are switched off",
+    "p4": "You'll see an error message when you try to use the service if your cookies are disabled.",
+    "p5": "How to turn cookies on depends on",
+    "a1": "the browser you're using",
+    "p6": "and how up to date it is.",
+    "p7": "Find out how to change your settings for the most popular browsers, including:",
+    "a2": "Internet Explorer",
+    "a3": "Mozilla Firefox",
+    "a4": "Google Chrome",
+    "a5": "Safari",
+    "p8": "commonly used on iPads, iPhones and other Apple computers",
+    "p9": "Find out",
+    "a6": "how to manage cookies",
+    "p10": "for other browsers.",
+
+    "h2-cookies-used": "Cookies used by the Send your Fit Note service",
+    "h3-ga": "Google analytics",
+    "p11": "Google Analytics collects information about how you use the service. This information is used to improve the service.",
+    "p12": "Google analytics cookies collect and store information about:",
+    "li4": "the pages you visit - what you click on when using the service",
+    "li5": "how long you spend on each page",
+    "li6": "how you got to the service",
+    "p13": "Google won't use or share analytics data with anyone, but you can",
+    "a7": "opt out of Google Analytics",
+
+
+    "h3-session": "Session and security cookies",
+    "p14": "Session cookies keep your information secure as you move back and forward through the service.",
+    "p15": "These cookies are automatically removed from your computer when you complete your application or if you:",
+    "li7": "don't do anything for 30 minutes",
+    "li8": "close your browser",
+    "li9": "switch off your computer",
+
+    "h3-intro-message": "Introductory message cookie",
+    "p16": "You may see a pop-up 'welcome' message when you first use the service. A cookie makes sure you only see this message once a month.",
+    "p17": "This cookie is removed from your computer after a month.",
+    "a8": "View [more information about cookies] used on this service."
+}

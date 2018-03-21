@@ -1,0 +1,83 @@
+/* Variables
+-------------------------------------------------- */
+$img-path: "../images";
+
+/* Utility
+-------------------------------------------------- */
+@import "utility/_normalize.scss";
+@import "utility/_clearfix.scss";
+/* Colours
+-------------------------------------------------- */
+@import "colour/_semantic-names.scss";
+@import "colour/_branding.scss";
+@import "colour/_colour-text.scss";
+@import "colour/_background-colours.scss";
+/* Typography
+-------------------------------------------------- */
+@import "fonts/_font-family.scss";
+@import "fonts/_font-weight.scss";
+@import "typography/_typography-scale.scss";
+@import "typography/_line-height.scss";
+@import "typography/_measure.scss";
+@import "typography/_text-align.scss";
+@import "typography/_text-decoration.scss";
+@import "typography/_lists.scss";
+@import "typography/_tracking.scss";
+/* Gov UK Forms
+-------------------------------------------------- */
+@import "forms/_form-formatting.scss";
+@import "forms/_form-fieldset.scss";
+@import "forms/_form-labels.scss";
+@import "forms/_form-hints.scss";
+@import "forms/_radio-buttons.scss";
+@import "forms/_form-controls.scss";
+@import "forms/_buttons.scss";
+@import "forms/_validation.scss";
+@import "forms/_photo-guide.scss";
+/* Display
+-------------------------------------------------- */
+@import "layout/_box-sizing.scss";
+@import "layout/_position.scss";
+@import "layout/_floats.scss";
+@import "layout/_padding.scss";
+@import "layout/_margin.scss";
+@import "layout/_container.scss";
+@import "layout/_width.scss";
+@import "layout/_table-layout.scss";
+@import "layout/_display.scss";
+@import "layout/_header.scss";
+@import "layout/_footer.scss";
+@import "layout/_phase.scss";
+@import "layout/_table.scss";
+/* Borders
+-------------------------------------------------- */
+@import "border/_border-width.scss";
+@import "border/_border-colours.scss";
+@import "border/_border-style.scss";
+/* Grid
+-------------------------------------------------- */
+@import "grid/_grid-rows.scss";
+@import "grid/_grid-columns.scss";
+@import "grid/_grid-column-max-width.scss";
+@import "grid/_grid-column-max-height.scss";
+/* Gov UK Branding
+-------------------------------------------------- */
+@import "colour/_links.scss";
+/* Gov UK Imagery
+-------------------------------------------------- */
+@import "imagery/_images.scss";
+/* Animations
+-------------------------------------------------- */
+@import "animation/_scanning-photo.scss";
+@import "animation/_uploading-photo.scss";
+/* Generic Code
+-------------------------------------------------- */
+html { background-color: brand(gds-grey-3); }
+body { background-color: brand(gds-white); }
+/* JS Helpers
+-------------------------------------------------- */
+@import "utility/_js-helpers.scss";
+/* Shame - LAST FILE LOADED
+-------------------------------------------------- */
+@import "_shame.scss";
+@import "timeout.scss";

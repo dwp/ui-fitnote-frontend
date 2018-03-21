@@ -1,0 +1,80 @@
+.button{
+    display: inline-block;
+    margin: 2px 0;
+    padding: 10px 13px 6px 13px;
+    position: relative;
+    border-radius: 0;
+    border:none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    box-shadow: 0 2px 0 semanticName(button-shadow);
+    cursor: pointer;
+    text-align: center;
+    vertical-align: top;
+    line-height: 1.2;
+    font-size:19px;
+    text-decoration: none;
+    top: 2px;
+}
+
+.photo-guide .button {
+    background: #fff;
+    color: #005ea5;
+}
+
+.primary-button{
+    color: brand(gds-white);
+    background-color:  semanticName(button-colour);
+}
+
+.primary-button:active:before,
+.primary-button-start:active:before{
+    top: -10%;
+    height: 120%;
+}
+
+.primary-button:focus,
+.primary-button-start:focus{
+    outline:3px solid brand(gds-yellow);
+}
+
+.primary-button:hover,
+.primary-button-start:hover{
+    cursor: pointer;
+    background-color:  brand(gds-green);
+}
+
+.primary-button:disabled,
+.primary-button-start:disabled{
+    cursor: default;
+    background-color: semanticName(button-colour);
+    opacity: 0.5;
+}
+
+@media (max-width: 640px) {
+    .button {
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        padding: 13px 15px 11px;
+    }
+}
+
+.button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+.button:focus {
+    outline: 3px solid #ffbf47;
+}
+
+.button[disabled="disabled"] {
+    background: #00823b;
+}
+
+.button[disabled="disabled"]:focus {
+    outline: none;
+}

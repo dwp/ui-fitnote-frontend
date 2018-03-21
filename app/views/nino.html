@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+<script>
+    ga('send', 'pageview');
+
+    {% if errors %}
+        {% for error, value in errors %}
+            ga("send", "event", "Error - validation", '{{value.field}}', '{{value.message}}' );
+        {% endfor %}
+    {% endif %}
+</script>
+
+{% endblock %}
+
+{% block body %}
+    {% include "includes/error-summary.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <form action="/send-nino" method="post" class="form" name="ninoForm" id="formData" data-form="nino" autocomplete="off" onsubmit="return submitForm();">
+                <fieldset class="form-group">
+                    <legend class="display-offscreen">{{ t('nino:heading') }}</legend>
+
+                    <div class="form-group {% if errors.nino %}error{% endif %}">
+                        <label for="ninoFieldID">
+                            <span class="form-label heading-large bold">{{ t('nino:heading') }}</span>
+                            <span class="form-hint">{{ t('nino:hint') }}</span>
+                        </label>
+                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-ninoFieldID">{{ t('app:required') }}</span>
+                        {% if errors.nino %}
+                            <span class="gds-red bold  display-b" id="error-message-ninoFieldID">{{ t('app:required') }}</span>
+                        {% endif %}
+                        <input type="text" name="ninoField" id="ninoFieldID" class="form-control {{error.ninoCompleted}}" value="{{ninoValue}}" maxlength="13" data-required="required">
+                    </div>
+
+                    <div class="form-group" aria-hidden="true">
+                        <label for="emailID" aria-hidden="true">Leave blank</label>
+                        <input type="text"  name="emailField" id="emailID" aria-hidden="true" value="" autofill="off">
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <input type="submit" id="add-your-details" class="button primary-button" value="{{ t('app:continue') }}">
+                </div>
+            </form>
+        </div>
+        {% include "includes/sidebar.html" %}
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    <script> var errorDictionary = {{ validationErrors | safe }}</script>
+    <script src="/javascript/validate-nino.js?version={{assetsVersion}}" defer></script>
+    <script>
+        var lang = '{{ lang }}';
+        var expires = '{{ exp }}';
+    </script>
+    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

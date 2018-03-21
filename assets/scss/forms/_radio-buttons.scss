@@ -1,0 +1,44 @@
+.js-enabled .block-label.selection-button-radio::before {
+    content: "";
+    border: 2px solid black;
+    background: transparent;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+.js-enabled .block-label.selection-button-radio input {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 38px;
+    height: 38px;
+    margin: 0;
+    opacity: 0;
+}
+
+.js-enabled .block-label.selection-button-radio::after {
+    content: "";
+    border: 10px solid black;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.js-enabled .block-label.selection-button-radio.selected::after {
+    opacity: 1;
+}
+
+.js-enabled .block-label.selection-button-radio input:focus {
+    -webkit-box-shadow: 0 0 0 5px #ffbf47;
+    -moz-box-shadow: 0 0 0 5px #ffbf47;
+    box-shadow: 0 0 0 5px #ffbf47;
+}

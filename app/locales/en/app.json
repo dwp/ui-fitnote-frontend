@@ -1,0 +1,26 @@
+{
+    "service-name": "Send your fit note",
+    "alt":"The Crown Symbol",
+    "cookie-banner-1": "This service uses",
+    "cookie-banner-2": "cookies",
+    "cookie-banner-3": "to make the site simpler.",
+    "cookie-banner-4": "I agree",
+    "skip": "Skip to main content",
+    "support-links": "Support links",
+    "ogl": "Open Government Licence",
+    "ogl-1": "All content is available under the",
+    "ogl-2": "Open Government Licence v3.0",
+    "ogl-3": "except where otherwise stated",
+    "crown-copyright": "Crown copyright",
+    "cookies": "Cookies",
+    "privacy": "Privacy",
+    "continue": "Continue",
+    "required": "Field is required",
+    "feedback": "Feedback",
+    "timeout": {
+        "h2": "This page is about to close.",
+        "p": "The page you're on will close in <span id=\"timeout-expires\">5</span> due to inactivity and you'll have to start again.",
+        "refresh": "Get another 30 minutes",
+        "start-again": "Start again"
+    }
+}

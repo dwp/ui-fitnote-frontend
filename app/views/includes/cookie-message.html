@@ -1,0 +1,9 @@
+{% set url = '/cookie-agree?postback=' %}
+
+{% if currentPage == 'create-account' %}
+    <p class="column-maxw-960 margin-centre">{{ t('app:cookie-banner-1') }} <a href="https://www.gov.uk/help/cookies">{{ t('app:cookie-banner-2') }}</a> {{ t('app:cookie-banner-3') }} <a href="{{url}}{{currentPage}}&token={{token}}">{{ t('app:cookie-banner-4') }}</a></p>
+{% elif currentPage == 'complete' %}
+    <p class="column-maxw-960 margin-centre">{{ t('app:cookie-banner-1') }} <a href="https://www.gov.uk/help/cookies">{{ t('app:cookie-banner-2') }}</a> {{ t('app:cookie-banner-3') }} <a href="{{url}}index">{{ t('app:cookie-banner-4') }}</a></p>
+{% else %}
+    <p class="column-maxw-960 margin-centre">{{ t('app:cookie-banner-1') }} <a href="https://www.gov.uk/help/cookies">{{ t('app:cookie-banner-2') }}</a> {{ t('app:cookie-banner-3') }} <a href="{{url}}{{currentPage}}">{{ t('app:cookie-banner-4') }}</a></p>
+{% endif %}

@@ -1,0 +1,29 @@
+{
+    "h1": "Cwcis",
+
+    "h3-service": "Cwcis gwasanaeth",
+
+    "th1": "Enw",
+    "th2": "Diben",
+    "th3": "Dirwyn i ben",
+
+    "td1": "cookies_agreed",
+    "td2": "Mae hwn yn cofnodi os yw'r neges cwcis ar frig y safle wedi cael ei weld, pan fyddwch yn ymweld am y tro cyntaf, fel na fyddwch yn ei weld ar bob ymweliad dilynnol.",
+    "td3": "1 mis",
+
+    "td4": "sessionID",
+    "td5": "Mae hwn yn gwci sesiwn a grewyd yn unigryw i chi. Mae'r gwasanaeth ei angen iddo weithio. Bydd yn dirwyn i ben 30 munud ar ôl dechrau, neu ar ddiwedd y gwasanaeth, pwy un bynnag sy'n dod gyntaf.",
+    "td6": "30 munud",
+
+    "h3-ga": "Google analytics",
+
+    "td7": "_ga",
+    "td8": "Yn cyfri faint o bobl sy'n ymweld â'r gwasanaeth drwy olrhain os ydych wedi ymweld o'r blaen.",
+    "td9": "2 flynedd",
+
+    "td10": "_gat",
+    "td11": "Yn cael ei ddefnyddio i gyfri faint o dudalennau yr edrychir arnynt a pha mor aml.",
+    "td12": "10 munud",
+
+    "a": "Yn ôl i'r dudalen cwcis"
+}

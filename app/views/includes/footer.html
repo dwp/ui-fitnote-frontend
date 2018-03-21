@@ -1,0 +1,25 @@
+<footer class="clearfix js-footer" id="footer">
+    <div class="footer-wrapper">
+        <div class="footer-meta">
+            <div class="footer-meta-inner">
+                <h2 class="display-offscreen">{{ t('app:support-links') }}</h2>
+                <nav>
+                    <ul>
+                        <li><a href="/cookies">{{ t('app:cookies') }}</a></li>
+                        <li><a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">{{ t('app:privacy') }}</a></li>
+                        <li><a href="/feedback" onclick="ga('send', 'event', 'Link - click', 'Feedback', '/feedback' )">{{ t('app:feedback') }}</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="open-government-licence">
+                    <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">{{ t('app:ogl') }}</a></p>
+                    <p>{{ t('app:ogl-1') }} <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="gds-black">{{ t('app:ogl-2') }}</a>, {{ t('app:ogl-3') }}</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/" class="gds-black">&copy; {{ t('app:crown-copyright') }}</a>
+            </div>
+        </div>
+    </div>
+</footer>

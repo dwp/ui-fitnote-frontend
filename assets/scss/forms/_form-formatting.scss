@@ -1,0 +1,19 @@
+.form{
+    display: inline-block;
+    width:100%;
+}
+
+.form-group{
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group::before{
+    @include clearfix-before;
+}
+
+.form-group::after{
+    @include clearfix-after;
+}

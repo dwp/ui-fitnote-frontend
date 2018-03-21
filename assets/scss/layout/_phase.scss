@@ -1,0 +1,35 @@
+.blue-border-bottom {
+    border-bottom: none;
+    margin-bottom: 25px;
+     border-bottom: 10px solid brand(govuk-blue);
+}
+
+.beta-badge {
+    float: left;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 8px 0 0;
+    padding: 2px 5px 0;
+    font-family: "nta",Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.14286;
+    font-weight: 700;
+    text-transform: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #f47738;
+    background: #005ea5;
+    margin: 40px 0 0 -34px;
+}
+
+@media (min-width: 641px) {
+    .beta-badge {
+        vertical-align: baseline;
+        font-size: 16px;
+        line-height: 1.25;
+        margin: 7px 0 0 0;
+    }
+}

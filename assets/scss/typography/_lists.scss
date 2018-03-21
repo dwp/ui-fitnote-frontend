@@ -1,0 +1,17 @@
+.ls-none    { list-style: none; }
+.ls-bullet  { list-style:  circle; }
+
+.list{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 0 0 0 20px;
+}
+
+.list li{
+    margin-bottom: 5px;
+}
+
+.error-summary-list{
+    margin: 0;
+    padding: 0;
+}
