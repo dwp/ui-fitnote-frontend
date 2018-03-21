@@ -8,7 +8,6 @@ stages:
   - compliance-tests
   - security-tests
   - unit-tests
-  - quality-tests
 
 matrix:
   fast_finish: true
@@ -25,5 +24,3 @@ jobs:
       script: npm run security:vulnerable-packages
     - stage: unit-tests
       script: npm run test:unit
-    - stage: quality-tests
-      script: npm run quality:sonarqube
