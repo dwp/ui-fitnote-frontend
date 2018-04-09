@@ -50,7 +50,7 @@ describe("NINO Page", function() {
         var browser = this.browser;
         browser.fill('ninoField', 'ASDe3fvga');
         browser.pressButton('Continue').then(function() {
-            assert.equal(browser.text('#error-field-ninoFieldID'), 'Enter a valid National Insurance number format. For example, AA 37 07 73 A');
+            assert.equal(browser.text('#error-field-ninoFieldID'), 'Enter a valid National Insurance number format. For example, QQ 12 34 56 C');
             assert.equal(browser.text('#error-message-ninoFieldID'), 'Field is required');
         }).then(done, done);
     });

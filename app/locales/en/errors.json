@@ -4,7 +4,7 @@
 
     "nino": {
         "nino": "Enter your National Insurance number",
-        "nino-format": "Enter a valid National Insurance number format. For example, AA 37 07 73 A"
+        "nino-format": "Enter a valid National Insurance number format. For example, QQ 12 34 56 C"
     },
 
     "address": {

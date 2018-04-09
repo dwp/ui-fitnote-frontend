@@ -61,7 +61,7 @@ function checkNino() {
 function sendGa(gaValue) {
     switch (gaValue) {
     case 1 :
-        ga('send', 'event', 'Error - validation', 'ninoFieldID', 'Enter a valid National Insurance number format. For example, AA 37 07 73 A');
+        ga('send', 'event', 'Error - validation', 'ninoFieldID', 'Enter a valid National Insurance number format. For example, QQ 12 34 56 C');
         break;
     case 2 :
         ga('send', 'event', 'Error - validation', 'ninoFieldID', 'Enter your National Insurance number');
