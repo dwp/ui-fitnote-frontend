@@ -18,9 +18,8 @@
     <div class="grid-row">
       <div class="column-two-thirds">
             <h2 class="heading-medium">{{ t('complete:h2') }}</h2>
-            {%if textPrompt == true %}<p>{{ t('complete:p1') }}</p>{% endif%}
+            <p>{{ t('complete:p1') }}</p>
             <p>{{ t('complete:p2') }}</p>
-            <p>{{ t('complete:p3') }}</p>
             <p><a href="/feedback"  onclick="ga('send', 'event', 'Link - click', 'What do you think of this service?', '/feedback' )">{{ t('complete:feedback') }}</a><span> {{ t('complete:feedbackInfo') }}</span></p>
             <p><a href="/index" onclick="ga('send', 'event', 'Button - click', 'Send another fit note', 'N/A', { 'metric4': 1, 'sessionControl': 'end' });">{{ t('complete:a') }}</a></p>
         </div>

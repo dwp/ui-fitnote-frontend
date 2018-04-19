@@ -11,6 +11,5 @@ function sessionTimeout(req, res) {
     // Make sure the cookies are cleared AFTER page render, so GA can get values, but cleared for security
     res.clearCookie('sessionId');
     res.clearCookie('retry');
-    res.clearCookie('textMessage');
 }
 module.exports.sessionTimeout = sessionTimeout;

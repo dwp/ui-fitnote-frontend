@@ -1,7 +1,7 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "scripts": {
     "start": "NODE_ENV=dev node ./bin/server.js | bunyan -o short",
     "dev": "NODE_ENV=dev node ./bin/server.js | bunyan -o short",

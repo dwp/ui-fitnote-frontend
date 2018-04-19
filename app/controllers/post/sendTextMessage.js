@@ -16,8 +16,6 @@ function sendTextMessageConfirmation(req, res) {
     var textPermission = req.body.textReminder;
     var fakeLandlineRaw = req.body.landlineField;
     var passedHoneypot = checkHoneypot.honeypot(fakeLandlineRaw, 'BOT: honeypot detected a bot, Text Message Page, Landline Field');
-    var cookieLength;
-    var sameSite;
     var fitnote = {
         sessionId : req.cookies.sessionId,
         mobileNumber : mobRaw
@@ -34,20 +32,6 @@ function sendTextMessageConfirmation(req, res) {
         },
         body : fitnote
     };
-
-    function setMobileCookie(next) {
-        cookieLength = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000));
-        sameSite = true;
-
-        res.cookie('textMessage', 'yes', {
-            httpOnly : true,
-            secure : true,
-            sameSite : sameSite,
-            expires : cookieLength
-        });
-
-        return next;
-    }
 
     function handleErrors(TextMessageDoneValue) {
         TextMessageDone = TextMessageDoneValue;
@@ -83,9 +67,6 @@ function sendTextMessageConfirmation(req, res) {
                 logType.info('Mobile number format');
                 return handleErrors(2);
             } else {
-                if (textPermission === 'Yes') {
-                    setMobileCookie();
-                }
                 return request(options, callback);
             }
         } else {

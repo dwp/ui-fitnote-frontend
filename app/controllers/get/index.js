@@ -8,8 +8,6 @@ function indexPage(req, res) {
     sessionId = newSession.createSessionId(req, res);
     retry.retryCookie(req, res);
 
-    res.clearCookie('textMessage');
-    
     res.render('index', {
         sessionId : sessionId,
         version : config.version,
