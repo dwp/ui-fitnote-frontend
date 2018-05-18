@@ -1,7 +1,15 @@
+var newSession = require(appRootDirectory + '/app/functions/createSessionId');
+var retry = require(appRootDirectory + '/app/functions/retryCookie');
+
 function devicePage(req, res) {
     var errorMessage;
+    var sessionId;
     var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
     
+    logger.info('Creating Session ID');
+    sessionId = newSession.createSessionId(req, res);
+    retry.retryCookie(req, res);
+
     if (req.query.device === '0') {
         errorMessage = { 
             device : {
@@ -12,7 +20,7 @@ function devicePage(req, res) {
     }
 
     res.render('device', {
-        sessionId : req.cookies.sessionId,
+        sessionId : sessionId,
         version : config.version,
         timeStamp : Date.now(),
         environment : config.nodeEnvironment,

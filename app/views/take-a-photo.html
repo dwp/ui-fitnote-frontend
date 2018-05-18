@@ -21,7 +21,7 @@
     {% endif %}
 
     {% if errors.photoOCR %}
-        {% include "includes/ocr-summary.html" %}
+        {% include "includes/ocr-summary-mobile.html" %}
     {% endif %}
     <div class="grid-row">
         <div class="column-two-thirds">
@@ -35,6 +35,9 @@
                         <li>{{ t('take-a-photo:li3') }}</li>
                     </ol>
                     <p>{{ t('take-a-photo:info') }}<p>
+                    <p>
+                        <a href="/help-for-photo-step-1">{{ t('upload-a-photo:moreHelp') }}</a>
+                    </p>
                 </div>
 
                 <div class="column-half">
@@ -43,7 +46,10 @@
             </div>
 
             <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData" data-form="takeAPhoto" autocomplete="off">
-                <div class="button-controls">
+                <div class="{{ 'error' if errors.photoOCR }}">
+                    {% if errors.photoOCR %}
+                    <span class="gds-red bold display-b">{{ t('take-a-photo:failed-ocr') }}</span>
+                    {% endif %}
                     <label id="userPhotoIDLabel" class="button primary-button" for="userPhotoID">{{ t('take-a-photo:button') }}
                         <input type="file" accept="image/*"  id="userPhotoID" name="userPhoto" class="display-offscreen" onclick = "ga('send', 'event', 'Button - click', 'Photo', 'Take Photo' , {'metric1':  1 }); ga('send', 'pageview', '/camera');">
                     </label>

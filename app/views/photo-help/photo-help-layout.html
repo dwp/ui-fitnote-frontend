@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+<script>
+    ga('send', 'pageview');
+
+    {% if errors.photo.message %}
+        ga('send', 'event', 'Error - validation', 'userPhotoID', '{{errors.photo.message}}', { 'metric2':  1 });
+    {% endif %}
+
+    {% if errors.photoOCR.message %}
+        ga('send', 'event', 'Error - validation', 'userPhotoID', '{{errors.photoOCR.message}}', { 'metric2':  1 });
+    {% endif %}
+</script>
+{% endblock %}
+
+{% block body %}
+    {% if errors.photo.message %}
+        {% include "includes/error-summary.html" %}
+    {% endif %}
+
+    {% if errors.photoOCR %}
+        {% include "includes/ocr-summary.html" %}
+    {% endif %}
+
+    {% block topnav %}{% endblock %}
+
+    {% block helppage %}{% endblock %}
+
+{% endblock %}
+
+{% block body_end %}
+    <script src="/javascript/upload-a-photo.js?version={{assetsVersion}}"></script>
+    <script>
+        var lang = '{{ lang }}';
+        var expires = '{{ exp }}';
+    </script>
+    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

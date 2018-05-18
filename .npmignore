@@ -1,0 +1,14 @@
+.tmp/
+.sass-cache/
+.DS_Store
+node_modules
+testing/linting/sass-lint.html
+testing/shots/*
+testing/accessibility/*
+fitnote.sublime-project
+fitnote.sublime-workspace
+coverage
+*.tar.gz
+npm-debug.log
+logs/
+testing/db.json

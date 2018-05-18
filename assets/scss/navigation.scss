@@ -1,0 +1,134 @@
+.button-guide {
+  float: left;
+}
+
+.button-guide:first-child a {
+  margin-left: -20px;
+}
+
+.button-guide a {
+  display: block;
+  padding: 15px 0;
+  font-family: "nta",Arial,sans-serif;
+  font-weight: 700;
+  text-transform: none;
+  font-size: 16px;
+  line-height: 1.25;
+  background-repeat: no-repeat;
+  background-size: 12px;
+}
+@media (min-width: 641px) {
+  .button-guide a {
+    font-size: 19px;
+    line-height: 1.31579;
+  }
+}
+@media (min-width: 641px) {
+  .button-guide a {
+    background-size: auto;
+  }
+}
+
+.button-guide a:hover {
+  color: #fff;
+  background-color: #2b8cc4;
+}
+
+.button-guide-previous a {
+  padding-right: 20px;
+  padding-left: 40px;
+  background-image: url("/images/icon-arrow-left.svg");
+  background-position: left 20px center;
+}
+@media (min-width: 641px) {
+  .button-guide-previous a {
+    padding-left: 45px;
+  }
+}
+
+.button-guide-next a {
+  padding-right: 40px;
+  padding-left: 20px;
+  background-image: url("/images/icon-arrow-right.svg");
+  background-position: right 20px center;
+}
+@media (min-width: 641px) {
+  .button-guide-next a {
+    padding-right: 45px;
+  }
+}
+
+.guide-nav ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.guide-nav {
+  margin-top: 1em;
+}
+
+.guide-nav ul {
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+}
+
+.link-back {
+  display: -moz-inline-stack;
+  display: inline-block;
+  position: relative;
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.14286;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 14px;
+  color: #0b0c0c;
+  text-decoration: none;
+  border-bottom: 1px solid #0b0c0c;
+}
+
+@media (min-width: 641px) {
+  .link-back {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.link-back:link, .link-back:visited, .link-back:hover, .link-back:active {
+  color: #0b0c0c;
+}
+
+.link-back::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-right: 6px solid #0b0c0c;
+  border-bottom: 5px solid transparent;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -6px;
+}
+
+.marker {
+  color: #6f777b;
+  font-family: "nta",Arial,sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.14286;
+  margin-left: 15px;
+}
+
+@media (min-width: 641px) {
+  .marker {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}

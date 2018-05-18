@@ -1,3 +1,84 @@
 img.guide {
     max-width: 100%;
 }
+.photo-guide {
+    background-color: #005ea5;
+    color: #fff;
+    margin-top: 1.25em;
+    padding: 60px 60px 30px 60px;
+}
+
+@media (max-width: 640px) {
+    .photo-guide {
+        padding: 30px 30px 2px 30px;
+    }
+}
+
+.photo-guide .button {
+    background: #fff;
+    color: #005ea5;
+}
+
+.photo-guide .button:hover {
+    background: #f8f8f8;
+}
+
+@media (max-width: 640px) {
+    .photo-guide .button {
+        width: 100%;
+        padding: 13px 15px 11px;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.photo-guide .form-group {
+    float: none;
+}
+
+.photo-guide .panel {
+    border-color: #fff;
+}
+
+.photo-guide ol {
+    margin-top: 15px;
+}
+
+.photo-guide img {
+    max-width: 100%;
+}
+
+.photo-upload-example {
+    overflow: hidden;
+    padding: 20px;
+    background: #f8f8f8;
+}
+
+.photo-upload-example img {
+    float: right;
+    width: 340px;
+}
+
+@media (max-width: 1010px) {
+    .photo-upload-example img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.photo-upload-example p {
+    margin-right: 20px;
+}
+
+.photo-guide a:link,
+.photo-guide a:visited {
+    color: #fff;
+}
+
+.photo-guide img {
+    max-width: 100%;
+}
+
+.mt0 {
+    margin-top: 0;
+}

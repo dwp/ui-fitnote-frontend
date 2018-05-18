@@ -9,7 +9,7 @@ var json = require('../package.json');
 
 service = {
     provider : 'Secure Comms',
-    name : 'Send your fit note',
+    name : 'Send your fit note for your ESA claim',
     version : json.version
 };
 

@@ -1,0 +1,36 @@
+{% extends "./photo-help-layout.html" %}
+
+{% block topnav %}
+    <a href="/{{route}}-a-photo" class="link-back">{{ t('help-for-photo:upload') }}</a>
+    <span class="marker">{{ t('help-for-photo:scr3-top-link') }}</span>
+{% endblock %}}
+
+{% block helppage %}
+    <div class="photo-guide">
+        <div class="grid-row">
+            <div class="column-full">
+                <h1 class="heading-large mt0">{{ t('help-for-photo:scr3-head') }}</h1>
+
+                <div class="grid-row">
+                    <div class="column-half">
+                    </div>
+
+                    <div class="column-half">
+                        <img src="/images/photo-guide-3.png" class="guide" alt="{{ t('help-for-photo:scr3-alt') }}">
+                    </div>
+                </div>
+                <nav class="guide-nav">
+                    <ul>
+                        <li class="button-guide button-guide-previous">
+                            <a href="/help-for-photo-step-2">{{ t('help-for-photo:back') }}</a>
+                        </li>
+                        <li class="button-guide button-guide-next">
+                            <a href="/help-for-photo-step-4">{{ t('help-for-photo:next') }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

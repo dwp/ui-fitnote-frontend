@@ -24,7 +24,7 @@ function takePhotoPage(req, res) {
         res.cookie('retry', parseInt(req.cookies.retry, 0) + 1, {httpOnly : true, secure : true, sameSite : true, expires : 0});
         photoError =  {
             retry : req.cookies.retry,
-            message : req.i18nTranslator.t('take-a-photo:failed-ocr'),
+            message : req.i18nTranslator.t(`${route}-a-photo:failed-ocr`),
             field : 'formData'
         };
     }

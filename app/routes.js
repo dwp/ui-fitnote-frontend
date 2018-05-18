@@ -5,9 +5,9 @@ var getControllerPath = appRootDirectory + '/app/controllers/get/';
 var postControllerPath = appRootDirectory + '/app/controllers/post/';
 
 var getControllers = {
-    home  : require(getControllerPath + 'index'),
     device  : require(getControllerPath + 'device'),
     takePhoto  : require(getControllerPath + 'takePhoto'),
+    helpForPhoto : require(getControllerPath + 'helpForPhoto'),
     photoAudit  : require(getControllerPath + 'photoAudit'),
     nino  : require(getControllerPath + 'nino'),
     address  : require(getControllerPath + 'address'),
@@ -23,7 +23,6 @@ var getControllers = {
 };
 
 var postControllers = {
-    index : require(postControllerPath + 'index'),
     device  : require(postControllerPath + 'device'),
     photo : require(postControllerPath + 'sendPhoto'),
     nino : require(postControllerPath + 'sendNino'),
@@ -46,7 +45,11 @@ var isAuthenticatedFunction = functions.authentication.isAuthenticated;
 // Controller Functions
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function catchSlash(req, res) {
-    res.redirect('/index');
+    res.redirect('/device');
+}
+
+function redirectGoUk(req, res) {
+    res.redirect('https://www.gov.uk/send-fit-note');
 }
 
 function catchAll(req, res) {
@@ -63,8 +66,8 @@ router.get('/feedback', getControllers.feedback.feedbackPage);
 router.get('/thank-you', getControllers.feedback.thankYouPage);
 
 // Fitnote Pages
-router.get('/index', getControllers.home.indexPage);
-router.get('/device', isAuthenticatedFunction, getControllers.device.device);
+router.get('/index', redirectGoUk);
+router.get('/device', getControllers.device.device);
 router.get(['/take-a-photo', '/upload-a-photo'], isAuthenticatedFunction, getControllers.takePhoto.takePhotoPage);
 router.get('/photo-audit', isAuthenticatedFunction, getControllers.photoAudit.photoAuditPage);
 router.get('/nino', isAuthenticatedFunction, getControllers.nino.ninoPage);
@@ -72,10 +75,12 @@ router.get('/address', isAuthenticatedFunction, getControllers.address.addressPa
 router.get('/text-message', isAuthenticatedFunction, getControllers.textMessage.textMessagePage);
 router.get('/complete', isAuthenticatedFunction, getControllers.complete.completePage);
 
-// routes for marketing campaign
-router.get('/start', getControllers.home.indexPage);
-router.get('/go', getControllers.home.indexPage);
-router.get('/begin', getControllers.home.indexPage);
+// Help pages for photo upload
+router.get('/help-for-photo-step-1', isAuthenticatedFunction, getControllers.helpForPhoto.helpForPhotoStep1Page);
+router.get('/help-for-photo-step-2', isAuthenticatedFunction, getControllers.helpForPhoto.helpForPhotoStep2Page);
+router.get('/help-for-photo-step-3', isAuthenticatedFunction, getControllers.helpForPhoto.helpForPhotoStep3Page);
+router.get('/help-for-photo-step-4', isAuthenticatedFunction, getControllers.helpForPhoto.helpForPhotoStep4Page);
+router.get('/help-for-photo-step-5', isAuthenticatedFunction, getControllers.helpForPhoto.helpForPhotoStep5Page);
 
 // Accessibility Tests GET only
 if (config.nodeEnvironment === 'test') {
@@ -84,7 +89,6 @@ if (config.nodeEnvironment === 'test') {
     router.get('/cookies-table/:id', getControllers.cookiesTable.cookiesTablePage);
 
     // Fitnote Pages
-    router.get('/index/:id', isAuthenticatedFunction, getControllers.home.indexPage);
     router.get('/take-a-photo/:id', isAuthenticatedFunction, getControllers.takePhoto.takePhotoPage);
     router.get('/photo-audit/:id', isAuthenticatedFunction, getControllers.photoAudit.photoAuditPage);
     router.get('/nino/:id', isAuthenticatedFunction, getControllers.nino.ninoPage);
@@ -95,7 +99,6 @@ if (config.nodeEnvironment === 'test') {
 
 // Post Controllers
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-router.post('/index', postControllers.index.index);
 router.post('/device', postControllers.device.device);
 router.post('/send-photo', postControllers.photo.photoUploader);
 router.post('/send-nino', postControllers.nino.sendNino);
