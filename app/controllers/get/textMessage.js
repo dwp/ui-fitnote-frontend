@@ -1,6 +1,8 @@
 function textMessagePage(req, res) {
     var errorMessage;
     var textMessageError;
+    var textMessageMobileError;
+    var textMessageFormatError;
     var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
 
     if (req.query.text === '0') {
@@ -11,14 +13,14 @@ function textMessagePage(req, res) {
     }
 
     if (req.query.text === '1') {
-        textMessageError = {
+        textMessageMobileError = {
             message : req.i18nTranslator.t('errors:text-message.mobile'),
             field : 'mobileNumberID'
         };
     }
 
     if (req.query.text === '2') {
-        textMessageError = {
+        textMessageFormatError = {
             message :  req.i18nTranslator.t('errors:text-message.format'),
             field : 'mobileNumberID'
         };
@@ -30,7 +32,8 @@ function textMessagePage(req, res) {
         };
     } else if ((req.query.text === '1') || (req.query.text === '2')) {
         errorMessage = {
-            textMessage : textMessageError
+            textMessageMobile : textMessageMobileError,
+            textMessageFormat : textMessageFormatError
         };
     } else {
         errorMessage = '';

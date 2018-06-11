@@ -75,6 +75,8 @@ function photoUploader(req, res) {
                     return;
                 }
 
+                logType.info('File mimetype is ' + req.file.mimetype);
+                logType.info('File size is ' + req.file.size);
                 userPhotoEncoded = encodeImage();
                 logType.info('Image Encoded');
                 logType.info('Starting image upload');

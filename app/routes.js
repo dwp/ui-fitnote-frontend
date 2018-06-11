@@ -45,11 +45,14 @@ var isAuthenticatedFunction = functions.authentication.isAuthenticated;
 // Controller Functions
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function catchSlash(req, res) {
-    res.redirect('/device');
+    res.redirect('/device?lang='+res.locals.language);
 }
 
-function redirectGoUk(req, res) {
-    res.redirect('https://www.gov.uk/send-fit-note');
+function redirectGovUk(req, res) {
+    var url = res.locals.language === 'cy' ? 
+        'https://www.gov.uk/anfon-eich-nodyn-ffitrwydd-ar-gyfer-eich-cais-esa' :
+        'https://www.gov.uk/send-fit-note';
+    res.redirect(url);
 }
 
 function catchAll(req, res) {
@@ -66,7 +69,7 @@ router.get('/feedback', getControllers.feedback.feedbackPage);
 router.get('/thank-you', getControllers.feedback.thankYouPage);
 
 // Fitnote Pages
-router.get('/index', redirectGoUk);
+router.get('/index', redirectGovUk);
 router.get('/device', getControllers.device.device);
 router.get(['/take-a-photo', '/upload-a-photo'], isAuthenticatedFunction, getControllers.takePhoto.takePhotoPage);
 router.get('/photo-audit', isAuthenticatedFunction, getControllers.photoAudit.photoAuditPage);

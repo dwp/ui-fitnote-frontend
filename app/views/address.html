@@ -26,18 +26,21 @@
 
                     <div class="form-group {% if errors.houseNumber %}error{% endif %}">
                         <label for="houseNumberID" class="form-label">{{ t('address:house-number') }}</label>
-                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-houseNumberID">{{ t('app:required') }}</span>
+                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-houseNumberID">{{ t('errors:address.house-number') }}</span>
                         {% if errors.houseNumber %}
-                            <span class="gds-red bold display-b" id="error-message-houseNumberID">{{ t('app:required') }}</span>
+                            <span class="gds-red bold display-b" id="error-message-houseNumberID">{{ t('errors:address.house-number') }}</span>
                         {% endif %}
                         <input type="text" name="houseNumberField" id="houseNumberID" class="form-control {{error.houseNumberCompleted}}" value="{{houseNumberValue}}" data-required="required" maxlength="35">
                     </div>
 
-                    <div class="form-group {% if errors.postcode %}error{% endif %}">
+                    <div class="form-group {% if errors.postcode or errors.postcodeFormat %}error{% endif %}">
                         <label for="postcodeID" class="form-label">{{ t('address:postcode') }}</label>
-                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-postcodeID">{{ t('app:required') }}</span>
+                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-postcodeID"></span>
                         {% if errors.postcode %}
-                            <span class="gds-red bold display-b" id="error-message-postcodeID">{{ t('app:required') }}</span>
+                            <span class="gds-red bold display-b" id="error-message-postcodeID">{{ t('errors:address.postcode') }}</span>
+                        {% endif %}
+                        {% if errors.postcodeFormat %}
+                            <span class="gds-red bold display-b" id="error-message-postcodeID">{{ t('errors:address.postcode-format') }}</span>
                         {% endif %}
                         <input type="text" name="postcodeField" id="postcodeID" class="form-control {{error.postcodeCompleted}}" value="{{postcodeValue}}" data-required="required" maxlength="8">
                     </div>

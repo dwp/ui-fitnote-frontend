@@ -21,7 +21,7 @@
             <p>{{ t('complete:p1') }}</p>
             <p>{{ t('complete:p2') }}</p>
             <p><a href="https://www.gov.uk/done/send-fit-note"  onclick="ga('send', 'event', 'Link - click', 'What do you think of this service?', '/feedback' )">{{ t('complete:feedback') }}</a><span> {{ t('complete:feedbackInfo') }}</span></p>
-            <p><a href="https://www.gov.uk/send-fit-note" onclick="ga('send', 'event', 'Button - click', 'Send another fit note', 'N/A', { 'metric4': 1, 'sessionControl': 'end' });">{{ t('complete:a') }}</a></p>
+            <p><a href="{{ t('complete:govukUrl') }}" onclick="ga('send', 'event', 'Button - click', 'Send another fit note', 'N/A', { 'metric4': 1, 'sessionControl': 'end' });">{{ t('complete:a') }}</a></p>
         </div>
     </div>
 {% endblock %}

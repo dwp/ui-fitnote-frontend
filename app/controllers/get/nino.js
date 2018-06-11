@@ -1,6 +1,7 @@
 function ninoPage(req, res) {
     var errorMessage;
     var ninoError;
+    var ninoFormatError;
     var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
 
     if (req.query.nino === '0') {
@@ -11,7 +12,7 @@ function ninoPage(req, res) {
     }
 
     if (req.query.nino === '1') {
-        ninoError = {
+        ninoFormatError = {
             message : req.i18nTranslator.t('errors:nino.nino-format'),
             field : 'ninoFieldID'
         };
@@ -19,7 +20,8 @@ function ninoPage(req, res) {
 
     if ((req.query.nino === '0') || (req.query.nino === '1')) {
         errorMessage = {
-            nino : ninoError
+            nino : ninoError,
+            ninoFormat : ninoFormatError
         };
     } else {
         errorMessage = '';

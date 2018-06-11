@@ -41,11 +41,14 @@
                             {{ t('text-message:no') }}
                         </label>
                         
-                        <div class="panel form-group {% if errors.textMessage %}error{% endif %}" id="mobileNumberPanel" aria-hidden="true">
+                        <div class="panel form-group {% if errors.textMessage %}error{% endif %}" id="mobileNumberPanel">
                             <label for="mobileNumberID" class="form-label">{{ t('text-message:mobile-number') }}</label>
-                            <span class="gds-red bold display-b" aria-hidden="true" id="error-message-text-messageFieldID">{{ t('app:required') }}</span>
-                            {% if errors.textMessage %}
-                                <span class="gds-red bold  display-b" id="error-message-text-messageFieldID">{{ t('app:required') }}</span>
+                            <span class="gds-red bold display-b" aria-hidden="true" id="error-message-text-messageFieldID"></span>
+                            {% if errors.textMessageMobile %}
+                                <span class="gds-red bold  display-b" id="error-message-text-messageFieldID">{{ t('errors:text-message.mobile') }}</span>
+                            {% endif %}
+                            {% if errors.textMessageFormat %}
+                                <span class="gds-red bold  display-b" id="error-message-text-messageFieldID">{{ t('errors:text-message.format') }}</span>
                             {% endif %}
                             <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="form-control" value="{{mobValue}}"  maxlength="15">
                         </div>

@@ -16,7 +16,9 @@
     "privacy": "Preifatrwydd",
     "continue": "Parhau",
     "required": "Mae angen maes",
-    "feedback": "Adborth",
+    "feedback": "adborth",
+    "phase-banner-text-1": "Mae hwn yn wasanaeth newydd - bydd eich ",
+    "phase-banner-text-2": " yn ein helpu i'w wella.",
     "timeout": {
         "h2": "Mae'r dudlaen hon ar fin cau.",
         "p": "Bydd y dudalen rydych arni yn cau mewn <span id=\"timeout-expires\">5</span> munud oherwydd segurdod a bydd angen i chi ddechrau eto.",

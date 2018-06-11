@@ -58,10 +58,12 @@ function checkAddress() {
 
         if (!checkPostCode) {
             errorSummaryLi += errorSummaryPostcode;
+            errorMessagePostcodeNumberID.innerHTML = errorDictionary.address.postcode
             showErrorFields(errorMessagePostcodeNumberID);
             ga('send', 'event', 'Error - validation', 'postcodeID', 'Enter your postcode');
         } else if (!checkPostCodeFormat) {
             errorSummaryLi += errorSummaryPostcodeFormat;
+            errorMessagePostcodeNumberID.innerHTML = errorDictionary.address['postcode-format'];
             showErrorFields(errorMessagePostcodeNumberID);
             ga('send', 'event', 'Error - validation', 'postcodeID', 'Check postcode format');
         }

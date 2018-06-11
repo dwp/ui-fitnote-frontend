@@ -21,8 +21,9 @@ function isInputEmpty(inputField) {
     return true;
 }
 
-function showErrorFields(field) {
+function showErrorFields(field, message) {
     field.setAttribute('aria-hidden', false);
+    field.innerHTML = message;
     field.parentElement.className = 'form-group error';
 }
 
@@ -45,14 +46,14 @@ function checkNino() {
         } else {
             document.getElementById('error-summary').setAttribute('aria-hidden', false);
             document.getElementById('error-summary').innerHTML = getErrorSummary(errorDictionary.nino['nino-format']);
-            showErrorFields(errorMessageNinoFieldID);
+            showErrorFields(errorMessageNinoFieldID, errorDictionary.nino['nino-format']);
             flag = false;
             gaOutcome = 1;
         }
     } else {
         document.getElementById('error-summary').setAttribute('aria-hidden', false);
         document.getElementById('error-summary').innerHTML = getErrorSummary(errorDictionary.nino.nino);
-        showErrorFields(errorMessageNinoFieldID);
+        showErrorFields(errorMessageNinoFieldID, errorDictionary.nino.nino);
         flag = false;
         gaOutcome = 2;
     }

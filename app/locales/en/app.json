@@ -16,7 +16,9 @@
     "privacy": "Privacy",
     "continue": "Continue",
     "required": "Field is required",
-    "feedback": "Feedback",
+    "feedback": "feedback",
+    "phase-banner-text-1": "This is a new service - your ",
+    "phase-banner-text-2": " will help us improve it.",
     "timeout": {
         "h2": "This page is about to close.",
         "p": "The page you're on will close in <span id=\"timeout-expires\">5</span> due to inactivity and you'll have to start again.",

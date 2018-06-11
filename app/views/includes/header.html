@@ -1,12 +1,10 @@
- {% import "macros/phase.html" as phase %}
-
- <header id="global-header">
+<header id="global-header">
   <div class="header-wrapper clearfix">
         <div class="column-full">
             <div class=" float-left">
-                <a href="/index" id="logo" class="margin-right-15 service-logo float-left">
+                <a href="/" id="logo" class="margin-right-15 service-logo float-left">
                     <img src="/images/gov.uk_logotype_crown.png?version={{assetsVersion}}" width="35" height="31" alt="{{ t('app:alt') }}" class="crown float-left"><span class="govuk pad-left-40 bold margin-left-5 pad-right-10 float-left"> GOV.UK </span><span class="service-name font-medium float-left ">{{t('app:service-name') }}</span>
-                </a>{{ phase.currentPhase(phase="BETA") }}
+                </a>
             </div>
         </div>
   </div>

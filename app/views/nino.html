@@ -23,14 +23,17 @@
                 <fieldset class="form-group">
                     <legend class="display-offscreen">{{ t('nino:heading') }}</legend>
 
-                    <div class="form-group {% if errors.nino %}error{% endif %}">
+                    <div class="form-group {% if errors.nino or errors.ninoFormat %}error{% endif %}">
                         <label for="ninoFieldID">
                             <span class="form-label heading-large bold">{{ t('nino:heading') }}</span>
                             <span class="form-hint">{{ t('nino:hint') }}</span>
                         </label>
-                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-ninoFieldID">{{ t('app:required') }}</span>
+                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-ninoFieldID"></span>
                         {% if errors.nino %}
-                            <span class="gds-red bold  display-b" id="error-message-ninoFieldID">{{ t('app:required') }}</span>
+                            <span class="gds-red bold  display-b" id="error-message-ninoFieldID">{{ t('errors:nino.nino') }}</span>
+                        {% endif %}
+                        {% if errors.ninoFormat %}
+                            <span class="gds-red bold  display-b" id="error-message-ninoFieldID">{{ t('errors:nino.nino-format') }}</span>
                         {% endif %}
                         <input type="text" name="ninoField" id="ninoFieldID" class="form-control {{error.ninoCompleted}}" value="{{ninoValue}}" maxlength="13" data-required="required">
                     </div>

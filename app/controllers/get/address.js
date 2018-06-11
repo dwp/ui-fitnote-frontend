@@ -2,6 +2,7 @@ function addressPage(req, res) {
     var errorMessage;
     var houseNumberError;
     var postcodeError;
+    var postcodeFormatError;
     var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
 
     if (req.query.houseNumber === '0') {
@@ -12,18 +13,26 @@ function addressPage(req, res) {
     }
 
     if (req.query.postcode === '0') {
+        postcodeFormatError = {
+            message : req.i18nTranslator.t('errors:address.postcode-format'),
+            field : 'postcodeID'
+        };
+    }
+
+    if (req.query.postcode === '2') {
         postcodeError = {
             message : req.i18nTranslator.t('errors:address.postcode'),
             field : 'postcodeID'
         };
     }
 
-    if ((req.query.houseNumber !== '0') && (req.query.postcode !== '0')) {
+    if ((req.query.houseNumber !== '0') && (req.query.postcode !== '0') && (req.query.postcode !== '2')) {
         errorMessage = '';
     } else {
         errorMessage = {
             houseNumber : houseNumberError,
-            postcode : postcodeError
+            postcode : postcodeError,
+            postcodeFormat : postcodeFormatError
         };
     }
 

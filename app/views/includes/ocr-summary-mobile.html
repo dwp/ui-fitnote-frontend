@@ -12,15 +12,15 @@
 
         <h2 class="heading-medium margin-top-0" id="error-summary-heading">{{ t('take-a-photo:error-summary') }}</h2>
         {% if errors.photoOCR.retry < 3 %}
-        <p><a href="/help-for-photo-step-1">{{ t('take-a-photo:get-help') }}</a></p>
+            <p><a href="/help-for-photo-step-1">{{ t('take-a-photo:get-help') }}</a></p>
         {% else %}
-        <p class="bold margin-0">{{ t('take-a-photo:h2') }}</p>
-        <ul class="list list-bullet">
-            <li>{{ t('take-a-photo:error-li1') }}</li>
-            <li>{{ t('take-a-photo:error-li2') }}</li>
-            <li>{{ t('take-a-photo:error-li3') | safe }}</li>
-            <li><a href="/help-for-photo-step-1">{{ t('take-a-photo:error-li4') }}</a></li>
-        </ul>
+            <p class="bold margin-0">{{ t('take-a-photo:h2') }}</p>
+            <ul class="list list-bullet">
+                <li>{{ t('take-a-photo:error-li1') }}</li>
+                <li>{{ t('take-a-photo:error-li2') }}</li>
+                {#<li>{{ t('take-a-photo:error-li3') | safe }}</li>#}
+                <li><a href="/help-for-photo-step-1">{{ t('take-a-photo:error-li4') }}</a></li>
+            </ul>
         {% endif %}
 
         <ul class="error-summary-list">

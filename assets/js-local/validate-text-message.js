@@ -25,8 +25,11 @@ var flag = false;
     document.getElementById('radioNo').addEventListener('click', showMobile, false);
 })();
 
-function showErrorFields(field) {
+document.getElementById('mobileNumberPanel').setAttribute('aria-hidden', true);
+
+function showErrorFields(field, message) {
     field.setAttribute('aria-hidden', false);
+    field.innerHTML = message;
     field.parentElement.className = 'form-group error';
 }
 
@@ -67,7 +70,7 @@ function checkMobileNumber() {
         if(mobileNumberID.value === '') {
             document.getElementById('error-summary').setAttribute('aria-hidden', false);
             document.getElementById('error-summary').innerHTML = getErrorSummary(errorDictionary['text-message'].mobile, 'mobileNumberID');
-            showErrorFields(errorMessageMobileNumberID);
+            showErrorFields(errorMessageMobileNumberID, errorDictionary['text-message'].mobile);
             flag = false;
             gaOutcome = 1;
             return;
@@ -76,7 +79,7 @@ function checkMobileNumber() {
         if(!mobileNumberValid(mobileNumberID.value)) {
             document.getElementById('error-summary').setAttribute('aria-hidden', false);
             document.getElementById('error-summary').innerHTML = getErrorSummary(errorDictionary['text-message'].format, 'mobileNumberID');
-            showErrorFields(errorMessageMobileNumberID);
+            showErrorFields(errorMessageMobileNumberID, errorDictionary['text-message'].format);
             flag = false;
             gaOutcome = 3;
             return;

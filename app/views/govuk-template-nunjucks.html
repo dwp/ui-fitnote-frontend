@@ -50,8 +50,7 @@
     {% block header %}{% endblock %}
 
     <main id="content" class="container">
-        {% set blueBorder = "border-top-solid border-top-colour-govuk-blue border-top-10" %}
-        <div class="phase-banner-beta {{blueBorder}}"></div>
+        {% include "includes/phase-banner.html" %}
         {% block body %}{% endblock %}
     </main>
 
