@@ -1,14 +1,14 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "0.25.0",
+  "version": "0.24.0",
   "scripts": {
     "start": "NODE_ENV=dev node ./bin/server.js | bunyan -o short",
     "dev": "NODE_ENV=dev node ./bin/server.js | bunyan -o short",
     "prod": "NODE_ENV=prod node ./bin/server.js",
     "build": "./node_modules/.bin/gulp jenkins",
     "test": "npm run test:unit",
-    "test:unit": "mocha -- -- testing/mocha/node/**/* testing/mocha/unit/**/*",
+    "test:unit": "mocha -- -- testing/mocha/node/**/*",
     "quality:coverage": "istanbul cover node_modules/.bin/_mocha -- -- testing/mocha/node/**/*",
     "quality:lint": "gulp eslint",
     "quality:sonarqube": "sonar-scanner",
@@ -38,7 +38,6 @@
     "gulp-watch": "4.3.11",
     "istanbul": "0.4.5",
     "mocha": "5.1.1",
-    "nock": "9.4.2",
     "nsp": "3.2.1",
     "pump": "3.0.0",
     "zombie": "6.1.2"

@@ -49,16 +49,11 @@ This will install all the global packages required and run ``npm update`` to ins
 
 ### Local Environment
 
-To run the application locally:
 ```
 gulp dev
 ```
 
-or
-```
-npm run dev
-```
-To run the fake endpoints server run in the root dir in parallel with run command:
+To run the fake endpoints server run in the root dir in parallel with gulp command:
 
 ```
 json-server --port 3004 --watch testing/db.json

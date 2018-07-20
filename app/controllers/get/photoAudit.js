@@ -26,49 +26,42 @@ function photoAuditPage(req, res) {
     var route = typeof req.cookies.route !== 'undefined' ? req.cookies.route : 'take';
 
     function callback(error, response) {
-        if (error || response.statusCode !== 200) {
-            if (error) {
-                logType.error('Error from imageStatus api call is : ', error);
-            } else {
-                logType.error('Response status code from imageStatus api call: ' + response.statusCode);
-            }
-            imageStatusTemp = 'service-fail';
-        } else {
-            logType.info('body ' + response.body.fitnoteStatus);
-            if (config.nodeEnvironment !== 'test') {
-                switch (response.body.fitnoteStatus) {
-                    case 'SUCCEEDED' :
-                        imageStatusTemp = 'success';
-                        break;
-                    case 'FAILED_IMG_OCR':
-                    case 'FAILED_IMG_OCR_PARTIAL':
-                        imageStatusTemp = 'photo-fail-ocr';
-                        break;
-                    case 'FAILED_IMG_SIZE':
-                        imageStatusTemp = 'photo-fail-size';
-                        break;
-                    case 'FAILED_ERROR':
-                        imageStatusTemp = 'photo-fail';
-                        break;
-                    default:
-                        imageStatusTemp = 'checking';
-                }
-            } else {
+        logType.info('body ' + response.body.fitnoteStatus);
+
+        if (config.nodeEnvironment !== 'test') {
+            switch (response.body.fitnoteStatus) {
+            case 'SUCCEEDED' :
+                imageStatusTemp = 'success';
+                break;
+            case 'FAILED_IMG_OCR':
+            case 'FAILED_IMG_OCR_PARTIAL':
+                imageStatusTemp = 'photo-fail-ocr';
+                break;
+            case 'FAILED_IMG_SIZE':
+                imageStatusTemp = 'photo-fail-size';
+                break;
+            case 'FAILED_ERROR':
+                imageStatusTemp = 'photo-fail';
+                break;
+            default:
                 imageStatusTemp = 'checking';
             }
-
+        } else {
+            imageStatusTemp = 'checking';
         }
+
+        logType.info(imageStatusTemp);
 
         //render has to be in the request. The Nunjucks tag is dependant on the result.
         res.render('photo-audit', {
-            sessionId: req.cookies.sessionId,
-            version: config.version,
-            imageStatus: imageStatusTemp,
-            timeStamp: Date.now(),
-            environment: config.nodeEnvironment,
-            viewedMessage: req.cookies.cookies_agreed,
-            currentPage: 'photo-audit',
-            route: route
+            sessionId : req.cookies.sessionId,
+            version : config.version,
+            imageStatus : imageStatusTemp,
+            timeStamp : Date.now(),
+            environment : config.nodeEnvironment,
+            viewedMessage : req.cookies.cookies_agreed,
+            currentPage : 'photo-audit',
+            route : route
         });
     }
 
@@ -82,7 +75,7 @@ function photoAuditPage(req, res) {
     logType.info('Checking OCR..');
     request(options, callback);
 
-    imageStatusTemp = ''; // we need to clear down the variable after each request so it isn't persisted for the session.
+    imageStatusTemp = ''; // we need to clear down the variable after each request so it isnt persisted for the session.
 }
 
 module.exports.photoAuditPage = photoAuditPage;

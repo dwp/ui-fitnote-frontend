@@ -1,7 +1,6 @@
 var ga;
 var gaOutcome;
 var flag = false;
-var invalidCharsMessage;
 
 (function onLoady() {
     function showMobile() {
@@ -40,16 +39,8 @@ function showRadioErrorFields(field) {
 }
 
 function mobileNumberValid(mobileNumber) {
-    var regex = /^\+?[ 0-9]{11,20}$/;
+    var regex = /^\+?[ 0-9]{9,15}$/;
     return regex.test(mobileNumber);
-}
-
-function logInvalidMobileCharsToGA(mobileNumber) {
-    var start = mobileNumber.substring(0,1);
-    var end = mobileNumber.substring(1);
-    var invalidChars = start.replace(/[+ 0-9]/,'') + end.replace(/[ 0-9]/g, '');
-    invalidCharsMessage = ('Mobile number invalid chars: ' +  invalidChars);
-    return invalidCharsMessage;
 }
 
 function getErrorSummary(msg, field){
@@ -89,7 +80,6 @@ function checkMobileNumber() {
             document.getElementById('error-summary').setAttribute('aria-hidden', false);
             document.getElementById('error-summary').innerHTML = getErrorSummary(errorDictionary['text-message'].format, 'mobileNumberID');
             showErrorFields(errorMessageMobileNumberID, errorDictionary['text-message'].format);
-            logInvalidMobileCharsToGA(mobileNumberID.value);
             flag = false;
             gaOutcome = 3;
             return;
@@ -108,7 +98,6 @@ function sendGa(gaValue) {
         break;
     case 3 :
         ga('send', 'event', 'Error - validation', 'mobileNumberID', 'Check mobile phone number format');
-        ga('send', 'event', 'Error - validation', 'mobileNumberID', invalidCharsMessage);
         break;
     default:
         ga('send', 'event', 'Error - validation', 'mobileNumberID', 'unknown error');

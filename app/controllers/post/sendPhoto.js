@@ -68,21 +68,15 @@ function photoUploader(req, res) {
                 userPhotoEncoded = null; //Try not to keep base64 strings hanging around in memory.
                 res.redirect('/nino'); // don't post the request just go to the next page.
             } else {
-                if (typeof req.file !== 'undefined') {
-                    logType.info('File type is ' + req.file.mimetype);
-                    logType.info('File size is ' + req.file.size);
-                    const validImageFileTypes = new RegExp('^image/');
-                    if ((!validImageFileTypes.test(req.file.mimetype)) && req.file.mimetype !== 'application/pdf') {
-                        logType.info('File type (' + req.file.mimetype + ') is invalid');
-                        res.redirect(errUrl);
-                        return
-                    }
-                    if ((req.file.size < config.minFileSize) && req.file.mimetype !== 'application/pdf') {
-                        logType.info('File size (' + req.file.size + ') is invalid');
-                        res.redirect(errUrl);
-                        return;
-                    }
+                if (typeof req.file !== 'undefined' && 
+                    req.file.size < config.minFileSize && 
+                    req.file.mimetype !== 'application/pdf') {
+                    res.redirect(errUrl);
+                    return;
                 }
+
+                logType.info('File mimetype is ' + req.file.mimetype);
+                logType.info('File size is ' + req.file.size);
                 userPhotoEncoded = encodeImage();
                 logType.info('Image Encoded');
                 logType.info('Starting image upload');

@@ -10,17 +10,8 @@
 
     <div class="{{redBorder}} margin-vertical-30 pad-vertical-15 pad-horizontal-15" role="alert" aria-atomic="true" aria-labelledby="formData" id="error-summary">
 
-        {% if serviceFail %}
-            <h2 class="bold" id="error-summary-heading">{{ t('errors:error-summary-service-fail') }}</h2>
-        {% else %}
             <h2 class="bold" id="error-summary-heading">{{ t('errors:error-summary-h2') }}</h2>
-        {% endif %}
-
-        {% if serviceFail or invalidPhoto %}
-            <p></p>
-        {% else %}
             <p>{{ t('errors:error-summary-p') }}</p>
-        {% endif %}
 
             <ul class="error-summary-list">
                 {% for error, value in errors %}

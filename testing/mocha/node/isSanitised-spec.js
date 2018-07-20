@@ -28,13 +28,13 @@ describe("isSanitised Functions", function() {
 
     describe("Nino Sanitise", function() {
         process.env.NODE_ENV = 'test';
-         it("Strips out dashes and spaces and convert to uppercase", function() {
+         it("Strip out dashes and spaces and convert to uppercase", function() {
             var ninoSanitised = sanitiseNino.sanitiseNino(nino);
             expect(ninoSanitised).to.equal('JS123456C');
         });
     });
 
-    describe("Nino Loose Validate", function() {
+  describe("Nino Loose Validate", function() {
         process.env.NODE_ENV = 'test';
         var passedLoose =  validateNinoLoose.ninoValidateLoose(ninoShort);
 
@@ -85,7 +85,7 @@ describe("isSanitised Functions", function() {
         });
     });
 
-    describe("Remove non-alphanumeric chars, new lines and multiple instances of whitespace", function() {
+    describe("remove none-alpha numeric chars, new lines and multiple instances of whitespace", function() {
         process.env.NODE_ENV = 'test';
          it("Strip out everything except numbers and letters", function() {
            var fieldDataSanitised = isSanitised.sanitiseField(fieldData);
@@ -93,7 +93,7 @@ describe("isSanitised Functions", function() {
         });
     });
 
-    describe("Numbers only", function() {
+    describe("Numbers Only", function() {
         process.env.NODE_ENV = 'test';
          it("Strip out everything except numbers", function() {
            var fieldDataSanitised = isOnlyNumeric.numbersOnly(fieldData);
@@ -101,7 +101,7 @@ describe("isSanitised Functions", function() {
         });
     });
 
-    describe("Not blank", function() {
+    describe("notBlank", function() {
         process.env.NODE_ENV = 'test';
         it("ensures form field is not blank or undefined", function() {
             var blankFieldValue = isFieldBlank.notBlank(blankField);
