@@ -32,7 +32,7 @@ function submitDeclaration(req, res) {
         res.status(500).render('errors/500');
     }
 
-    function callback(err, response) {
+    function callback(err, response, body) {
         if (!err) {
             logType.info('Response Received: ' + response.statusCode);
             switch (response.statusCode) {
@@ -41,10 +41,10 @@ function submitDeclaration(req, res) {
                 processRequest();
                 break;
             case 400:
-                handleFormError(err, 'Problem with submitted form data');
+                handleFormError(body, 'Problem with submitted form data');
                 break;
             default:
-                handleFormError(err, 'API not responding ');
+                handleFormError(body, 'API not responding ');
             }
         } else {
             handleFormError(err, 'API not responding ');

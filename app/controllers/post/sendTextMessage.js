@@ -43,6 +43,15 @@ function sendTextMessageConfirmation(req, res) {
         sendIt.submitDeclaration(req, res);
     }
 
+    // This function is included only for a short period of investigating what users are inputting into the mobile telephone number field.
+    // Added in July 2018. To be remove when investigation complete
+    function logInvalidMobileChars(mobileNumber) {
+        var start = mobileNumber.substring(0,1);
+        var end = mobileNumber.substring(1);
+        var invalidChars = start.replace(/[+ 0-9]/,'') + end.replace(/[ 0-9]/g, '');
+        logType.info('Mobile number invalid chars: ' +  invalidChars);
+    }
+
     function callback(err, response) {
         if (!err) {
             logType.info('Response Received: ' + response.statusCode);
@@ -61,10 +70,13 @@ function sendTextMessageConfirmation(req, res) {
     function hasTextMessagePassed() {
         if (typeof textPermission !== 'undefined') {
             if ((textPermission === 'Yes') && (isMobBlank === false)) {
-                logType.info('Blank TextMessage');
+                logType.info('Blank mobile number');
                 return handleErrors(1);
             } else if ((textPermission === 'Yes') && !validMobile) {
                 logType.info('Mobile number format');
+                // The call to the logging function below is included only for a short period of investigating what users are inputting into the mobile telephone number field.
+                // Added in July 2018. To be remove when investigation complete
+                logInvalidMobileChars(mobRaw);
                 return handleErrors(2);
             } else {
                 return request(options, callback);

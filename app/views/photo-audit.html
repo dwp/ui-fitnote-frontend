@@ -10,6 +10,8 @@
         <meta http-equiv="refresh" content="0; url=/{{ route }}-a-photo?error=ocrFailed" />
     {% elif imageStatus == 'photo-fail-size' %}
         <meta http-equiv="refresh" content="0; url=/422" />
+    {% elif imageStatus == 'service-fail' %}
+        <meta http-equiv="refresh" content="0; url=/{{ route }}-a-photo?error=serviceFailed" />
     {% else %}
         <meta http-equiv="refresh" content="10; url=/photo-audit" />
     {% endif %}

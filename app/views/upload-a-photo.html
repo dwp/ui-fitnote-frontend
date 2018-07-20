@@ -55,7 +55,8 @@
                     {% if errors.photoOCR %}
                     <span class="gds-red bold display-b">{{ t('upload-a-photo:failed-ocr') }}</span>
                     {% endif %}
-                    <label id="userPhotoIDLabel" class="button primary-button" for="userPhotoID">{{ t('upload-a-photo:button') }}
+                    <label id="userPhotoIDLabel" class="button primary-button" for="userPhotoID">
+                        <span role="button" aria-controls="userPhotoIDLabel" tabindex="0">{{ t('upload-a-photo:button') }}</span>
                         <input type="file" accept="image/*,application/pdf"  id="userPhotoID" name="userPhoto" class="display-offscreen" onclick="ga('send', 'event', 'Button - click', 'Photo', 'Open filebrowser' , {'metric3':  1 }); ga('send', 'pageview', '/filebrowser');">
                     </label>
 
@@ -83,7 +84,7 @@
 {% endblock %}
 
 {% block body_end %}
-    <script src="/javascript/upload-a-photo.js?version={{assetsVersion}}"></script>
+    <script src="/javascript/get-a-photo.js?version={{assetsVersion}}"></script>
     <script>
         var lang = '{{ lang }}';
         var expires = '{{ exp }}';

@@ -50,8 +50,9 @@
                     {% if errors.photoOCR %}
                     <span class="gds-red bold display-b">{{ t('take-a-photo:failed-ocr') }}</span>
                     {% endif %}
-                    <label id="userPhotoIDLabel" class="button primary-button" for="userPhotoID">{{ t('take-a-photo:button') }}
-                        <input type="file" accept="image/*"  id="userPhotoID" name="userPhoto" class="display-offscreen" onclick = "ga('send', 'event', 'Button - click', 'Photo', 'Take Photo' , {'metric1':  1 }); ga('send', 'pageview', '/camera');">
+                    <label id="userPhotoIDLabel" class="button primary-button" for="userPhotoID">
+                        <span role="button" aria-controls="userPhotoIDLabel" tabindex="0">{{ t('take-a-photo:button') }}</span>
+                        <input type="file" accept="image/*,application/pdf"  id="userPhotoID" name="userPhoto" class="display-offscreen" onclick = "ga('send', 'event', 'Button - click', 'Photo', 'Take Photo' , {'metric1':  1 }); ga('send', 'pageview', '/camera');">
                     </label>
 
                     <div class="form-group" aria-hidden="true">
@@ -80,7 +81,7 @@
 {% endblock %}
 
 {% block body_end %}
-    <script src="/javascript/take-a-photo.js?version={{assetsVersion}}"></script>
+    <script src="/javascript/get-a-photo.js?version={{assetsVersion}}"></script>
     <script>
         var lang = '{{ lang }}';
         var expires = '{{ exp }}';
