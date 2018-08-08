@@ -37,38 +37,37 @@ function photoAuditPage(req, res) {
             logType.info('body ' + response.body.fitnoteStatus);
             if (config.nodeEnvironment !== 'test') {
                 switch (response.body.fitnoteStatus) {
-                    case 'SUCCEEDED' :
-                        imageStatusTemp = 'success';
-                        break;
-                    case 'FAILED_IMG_OCR':
-                    case 'FAILED_IMG_OCR_PARTIAL':
-                        imageStatusTemp = 'photo-fail-ocr';
-                        break;
-                    case 'FAILED_IMG_SIZE':
-                        imageStatusTemp = 'photo-fail-size';
-                        break;
-                    case 'FAILED_ERROR':
-                        imageStatusTemp = 'photo-fail';
-                        break;
-                    default:
-                        imageStatusTemp = 'checking';
+                case 'SUCCEEDED' :
+                    imageStatusTemp = 'success';
+                    break;
+                case 'FAILED_IMG_OCR':
+                case 'FAILED_IMG_OCR_PARTIAL':
+                    imageStatusTemp = 'photo-fail-ocr';
+                    break;
+                case 'FAILED_IMG_SIZE':
+                    imageStatusTemp = 'photo-fail-size';
+                    break;
+                case 'FAILED_ERROR':
+                    imageStatusTemp = 'photo-fail';
+                    break;
+                default:
+                    imageStatusTemp = 'checking';
                 }
             } else {
                 imageStatusTemp = 'checking';
             }
-
         }
 
         //render has to be in the request. The Nunjucks tag is dependant on the result.
         res.render('photo-audit', {
-            sessionId: req.cookies.sessionId,
-            version: config.version,
-            imageStatus: imageStatusTemp,
-            timeStamp: Date.now(),
-            environment: config.nodeEnvironment,
-            viewedMessage: req.cookies.cookies_agreed,
-            currentPage: 'photo-audit',
-            route: route
+            sessionId : req.cookies.sessionId,
+            version : config.version,
+            imageStatus : imageStatusTemp,
+            timeStamp : Date.now(),
+            environment : config.nodeEnvironment,
+            viewedMessage : req.cookies.cookies_agreed,
+            currentPage : 'photo-audit',
+            route : route
         });
     }
 

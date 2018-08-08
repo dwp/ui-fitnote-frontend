@@ -2,9 +2,13 @@ function takePhotoPage(req, res) {
     var errorMessage;
     var photoError;
     var route = (typeof req.cookies.route !== 'undefined') ? req.cookies.route : 
-                (req.originalUrl.indexOf('upload') > -1) ? 'upload' : 'take';
+        (req.originalUrl.indexOf('upload') > -1) ? 'upload' : 'take';
 
     var page = `${route}-a-photo`;
+    var fileError = false;
+    var typeError = false;
+    var minSizeError = false;
+    var maxSizeError = false;
 
     if (req.query.error === 'serviceFailed') {
         photoError = {
@@ -12,7 +16,34 @@ function takePhotoPage(req, res) {
             field : 'formData'
         };
     }
-    
+
+    if (req.query.type === '1' || req.query.size === '1' || req.query.size === '2') {
+        fileError = true;
+    }
+    if (req.query.type === '1') {
+        typeError = true;
+    }
+    if (req.query.size === '1') {
+        minSizeError = true;
+    }
+    if (req.query.size === '2') {
+        maxSizeError = true;
+    }
+    if (req.query.type === '1' || req.query.size === '1' || req.query.size === '2') {
+        fileError = true;
+        if (req.query.type === '1') {
+            photoError = {
+                message : req.i18nTranslator.t('errors:choose'),
+                field : 'formData'
+            };
+        } else {
+            photoError = {
+                message : req.i18nTranslator.t(`${route}-a-photo:another`),
+                field : 'formData'
+            };
+        }
+    }
+
     if (req.query.error === 'invalidPhoto') {
         photoError =  {
             message : req.i18nTranslator.t('take-a-photo:invalid'),
@@ -36,18 +67,16 @@ function takePhotoPage(req, res) {
         };
     }
 
-    if ((req.query.error !== 'invalidPhoto') && (req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed')) {
+    if ((req.query.error !== 'invalidPhoto') && (req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && !fileError) {
         errorMessage = '';
+    } else if (req.query.error === 'ocrFailed') {
+        errorMessage = {
+            photoOCR : photoError
+        };
     } else {
-        if (req.query.error === 'ocrFailed') {
-            errorMessage = {
-                photoOCR : photoError
-            };
-        } else {
-            errorMessage = {
-                photo : photoError
-            };
-        }
+        errorMessage = {
+            photo : photoError
+        };
     }
 
     res.render(page, {
@@ -57,7 +86,12 @@ function takePhotoPage(req, res) {
         viewedMessage : req.cookies.cookies_agreed,
         timeStamp : Date.now(),
         currentPage : page,
+        route : route,
         errors : errorMessage,
+        fileError : fileError,
+        typeError : typeError,
+        minSizeError : minSizeError,
+        maxSizeError : maxSizeError,
         serviceFail : req.query.error === 'serviceFailed',
         invalidPhoto : req.query.error === 'invalidPhoto'
     });

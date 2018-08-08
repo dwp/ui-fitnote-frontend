@@ -26,7 +26,9 @@ var invalidCharsMessage;
     document.getElementById('radioNo').addEventListener('click', showMobile, false);
 })();
 
-document.getElementById('mobileNumberPanel').setAttribute('aria-hidden', true);
+if (!document.getElementById('radioYes').hasAttribute('checked')) {
+    document.getElementById('mobileNumberPanel').setAttribute('aria-hidden', true);
+}
 
 function showErrorFields(field, message) {
     field.setAttribute('aria-hidden', false);

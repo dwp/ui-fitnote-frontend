@@ -1,0 +1,14 @@
+{
+  "h1" : "Check your details before sending your fit note",
+  "nino" : "National Insurance number",
+  "house" : "House name or number",
+  "postcode" : "Postcode",
+  "confirmText" : "Confirmation text message",
+  "mobile" : "Mobile number",
+  "button" : "Accept and send fit note",
+  "change" : "Change",
+  "changeNino" : " your National Insurance number",
+  "changeAddress" : " your address",
+  "changeMobile" : " your mobile number",
+  "changeConfirmation" : " whether you want a confirmation text message"
+}

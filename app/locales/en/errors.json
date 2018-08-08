@@ -2,6 +2,7 @@
     "error-summary-h2": "There's a problem",
     "error-summary-service-fail": "Sorry, there was a problem with the service",
     "error-summary-p": "Check your form. You must:",
+    "error-summary-p1": "Try again",
 
     "nino": {
         "nino": "Enter your National Insurance number",
@@ -29,5 +30,10 @@
         "maxlength": "Enter improvement suggestions using 1200 characters or less",
         "phone": "Enter a valid phone number",
         "name": "Enter a shorter name (maximum 1000 characters)"
-    }
+    },
+
+    "fileType": "File type not allowed",
+    "validFileType": "Accepted file types are PDF, JPEG, BMP, PNG and GIF",
+    "choose": "Choose another file"
+
 }

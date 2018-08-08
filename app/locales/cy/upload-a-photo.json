@@ -14,5 +14,10 @@
 
     "error-summary": "Mae problem gyda llun neu sgan eich nodyn ffitrwydd",
     "get-help": "Ceisiwch uwchlwytho un arall <a href=\"/help-for-photo-step-1\">neu gael help gyda chymryd llun",
-    "failed-ocr": "Uwchlwythwch llun neu sgan arall"
+    "failed-ocr": "Uwchlwythwch llun neu sgan arall",
+
+    "another": "Lanlwythwch lun arall neu sganiwch",
+    "fileSize": "Dylai maint y ffeil fod rhwng 500KB a 10MB",
+    "tooSmall": "Mae eich ffeil yn rhy fach",
+    "tooBig": "Mae eich ffeil yn rhy fawr"
 }

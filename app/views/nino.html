@@ -15,6 +15,13 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if previousPage === '/check-your-answers' %}
+        <a href="/check-your-answers" class="link-back">{{ t('device:back') }}</a>
+    {% else %}
+        <a href="/{{ route }}-a-photo" class="link-back">{{ t('device:back') }}</a>
+    {% endif %}
+
     {% include "includes/error-summary.html" %}
 
     <div class="grid-row">
@@ -35,7 +42,8 @@
                         {% if errors.ninoFormat %}
                             <span class="gds-red bold  display-b" id="error-message-ninoFieldID">{{ t('errors:nino.nino-format') }}</span>
                         {% endif %}
-                        <input type="text" name="ninoField" id="ninoFieldID" class="form-control {{error.ninoCompleted}}" value="{{ninoValue}}" maxlength="13" data-required="required">
+                        <input type="text" name="ninoField" id="ninoFieldID" class="form-control {{error.ninoCompleted}}" value="{{ nino }}" maxlength="13" data-required="required">
+                        <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPage }}">
                     </div>
 
                     <div class="form-group" aria-hidden="true">

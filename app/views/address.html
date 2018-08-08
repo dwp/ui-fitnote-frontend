@@ -15,6 +15,13 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if previousPage === '/check-your-answers' %}
+        <a href="/check-your-answers" class="link-back">{{ t('device:back') }}</a>
+    {% else %}
+        <a href="/nino" class="link-back">{{ t('device:back') }}</a>
+    {% endif %}
+
     {% include "includes/error-summary.html" %}
 
     <div class="grid-row">
@@ -30,7 +37,7 @@
                         {% if errors.houseNumber %}
                             <span class="gds-red bold display-b" id="error-message-houseNumberID">{{ t('errors:address.house-number') }}</span>
                         {% endif %}
-                        <input type="text" name="houseNumberField" id="houseNumberID" class="form-control {{error.houseNumberCompleted}}" value="{{houseNumberValue}}" data-required="required" maxlength="35">
+                        <input type="text" name="houseNumberField" id="houseNumberID" class="form-control {{error.houseNumberCompleted}}" value="{{ house }}" data-required="required" maxlength="35">
                     </div>
 
                     <div class="form-group {% if errors.postcode or errors.postcodeFormat %}error{% endif %}">
@@ -42,12 +49,13 @@
                         {% if errors.postcodeFormat %}
                             <span class="gds-red bold display-b" id="error-message-postcodeID">{{ t('errors:address.postcode-format') }}</span>
                         {% endif %}
-                        <input type="text" name="postcodeField" id="postcodeID" class="form-control {{error.postcodeCompleted}}" value="{{postcodeValue}}" data-required="required" maxlength="8">
+                        <input type="text" name="postcodeField" id="postcodeID" class="form-control {{error.postcodeCompleted}}" value="{{ postcode }}" data-required="required" maxlength="8">
                     </div>
 
                     <div class="form-group" aria-hidden="true">
                         <label for="countyID" aria-hidden="true">Leave blank</label>
                         <input type="text"  name="countyField" id="countyID" aria-hidden="true" value="" autofill="off">
+                        <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPage }}">
                     </div>
                 </fieldset>
 

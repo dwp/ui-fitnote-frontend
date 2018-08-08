@@ -16,13 +16,17 @@
 {% endblock %}
 
 {% block body %}
-    {% if errors.photo.message %}
+
+    <a href="/device" class="link-back">{{ t('device:back') }}</a>
+
+    {% if errors.photo.message or fileError %}
         {% include "includes/error-summary.html" %}
     {% endif %}
 
     {% if errors.photoOCR %}
         {% include "includes/ocr-summary-mobile.html" %}
     {% endif %}
+
     <div class="grid-row">
         <div class="column-two-thirds">
             <h1 class="heading-large">{{ t('take-a-photo:h1') }}</h1>
@@ -46,9 +50,12 @@
             </div>
 
             <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData" data-form="takeAPhoto" autocomplete="off">
-                <div class="{{ 'error' if errors.photoOCR }}">
+                <div class="{{ 'error' if errors.photoOCR  or fileError }}">
                     {% if errors.photoOCR %}
-                    <span class="gds-red bold display-b">{{ t('take-a-photo:failed-ocr') }}</span>
+                        <span class="gds-red bold display-b">{{ t('take-a-photo:failed-ocr') }}</span>
+                    {% endif %}
+                    {% if fileError === true %}
+                        <span class="gds-red bold display-b">{{ errors.photo.message }}</span>
                     {% endif %}
                     <label id="userPhotoIDLabel" class="button primary-button" for="userPhotoID">
                         <span role="button" aria-controls="userPhotoIDLabel" tabindex="0">{{ t('take-a-photo:button') }}</span>

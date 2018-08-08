@@ -4,21 +4,21 @@ var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 var checkBlank = require(appRootDirectory + '/app/functions/sanitise/isFieldBlank');
 var checkMobile = require(appRootDirectory + '/app/functions/sanitise/validateMobileNumber');
-var sendIt = require(appRootDirectory + '/app/controllers/post/submitDeclaration');
 
 function sendTextMessageConfirmation(req, res) {
+    var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
     var TextMessageDone;
     var redirectUrl;
-    var logType = logger.child({widget : 'textMessage'});
+    var logType = logger.child({widget : 'postTextMobile'});
     var mobRaw = req.body.mobileNumberField;
+    var newMobile = mobRaw;
     var isMobBlank = checkBlank.notBlank(mobRaw);
     var validMobile =  checkMobile.mobileValidate(mobRaw);
     var textPermission = req.body.textReminder;
     var fakeLandlineRaw = req.body.landlineField;
     var passedHoneypot = checkHoneypot.honeypot(fakeLandlineRaw, 'BOT: honeypot detected a bot, Text Message Page, Landline Field');
     var fitnote = {
-        sessionId : req.cookies.sessionId,
-        mobileNumber : mobRaw
+        sessionId : req.cookies.sessionId
     };
 
     var options = {
@@ -40,16 +40,16 @@ function sendTextMessageConfirmation(req, res) {
 
     function processRequest() {
         logType.info('Submitted form data successfully');
-        sendIt.submitDeclaration(req, res);
+        res.redirect('/check-your-answers');
     }
 
     // This function is included only for a short period of investigating what users are inputting into the mobile telephone number field.
     // Added in July 2018. To be remove when investigation complete
     function logInvalidMobileChars(mobileNumber) {
-        var start = mobileNumber.substring(0,1);
+        var start = mobileNumber.substring(0, 1);
         var end = mobileNumber.substring(1);
-        var invalidChars = start.replace(/[+ 0-9]/,'') + end.replace(/[ 0-9]/g, '');
-        logType.info('Mobile number invalid chars: ' +  invalidChars);
+        var invalidChars = start.replace(/[+ 0-9]/, '') + end.replace(/[ 0-9]/g, '');
+        logType.info('Mobile number invalid chars: ' + invalidChars);
     }
 
     function callback(err, response) {
@@ -59,11 +59,12 @@ function sendTextMessageConfirmation(req, res) {
             if (response.statusCode === 200 || response.statusCode === 201) {
                 processRequest();
             } else {
-                res.status(500).render('errors/500');
+                logType.error(err);
+                res.render(errorUrl);
             }
         } else {
-            logType.debug('Error' + err);
-            res.status(500).render('errors/500');
+            logType.error(err);
+            res.render(errorUrl);
         }
     }
 
@@ -78,9 +79,11 @@ function sendTextMessageConfirmation(req, res) {
                 // Added in July 2018. To be remove when investigation complete
                 logInvalidMobileChars(mobRaw);
                 return handleErrors(2);
-            } else {
-                return request(options, callback);
+            } else if (textPermission === 'No') {
+                newMobile = '';
             }
+            fitnote.mobileNumber = newMobile;
+            return request(options, callback);
         } else {
             return handleErrors(0);
         }
@@ -90,7 +93,7 @@ function sendTextMessageConfirmation(req, res) {
         logType.info('Passed Honeypot ' + passedHoneypot);
         if (passedHoneypot === false) {
             logType.info('BOT detected. Doing fake send');
-            res.redirect('/complete'); // don't post the request just go to the next page.
+            res.redirect('/complete'); // don't post the request just go to the final page.
         } else {
             hasTextMessagePassed();
         }

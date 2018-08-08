@@ -16,7 +16,7 @@ function photoUploader(req, res) {
     var storage = multer.memoryStorage();
     var upload = multer({storage : storage}).single('userPhoto');
     var route = typeof req.cookies.route !== 'undefined' ? req.cookies.route : 'take';
-    var errUrl = (route === 'upload') ? '/422-desktop' : '/422';
+    var returnUrl = '/takePhoto';
 
     function processFormRequest(url) {
         logType.info('Submitted image successfully');
@@ -74,12 +74,17 @@ function photoUploader(req, res) {
                     const validImageFileTypes = new RegExp('^image/');
                     if ((!validImageFileTypes.test(req.file.mimetype)) && req.file.mimetype !== 'application/pdf') {
                         logType.info('File type (' + req.file.mimetype + ') is invalid');
-                        res.redirect(errUrl);
-                        return
+                        res.redirect(returnUrl + '?type=1');
+                        return;
                     }
-                    if ((req.file.size < config.minFileSize) && req.file.mimetype !== 'application/pdf') {
+                    if (((req.file.size < config.minFileSize) && req.file.mimetype !== 'application/pdf') || (req.file.size > config.maxFileSize)) {
                         logType.info('File size (' + req.file.size + ') is invalid');
-                        res.redirect(errUrl);
+                        if (req.file.size < config.minFileSize) {
+                            res.redirect(returnUrl + '?size=1');
+                        }
+                        if (req.file.size > config.maxFileSize) {
+                            res.redirect(returnUrl + '?size=2');
+                        }
                         return;
                     }
                 }

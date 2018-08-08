@@ -37,6 +37,7 @@ module.exports = {
     serviceCaInter : settings.config.service.ca.intermediate,
     serviceCaRoot : settings.config.service.ca.root,
     minFileSize : settings.config.service.minFileSize,
+    maxFileSize : settings.config.service.maxFileSize,
     apiURL : settings.config.api.protocol + settings.config.api.hostname + ':' + settings.config.api.port,
     apiHost : settings.config.api.hostname,
     apiPort : settings.config.api.port,

@@ -15,6 +15,13 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if previousPageCYA %}
+        <a href="/check-your-answers" class="link-back">{{ t('device:back') }}</a>
+    {% else %}
+        <a href="/address" class="link-back">{{ t('device:back') }}</a>
+    {% endif %}
+
     {% include "includes/error-summary.html" %}
 
     <div class="grid-row">
@@ -30,14 +37,16 @@
                             <span class="gds-red bold display-b" id="error-message-radio">{{ t('errors:text-message.missing') }}</span>
                             {% endif %}
                         </legend>
-                        
-                        <label class="block-label selection-button-radio" id="yesLabel" for="radioYes">
-                            <input id="radioYes" type="radio" name="textReminder" value="Yes">
+
+                        <label class="block-label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}" id="yesLabel" for="radioYes">
+                            <input id="radioYes" type="radio" name="textReminder" value="Yes"
+                                   {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %}>
                             {{ t('text-message:yes') }}
                         </label>
                         
-                        <label class="block-label selection-button-radio" id="noLabel" for="radioNo">
-                            <input id="radioNo" type="radio" name="textReminder" value="No">
+                        <label class="block-label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}" id="noLabel" for="radioNo">
+                            <input id="radioNo" type="radio" name="textReminder" value="No"
+                                   {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
                             {{ t('text-message:no') }}
                         </label>
                         
@@ -50,7 +59,8 @@
                             {% if errors.textMessageFormat %}
                                 <span class="gds-red bold  display-b" id="error-message-text-messageFieldID">{{ t('errors:text-message.format') }}</span>
                             {% endif %}
-                            <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="form-control" value="{{mobValue}}"  maxlength="20">
+                            <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="form-control" value="{{ mobile }}"  maxlength="20">
+                            <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPage }}">
                         </div>
 
                         <div class="form-group" aria-hidden="true">
@@ -60,7 +70,7 @@
                     </fieldset>
                 </div>
                 <div class="form-group">
-                    <input type="submit" id="add-your-details" class="button primary-button" value="{{ t('text-message:submit') }}">
+                    <input type="submit" id="add-your-details" class="button primary-button" value="{{ t('app:continue') }}">
                 </div>
             </form>
         </div>

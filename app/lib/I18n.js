@@ -58,8 +58,8 @@ class Translator {
         let str = key;
         if (typeof LOCALE_DATA[this.language][k[0]] !== 'undefined') {
             str = typeof LOCALE_DATA[this.language][k[0]][k[1]] === 'undefined' ?
-            key :
-            LOCALE_DATA[this.language][k[0]][k[1]];
+                key :
+                LOCALE_DATA[this.language][k[0]][k[1]];
         }
 
         subs.forEach((sub) => {

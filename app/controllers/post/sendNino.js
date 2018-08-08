@@ -8,8 +8,9 @@ var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 
 function sendNino(req, res) {
     var ninoDone;
-    var logType = logger.child({widget : 'sendNino'});
+    var logType = logger.child({widget : 'postNino'});
     var ninoRaw = req.body.ninoField;
+    var previousPage = req.body.previousPage;
     var isNinoBlank = checkBlank.notBlank(ninoRaw);
     var fakeEmailRaw = req.body.emailField;
     var convertedNino = isSanitised.sanitiseNino(ninoRaw);
@@ -41,13 +42,16 @@ function sendNino(req, res) {
 
     function processRequest() {
         logType.info('Submitted form data successfully');
-        res.redirect('/address');
+        if (previousPage === '/check-your-answers') {
+            res.redirect('/check-your-answers');
+        } else {
+            res.redirect('/address');
+        }
     }
 
     function callback(err, response) {
         if (!err) {
             logType.info('Response Received: ' + response.statusCode);
-
             if (response.statusCode === 200 || response.statusCode === 201) {
                 processRequest();
             } else {

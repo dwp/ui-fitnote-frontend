@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+
+{% block googleTags %}
+<script>
+    ga('send', 'pageview');
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <h1 class="heading-large bold">{{ t('check-your-answers:h1') }}</h1>
+            <table class="govuk-table">
+                <tbody>
+                    <tr>
+                        <th>{{ t('check-your-answers:nino') }}</th>
+                        <td>{{ nino }}</td>
+                        <td>
+                            <a href="/nino" id="changeNino" onclick="ga ('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Nino')">
+                                {{ t('check-your-answers:change') }}<span aria-hidden="true"> {{ t('check-your-answers:changeNino') }}</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="remove-border-bottom">{{ t('check-your-answers:house') }}</th>
+                        <td class="remove-border-bottom">{{ house }}</td>
+                        <td class="remove-border-bottom">
+                            <a href="/address" id="changeAddress" onclick="ga ('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - House Number')">
+                                {{ t('check-your-answers:change') }}<span aria-hidden="true">{{ t('check-your-answers:changeAddress') }}</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="remove-padding">{{ t('check-your-answers:postcode') }}</th>
+                        <td class="remove-padding">{{ postcode }}</td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>{{ t('check-your-answers:confirmText') }}</th>
+                        <td>
+                            {% if mobile === "" %}
+                                No
+                            {% else %}
+                                Yes
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="/text-message" id="changeText" onclick="ga ('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Text Message Confirmation')">
+                                {{ t('check-your-answers:change') }}<span aria-hidden="true">{{ t('check-your-answers:changeConfirmation') }}</span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% if mobile != "" %}
+                        <tr>
+                            <th>{{ t('check-your-answers:mobile') }}</th>
+                            <td>{{ mobile }}</td>
+                            <td>
+                                <a href="/text-message" id="changeMobile" onclick="ga('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Mobile Number')">
+                                    {{ t('check-your-answers:change') }}<span aria-hidden="true">{{ t('check-your-answers:changeMobile') }}</span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        <br>
+
+        <form action="/check-your-answers" method="post" class="form">
+            <div class="form-group">
+                <input type="submit" id="acceptAndSendButton" class="button primary-button" value="{{ t('check-your-answers:button') }}" onclick="ga('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Fitnote Upload')">
+            </div>
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+{% endblock %}
+
+{% block body_end %}
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+<script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

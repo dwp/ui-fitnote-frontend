@@ -2,6 +2,7 @@
     "error-summary-h2": "Mae problem",
     "error-summary-service-fail": "Yn anffodus, roedd problem gyda'r gwasanaeth",
     "error-summary-p": "Edrychwch dros eich ffurflen. Mae'n rhaid i chi:",
+    "error-summary-p1" : "Ceisiwch eto",
 
     "nino": {
         "nino": "Rhoi eich rhif Yswiriant Gwladol",
@@ -29,5 +30,9 @@
         "maxlength": "Rhowch awgrymiadau gwelliant drwy ddefnyddio 1200 nod neu lai",
         "phone": "Rhowch rif ffôn dilys",
         "name": "Rhowch enw byrach (mwyafswm o 1000 nod)"
-    }
+    },
+
+    "fileType": "Ni chaniateir y math hwn o ffeil",
+    "validFileType": "Y ffeiliau a dderbynnir yw PDF, JPEG, BMP, PNG and GIF",
+    "choose": "Dewiswch ffeil arall"
 }

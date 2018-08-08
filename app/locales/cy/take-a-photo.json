@@ -21,5 +21,10 @@
     "invalid": "Rydym yn methu â darllen y ddelwedd, rhowch gynnig arall",
     "missing": "Llwytho llun",
     "connection": "Roedd problem wrth lwytho'r ddelwedd, rhowch gynnig drwy ddefnyddio cyswllt Wifi",
-    "serviceFail": "Ceisiwch eto"
+    "serviceFail": "Ceisiwch eto",
+
+    "another": "Cymerwch lun arall",
+    "fileSize": "Dylai maint y ffeil fod rhwng 500KB a 10MB",
+    "tooSmall": "Mae'r ffeil delwedd yn rhy fach",
+    "tooBig": "Mae'r ffeil delwedd yn rhy fawr"
 }

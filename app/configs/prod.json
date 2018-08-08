@@ -8,7 +8,8 @@
             "intermediate" : "./ssl/ca-inter.cert.pem",
             "root" : "./ssl/ca-root.cert.pem"
         },
-        "minFileSize" : 500000
+        "minFileSize" : 500000,
+        "maxFileSize" : 10000000
     },
     "logger":{
         "tag": "fitnote",

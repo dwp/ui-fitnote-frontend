@@ -14,7 +14,7 @@ var getControllers = {
     textMessage  : require(getControllerPath + 'textMessage'),
     complete  : require(getControllerPath + 'complete'),
     feedback  : require(getControllerPath + 'feedback'),
-
+    checkYourAnswers : require(getControllerPath + 'checkYourAnswers'),
     cookies : require(getControllerPath + 'cookies'),
     cookiesTable : require(getControllerPath + 'cookiesTable'),
     unprocessableEntity : require(getControllerPath + 'photoQualityError'),
@@ -30,7 +30,8 @@ var postControllers = {
     textMessage  : require(postControllerPath + 'sendTextMessage'),
     acceptProcess  : require(postControllerPath + 'submitDeclaration'),
     feedback  : require(postControllerPath + 'sendFeedback'),
-    session  : require(postControllerPath + 'refresh')
+    session  : require(postControllerPath + 'refresh'),
+    checkYourAnswers : require(postControllerPath + 'checkYourAnswers')
 };
 
 var functions = {
@@ -45,7 +46,7 @@ var isAuthenticatedFunction = functions.authentication.isAuthenticated;
 // Controller Functions
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function catchSlash(req, res) {
-    res.redirect('/device?lang='+res.locals.language);
+    res.redirect('/device?lang=' + res.locals.language);
 }
 
 function redirectGovUk(req, res) {
@@ -77,6 +78,7 @@ router.get('/nino', isAuthenticatedFunction, getControllers.nino.ninoPage);
 router.get('/address', isAuthenticatedFunction, getControllers.address.addressPage);
 router.get('/text-message', isAuthenticatedFunction, getControllers.textMessage.textMessagePage);
 router.get('/complete', isAuthenticatedFunction, getControllers.complete.completePage);
+router.get('/check-your-answers', isAuthenticatedFunction, getControllers.checkYourAnswers.checkYourAnswersPage);
 
 // Help pages for photo upload
 router.get('/help-for-photo-step-1', isAuthenticatedFunction, getControllers.helpForPhoto.helpForPhotoStep1Page);
@@ -110,6 +112,7 @@ router.post('/send-address', postControllers.address.sendAddress);
 router.post('/submit-declaration', postControllers.acceptProcess.submitDeclaration);
 router.post('/feedback', postControllers.feedback.sendFeedback);
 router.post('/refresh-session', postControllers.session.refresh);
+router.post('/check-your-answers', postControllers.checkYourAnswers.acceptAndSend);
 
 // ERRORS (must be defined after all routes)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

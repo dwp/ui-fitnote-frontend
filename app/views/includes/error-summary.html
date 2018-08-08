@@ -1,7 +1,7 @@
 {% set redBorder = "border-all-solid border-all-colour-gds-red border-all-5" %}
 
 {# Server-side Rendered Errors #}
-{% if errors %}
+{% if errors or fileError %}
     <script>
     window.onload = function() {
         document.getElementById("error-summary").focus();
@@ -14,12 +14,22 @@
             <h2 class="bold" id="error-summary-heading">{{ t('errors:error-summary-service-fail') }}</h2>
         {% else %}
             <h2 class="bold" id="error-summary-heading">{{ t('errors:error-summary-h2') }}</h2>
+            <p></p>
         {% endif %}
 
-        {% if serviceFail or invalidPhoto %}
-            <p></p>
-        {% else %}
-            <p>{{ t('errors:error-summary-p') }}</p>
+        {% if fileError %}
+            {% if typeError %}
+                <p>{{ t('errors:fileType') }}</p>
+                <p>{{ t('errors:validFileType') }}</p>
+            {% else %}
+                {% if minSizeError %}
+                    <p>{{ t(route + '-a-photo:tooSmall') }}</p>
+                {% endif %}
+                {% if maxSizeError %}
+                    <p>{{ t(route + '-a-photo:tooBig') }}</p>
+                {% endif %}
+                <p>{{ t(route + '-a-photo:fileSize') }}</p>
+            {% endif %}
         {% endif %}
 
             <ul class="error-summary-list">

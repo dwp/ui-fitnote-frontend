@@ -10,19 +10,21 @@ function sendAddress(req, res) {
     var houseNumberValid;
     var formValid;
     var redirectUrl;
-    var logType = logger.child({widget : 'postNewAddress'});
+    var logType = logger.child({widget : 'postAddress'});
     var houseNumberRaw = req.body.houseNumberField;
     var postcodeRaw = req.body.postcodeField;
-    var postcodeSanisited = isSanitised.sanitiseField(postcodeRaw);
-    var postcodeValid = validatePostcode.validatePostcode(postcodeSanisited.toUpperCase());
+    var postcodeSanitised = isSanitised.sanitiseField(postcodeRaw);
+    var postcodeValid = validatePostcode.validatePostcode(postcodeSanitised.toUpperCase());
     var fakeCountyRaw = req.body.countyField;
-    var houseNumberSanisited = isSanitised.sanitiseField(houseNumberRaw);
+    var houseNumberSanitised = isSanitised.sanitiseField(houseNumberRaw);
+    var previousPage = req.body.previousPage;
+    var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
     var passedHoneypot = checkHoneypot.honeypot(fakeCountyRaw, 'BOT: honeypot detected a bot, Address Page, County Field');
-    var ishouseNumberBlank = checkBlank.notBlank(houseNumberSanisited);
+    var ishouseNumberBlank = checkBlank.notBlank(houseNumberSanitised);
     var fitnote = {
         sessionId : req.cookies.sessionId,
-        houseNameOrNumber : houseNumberSanisited,
-        postcode : postcodeSanisited
+        houseNameOrNumber : houseNumberSanitised,
+        postcode : postcodeSanitised
     };
 
     var options = {
@@ -55,7 +57,11 @@ function sendAddress(req, res) {
 
     function processRequest() {
         logType.info('Submitted form data successfully');
-        res.redirect('/text-message');
+        if (previousPage === '/check-your-answers') {
+            res.redirect('/check-your-answers');
+        } else {
+            res.redirect('/text-message');
+        }
     }
 
     function handleFormError() {
@@ -76,7 +82,7 @@ function sendAddress(req, res) {
             }
         } else {
             logType.debug('Error' + err);
-            res.status(500).render('errors/500');
+            res.status(500).render(errorUrl);
         }
     }
 
