@@ -5,6 +5,7 @@ var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 var checkBlank = require(appRootDirectory + '/app/functions/sanitise/isFieldBlank');
 var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 var validatePostcode = require(appRootDirectory + '/app/functions/sanitise/validatePostcode');
+const sessionExpiry = require(appRootDirectory + '/app/functions/refreshSessionExpiryTime.js');
 
 function sendAddress(req, res) {
     var houseNumberValid;
@@ -70,6 +71,7 @@ function sendAddress(req, res) {
     }
 
     function callback(err, response) {
+        sessionExpiry.refreshTime(res, logType);
         if (!err) {
             logType.info('Response Received: ' + response.statusCode);
             switch (response.statusCode) {

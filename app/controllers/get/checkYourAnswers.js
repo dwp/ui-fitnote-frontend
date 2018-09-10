@@ -31,19 +31,20 @@ function checkYourAnswersPage(req, res) {
             const mobile = returnedDataArray[2].mobileNumber ? returnedDataArray[2].mobileNumber : '';
             if (nino === '' || house === '' || postcode === '') {
                 res.redirect('/index');
+            } else {
+                res.render('check-your-answers', {
+                    sessionId: req.cookies.sessionId,
+                    version: config.version,
+                    environment: config.nodeEnvironment,
+                    viewedMessage: req.cookies.cookies_agreed,
+                    timeStamp: Date.now(),
+                    currentPage: 'check-your-answers',
+                    nino: nino,
+                    house: house,
+                    postcode: postcode,
+                    mobile: mobile
+                });
             }
-            res.render('check-your-answers', {
-                sessionId : req.cookies.sessionId,
-                version : config.version,
-                environment : config.nodeEnvironment,
-                viewedMessage : req.cookies.cookies_agreed,
-                timeStamp : Date.now(),
-                currentPage : 'check-your-answers',
-                nino : nino,
-                house : house,
-                postcode : postcode,
-                mobile : mobile
-            });
         })
         .catch(function(err) {
             // console.log('err is : ', err);

@@ -35,5 +35,8 @@
     "notify": {
         "mailto": "",
         "api_key": ""
+    },
+    "sessionInfo" : {
+        "expiryPeriod" : 1800000
     }
 }

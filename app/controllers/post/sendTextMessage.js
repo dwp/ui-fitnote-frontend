@@ -4,6 +4,7 @@ var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 var checkBlank = require(appRootDirectory + '/app/functions/sanitise/isFieldBlank');
 var checkMobile = require(appRootDirectory + '/app/functions/sanitise/validateMobileNumber');
+const sessionExpiry = require(appRootDirectory + '/app/functions/refreshSessionExpiryTime.js');
 
 function sendTextMessageConfirmation(req, res) {
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
@@ -53,6 +54,7 @@ function sendTextMessageConfirmation(req, res) {
     }
 
     function callback(err, response) {
+        sessionExpiry.refreshTime(res, logType);
         if (!err) {
             logType.info('Response Received: ' + response.statusCode);
 

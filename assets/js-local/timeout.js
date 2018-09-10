@@ -8,7 +8,7 @@ var intID = setInterval(function(){
   } else if (exp - Date.now() > 0) {
     timeout.className = '';
     var m = Math.ceil( (exp - Date.now() )/60/1000);
-    var html = m 
+    var html = m;
     if(lang !== 'cy') {
       html += ' minute';
       if(m !== 1) html += 's';

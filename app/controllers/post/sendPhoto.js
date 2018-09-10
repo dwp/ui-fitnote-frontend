@@ -4,6 +4,7 @@ var logger = require(appRootDirectory + '/app/functions/bunyan');
 var encoder = require(appRootDirectory + '/app/functions/base64Encode');
 var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
+const sessionExpiry = require(appRootDirectory + '/app/functions/refreshSessionExpiryTime.js');
 
 function photoUploader(req, res) {
     var userPhotoEncoded;
@@ -38,6 +39,7 @@ function photoUploader(req, res) {
         }
 
         function callback(error, response) {
+            sessionExpiry.refreshTime(res, logType);
             if (!error && userPhotoEncoded !== '') {
                 switch (response.statusCode) {
                 case 201:

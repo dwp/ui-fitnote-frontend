@@ -5,6 +5,7 @@ var checkNino = require(appRootDirectory + '/app/functions/sanitise/validateNino
 var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 var checkBlank = require(appRootDirectory + '/app/functions/sanitise/isFieldBlank');
 var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
+const sessionExpiry = require(appRootDirectory + '/app/functions/refreshSessionExpiryTime.js');
 
 function sendNino(req, res) {
     var ninoDone;
@@ -50,6 +51,7 @@ function sendNino(req, res) {
     }
 
     function callback(err, response) {
+        sessionExpiry.refreshTime(res, logType);
         if (!err) {
             logType.info('Response Received: ' + response.statusCode);
             if (response.statusCode === 200 || response.statusCode === 201) {

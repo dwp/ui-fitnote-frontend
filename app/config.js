@@ -38,6 +38,7 @@ module.exports = {
     serviceCaRoot : settings.config.service.ca.root,
     minFileSize : settings.config.service.minFileSize,
     maxFileSize : settings.config.service.maxFileSize,
+    sessionExpiryPeriod : settings.config.sessionInfo.expiryPeriod,
     apiURL : settings.config.api.protocol + settings.config.api.hostname + ':' + settings.config.api.port,
     apiHost : settings.config.api.hostname,
     apiPort : settings.config.api.port,
