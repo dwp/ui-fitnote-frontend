@@ -46,7 +46,7 @@
   "dependencies": {
     "async": "2.6.0",
     "body-parser": "1.18.2",
-    "bunyan": "1.8.12",
+    "bunyan": "1.8.13",
     "bunyan-syslog-udp": "0.1.0",
     "connect-timeout": "1.9.0",
     "cookie-parser": "1.4.3",
