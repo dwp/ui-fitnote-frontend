@@ -1,3 +1,5 @@
+const config = require('config');
+
 function feedbackPage(req, res) {
     var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
     var ratingError;
@@ -43,20 +45,22 @@ function feedbackPage(req, res) {
         };
     }
 
-    previousPage = (req.headers.referer) ? 
-        req.headers.referer.substring(req.headers.referer.lastIndexOf('/')) :
-        (req.cookies.feedback) ? req.cookies.feedback : '';
+    if (req.headers.referer) {
+        previousPage = req.headers.referer.substring(req.headers.referer.lastIndexOf('/'));
+    } else if (req.cookies.feedback) {
+        previousPage = req.cookies.feedback;
+    } else {
+        previousPage = '';
+    }
 
     res.cookie('feedback',
         previousPage, 
-        {httpOnly : true, secure : true, sameSite : true, expires : 0});
+        {httpOnly : true, secure : config.get('cookieOptions.secure') === 'true', sameSite : true, expires : 0});
     
     res.render('feedback', {
-        version : config.version,
+        version : process.env.npm_package_version,
         timeStamp : Date.now(),
-        environment : config.nodeEnvironment,
-        viewedMessage : req.cookies.cookies_agreed,
-        currentPage : 'feedback',
+        environment : config.util.getEnv('NODE_ENV'),
         errors : errorMessage,
         validationErrors : validationErrors
     });
@@ -64,11 +68,9 @@ function feedbackPage(req, res) {
 
 function thankYouPage(req, res) {
     res.render('thank-you', {
-        version : config.version,
+        version : process.env.npm_package_version,
         timeStamp : Date.now(),
-        environment : config.nodeEnvironment,
-        viewedMessage : req.cookies.cookies_agreed,
-        currentPage : 'thank-you',
+        environment : config.util.getEnv('NODE_ENV'),
         returnUrl : req.query.return
     });
 }

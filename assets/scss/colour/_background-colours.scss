@@ -8,3 +8,6 @@
 // }
 .bg-gds-light-blue-25 { background-color: brand(gds-light-blue-25); }
 .bg-gds-black { background-color: brand(gds-black); }
+.bg-gds-grey {
+    background-color: govuk-colour("light-grey");
+}

@@ -1,0 +1,53 @@
+{
+    "pageTitle": "Accessibility statement",
+    "h1": "Accessibility statement for Send your fit note for your ESA claim",
+    "p1": "This service is part of the wider GOV.UK website. There's a separate <a class=\"govuk-link\" href=\"https://www.gov.uk/help/accessibility-statement/\">accessibility statement for the main GOV.UK website.</a>",
+    "p2": "This page only contains information about the Send your fit note for your ESA claim service, available at <a class=\"govuk-link\" href=\"https://www.gov.uk/send-fit-note\">https://www.gov.uk/send-fit-note</a>",
+    "usingThisService": {
+        "h2": "Using this service",
+        "p1": "This service is run by the Department for Work and Pensions. We want as many people as possible to be able to use this service. For example, that means you should be able to:",
+        "li1": "change colours, contrast levels and fonts",
+        "li2": "zoom in up to 300% without the text spilling off the screen",
+        "li3": "get from the start of the service to the end using just a keyboard",
+        "li4": "get from the start of the service to the end using speech recognition software",
+        "li5": "listen to the service using a screen reader",
+        "p2": "We've also made the text in the service as simple as possible to understand.",
+        "p3": "<a class=\"govuk-link\" href=\"https://mcmw.abilitynet.org.uk/\">AbilityNet</a> has advice on making your device easier to use if you have a disability."
+    },
+    "howAccessibleThisServiceIs": {
+        "h2": "How accessible this service is",
+        "p1": "The service is using common styles, patterns and components from the GOV.UK Design System which are widely regarded as accessible.",
+        "p2": "Some people may find parts of this service difficult to use:",
+        "li1": "one or more images have alternative text that is longer than expected. This fails WCAG v2.1, 1.1.1 A (Non-text content).",
+        "li2": "some elements do not have strong contrasting colours, either focused or unfocused, which may make it harder to distinguish between background colours or text. This fails WCAG v2.1, 1.4.11 AA (Non-text contrast).",
+        "li3": "when the user chooses a file to upload, we pass control to the device’s Operating System interface. The user is not informed that the window to choose a file is open and assistive technology may or may not take focus.",
+        "li4": "some pages do not have a title which means a screen reader may announce them as ‘blank’. This fails WCAG v2.1, 1.3.5 AA (Identify input purpose).",
+        "li5": "some fields do not have a label which means a screen reader may skip them or announce them as ‘blank’. This fails WCAG v2.1, 1.3.5 AA (Identify input purpose).",
+        "li6": "where the user can check and change their data, several fields have the same ‘Change’ link text and a screen reader may announce ‘change, visited link’ when tabbing between links. This makes it hard to know what information the links refer to. This fails WCAG v2.1, 2.4.4 (Link purpose - in context).",
+        "li7": "some pages have ARIA errors which may cause a screen reader to announce the wrong information or no information at all. This fails WCAG v2.1, 1.3.1 A (Info and relationships)."
+    },
+    "difficultyUsingService": {
+        "h2": "What to do if you have difficulty using this service",
+        "p1": "If you have difficulty using this service, <a class=\"govuk-link\" href=\"https://secure.dwp.gov.uk/contact-dwp-about-accessibility/contact\">contact DWP about accessibility.</a>",
+        "p2": "As part of providing this service, we may need to send you messages or documents. We'll ask you how you want us to send messages or documents to you, but contact us if you need them in a different format. For example large print, audio recording or braille."
+    },
+    "reportingAccessibilityProblems": {
+        "h2": "Reporting accessibility problems with this service",
+        "p1": "We're always looking to improve the accessibility of this service. If you find any problems that are not listed on this page or think we're not meeting accessibility requirements, <a class=\"govuk-link\" href=\"https://secure.dwp.gov.uk/contact-dwp-about-accessibility/contact\">contact DWP about accessibility.</a>"
+    },
+    "enforcementProcedure": {
+        "h2": "Enforcement procedure",
+        "p1": "The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the 'accessibility regulations'). If you're not happy with how we respond to your complaint, <a class=\"govuk-link\" href=\"https://www.equalityadvisoryservice.com/\">contact the Equality Advisory and Support Service (EASS).</a>"
+    },
+    "technicalInformationAboutServiceAccessibility": {
+        "h2": "Technical information about this service's accessibility",
+        "p1": "The Department for Work and Pensions is committed to making this service accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.",
+        "p2": "This service is not fully compliant with the Web Content Accessibility Guidelines version 2.1 AA standard."
+    },
+    "howWeTested": {
+        "h2": "How we tested this service",
+        "p1": "The service was last tested on 1 September 2020 and was checked for compliance with WCAG 2.1 AA. The tests were carried out by the Department for Work and Pensions.",
+        "p2": "The service was tested using both manual and automated testing. This has identified issues, mentioned in the ‘using this service’ section above, that we’re working to fix.",
+        "p3": "This page was prepared on 8 September 2020 and last updated on 18 September 2020."
+    }
+}

@@ -1,4 +1,4 @@
-const refresh = require('../../../app/controllers/post/refresh.js');
+const refresh = require('../../../app/controllers/get/refresh.js');
 const nock = require('nock');
 const chai = require('chai');
 const assert = chai.assert;
@@ -9,7 +9,7 @@ global.logger = { child : () => {
 
 global.config = {
     version: '3',
-    nodeEnvironment: 'dev',
+    nodeEnvironment: 'test',
     apiURL: 'http://localhost:3004',
     sessionExpiryPeriod: 120000
 }
@@ -63,7 +63,7 @@ describe('Session expiry time reset', function() {
             .reply(200, {});
         res = {
             redirect: function (template) {
-                assert.equal(template, '/' + req.body.page);
+                assert.equal(template, req.body.page);
                 done();
             },
             cookie: function(name, value, properties) {

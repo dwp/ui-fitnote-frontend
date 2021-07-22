@@ -14,9 +14,9 @@ brew install phantomjs
 # - Valimate
 # - Jasmine
 # - Sass-lint
-# - Istanbul
+# - nyc
 # - SNYK
-sudo npm install -g gulp-cli pa11y nsp broken-link-checker pageres-cli bunyan json-server valimate mocha eslint sass-lint istanbul
+sudo npm install -g gulp-cli pa11y nsp broken-link-checker pageres-cli bunyan json-server valimate mocha eslint sass-lint nyc
 
 # Install local packages
 npm update

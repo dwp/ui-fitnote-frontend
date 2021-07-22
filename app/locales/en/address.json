@@ -2,5 +2,7 @@
     "h1": "Your address",
     "legend": "Enter your address",
     "house-number": "House name or number",
-    "postcode": "Postcode"
+    "house-number-aria-label": "Enter house name or number",
+    "postcode": "Postcode",
+    "postcode-aria-label": "Enter postcode"
 }

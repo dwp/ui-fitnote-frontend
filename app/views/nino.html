@@ -1,72 +1,69 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-07') }}{% endblock %}
 
-{% block googleTags %}
-<script>
-    ga('send', 'pageview');
-
-    {% if errors %}
-        {% for error, value in errors %}
-            ga("send", "event", "Error - validation", '{{value.field}}', '{{value.message}}' );
-        {% endfor %}
-    {% endif %}
-</script>
-
+{% block back_link %}
+{% if previousPageCYA %}
+<a href="/check-your-answers" class="govuk-back-link">{{ t('device:back') }}</a>
+{% else %}
+<a href="/{{ route }}" class="govuk-back-link">{{ t('device:back') }}</a>
+{% endif %}
 {% endblock %}
 
 {% block body %}
+{% include "includes/govuk-error-summary.html" %}
+<div class="grid-row govuk-body">
+    <div class="column-two-thirds">
+        <form action="/send-nino" method="post" class="form" name="ninoForm" id="formData" data-form="nino"
+            autocomplete="off" onsubmit="return submitForm();">
+            <div id="govuk-form-group-error" class="govuk-form-group">
+                <label for="ninoFieldID">
+                    <h1 class="govuk-heading-l govuk-!-font-weight-bold">{{ t('nino:heading') }}</h1>
+                    <span class="govuk-hint govuk-!-display-block">{{ t('nino:hint') }}</span>
+                </label>
 
-    {% if previousPage === '/check-your-answers' %}
-        <a href="/check-your-answers" class="link-back">{{ t('device:back') }}</a>
-    {% else %}
-        <a href="/{{ route }}-a-photo" class="link-back">{{ t('device:back') }}</a>
-    {% endif %}
+                <span class="govuk-error-message" id="error-message-ninoFieldID" aria-hidden="true"></span>
+                <input type="text" name="ninoField" id="ninoFieldID" class="govuk-input govuk-!-width-one-half"
+                    value="{{ nino }}" maxlength="13" data-required="required" aria-label="{{ t('nino:nino-input-aria-label') }}">
+                <label for="previousPageId" aria-hidden="true">Leave blank</label>
+                <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true"
+                    value="{{ previousPageCYA }}">
+            </div>
 
-    {% include "includes/error-summary.html" %}
+            <div class="govuk-form-group" aria-hidden="true">
+                <label for="emailID" aria-hidden="true">Leave blank</label>
+                <input type="text" name="emailField" id="emailID" aria-hidden="true" value="" autofill="off">
+            </div>
 
-    <div class="grid-row">
-        <div class="column-two-thirds">
-            <form action="/send-nino" method="post" class="form" name="ninoForm" id="formData" data-form="nino" autocomplete="off" onsubmit="return submitForm();">
-                <fieldset class="form-group">
-                    <legend class="display-offscreen">{{ t('nino:heading') }}</legend>
-
-                    <div class="form-group {% if errors.nino or errors.ninoFormat %}error{% endif %}">
-                        <label for="ninoFieldID">
-                            <span class="form-label heading-large bold">{{ t('nino:heading') }}</span>
-                            <span class="form-hint">{{ t('nino:hint') }}</span>
-                        </label>
-                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-ninoFieldID"></span>
-                        {% if errors.nino %}
-                            <span class="gds-red bold  display-b" id="error-message-ninoFieldID">{{ t('errors:nino.nino') }}</span>
-                        {% endif %}
-                        {% if errors.ninoFormat %}
-                            <span class="gds-red bold  display-b" id="error-message-ninoFieldID">{{ t('errors:nino.nino-format') }}</span>
-                        {% endif %}
-                        <input type="text" name="ninoField" id="ninoFieldID" class="form-control {{error.ninoCompleted}}" value="{{ nino }}" maxlength="13" data-required="required">
-                        <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPage }}">
-                    </div>
-
-                    <div class="form-group" aria-hidden="true">
-                        <label for="emailID" aria-hidden="true">Leave blank</label>
-                        <input type="text"  name="emailField" id="emailID" aria-hidden="true" value="" autofill="off">
-                    </div>
-                </fieldset>
-
-                <div class="form-group">
-                    <input type="submit" id="add-your-details" class="button primary-button" value="{{ t('app:continue') }}">
+            <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        {{ t('nino:details-link-text') }}
+                       <span class="govuk-visually-hidden">{{ t('nino:details-link-hidden-text') }}</span>
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                    {{ t('nino:details-summary-text') }}
+                    <a class="govuk-link" href="https://www.gov.uk/lost-national-insurance-number"
+                        target="_blank">{{ t('nino:nino-link-text') }}</a>
                 </div>
-            </form>
-        </div>
-        {% include "includes/sidebar.html" %}
+            </details>
+
+            <div class="govuk-form-group">
+                <input type="submit" id="add-your-details" class="govuk-button" value="{{ t('app:continue') }}">
+            </div>
+        </form>
     </div>
+    {% include "includes/sidebar.html" %}
+</div>
 {% endblock %}
 
 {% block body_end %}
-    <script> var errorDictionary = {{ validationErrors | safe }}</script>
-    <script src="/javascript/validate-nino.js?version={{assetsVersion}}" defer></script>
-    <script>
-        var lang = '{{ lang }}';
-        var expires = '{{ exp }}';
-    </script>
-    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{{super()}}
+<script> var errorDictionary = {{ validationErrors | safe }}</script>
+<script src="/javascript/validate-nino.js?version={{assetsVersion}}" defer></script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+
 {% endblock %}

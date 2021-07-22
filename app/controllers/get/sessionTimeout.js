@@ -1,11 +1,10 @@
 function sessionTimeout(req, res) {
+    const config = require('config');
     res.render('errors/session-timeout', {
-        version : config.version,
+        version : process.env.npm_package_version,
         timeStamp : Date.now(),
-        environment : config.nodeEnvironment,
-        viewedMessage : req.cookies.cookies_agreed,
-        sessionId : req.cookies.sessionId,
-        currentPage : 'session-timeout'
+        environment : config.util.getEnv('NODE_ENV'),
+        sessionId : req.cookies.sessionId
     });
 
     // Make sure the cookies are cleared AFTER page render, so GA can get values, but cleared for security

@@ -1,5 +1,5 @@
 function index(req, res) {
-    res.redirect('/device');
+    res.redirect('/identify');
 }
 
 module.exports.index = index;

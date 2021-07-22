@@ -1,0 +1,44 @@
+{
+    "service": {
+        "port": "SERVICE_PORT",
+        "minFileSize": "MIN_FILE_SIZE",
+        "maxFileSize": "MAX_FILE_SIZE",
+        "name": "SERVICE_NAME",
+
+        "ca": {
+            "intermediate": "SERVICE_CA_INTER",
+            "root": "SERVICE_CA_ROOT"
+        }
+    },
+
+    "logger": {
+        "tag": "LOGGER_NAME",
+        "host": "LOGGER_HOST",
+        "port": "LOGGER_PORT"
+    },
+    "sessionInfo": {
+        "expiryPeriod": "SESSION_EXPIRY_PERIOD",
+        "timeoutCountdown": "TIMEOUT_DIALOG_COUNTDOWN"
+    },
+    "api": {
+        "url": "API_URL"
+    },
+
+    "notify": {
+        "api_key": "NOTIFY_API_KEY",
+        "mailto": "FEEDBACK_MAILTO",
+        "proxy": "NOTIFY_PROXY",
+        "proxyHost": "NOTIFY_PROXY_HOST",
+        "proxyPort": "NOTIFY_PROXY_PORT"
+
+    },
+
+    "cookieOptions": {
+        "secure": "COOKIE_SECURE"
+    },
+
+    "GTM": {
+        "id": "GOOGLE_TAG_MANAGER_ID",
+        "domain": "GOOGLE_TAG_MANAGER_DOMAIN"
+    }
+}

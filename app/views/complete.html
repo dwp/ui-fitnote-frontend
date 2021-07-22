@@ -1,28 +1,29 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
-
-{% block googleTags %}
-<script>
-    ga('send', 'pageview');
-</script>
-{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-11') }}{% endblock %}
 
 {% block body %}
-    <div class="grid-row">
-        <div class="column-two-thirds">
-            <div class="govuk-box-highlight">
-                <h1 class="font-xlarge"><img class="icon" src="/images/icon-tick@2x.png" alt="{{ t('complete:alt') }}">{{ t('complete:h1') }}</h1>
-                <p class="font-large">{{ t('complete:reference') }}</p>
+    <div class="govuk-grid-row govuk-body">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-!-padding-bottom-6"></div>
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">
+                    {{ t('complete:h1') }}
+                </h1>
+                <div class="govuk-panel__body">
+                    {{ t('complete:reference') }}
+                </div>
             </div>
         </div>
     </div>
-    <div class="grid-row">
-      <div class="column-two-thirds">
-            <h2 class="heading-medium">{{ t('complete:h2') }}</h2>
+    <div class="govuk-grid-row govuk-body">
+      <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">{{ t('complete:h2') }}</h2>
             <p>{{ t('complete:p1') }}</p>
             <p>{{ t('complete:p2') }}</p>
-            <p><a href="https://www.gov.uk/done/send-fit-note"  onclick="ga('send', 'event', 'Link - click', 'What do you think of this service?', '/feedback' )">{{ t('complete:feedback') }}</a><span> {{ t('complete:feedbackInfo') }}</span></p>
-            <p><a href="{{ t('complete:govukUrl') }}" onclick="ga('send', 'event', 'Button - click', 'Send another fit note', 'N/A', { 'metric4': 1, 'sessionControl': 'end' });">{{ t('complete:a') }}</a></p>
+            <p>{{ t('complete:p3') }}</p>
+            <p>{{ t('complete:p4') }}</p>
+            <p><a href="https://www.gov.uk/done/send-fit-note" class="govuk-link">{{ t('complete:feedback') }}</a><span> {{ t('complete:feedbackInfo') }}</span></p>
+            <p><a href="{{ t('complete:govukUrl') }}" class="govuk-link">{{ t('complete:a') }}</a></p>
         </div>
     </div>
 {% endblock %}

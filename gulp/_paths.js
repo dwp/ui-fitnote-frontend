@@ -7,6 +7,7 @@ gulpPaths = {
             javaScript : './assets/**/*',
             jsgovuk : './assets/govuk/**/*',
             jsLocal : './assets/js-local/**/*',
+            jsHmrc : './assets/js-hmrc/**/*',
             jsVendor : './assets/js-vendor/**/*',
             scssAll : './assets/scss/**/*',
             scssApp : './assets/scss/*.scss'

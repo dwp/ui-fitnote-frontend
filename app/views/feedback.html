@@ -1,103 +1,98 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
-
-{% block googleTags %}
-<script>
-    ga('send', 'pageview');
-
-    {% if errors %}
-        {% for error, value in errors %}
-            ga("send", "event", "Error - validation", '{{value.field}}', '{{value.message}}' );
-        {% endfor %}
-    {% endif %}
-</script>
-<style>.block-label{margin-bottom:0}</style>
-{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-12') }}{% endblock %}
 
 {% block body %}
-{% include "includes/error-summary.html" %}
-<div class="grid-row">
-<div class="column-two-thirds">
-    <h1 class="heading-large">{{ t('feedback:h1') }}</h1>
-    <form id="feedback-form" action="/feedback" method="post" class="form" autocomplete="off" onsubmit="return submitForm();">
-        <div class="form-group{{ ' error' if errors.rating }}">
-            <fieldset>
-                <legend>
-                    <span class="heading-medium bold">{{ t('feedback:rating') }}</span>
-                    <span class="gds-red bold display-b" aria-hidden="true" id="error-message-ratingID">{{ t('errors:feedback.required') }}</span>
-                    {% if errors.rating %}
-                        <span class="gds-red bold display-b" id="error-message-ratingID">{{ t('errors:feedback.required') }}</span>
-                    {% endif %}
+{% include "includes/govuk-error-summary.html" %}
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds govuk-body">
+    <h1 class="govuk-heading-l">{{ t('feedback:h1') }}</h1>
+    <form id="formData" action="/feedback" method="post" class="form" autocomplete="off" onsubmit="return submitForm();">
+        <div id="govuk-form-group-error-rating" class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:rating') }}</h2>
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-ratingID">
+                        <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.required') }}
+                    </span>
                 </legend>
-                <label class="block-label selection-button-radio" for="vSatisfied">
-                    <input id="vSatisfied" type="radio" name="rating" value="Very satisfied">
-                    {{ t('feedback:very-satisfied') }}
-                </label>
-                <label class="block-label selection-button-radio" for="satisfied">
-                    <input id="satisfied" type="radio" name="rating" value="Satisfied">
-                    {{ t('feedback:satisfied') }}
-                </label>
-                <label class="block-label selection-button-radio" for="neither">
-                    <input id="neither" type="radio" name="rating" value="Neither satisfied or dissatisfied">
-                    {{ t('feedback:neither') }}
-                </label>
-                <label class="block-label selection-button-radio" for="dissatisfied">
-                    <input id="dissatisfied" type="radio" name="rating" value="Dissatisfied">
-                    {{ t('feedback:dissatisfied') }}
-                </label>
-                <label class="block-label selection-button-radio" for="vDissatisfied">
-                    <input id="vDissatisfied" type="radio" name="rating" value="Very dissatisfied">
-                    {{ t('feedback:very-dissatisfied') }}
-                </label>
+                <div class="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input id="vSatisfied" type="radio" name="rating" value="Very satisfied" class="govuk-radios__input">
+                        <label class="govuk-label govuk-radios__label" for="vSatisfied">
+                            {{ t('feedback:very-satisfied') }}
+                        </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                        <input id="satisfied" type="radio" name="rating" value="Satisfied" class="govuk-radios__input">
+                        <label class="govuk-label govuk-radios__label" for="satisfied">
+                            {{ t('feedback:satisfied') }}
+                        </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                        <input id="neither" type="radio" name="rating" value="Neither satisfied or dissatisfied" class="govuk-radios__input">
+                        <label class="govuk-label govuk-radios__label" for="neither">
+                            {{ t('feedback:neither') }}
+                        </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                        <input id="dissatisfied" type="radio" name="rating" value="Dissatisfied" class="govuk-radios__input">
+                        <label class="govuk-label govuk-radios__label" for="dissatisfied">
+                            {{ t('feedback:dissatisfied') }}
+                        </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                        <input id="vDissatisfied" type="radio" name="rating" value="Very dissatisfied" class="govuk-radios__input">
+                        <label class="govuk-label govuk-radios__label" for="vDissatisfied">
+                            {{ t('feedback:very-dissatisfied') }}
+                        </label>
+                    </div>
+                </div>
             </fieldset>
         </div>
-        <div class="form-group{{ ' error' if errors.improvements }}">
+        <div id="govuk-form-group-error-improvements" class="govuk-form-group">
             <label for="improvementsID">
-                <span class="heading-medium bold">{{ t('feedback:improvements') }}</span>
-                <span class="gds-red bold display-b" aria-hidden="true" id="error-message-improvementsID">{{ t('errors:feedback.maxlength') }}</span>
-                {% if errors.improvements %}
-                <span class="gds-red bold  display-b" id="error-message-improvementsID">{{ t('errors:feedback.maxlength') }}</span>
-                {% endif %}
+                <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:improvements') }}</h2>
+                <span class="govuk-error-message" aria-hidden="true" id="error-message-improvementsID">
+                    <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.maxlength') }}
+                </span>
             </label>
-            <textarea type="text" name="improvements" id="improvementsID" class="form-control" maxlength="1200" rows="5"></textarea>
+            <textarea type="text" name="improvements" id="improvementsID" class="govuk-textarea" rows="5"></textarea>
         </div>
 
         <p>{{ t('feedback:limit') }}</p>
         <p>{{ t('feedback:info') }}</p>
 
-        
-        <h2 class="heading-medium bold">{{ t('feedback:helpMore') }}</h2>
+        <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:helpMore') }}</h2>
         <p>{{ t('feedback:helpMoreText') }}</p>
-        <div class="form-group">
-            <div class="form-group{{ ' error' if errors.name }}">
-                <label class="form-label" for="nameID">
+        <div id="govuk-form-group-error" class="govuk-form-group" aria-label="{{ t('feedback:helpMoreAria') }}">
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="nameID">
                     <span>{{ t('feedback:yourName') }}</span>
-                    <span class="gds-red bold display-b" aria-hidden="true" id="error-message-nameID">{{ t('errors:feedback.name') }}</span>
-                    {% if errors.name %}
-                    <span class="gds-red bold  display-b" id="error-message-nameID">{{ t('errors:feedback.name') }}</span>
-                    {% endif %}
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-nameID">
+                    <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.name') }}
+                </span>
                 </label>
-                <input type="text" name="name" id="nameID" class="form-control" maxlength="1000">
+                <input type="text" name="name" id="nameID" class="govuk-input"
+                       aria-label="{{ t('feedback:yourname-aria-label') }}">
             </div>
 
-            <div class="form-group{{ ' error' if errors.phone }}">
-                <label class="form-label" for="phoneID">
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="phoneID">
                     <span>{{ t('feedback:phone') }}</span>
-                    <span class="gds-red bold display-b" aria-hidden="true" id="error-message-phoneID">{{ t('errors:feedback.phone') }}</span>
-                    {% if errors.phone %}
-                    <span class="gds-red bold  display-b" id="error-message-phoneID">{{ t('errors:feedback.phone') }}</span>
-                    {% endif %}
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-phoneID">
+                    <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.phone') }}
+                </span>
                 </label>
-                <input type="text" name="phone" id="phoneID" class="form-control" maxlength="1000">
+                <input type="text" name="phone" id="phoneID" class="govuk-input"
+                       aria-label="{{ t('feedback:phone-aria-label') }}">
             </div>
-        </div>
-
-        <div class="form-group" aria-hidden="true">
-            <label for="phoneID" aria-hidden="true">Leave blank</label>
-            <input type="text" name="phoneField" id="phoneID" aria-hidden="true" value="" autofill="off">
         </div>
         <div class="form-group">
-            <input id="submit-feedback" type="submit" class="button primary-button" value="{{ t('feedback:button') }}">
+            <input id="submit-feedback" type="submit" class="govuk-button" value="{{ t('feedback:button') }}">
         </div>
     </form>
 </div>
@@ -106,6 +101,7 @@
 {% endblock %}
 
 {% block body_end %}
+{{super()}}
     <script> var errorDictionary = {{ validationErrors | safe }}</script>
     <script src="/javascript/validate-feedback.js?version={{assetsVersion}}" defer></script>
 {% endblock %}

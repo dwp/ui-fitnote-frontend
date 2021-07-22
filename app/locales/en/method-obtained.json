@@ -1,0 +1,11 @@
+{
+    "h1": "How did you get your fit note?",
+    "hint": "Select one option.",
+    "radioLabels": {
+        "paper": "Paper copy",
+        "sms": "Text message",
+        "email": "Email"
+    },
+    "button": "Continue",
+    "back": "Back"
+}

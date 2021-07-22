@@ -1,5 +1,6 @@
 var request =  require('request');
 var logger = require(appRootDirectory + '/app/functions/bunyan');
+const config = require('config');
 
 function ninoPage(req, res) {
     var logType = logger.child({widget : 'ninoPage'});
@@ -9,10 +10,10 @@ function ninoPage(req, res) {
     var ninoFormatError;
     var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
-    var previousPage = (req.headers.referer) ? req.headers.referer.substring(req.headers.referer.lastIndexOf('/')) : '';
-    var route = typeof req.cookies.route !== 'undefined' ? req.cookies.route : 'take'
+    var previousPageCYA = 0;
+    var route = typeof req.cookies.route !== 'undefined' ? req.cookies.route : 'take';
     var options = {
-        url : config.apiURL + '/queryNino',
+        url : config.get('api.url') + '/queryNino',
         method : 'POST',
         json : true,
         timeout : 240000,
@@ -22,6 +23,11 @@ function ninoPage(req, res) {
         },
         body : {sessionId : req.cookies.sessionId}
     };
+
+    if (req.query.hasOwnProperty('ref')) {
+        previousPageCYA = req.query.ref === 'check-your-answers' ? 1 : 0;
+    }
+
     function callback(err, response, body) {
         if (!err) {
             if (response.statusCode === 200) {
@@ -51,12 +57,10 @@ function ninoPage(req, res) {
 
                 res.render('nino', {
                     sessionId : req.cookies.sessionId,
-                    version : config.version,
-                    environment : config.nodeEnvironment,
-                    viewedMessage : req.cookies.cookies_agreed,
+                    version : process.env.npm_package_version,
+                    environment : config.util.getEnv('NODE_ENV'),
                     timeStamp : Date.now(),
-                    currentPage : 'nino',
-                    previousPage : previousPage,
+                    previousPageCYA : previousPageCYA,
                     route : route,
                     nino : nino,
                     errors : errorMessage,

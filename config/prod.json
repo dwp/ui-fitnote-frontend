@@ -1,0 +1,37 @@
+{
+    "service" : {
+        "listenonhttp" : "true",
+        "port" : "8008",
+        "logs" : "logs/",
+        "key" : "./ssl/192.168.105.5.key.pem",
+        "cert" : "./ssl/192.168.105.5.cert.pem",
+        "ca" : {
+            "intermediate" : "./ssl/ca-inter.cert.pem",
+            "root" : "./ssl/ca-root.cert.pem"
+        },
+        "minFileSize" : 500000,
+        "maxFileSize" : 10000000
+    },
+
+    "api" : {
+        "url" : "http://localhost:3004"
+    } ,
+
+    "notify": {
+        "mailto": "",
+        "api_key": ""
+    },
+
+    "sessionInfo" : {
+        "expiryPeriod" : 1800000,
+        "timeoutCountdown" : 300000
+    },
+
+    "cookieOptions": {
+        "secure": true
+    },
+    "GTM": {
+        "id": "GTM-PVWF7WT",
+        "domain": ".gov.uk"
+    }
+}

@@ -9,7 +9,7 @@
 .button-guide a {
   display: block;
   padding: 15px 0;
-  font-family: "nta",Arial,sans-serif;
+  font-family: "GDS Transport",arial,sans-serif;
   font-weight: 700;
   text-transform: none;
   font-size: 16px;
@@ -78,7 +78,7 @@
   display: -moz-inline-stack;
   display: inline-block;
   position: relative;
-  font-family: "nta", Arial, sans-serif;
+  font-family: "GDS Transport",arial,sans-serif;
   font-weight: 400;
   text-transform: none;
   font-size: 14px;
@@ -114,21 +114,4 @@
   left: 0;
   top: 50%;
   margin-top: -6px;
-}
-
-.marker {
-  color: #6f777b;
-  font-family: "nta",Arial,sans-serif;
-  font-weight: 400;
-  text-transform: none;
-  font-size: 14px;
-  line-height: 1.14286;
-  margin-left: 15px;
-}
-
-@media (min-width: 641px) {
-  .marker {
-    font-size: 16px;
-    line-height: 1.25;
-  }
 }

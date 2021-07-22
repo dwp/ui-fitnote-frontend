@@ -3,6 +3,6 @@ var gulp = require('gulp'),
     del = require('del');
 
 /* istanbul ignore next */
-gulp.task('clean', function cleanUp() {
-    return del([gulpPaths.dest.root + '**']);
+gulp.task('clean', function(cb) {
+    return del([gulpPaths.dest.root + '**'], cb);
 });

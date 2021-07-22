@@ -2,14 +2,14 @@
 
 {% block topnav %}
     <a href="/{{route}}-a-photo" class="link-back">{{ t('help-for-photo:upload') }}</a>
-    <span class="marker">{{ t('help-for-photo:scr2-top-link') }}</span>
+    <span class="govuk-!-margin-3 govuk-body-s gds-grey">{{ t('help-for-photo:scr2-top-link') }}</span>
 {% endblock %}}
 
 {% block helppage %}
 <div class="photo-guide">
-    <div class="grid-row">
-        <div class="column-full">
-            <h1 class="heading-large mt0">{{ t('help-for-photo:scr2-head') }}</h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-body gds-white">
+            <h1 class="govuk-heading-l gds-white">{{ t('help-for-photo:scr2-head') }}</h1>
 
             <p>{{ t('help-for-photo:scr2-li1') }}</p>
             <ul>
@@ -22,10 +22,10 @@
             <nav class="guide-nav">
                 <ul>
                     <li class="button-guide button-guide-previous">
-                        <a href="/help-for-photo-step-1">{{ t('help-for-photo:back') }}</a>
+                        <a href="/help-for-photo-step-1" class="govuk-link">{{ t('help-for-photo:back') }}</a>
                     </li>
                     <li class="button-guide button-guide-next">
-                        <a href="/help-for-photo-step-3">{{ t('help-for-photo:next') }}</a>
+                        <a href="/help-for-photo-step-3" class="govuk-link">{{ t('help-for-photo:next') }}</a>
                     </li>
                 </ul>
             </nav>

@@ -1,8 +1,10 @@
 {
-    "h1": "Received",
+    "h1": "Fit note submitted",
     "h2": "What happens next",
-    "p1": "Keep your fit note safe, don’t throw it away.",
-    "p2": "You don't need to do anything else, or call to check on its progress. If there’s a problem you’ll be contacted.",
+    "p1": "Keep your fit note safe, do not throw it away.",
+    "p2": "You do not need to do anything else, or call to check on its progress. If there’s a problem you’ll be contacted.",
+    "p3": "It can take up to 24 hours for you to receive a text confirmation of the submission of your fit note (Monday to Friday, 8am to 8pm).",
+    "p4": "You will need to keep sending us fit notes as long as you're unfit for work. We will tell you when you can stop sending them. For example, if your fit note is for 14 days, you will need to send us another one when it runs out.",
     "a": "Send another fit note",
     "alt": "An image of a tick",
     "feedback": "What do you think of this service?",

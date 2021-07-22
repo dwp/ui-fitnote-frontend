@@ -1,8 +1,12 @@
 var logger = require(appRootDirectory + '/app/functions/bunyan');
 var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 var NotifyClient = require('notifications-node-client').NotifyClient;
-var notifyClient = new NotifyClient(config.notifyApiKey);
-notifyClient.setProxy(config.notifyProxy);
+var config = require('config');
+var notifyClient = new NotifyClient(config.get('notify.api_key'));
+notifyClient.setProxy({
+    host : config.get('notify.proxyHost'),
+    port : config.get('notify.proxyPort')
+});
 
 function sendFeedback(req, res) {
     var logType = logger.child({widget : 'postFeedback'});
@@ -15,7 +19,7 @@ function sendFeedback(req, res) {
     var passedHoneypot = checkHoneypot.honeypot(fakePhoneRaw, 'BOT: honeypot detected a bot, Feedback Page, Phone Field');
     var postSubmissionRedirect = (fromPage !== '/complete') ? '?' + require('querystring').stringify({
         return : fromPage
-    }) : '';      
+    }) : '';
 
     function ratingValid() {
         return (!ratingRaw) ? '0' : '1';
@@ -32,12 +36,14 @@ function sendFeedback(req, res) {
     if (ratingValid() === '1' && improvementsValid() === '1' && nameValid() === '1' && phoneValid() === '1') {
         if (passedHoneypot) {
             notifyClient
-                .sendEmail('6af9c0cd-2b28-4605-8bfd-1b79dc5c6b30', config.feedbackMailto, {
-                    rating : ratingRaw,
-                    improvements : improvementsRaw,
-                    name : nameRaw,
-                    phone : phoneRaw,
-                    page : fromPage
+                .sendEmail('6af9c0cd-2b28-4605-8bfd-1b79dc5c6b30', config.get('notify.mailto'), {
+                    personalisation : {
+                        rating : ratingRaw,
+                        improvements : improvementsRaw,
+                        name : nameRaw,
+                        phone : phoneRaw,
+                        page : fromPage
+                    }
                 })
                 .then(() => {
                     logType.info('Feedback sent successfully');

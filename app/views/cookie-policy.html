@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-cookies-policy') }}{% endblock %}
+
+{% block body %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+        <h1 class="govuk-!-font-size-48 margin-bottom-50">{{ t('cookies:h1') }}</h1>
+        <p>{{ t('cookies:p1') }}</p>
+        <p>{{ t('cookies:p2') }}</p>
+
+        <ul class="govuk-list--bullet">
+            <li>{{ t('cookies:li1') }}</li>
+            <li>{{ t('cookies:li2') }}</li>
+        </ul>
+
+        <p>{{ t('cookies:p3') }}</p>
+
+        <ul class="govuk-list--bullet">
+            <li>{{ t('cookies:li3') }}</li>
+            <li>{{ t('cookies:li4') }}</li>
+            <li>{{ t('cookies:li5') }}</li>
+        </ul>
+
+        <h2 class="govuk-!-font-size-36 margin-bottom-30 pad-top-20">{{ t('cookies:h2') }}</h2>
+        <h3 class="govuk-!-font-size-19 margin-bottom-20">{{ t('cookies:analytics-heading') }}</h3>
+        <p>{{ t('cookies:analytics-summary') }}</p>
+
+        <form class="form" action="/update-cookie-settings" method="post" name="consentForm" id="formData" data-form="consent" autocomplete="off" >
+            <input name="previousPage" value="{{previousPage}}" type="hidden" />
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend">
+
+                        <h3 class="govuk-!-font-size-19 margin-bottom-20 govuk-!-font-weight-bold">{{ t('cookies:h3-use-cookies') }}</h3>
+
+                    </legend>
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cookies-consent-yes" name="consent"
+                                type="radio" value="true" {% if cookiesConsented === 'true' %}checked="checked"{%endif%}>
+                            <label class="govuk-label govuk-radios__label" for="cookies-consent-yes">
+                                {{ t('cookies:label-yes') }}
+                            </label> </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cookies-consent-no" name="consent"
+                                type="radio" value="false" {% if cookiesConsented === 'false' %}checked="checked"{%endif%}>
+                            <label class="govuk-label govuk-radios__label" for="cookies-consent-no">
+                                {{ t('cookies:label-no') }}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button">
+                {{ t('cookies:btn-save') }}
+            </button>
+            <p><a class="govuk-link" href="/cookies/cookies_details">{{ t('cookies:a1') }}</a></p>
+        </form>
+    </div>
+</div>
+</div>
+
+{% endblock %}

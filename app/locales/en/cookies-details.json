@@ -1,0 +1,61 @@
+{
+    "h1": "Details about cookies on this service",
+    "h2-1": "If your cookies are switched off",
+    "h2-3": "Cookies that help keep your information secure",
+    "h2-4": "Cookies message",
+
+    "a1": "change which cookies you are happy for us to use",
+    "a2": "browser you are using",
+
+    "p1": "We need to use some essential cookies to make the 'Send your fit note for your ESA claim' website work.",
+    "p2": "You can",
+    "p3": "You will see an error message when you try to use the website if your cookies are disabled.",
+    "p4": "How to turn cookies on depends on the",
+    "p5": "and how up to date it is.",
+    "p6": "Find out how to change your settings for the most popular browsers, including:",
+    "p7": "Find out ",
+    "p8": "for other browsers.",
+    "p13": "We use session cookies to keep your information secure as you move back and forward through the website.",
+    "p14": "These cookies are automatically removed from your computer when you complete your application or if you:",
+    "p15": "You may see a banner when you visit this website inviting you to accept cookies or review your settings. We’ll set cookies so that your computer knows you’ve seen it and not to show it again, and also to store your settings.",
+
+    "li1": "Internet Explorer",
+    "li2": "Mozilla Firefox",
+    "li4-a": "Safari",
+    "li4": ", commonly used on iPads, iPhones and other Apple computers",
+    "li3": "Google Chrome",
+    "a3": "how to manage cookies",
+
+    "li8": "don't do anything for 30 minutes",
+    "li9": "close your browser",
+    "li10": "switch off your computer",
+
+    "caption3": "Security cookies",
+    "caption4": "Service cookies",
+
+    "th1": "Name",
+    "th2": "Purpose",
+    "th3": "Expires",
+
+    "td10": "sessionID",
+    "td11": "This is your unique generated session cookie. The service requires this to work. It will expire 30 minutes after beginning, or at the end of the service, which ever occurs first.",
+    "td12": "30 minutes",
+    "td13": "cookies_agreed",
+    "td14": "Records if the cookies message at the top of the site has been viewed, upon your first visit, so it isn't redisplayed on each subsequent visit.",
+    "td15": "1 year",
+
+    "analytics-header": "Cookies that measure website use",
+    "analytics-summary": "We use Google Analytics software to collect information about how you use the website. We use this information to improve this website.",
+    "analytics-hint": "We do not allow Google to use or share the data about how you use this site.",
+    "analytics-list-heading": "Google analytics cookies collect and store information about:",
+    "analytics-list-item-1": "the page you visit - what you click on when using the website",
+    "analytics-list-item-2": "how long you spend on each page",
+    "analytics-list-item-3": "how you got to the website",
+    "analytics-table-header": "Google analytics cookies",
+    "analytics-table-row-1-name": "_ga",
+    "analytics-table-row-1-purpose": "Counts how many people visit the website by tracking if they've visited before.",
+    "analytics-table-row-1-expires": "60 minutes or when you close your browser",
+    "analytics-table-row-2-name": "_gat",
+    "analytics-table-row-2-purpose": "Counts how many pages are viewed and how often.",
+    "analytics-table-row-2-expires": "10 minutes"
+}

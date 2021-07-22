@@ -1,0 +1,11 @@
+/* HMRC Frontend
+-------------------------------------------------- */
+@import "hmrc-frontend-src/src/components/timeout-dialog/timeout-dialog";
+
+.hmrc-timeout-dialog__message[aria-hidden="true"]{
+  display: block;
+}
+
+main[aria-hidden="true"][role="main"]{
+  display: block;
+}

@@ -6,12 +6,13 @@ var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 var checkBlank = require(appRootDirectory + '/app/functions/sanitise/isFieldBlank');
 var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 const sessionExpiry = require(appRootDirectory + '/app/functions/refreshSessionExpiryTime.js');
+const config = require('config');
 
 function sendNino(req, res) {
     var ninoDone;
     var logType = logger.child({widget : 'postNino'});
     var ninoRaw = req.body.ninoField;
-    var previousPage = req.body.previousPage;
+    var previousPageCYA = req.body.previousPage;
     var isNinoBlank = checkBlank.notBlank(ninoRaw);
     var fakeEmailRaw = req.body.emailField;
     var convertedNino = isSanitised.sanitiseNino(ninoRaw);
@@ -25,7 +26,7 @@ function sendNino(req, res) {
     };
 
     var options = {
-        url : config.apiURL + '/nino',
+        url : config.get('api.url') + '/nino',
         method : 'POST',
         json : true,
         timeout : 240000,
@@ -43,7 +44,7 @@ function sendNino(req, res) {
 
     function processRequest() {
         logType.info('Submitted form data successfully');
-        if (previousPage === '/check-your-answers') {
+        if (previousPageCYA === '1') {
             res.redirect('/check-your-answers');
         } else {
             res.redirect('/address');
@@ -83,7 +84,6 @@ function sendNino(req, res) {
         if (passedHoneypot === false) {
             logType.info('BOT detected. Doing fake send');
             res.redirect('/address'); // don't post the request just go to the next page.
-            req.visitor.event('Honeypot', 'emailFieldID', 'Bot', {'dimension4' : 1});
         } else {
             hasNinoPassed();
         }

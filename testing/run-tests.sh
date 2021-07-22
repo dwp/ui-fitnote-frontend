@@ -3,18 +3,18 @@
 
 # Define list of urls for tests
 urls=(index take-a-photo photo-audit nino address text-message complete cookies cookies-table 404 500)
-disabilities=(achromatomaly achromatopsia deuteranomaly deuteranopia protanomaly protanopia tritanomaly tritanopia )
+# disabilities=(achromatomaly achromatopsia deuteranomaly deuteranopia protanomaly protanopia tritanomaly tritanopia )
 
 echo "Please Note: An internet connection is REQUIRED for all tests to run successfully"
 
-cd ../
+cd ../ || exit
 
 # Mocha unit tests
 echo "Starting Mocha tests"
-npm run test
+npm run test &
 
 # Start the test server in background
-json-server --port 3004 testing/db.json &
+# json-server --port 3004 testing/db.json &
 
 # Start Node in test mode in background
 npm run testing --scripts-prepend-node-path &
@@ -24,8 +24,8 @@ echo "Waiting for Node to start..."
 sleep 5
 
 # Javascript Lint checks
-echo "Starting esLint..."
-eslint -c testing/configs/.eslintrc.json */*.js
+# echo "Starting esLint..."
+# eslint -c testing/configs/.eslintrc.json */*.js
 
 # Sass Lint checks
 echo "Starting Sass Lint..."
@@ -33,7 +33,7 @@ sass-lint -c testing/configs/.sass-lint.yml 'assets/scss/*.scss' -v -q
 # open -g testing/linting/sass-lint.html
 
 # Run Valimate HTML validation tests
-cd testing/configs
+cd testing/configs || exit
 valimate
 
 cd ../
@@ -41,16 +41,16 @@ cd ../
 # Run Broken Link Checker
 for i in "${urls[@]}"
 do
-    blc http://localhost:3000/$i
+    blc http://localhost:3000/"$i"
 done
 
 # Pa11y accesibility checks
 echo "Starting Pa11y..."
 for i in "${urls[@]}"
 do
-    pa11y http://localhost:3000/$i --reporter html > accessibility/$i.html
+    pa11y http://localhost:3000/"$i" --reporter html > accessibility/"$i".html
     # open -g accessibility/$i.html
-    echo $i processed
+    echo "$i" processed
 done
 echo "Finished Pa11y"
 

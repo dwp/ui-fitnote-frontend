@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "2.0.0",
+  "fileExistenceTests": [
+    {
+      "name": "app directory exists",
+      "path": "/app",
+      "shouldExist": true
+    },
+    {
+      "name": "assets directory exists",
+      "path": "/assets",
+      "shouldExist": true
+    },
+    {
+      "name": "bin directory exists",
+      "path": "/bin",
+      "shouldExist": true
+    },
+    {
+      "name": "gulp directory exists",
+      "path": "/gulp",
+      "shouldExist": true
+    },
+    {
+      "name": "public directory exists",
+      "path": "/public",
+      "shouldExist": true
+    },
+    {
+      "name": "node_modules directory exists",
+      "path": "/node_modules",
+      "shouldExist": true
+    },
+    {
+      "name": "app.js exists",
+      "path": "/app/app.js",
+      "shouldExist": true
+    },
+    {
+      "name": "gulpfile.js exists",
+      "path": "/gulpfile.js",
+      "shouldExist": true
+    },
+    {
+      "name": "package.json exists",
+      "path": "/package.json",
+      "shouldExist": true
+    }
+  ]
+}

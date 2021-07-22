@@ -1,11 +1,11 @@
 {% macro currentPhase(phase='') %}
 
- {% if phase == "alpha" or phase == "ALPHA" %}
-    <strong class="phase-tag">ALPHA</strong>
+{% if phase == "alpha" or phase == "ALPHA" %}
+<strong class="govuk-tag govuk-phase-banner__content__tag">ALPHA</strong>
 {% endif %}
 
 {% if phase == "beta" or phase == "BETA" %}
-    <strong class="phase-tag">BETA</strong>
+<strong class="govuk-tag govuk-phase-banner__content__tag">BETA</strong>
 {% endif %}
 
 {% endmacro %}

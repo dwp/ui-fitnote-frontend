@@ -1,0 +1,281 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-04') }}{% endblock %}
+
+{% block back_link %}
+<a href="/method-obtained?ref=upload-paper" class="govuk-back-link">{{ t('upload-paper:back') }}</a>
+{% endblock %}
+
+{% block body %}
+{% include "includes/govuk-error-summary.html" %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+        <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload-paper:h1') }}</h1>
+
+        <ol class="govuk-list govuk-list--number">
+            <li class="govuk-!-padding-bottom-3">{{ t('upload-paper:list.li1') }}</li>
+            <li>
+                {{ t('upload-paper:list.li2.main') }}
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>{{ t('upload-paper:list.li2.sub1') }}</li>
+                    <li>{{ t('upload-paper:list.li2.sub2') }}</li>
+                </ul>
+            </li>
+            <li>
+                {{ t('upload-paper:list.li3')|safe }}
+            </li>
+        </ol>
+        <img src="/images/both-scans.png" class="both-scans" alt="{{ t('upload-paper:image-alts.both-scans') }}">
+        <p class="govuk-!-padding-top-2">
+            <strong>
+                {{ t('upload-paper:text') }}
+            </strong>
+        <p>
+        <div class="govuk-inset-text">
+            <ul class="govuk-list govuk-list--bullet">
+                <li>{{ t('upload-paper:insetText.li1') }}</li>
+                <li>{{ t('upload-paper:insetText.li2') }}</li>
+                <li>{{ t('upload-paper:insetText.li3')|safe }}</li>
+            </ul>
+        </div>
+
+        <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    {{ t('upload-paper:details-link-text') }}
+                    <span class="govuk-visually-hidden">{{ t('upload-paper:details-link-hidden-text') }}</span>
+                </span>
+            </summary>
+            <h2 class="govuk-heading-m govuk-!-padding-top-7">
+                {{ t('upload-paper:details-summary-text') }}
+            </h2>
+            <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large app-step-nav--active"
+                data-show-text="Show" data-hide-text="Hide" data-show-all-text="{{ t('upload-paper:step-nav-reveal') }}" data-hide-all-text="Hide all">
+                <ol class="app-step-nav__steps">
+                    <li class="app-step-nav__step js-step" id="hold-the-device-directly-above-the-fit-note">
+                        <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                            <h2 class="app-step-nav__title">
+                                <span class="app-step-nav__circle app-step-nav__circle--number">
+                                    <span class="app-step-nav__circle-inner">
+                                        <span class="app-step-nav__circle-background">
+                                            <span class="govuk-visually-hidden">Step</span> 1
+                                        </span>
+                                    </span>
+                                </span>
+
+                                <span class="js-step-title">
+                                    {{ t('upload-paper:step-nav-1.headline') }}
+                                </span>
+                            </h2>
+                        </div>
+
+                        <div class="app-step-nav__panel js-panel js-hidden"
+                            id="step-panel-hold-the-device-directly-above-the-fit-note-1">
+
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>{{ t('upload-paper:step-nav-1.li1') }}</li>
+                                <li>{{ t('upload-paper:step-nav-1.li2') }}</li>
+                                <li>{{ t('upload-paper:step-nav-1.li3') }}</li>
+                            </ul>
+                            <img src="/images/both-scans.png" class="both-scans" alt="{{ t('upload-paper:image-alts.both-scans') }}">
+                            <div class="govuk-!-padding-bottom-4"></div>
+                        </div>
+
+                    </li>
+
+                    <li class="app-step-nav__step js-step" id="Find-a-well-lit-place-and-avoid-shadows">
+                        <div class="app-step-nav__header js-toggle-panel" data-position="2">
+                            <h2 class="app-step-nav__title">
+                                <span class="app-step-nav__circle app-step-nav__circle--number">
+                                    <span class="app-step-nav__circle-inner">
+                                        <span class="app-step-nav__circle-background">
+                                            <span class="govuk-visually-hidden">Step</span> 2
+                                        </span>
+                                    </span>
+                                </span>
+
+                                <span class="js-step-title">
+                                    {{ t('upload-paper:step-nav-2.headline') }}
+                                </span>
+                            </h2>
+                        </div>
+
+                        <div class="app-step-nav__panel js-panel js-hidden"
+                            id="step-panel-Find-a-well-lit-place-and-avoid-shadows-2">
+                            <ol class="app-step-nav__list " data-length="1">
+                                <li class="app-step-nav__list-item js-list-item ">
+                                <li><strong>{{ t('upload-paper:step-nav-2.subHeading') }}</strong>
+                                    <div class="govuk-!-padding-bottom-3"></div>
+                                    <ul class="govuk-list govuk-list--bullet">
+                                        <li>{{ t('upload-paper:step-nav-2.li1') }}</li>
+                                        <li>{{ t('upload-paper:step-nav-2.li2') }}</li>
+                                        <li>{{ t('upload-paper:step-nav-2.li3') }}</li>
+                                    </ul>
+                            </ol>
+                            <img src="/images/fit-note-shadow.png" class="fit-note-shadow" alt="{{ t('upload-paper:image-alts.fit-note-shadow') }}">
+                            <div class="govuk-!-padding-bottom-1"></div>
+                        </div>
+
+                    </li>
+
+                    <li class="app-step-nav__step js-step" id="Make-sure-your-fit-note-is-sideways-or-landscape">
+                        <div class="app-step-nav__header js-toggle-panel" data-position="3">
+                            <h2 class="app-step-nav__title">
+                                <span class="app-step-nav__circle app-step-nav__circle--number">
+                                    <span class="app-step-nav__circle-inner">
+                                        <span class="app-step-nav__circle-background">
+                                            <span class="govuk-visually-hidden">Step</span> 3
+                                        </span>
+                                    </span>
+                                </span>
+
+                                <span class="js-step-title">
+                                    {{ t('upload-paper:step-nav-3.headline')}}
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="app-step-nav__panel js-panel js-hidden"
+                            id="step-panel-Make-sure-your-fit-note-is-sideways-or-landscape-2">
+                            <div class="govuk-text">
+                                <p>{{ t('upload-paper:step-nav-3.text')|safe }}</p>
+                            </div>
+                            <ol class="app-step-nav__list " data-length="1">
+                                <li class="app-step-nav__list-item js-list-item "></li>
+                                <img src="/images/fit-note-landscape.png" class="fit-note-landscape" alt="{{ t('upload-paper:image-alts.fit-note-landscape') }}">
+                                <div class="govuk-!-padding-bottom-1"></div>
+                            </ol>
+                        </div>
+
+                    </li>
+
+                    <li class="app-step-nav__step js-step" id="book-and-manage-your-theory-test">
+                        <div class="app-step-nav__header js-toggle-panel" data-position="5">
+                            <h2 class="app-step-nav__title">
+                                <span class="app-step-nav__circle app-step-nav__circle--number">
+                                    <span class="app-step-nav__circle-inner">
+                                        <span class="app-step-nav__circle-background">
+                                            <span class="govuk-visually-hidden">Step</span> 4
+                                        </span>
+                                    </span>
+                                </span>
+
+                                <span class="js-step-title">
+                                    {{ t('upload-paper:step-nav-4.headline') }}
+                                </span>
+                            </h2>
+                        </div>
+
+                        <div class="app-step-nav__panel js-panel js-hidden"
+                            id="step-panel-book-and-manage-your-theory-test-5">
+                            <p class="app-step-nav__paragraph">
+                                {{ t('upload-paper:step-nav-4.text') }}
+                            </p>
+                            <img src="/images/fit-note-zoom.png" class="fit-note-zoom"
+                                alt="{{ t('upload-paper:image-alts.fit-note-zoom') }}">
+                            <div class="govuk-!-padding-bottom-1"></div>
+                        </div>
+
+                    </li>
+
+                    <li class="app-step-nav__step js-step" id="make-sure-the-photo-isnt-blurred">
+                        <div class="app-step-nav__header js-toggle-panel" data-position="6">
+                            <h2 class="app-step-nav__title">
+                                <span class="app-step-nav__circle app-step-nav__circle--number">
+                                    <span class="app-step-nav__circle-inner">
+                                        <span class="app-step-nav__circle-background">
+                                            <span class="govuk-visually-hidden">Step</span> 5
+                                        </span>
+                                    </span>
+                                </span>
+
+                                <span class="js-step-title">
+                                    {{ t('upload-paper:step-nav-5.headline') }}
+                                </span>
+                            </h2>
+                        </div>
+
+                        <div class="app-step-nav__panel js-panel js-hidden"
+                            id="step-panel-make-sure-the-photo-isnt-blurred-6">
+                            <p class="app-step-nav__paragraph">
+                                {{ t('upload-paper:step-nav-5.text1') }}
+                            </p>
+                            <p>
+                                {{ t('upload-paper:step-nav-5.text2') }}
+                            </p>
+                            <img src="/images/fit-note-blur.png" class="fit-note-blur" alt="{{ t('upload-paper:image-alts.fit-note-blur') }}">
+                            <div class="govuk-!-padding-bottom-1"></div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </details>
+
+        <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData"
+            data-form="takeAPhoto" autocomplete="off">
+            <div class="govuk-form-group">
+                <div class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
+                    <label for="userPhotoID">
+                        <h2 class="govuk-heading-m">{{ t('upload-paper:upload') }}</h2>
+                    </label>
+                    {% if errors.photo or errors.photoOCR %}
+                    {% for error, value in errors %}
+                    <span id="file-upload-1-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{value.message}}
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+                    <input type="file" accept="image/*,application/pdf"
+                        id="userPhotoID" name="userPhoto" class="govuk-file-upload">
+                </div>
+
+                <div class="govuk-form-group" aria-hidden="true">
+                    <label for="imageNameID" aria-hidden="true">Leave blank</label>
+                    <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value=""
+                        autofill="off">
+                </div>
+
+                <div id="js-loading-message" class="display-offscreen">
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                    <p>{{ t('upload-paper:p') }}</p>
+                </div>
+                <div id="js-submitButtonContainer" class="clearfix">
+                    <input type="submit" class="govuk-button" value="{{ t('upload-paper:buttonText') }}"
+                        id="submitButton">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+
+
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script src="/javascript/jquery-1.11.3.js"></script>
+<script src="/javascript/get-a-photo.js?version={{assetsVersion}}"></script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+
+<script src="/javascript/step-by-step-nav.js"></script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation')
+    var stepByStepNavigation = new GOVUK.Modules.AppStepNav()
+    stepByStepNavigation.start($element)
+</script>
+<script src="/govuk/all.js"></script>
+<script>
+    var ErrorSummary = window.GOVUKFrontend.ErrorSummary
+    var $errorSummary = document.querySelector('[data-module="govuk-error-summary"]');
+    if ($errorSummary) {
+        new ErrorSummary($errorSummary).init();
+    }
+</script>
+{% endblock %}

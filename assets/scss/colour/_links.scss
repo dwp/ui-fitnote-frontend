@@ -35,8 +35,8 @@ a.service-logo:hover {
 }
 
 a:focus {
-    background-color: brand(gds-yellow);
-    outline: 3px solid brand(gds-yellow);
+    background-color: govuk-colour("yellow");
+    outline: 3px solid govuk-colour("yellow");
 }
 
 a.current {

@@ -1,12 +1,14 @@
 {
-    "h1": "Derbyniwyd",
+    "h1": "Nodyn ffitrwydd wedi’i anfon",
     "h2": "Beth sy'n digwydd nesaf",
     "p1": "Cadwch eich nodyn ffitrwydd yn ddiogel, peidiwch â'i daflu i ffwrdd.",
     "p2": "Nid oes angen i chi wneud unrhyw beth arall, na ffonio i weld beth sy'n digwydd. Os oes problem byddwn yn cysylltu â chi.",
+    "p3": "Gall gymryd hyd at 24 awr i chi dderbyn neges testun o gadarnhad (Dydd Llun i ddydd Gwener, 8am i 8pm)",
+    "p4": "Bydd angen i chi barhau i anfon nodiadau ffitrwydd atom cyn belled â nad ydych yn ddigon iach i weithio. Byddwn yn dweud wrthych pryd y gallwch roi'r gorau i'w hanfon. Er enghraifft, os yw'ch nodyn ffitrwydd am 14 diwrnod, bydd angen i chi anfon un arall atom pan fyff hwnnw'n rhedeg allan.",
     "a": "Anfon nodyn ffitrwydd arall",
     "alt": "Darlun o dic",
     "feedback": "Beth ydych yn feddwl o'r gwasanaeth hwn?",
     "feedbackInfo": "(mae'n cymryd 30 eiliad)",
     "govukUrl": "https://www.gov.uk/anfon-eich-nodyn-ffitrwydd-ar-gyfer-eich-cais-esa",
-    "reference" : "Eich cyfeirnod yw eich rhif Yswiriant Gwladol"
+    "reference" : "Eich rhif cyfeirnod yw eich rhif Yswiriant Gwladol"
 }

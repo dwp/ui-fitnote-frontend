@@ -9,7 +9,7 @@ global.logger = { child : () => {
 
 global.config = {
     version: '3',
-    nodeEnvironment: 'dev',
+    nodeEnvironment: 'test',
     apiURL: 'http://localhost:3004'
 }
 

@@ -6,8 +6,18 @@
 //     }
 // }
 
-.govuk-blue { color: brand(govuk-blue); }
-.gds-red { color: brand(gds-red); }
-.gds-black { color: brand(gds-black); }
-.gds-white { color: brand(gds-white); }
-.gds-grey { color: brand(gds-grey-1); }
+.govuk-blue {
+  color: govuk-colour("blue");
+}
+.gds-red {
+  color: govuk-colour("red");
+}
+.gds-black {
+  color: govuk-colour("black");
+}
+.gds-white {
+  color: govuk-colour("white");
+}
+.gds-grey {
+  color: govuk-colour("dark-grey");
+}

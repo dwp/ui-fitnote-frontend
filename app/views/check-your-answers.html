@@ -1,88 +1,102 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-10') }}{% endblock %}
 
-{% block googleTags %}
-<script>
-    ga('send', 'pageview');
-</script>
-
+{% block back_link %}
+<a href="/text-message?ref=check-your-answers" class="govuk-back-link">{{ t('check-your-answers:back') }}</a>
 {% endblock %}
 
 {% block body %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{ t('check-your-answers:h1') }}
+    </h1>
 
-<div class="grid-row">
-    <div class="column-two-thirds">
-        <h1 class="heading-large bold">{{ t('check-your-answers:h1') }}</h1>
-            <table class="govuk-table">
-                <tbody>
-                    <tr>
-                        <th>{{ t('check-your-answers:nino') }}</th>
-                        <td>{{ nino }}</td>
-                        <td>
-                            <a href="/nino" id="changeNino" onclick="ga ('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Nino')">
-                                {{ t('check-your-answers:change') }}<span aria-hidden="true"> {{ t('check-your-answers:changeNino') }}</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="remove-border-bottom">{{ t('check-your-answers:house') }}</th>
-                        <td class="remove-border-bottom">{{ house }}</td>
-                        <td class="remove-border-bottom">
-                            <a href="/address" id="changeAddress" onclick="ga ('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - House Number')">
-                                {{ t('check-your-answers:change') }}<span aria-hidden="true">{{ t('check-your-answers:changeAddress') }}</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="remove-padding">{{ t('check-your-answers:postcode') }}</th>
-                        <td class="remove-padding">{{ postcode }}</td>
-                        <td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>{{ t('check-your-answers:confirmText') }}</th>
-                        <td>
-                            {% if mobile === "" %}
-                                No
-                            {% else %}
-                                Yes
-                            {% endif %}
-                        </td>
-                        <td>
-                            <a href="/text-message" id="changeText" onclick="ga ('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Text Message Confirmation')">
-                                {{ t('check-your-answers:change') }}<span aria-hidden="true">{{ t('check-your-answers:changeConfirmation') }}</span>
-                            </a>
-                        </td>
-                    </tr>
-                    {% if mobile != "" %}
-                        <tr>
-                            <th>{{ t('check-your-answers:mobile') }}</th>
-                            <td>{{ mobile }}</td>
-                            <td>
-                                <a href="/text-message" id="changeMobile" onclick="ga('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Mobile Number')">
-                                    {{ t('check-your-answers:change') }}<span aria-hidden="true">{{ t('check-your-answers:changeMobile') }}</span>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endif %}
-                </tbody>
-            </table>
-        <br>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9 govuk-!-font-size-19">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{ t('check-your-answers:nino') }}
+        </dt>
+        <dd class="govuk-summary-list__value">{{ nino }}</dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/nino?ref=check-your-answers" id="changeNino">
+            {{ t('check-your-answers:change') }}<span
+              class="govuk-visually-hidden"
+              >{{ t('check-your-answers:changeNino') }}</span
+            >
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{ t('check-your-answers:address') }}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ house }}<br />{{ postcode }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/address?ref=check-your-answers" id="changeAddress">
+            {{ t('check-your-answers:change') }}<span
+              class="govuk-visually-hidden"
+              >{{ t('check-your-answers:changeAddress') }}</span
+            >
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{ t('check-your-answers:confirmText') }}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if mobile === "" %} {{ t('check-your-answers:no') }} {% else %} {{
+          t('check-your-answers:yes') }} {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/text-message?ref=check-your-answers" id="changeText">
+            {{ t('check-your-answers:change') }}<span
+              class="govuk-visually-hidden"
+              >{{ t('check-your-answers:changeConfirmation') }}</span
+            >
+          </a>
+        </dd>
+      </div>
+      {% if mobile != "" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{ t('check-your-answers:mobile') }}
+        </dt>
+        <dd class="govuk-summary-list__value">{{ mobile }}</dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/change-number?ref=check-your-answers" id="changeMobile">
+            {{ t('check-your-answers:change') }}<span
+              class="govuk-visually-hidden"
+              >{{ t('check-your-answers:changeMobile') }}</span
+            >
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
 
-        <form action="/check-your-answers" method="post" class="form">
-            <div class="form-group">
-                <input type="submit" id="acceptAndSendButton" class="button primary-button" value="{{ t('check-your-answers:button') }}" onclick="ga('send', 'event', 'Link - click', 'Change your answer', 'Change your answer - Fitnote Upload')">
-            </div>
-        </form>
-    </div>
-    {% include "includes/sidebar.html" %}
+    <br />
+
+    <form action="/check-your-answers" method="post" class="form">
+      <div class="govuk-form-group">
+        <input
+          type="submit"
+          id="acceptAndSendButton"
+          class="govuk-button"
+          value="{{ t('check-your-answers:button') }}"
+        />
+      </div>
+    </form>
+  </div>
+  {% include "includes/sidebar.html" %}
 </div>
-{% endblock %}
-
-{% block body_end %}
+{% endblock %} {% block body_end %} {{super()}}
 <script>
-    var lang = '{{ lang }}';
-    var expires = '{{ exp }}';
+  var lang = "{{ lang }}";
+  var expires = "{{ exp }}";
 </script>
-<script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+
 {% endblock %}

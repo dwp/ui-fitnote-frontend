@@ -11,9 +11,11 @@
     "info": "Peidiwch â chynnwys unrhyw wybodaeth bersonol neu arianniol, er enghraifft eich rhifau Yswiriant Gwladol neu gerdyn credyd.",
     
     "yourName": "Eich enw",
+    "yourname-aria-label": "Rhowch eich enw",
     "phone": "Eich rhif ffôn",
+    "phone-aria-label": "Rhowch eich rhif ffôn",
     "helpMore": "Ydych chi eisiau helpu mwy?",
     "helpMoreText":"Er mwyn gwella'r gwasanaeth hwn hoffem ofyn ychydig o gwestiynau byr i chi am eich profiad heddiw. Dylech ond rhoi eich manylion cyswllt os ydych yn cytuno i hyn.",
-    
+    "helpMoreAria": "Ydych chi eisiau helpu mwy? Er mwyn gwella'r gwasanaeth hwn hoffem ofyn ychydig o gwestiynau byr i chi am eich profiad heddiw. Dylech ond rhoi eich manylion cyswllt os ydych yn cytuno i hyn.",
     "button": "Anfon adborth"
 }

@@ -2,5 +2,7 @@
     "h1": "Eich cyfeiriad",
     "legend": "Rhowch eich cyfeiriad",
     "house-number": "Enw neu rif tŷ",
-    "postcode": "Cod post"
+    "house-number-aria-label": "Rhowch enw neu rif eich tŷ",
+    "postcode": "Cod post",
+    "postcode-aria-label": "Rhowch god post"
 }

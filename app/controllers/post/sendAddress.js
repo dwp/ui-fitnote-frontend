@@ -6,6 +6,7 @@ var checkBlank = require(appRootDirectory + '/app/functions/sanitise/isFieldBlan
 var checkHoneypot = require(appRootDirectory + '/app/functions/honeypot');
 var validatePostcode = require(appRootDirectory + '/app/functions/sanitise/validatePostcode');
 const sessionExpiry = require(appRootDirectory + '/app/functions/refreshSessionExpiryTime.js');
+const config = require('config');
 
 function sendAddress(req, res) {
     var houseNumberValid;
@@ -17,8 +18,8 @@ function sendAddress(req, res) {
     var postcodeSanitised = isSanitised.sanitiseField(postcodeRaw);
     var postcodeValid = validatePostcode.validatePostcode(postcodeSanitised.toUpperCase());
     var fakeCountyRaw = req.body.countyField;
-    var houseNumberSanitised = isSanitised.sanitiseField(houseNumberRaw);
-    var previousPage = req.body.previousPage;
+    var houseNumberSanitised = houseNumberRaw;
+    var previousPageCYA = req.body.previousPage;
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
     var passedHoneypot = checkHoneypot.honeypot(fakeCountyRaw, 'BOT: honeypot detected a bot, Address Page, County Field');
     var ishouseNumberBlank = checkBlank.notBlank(houseNumberSanitised);
@@ -29,7 +30,7 @@ function sendAddress(req, res) {
     };
 
     var options = {
-        url : config.apiURL + '/address',
+        url : config.get('api.url') + '/address',
         method : 'POST',
         json : true,
         timeout : 240000,
@@ -58,7 +59,7 @@ function sendAddress(req, res) {
 
     function processRequest() {
         logType.info('Submitted form data successfully');
-        if (previousPage === '/check-your-answers') {
+        if (previousPageCYA === '1') {
             res.redirect('/check-your-answers');
         } else {
             res.redirect('/text-message');
@@ -96,7 +97,6 @@ function sendAddress(req, res) {
 
         if (passedHoneypot === false) {
             logType.info('BOT detected. Doing fake send');
-            req.visitor.event('Honeypot', 'countyID', 'Bot', {'dimension4' : 1});
             res.redirect('/text-message'); // don't post the request just go to the next page.
         } else if (passedHoneypot === true && formValid === true) {
             request(options, callback);

@@ -1,6 +1,5 @@
 // Fit Note Application
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-var ua = require('universal-analytics');
 var nunjucks = require('nunjucks');
 var favicon = require('serve-favicon');
 var helmet = require('helmet');
@@ -8,10 +7,15 @@ var async = require('async');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express = require('express');
-var expressSanitized = require('express-sanitize-escape');
+var expressSanitized = require('express-sanitized');
 var timeout = require('connect-timeout');
 var path = require('path');
 var app = express();
+
+// middleware
+const cookieConsentMW = require('./middleware/cookie-consent');
+const nonceMW = require('./middleware/nonce');
+const timeoutDialogMW = require('./middleware/timeout-dialog');
 
 // Global Vars
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -19,9 +23,12 @@ var oneYear = 31557600000;
 var routes;
 
 appRootDirectory = path.join(__dirname, '/..');
-config = require(appRootDirectory + '/app/config.js');
+const config = require('config');
 logger = require(appRootDirectory + '/app/functions/bunyan');
 routes = require(appRootDirectory + '/app/routes.js');
+
+const serviceCheck = require(appRootDirectory + '/app/functions/checkServer');
+serviceCheck.apiCheck(config.get('api.url'));
 
 // Initialise The Application
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,9 +41,10 @@ function parallel(middlewares) {
     };
 }
 
+// eslint-disable-next-line consistent-return
 function haltOnTimedout(req, res, next) {
     if (!req.timedout) {
-        next();
+        return next();
     }
 }
 
@@ -45,14 +53,19 @@ function haltOnTimedout(req, res, next) {
 // 3. Support JSON-encoded bodies
 // 4. Support URL-encoded bodies
 // 5. Line MUST follow express.bodyParser() to sanitize code.
-// 6. ANY static content MUST be in the public area or it will not get served.
-// 7. Required to serve Favicon
-// 8. Universal GA
+// 6. Google tag manager nonce
+// 7. ANY static content MUST be in the public area or it will not get served.
+// 8. Required to serve Favicon
 app.use(parallel([
     helmet({
         contentSecurityPolicy : {
             directives : {
-                scriptSrc : ["'self'", "'unsafe-inline'", 'https://www.google-analytics.com/']
+                defaultSrc : ["'self'"],
+                scriptSrc : ["'self'", "'unsafe-inline'", 'https://www.googletagmanager.com', 'https://www.google-analytics.com'],
+                connectSrc : ["'self'", 'https://www.google-analytics.com'],
+                styleSrc : ["'self'", "'unsafe-inline'", 'data:'],
+                fontSrc : ["'self'", 'https: data:'],
+                imgSrc : ["'self'", 'data:', 'www.googletagmanager.com', 'https://www.google-analytics.com']
             }
         },
         hsts : false
@@ -63,22 +76,18 @@ app.use(parallel([
     haltOnTimedout,
     timeout(240000),
     bodyParser.urlencoded({extended : true}), //(4)
+    cookieConsentMW,
     haltOnTimedout,
-    expressSanitized.middleware(), //(5)
-    express.static(appRootDirectory + '/public', {maxAge : oneYear}), //(6)
-    favicon('public/images/favicon.ico'), //(7)
-    ua.middleware('UA-57523228-37', {cookieName : '_ga'}) //(8)
+    expressSanitized(), //(5)
+    nonceMW, //(6)
+    timeoutDialogMW,
+    express.static(appRootDirectory + '/public', {maxAge : oneYear}), //(7)
+    favicon('public/images/favicon.ico') //(8)
 ]));
 
 // Set Nunjucks as rendering engine for pages with .html suffix
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 app.set('view engine', 'html');
-
-// Prepare a file loader for use with all Nunjucks environments
-const loader = new nunjucks.FileSystemLoader('app/views', {
-    watch : false,
-    noCache : false
-});
 
 /**
 * Setup a nunjucks environment, per request, so we can tailor the environment
@@ -88,11 +97,14 @@ const loader = new nunjucks.FileSystemLoader('app/views', {
 * can use the same Nunjucks environment on application-specific routes.
 */
 app.use(function(req, res, next) {
-    const env = new nunjucks.Environment(loader, {
+    const env = nunjucks.configure([path.join(__dirname, '../app/views'), path.join(__dirname, '../node_modules/hmrc-frontend')], {
         autoescape : true,
         throwOnUndefined : false,
         trimBlocks : false,
         lstripBlocks : false
+    });
+    env.addGlobal('getContext', function() {
+        return this.ctx;
     });
     res.nunjucksEnvironment = env;
 
@@ -121,6 +133,11 @@ app.use(function configExpose(req, res, next) {
     res.locals.assetPath = /"public"/;
     next();
 });
+
+// Built-in static assets are served at /public, any other govuk-frontend assets are in node_modules
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+app.use('/assets', express.static(appRootDirectory + '/node_modules/govuk-frontend/govuk/assets'));
+app.use('/govuk/all.js', express.static(appRootDirectory + '/node_modules/govuk-frontend/govuk/all.js'));
 
 // Routes
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

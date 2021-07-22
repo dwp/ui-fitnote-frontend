@@ -1,3 +1,4 @@
+
 function getRoute(req) {
     return (typeof req.cookies.route !== 'undefined') ? req.cookies.route : 'upload';
 }
@@ -8,9 +9,7 @@ function helpForPhotoStep1Page(req, res) {
         route : getRoute(req),
         sessionId : req.cookies.sessionId,
         timeStamp : Date.now(),
-        currentPage : page,
-        version : config.version,
-        viewedMessage : req.cookies.cookies_agreed
+        version : process.env.npm_package_version
     });
 }
 
@@ -20,9 +19,7 @@ function helpForPhotoStep2Page(req, res) {
         route : getRoute(req),
         sessionId : req.cookies.sessionId,
         timeStamp : Date.now(),
-        currentPage : page,
-        version : config.version,
-        viewedMessage : req.cookies.cookies_agreed
+        version : process.env.npm_package_version
     });
 }
 function helpForPhotoStep3Page(req, res) {
@@ -31,9 +28,7 @@ function helpForPhotoStep3Page(req, res) {
         route : getRoute(req),
         sessionId : req.cookies.sessionId,
         timeStamp : Date.now(),
-        currentPage : page,
-        version : config.version,
-        viewedMessage : req.cookies.cookies_agreed
+        version : process.env.npm_package_version
     });
 }
 function helpForPhotoStep4Page(req, res) {
@@ -42,9 +37,7 @@ function helpForPhotoStep4Page(req, res) {
         route : getRoute(req),
         sessionId : req.cookies.sessionId,
         timeStamp : Date.now(),
-        currentPage : page,
-        version : config.version,
-        viewedMessage : req.cookies.cookies_agreed
+        version : process.env.npm_package_version
     });
 }
 function helpForPhotoStep5Page(req, res) {
@@ -53,9 +46,7 @@ function helpForPhotoStep5Page(req, res) {
         route : getRoute(req),
         sessionId : req.cookies.sessionId,
         timeStamp : Date.now(),
-        currentPage : page,
-        version : config.version,
-        viewedMessage : req.cookies.cookies_agreed
+        version : process.env.npm_package_version
     });
 }
 module.exports = {

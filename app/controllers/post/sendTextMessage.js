@@ -5,6 +5,7 @@ var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 var checkBlank = require(appRootDirectory + '/app/functions/sanitise/isFieldBlank');
 var checkMobile = require(appRootDirectory + '/app/functions/sanitise/validateMobileNumber');
 const sessionExpiry = require(appRootDirectory + '/app/functions/refreshSessionExpiryTime.js');
+const config = require('config');
 
 function sendTextMessageConfirmation(req, res) {
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
@@ -23,7 +24,7 @@ function sendTextMessageConfirmation(req, res) {
     };
 
     var options = {
-        url : config.apiURL + '/mobile',
+        url : config.get('api.url') + '/mobile',
         method : 'POST',
         json : true,
         timeout : 240000,

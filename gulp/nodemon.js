@@ -37,6 +37,6 @@ function runNodemon(env) {
 }
 
 /* istanbul ignore next */
-gulp.task('nodemon', ['watch'], function ndLocal(callback) {
+gulp.task('watch', function ndLocal(callback){
     runNodemon('dev', callback);
 });

@@ -41,7 +41,7 @@ describe("Photo Audit Page", function() {
 
     // GET request Tests
     it('should GET the complete page successfully', function(done) {
-        process.env.NODE_ENV = 'dev';
+        process.env.NODE_ENV = 'test';
         chai.request(app).get('/photo-audit').end(function (err, res) {
             expect(res).to.have.status(200);
             done();

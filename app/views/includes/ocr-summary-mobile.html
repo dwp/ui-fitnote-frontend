@@ -10,23 +10,23 @@
 
     <div class="{{redBorder}} margin-vertical-30 pad-vertical-15 pad-horizontal-15" role="alert" aria-atomic="true" aria-labelledby="formData" id="error-summary">
 
-        <h2 class="heading-medium margin-top-0" id="error-summary-heading">{{ t('take-a-photo:error-summary') }}</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-0" id="error-summary-heading">{{ t('take-a-photo:error-summary') }}</h2>
         {% if errors.photoOCR.retry < 3 %}
-            <p><a href="/help-for-photo-step-1">{{ t('take-a-photo:get-help') }}</a></p>
+            <p><a href="/help-for-photo-step-1" class="govuk-link">{{ t('take-a-photo:get-help') }}</a></p>
         {% else %}
-            <p class="bold margin-0">{{ t('take-a-photo:h2') }}</p>
-            <ul class="list list-bullet">
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0">{{ t('take-a-photo:h2') }}</p>
+            <ul class="govuk-list govuk-list--bullet">
                 <li>{{ t('take-a-photo:error-li1') }}</li>
                 <li>{{ t('take-a-photo:error-li2') }}</li>
                 {#<li>{{ t('take-a-photo:error-li3') | safe }}</li>#}
-                <li><a href="/help-for-photo-step-1">{{ t('take-a-photo:error-li4') }}</a></li>
+                <li><a href="/help-for-photo-step-1" class="govuk-link">{{ t('take-a-photo:error-li4') }}</a></li>
             </ul>
         {% endif %}
 
         <ul class="error-summary-list">
             {% for error, value in errors %}
             <li id="error-field-list" class="ls-none">
-                <a href="#{{value.field}}" id="error-field-{{value.field}}" name="errorField-{{value.field}}" class="bold small gds-red">{{value.message}}</a>
+                <a href="#{{value.field}}" id="error-field-{{value.field}}" name="errorField-{{value.field}}" class="govuk-body-s govuk-!-font-weight-bold small gds-red govuk-link">{{value.message}}</a>
             </li>
             {% endfor %}
         </ul>

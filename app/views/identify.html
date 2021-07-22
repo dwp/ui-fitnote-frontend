@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-01') }}{% endblock %}
+
+{% block body %}
+{% include "includes/govuk-error-summary.html" %}
+<div class="grid-row govuk-body">
+    <div class="column-two-thirds">
+        <form action="/identify" method="post" class="form" name="identifyForm" id="formData" data-form="identify"
+            autocomplete="off" onsubmit="return submitForm();">
+            <div id="govuk-form-group-error" class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            {{ t('identify:h1') }}
+                        </h1>
+                    </legend>
+                    <div class="govuk-hint">
+                        {{ t('identify:hint') }}
+                    </div>
+                    <span id="error-message-radioIdentify" class="govuk-error-message" aria-hidden="true">
+                        <span class="govuk-visually-hidden">Error:</span> {{ t('errors:identify.missing') }}
+                    </span>
+                    <div class="govuk-radios govuk-!-padding-bottom-5">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="radioIdentifyYes" name="identify" type="radio"
+                                value="Yes" {% if previousPageCYA == 1 %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" id="radioIdentifyYesLabel"
+                                for="radioIdentifyYes">
+                                {{ t('identify:radio-yes') }}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="radioIdentifyNo" name="identify" type="radio"
+                                value="No" {% if previousPageCYA == -1 %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == -1 }}" id="radioIdentifyNoLabel"
+                                for="radioIdentifyNo">
+                                {{ t('identify:radio-no') }}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <img src="/images/example-fitnote.png" class="guide" alt="">
+                <div class="govuk-form-group">
+                    <input type="submit" class="govuk-button" value="{{ t('device:button') }}">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script> var errorDictionary = {{ validationErrors | safe }}</script>
+<script src="/javascript/validate-identify.js?version={{assetsVersion}}" defer></script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+
+{% endblock %}

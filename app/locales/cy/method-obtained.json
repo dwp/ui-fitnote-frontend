@@ -1,0 +1,11 @@
+{
+    "h1": "Sut wnaethoch chi gael eich nodyn ffitrwydd?",
+    "hint": "Dewiswch un opsiwn.",
+    "radioLabels": {
+        "paper": "Copi Papur",
+        "sms": "Neges testun",
+        "email": "E-bost"
+    },
+    "button": "Parhau",
+    "back": "Yn ôl"
+}

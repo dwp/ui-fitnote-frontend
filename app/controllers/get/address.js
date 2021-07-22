@@ -1,5 +1,6 @@
 var request = require('request');
 var logger = require(appRootDirectory + '/app/functions/bunyan');
+var config = require('config');
 
 function addressPage(req, res) {
     var logType = logger.child({widget : 'addressPage'});
@@ -9,11 +10,11 @@ function addressPage(req, res) {
     var houseNumberError;
     var postcodeError;
     var postcodeFormatError;
+    var previousPageCYA = 0;
     var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
-    var previousPage = (req.headers.referer) ? req.headers.referer.substring(req.headers.referer.lastIndexOf('/')) : '';
     var options = {
-        url : config.apiURL + '/queryAddress',
+        url : config.get('api.url') + '/queryAddress',
         method : 'POST',
         json : true,
         timeout : 240000,
@@ -23,6 +24,11 @@ function addressPage(req, res) {
         },
         body : {sessionId : req.cookies.sessionId}
     };
+
+    if (req.query.hasOwnProperty('ref')) {
+        previousPageCYA = req.query.ref === 'check-your-answers' ? 1 : 0;
+    }
+
     function callback(err, response, body) {
         if (!err) {
             if (response.statusCode === 200) {
@@ -61,14 +67,12 @@ function addressPage(req, res) {
 
                 res.render('address', {
                     sessionId : req.cookies.sessionId,
-                    version : config.version,
-                    environment : config.nodeEnvironment,
-                    viewedMessage : req.cookies.cookies_agreed,
+                    version : process.env.npm_package_version,
+                    environment : config.util.getEnv('NODE_ENV'),
                     timeStamp : Date.now(),
-                    currentPage : 'address',
                     house : house,
                     postcode : postcode,
-                    previousPage : previousPage,
+                    previousPageCYA : previousPageCYA,
                     errors : errorMessage,
                     validationErrors : validationErrors
                 });

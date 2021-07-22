@@ -1,18 +1,12 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
-
-{% block googleTags %}
-<script>
-    ga('send', 'pageview');
-</script>
-{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-13') }}{% endblock %}
 
 {% block body %}
-<div class="grid-row">
-<div class="column-two-thirds">
-    <h1 class="heading-large">{{ t('thank-you:h1') }}</h1>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-top-7">{{ t('thank-you:h1') }}</h1>
     <p>{{ t('thank-you:p') }}</p>
-    
+
     {% if returnUrl %}
     <p><a href="{{ returnUrl }}">{{ t('thank-you:return') }}</a></p>
     {% endif %}

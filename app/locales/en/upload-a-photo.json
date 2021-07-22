@@ -7,13 +7,12 @@
     "li3": "Save the photo or scan of your fit note somewhere you can easily find it on your computer",
     "info": "Your photo or scan will be automatically checked to make sure it's good enough.",
     "moreHelp": "Get more help to get your photo right",
-    "p": "Uploading...",
-    "upload": "Upload",
+    "upload": "Save and continue",
     "button": "Choose a file to upload",
     "alt1": "Examples of good and bad photos of a fit note",
 
     "error-summary": "There's a problem with the photo or scan of your fit note",
-    "get-help": "Try uploading another or <a href=\"/help-for-photo-step-1\">get help with taking a photo",
+    "get-help": "Try uploading another or <a class=\"govuk-link\" href=\"/help-for-photo-step-1\">get help with taking a photo",
     "failed-ocr": "Upload another photo or scan",
 
     "another": "Upload another photo or scan",

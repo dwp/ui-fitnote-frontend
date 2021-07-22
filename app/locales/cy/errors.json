@@ -2,37 +2,40 @@
     "error-summary-h2": "Mae problem",
     "error-summary-service-fail": "Yn anffodus, roedd problem gyda'r gwasanaeth",
     "error-summary-p": "Edrychwch dros eich ffurflen. Mae'n rhaid i chi:",
-    "error-summary-p1" : "Ceisiwch eto",
-
+    "error-summary-p1": "Ceisiwch eto",
     "nino": {
-        "nino": "Rhoi eich rhif Yswiriant Gwladol",
-        "nino-format": "Rhowch rif Yswiriant Gwladol mewn ffurf dilys. Er enghraifft, QQ 12 34 56 C"
+        "nino": "Rhowch rif Yswiriant Gwladol yn y ffurf cywir",
+        "nino-format": "Rhowch rif Yswiriant Gwladol yn y ffurf cywir"
     },
-
     "address": {
-        "house-number": "Rhoi rhif eich tŷ",
-        "postcode" : "Rhoi eich cod post",
-        "postcode-format": "Edrych dros ffurf y cod post"
+        "house-number": "Rhowch enw neu rif eich tŷ",
+        "postcode": "Rhowch eich cod post",
+        "postcode-format": "Rhowch god post gwirioneddol"
     },
-
     "text-message": {
-        "missing": "Dewiswch ydw neu na",
-        "mobile": "Rhoi eich rhif ffôn symudol",
-        "format": "Edrych dros ffurf y rhif ffôn symudol"
+        "missing": "Dewiswch Oes os hoffech dderbyn neges testun",
+        "mobile": "Rhowch rif ffôn symudol, fel 07700 900 982 neu +44 7700 900 982",
+        "format": "Rhowch rif ffôn symudol, fel 07700 900 982 neu +44 7700 900 982"
     },
-
     "device": {
         "missing": "Dewiswch y math o ddyfais rydych yn ei ddefnyddio"
     },
-
+    "identify": {
+        "missing": "Dewiswch ie os oes gennych nodyn ffitrwydd"
+    },
     "feedback": {
         "required": "Dewiswch gyfradd bodlonrwydd",
         "maxlength": "Rhowch awgrymiadau gwelliant drwy ddefnyddio 1200 nod neu lai",
         "phone": "Rhowch rif ffôn dilys",
         "name": "Rhowch enw byrach (mwyafswm o 1000 nod)"
     },
-
-    "fileType": "Ni chaniateir y math hwn o ffeil",
     "validFileType": "Y ffeiliau a dderbynnir yw PDF, JPEG, BMP, PNG and GIF",
-    "choose": "Dewiswch ffeil arall"
+    "choose": "Dewiswch ffeil arall",
+    "heicf": "Nid yw eich math o ffeil yn cael ei gefnogi. Mae’n rhaid iddo fod yn JPG, JPEG, BMP, PNG, TIF neu PDF",
+    "method-obtained": {
+        "missing": "Dewiswch sut rydych wedi derbyn eich nodyn ffitrwydd"
+    },
+    "upload": {
+        "fileType": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF"
+    }
 }
