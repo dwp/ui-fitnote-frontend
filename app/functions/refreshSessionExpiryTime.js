@@ -1,6 +1,8 @@
+const config = require('config');
+
 function refreshTime(res, logType) {
-    let expires = new Date(Date.now() + config.sessionExpiryPeriod);
-    res.cookie('exp', expires.toUTCString(), {httpOnly : true, secure : true, sameSite : true, expires : 0});
+    const expires = new Date(Date.now() + config.get('sessionInfo.expiryPeriod'));
+    res.cookie('exp', expires.toUTCString(), {httpOnly : true, secure : config.get('cookieOptions.secure') === 'true', sameSite : true, expires : 0});
     logType.info('Session timeout refreshed');
     return expires;
 }

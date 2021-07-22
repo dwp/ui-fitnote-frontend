@@ -1,6 +1,7 @@
 var request = require('request');
 var logger = require(appRootDirectory + '/app/functions/bunyan');
 var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
+const config = require('config');
 
 function submitDeclaration(req, res) {
     var logType = logger.child({widget : 'confirmation'});
@@ -12,7 +13,7 @@ function submitDeclaration(req, res) {
     };
 
     var options = {
-        url : config.apiURL + '/declaration',
+        url : config.get('api.url') + '/declaration',
         method : 'POST',
         json : true,
         timeout : 240000,

@@ -2,30 +2,14 @@ var ratingError = document.getElementById('error-message-ratingID');
 var improvementsError = document.getElementById('error-message-improvementsID');
 var nameError = document.getElementById('error-message-nameID');
 var phoneError = document.getElementById('error-message-phoneID');
-var errorRating = '<li class="ls-none"><a href="#vSatisfied" id="error-field-vSatisfied" class="bold small gds-red">' + errorDictionary.feedback.required + '</a></li>';
-var errorImprovements = '<li class="ls-none"><a href="#improvementsID" id="error-field-improvementsID" class="bold small gds-red">' + errorDictionary.feedback.maxlength + '</a></li>';
-var errorName = '<li class="ls-none"><a href="#nameID" id="error-field-nameID" class="bold small gds-red">' + errorDictionary.feedback.name + '</a></li>';
-var errorPhone = '<li class="ls-none"><a href="#phoneID" id="error-field-phoneID" class="bold small gds-red">' + errorDictionary.feedback.phone + '</a></li>';
-
-(function onLoady() {
-    var radios = document.querySelectorAll('input[name="rating"]');
-    function select() {
-        for(var j=0; j<radios.length; j++) {
-            radios[j].parentElement.className = 'block-label selection-button-radio';
-        }
-        var selected = document.querySelector('input[name="rating"]:checked');
-        selected.parentElement.className = 'block-label selection-button-radio selected';
-        ga('send', 'event', 'Radio - click', 'Overall, how did you feel about the service you recevied today?', selected.value + ' - rating', {
-            'dimension6': [selected.value + ' - rating']
-        });
-    }
-    for(var i=0; i<radios.length; i++) {
-        radios[i].addEventListener('click', select, false);
-    }
-})();
+var errorRating = '<li><a href="#vSatisfied">' + errorDictionary.feedback.required + '</a></li>';
+var errorImprovements = '<li><a href="#improvementsID">' + errorDictionary.feedback.maxlength + '</a></li>';
+var errorName = '<li><a href="#nameID">' + errorDictionary.feedback.name + '</a></li>';
+var errorPhone = '<li><a href="#phoneID">' + errorDictionary.feedback.phone + '</a></li>';
+var flag = false;
 
 function getErrorSummary(li) {
-    return '<h2 class="bold-medium" id="error-summary-heading">' + errorDictionary['error-summary-h2'] + '</h2><p>'+ errorDictionary['error-summary-p'] +'</p><div id="error-summary-list-id"><ul class="error-summary-list">' + li + '</ul></div>';
+    return li
 }
 
 function hideErrors() {
@@ -34,11 +18,18 @@ function hideErrors() {
     nameError.setAttribute('aria-hidden', true);
     phoneError.setAttribute('aria-hidden', true);
 
-    ratingError.parentElement.parentElement.parentElement.className = 'form-group';
-    improvementsError.parentElement.parentElement.className = 'form-group';
-    
-    nameError.parentElement.parentElement.className = 'form-group';
-    phoneError.parentElement.parentElement.className = 'form-group';
+    document.getElementById('govuk-form-group-error-rating').classList.remove('govuk-form-group--error');
+    document.getElementById('govuk-form-group-error-improvements').classList.remove('govuk-form-group--error');
+    document.getElementById('govuk-form-group-error').classList.remove('govuk-form-group--error');
+
+    document.getElementById('improvementsID').classList.remove('govuk-textarea--error');
+    document.getElementById('nameID').classList.remove('govuk-input--error');
+    document.getElementById('phoneID').classList.remove('govuk-input--error');
+}
+
+function addErrorClass(id, className) {
+    var element = document.getElementById(id);
+    element.classList.add(className);
 }
 
 function isFormValid() {
@@ -53,52 +44,45 @@ function isFormValid() {
     var nameOK = name.value.length <= 1000;
     var phoneOK = phone.value.length <= 1000 && (phone.value.length === 0 || phone.value.replace(/[^0-9]+/g, '').length > 8);
 
-    var submit = document.getElementById('submit-feedback');
-
-    ga('send', 'event', 'Textbox - fill', 'How could we improve this service?', (improvements.value.length) ? 'Filled' : 'Not filled');
-    
-    if(ratingOK && improvementsOK && nameOK && phoneOK) {
-        submit.disabled = true;
-        return true;
-    } else {
+    flag = ratingOK && improvementsOK && nameOK && phoneOK
+    if(!flag) {
         hideErrors();
         var errorSummaryLi = '';
-
         if (!ratingOK) {
             errorSummaryLi += errorRating;
             ratingError.setAttribute('aria-hidden', false);
-            ratingError.parentElement.parentElement.parentElement.className = 'form-group error';
-            ga('send', 'event', 'Error - validation', 'rating', 'Select a satisfaction rating');
+            addErrorClass('govuk-form-group-error-rating', 'govuk-form-group--error')
         }
 
         if (!improvementsOK) {
             errorSummaryLi += errorImprovements;
             improvementsError.setAttribute('aria-hidden', false);
-            improvementsError.parentElement.parentElement.className = 'form-group error';
-            ga('send', 'event', 'Error - validation', 'improvementsID', 'Enter improvement suggestions using 1200 characters or less');
+            addErrorClass('improvementsID', 'govuk-textarea--error')
+            addErrorClass('govuk-form-group-error-improvements', 'govuk-form-group--error')
         }
-        
+
         if (!nameOK) {
             errorSummaryLi += errorName;
             nameError.setAttribute('aria-hidden', false);
-            nameError.parentElement.parentElement.className = 'form-group error';
-            ga('send', 'event', 'Error - validation', 'name', 'Enter a shorter name (maximum 1000 characters)');
+            addErrorClass('nameID', 'govuk-input--error')
+            addErrorClass('govuk-form-group-error', 'govuk-form-group--error')
         }
 
         if (!phoneOK) {
             errorSummaryLi += errorPhone;
             phoneError.setAttribute('aria-hidden', false);
-            phoneError.parentElement.parentElement.className = 'form-group error';
-            ga('send', 'event', 'Error - validation', 'phone', 'Enter a valid phone number');
+            addErrorClass('phoneID', 'govuk-input--error')
+            addErrorClass('govuk-form-group-error', 'govuk-form-group--error')
         }
 
-        document.getElementById('error-summary').innerHTML = getErrorSummary(errorSummaryLi);
-        document.getElementById('error-summary').setAttribute('aria-hidden', false);
-
-        return false;
+        document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorSummaryLi);
+        document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
+        document.getElementById("govuk-error-summary").focus();
+        flag = false;
     }
 }
 
 function submitForm() {
-    return isFormValid();
+    isFormValid();
+    return flag;
 }

@@ -1,0 +1,61 @@
+{
+    "h1": "Manylion am gwcis ar y gwasanaeth hwn",
+    "h2-1": "Os yw eich cwcis wedi cael eu troi i ffwrdd",
+    "h2-3": "Cwcis sy'n helpu i gadw eich gwybodaeth yn ddiogel",
+    "h2-4": "Neges cwcis",
+
+    "a1": "newid eich cwcis rydych yn hapus i ni eu defnyddio.",
+    "a2": "y porwr rydych yn ei ddefnyddio",
+
+    "p1": "Rydym angen defnyddio cwcis angenrheidiol i wneud y wefan ‘Anfon eich nodyn ffitrwydd ar gyfer eich cais ESA’ weithio.",
+    "p2": "Gallwch",
+    "p3": "Fe welwch neges gwall pan geisiwch ddefnyddio'r wefan os yw'ch cwcis wedi eu analluogi.",
+    "p4": "Mae sut i droi cwcis ymlaen yn dibynnu ar",
+    "p5": "a pa mor gyfredol yw.",
+    "p6": "Darganfyddwch sut i newid eich gosodiadau ar gyfer y porwyr mwyaf poblogaidd, yn cynnwys:",
+    "p7": "Darganfyddwch sut ",
+    "p8": "ar gyfer porwyr eraill.",
+    "p13": "Rydym yn defnyddio cwcis sesiwn i gadw'ch gwybodaeth yn ddiogel wrth i chi symud yn ôl ac ymlaen trwy'r wefan.",
+    "p14": "Mae'r cwcis hyn yn cael eu dileu o'ch cyfrifiadur yn awtomatig pan fyddwch yn cwblhau'ch cais neu os byddwch:",
+    "p15": "Efallai y byddwch yn gweld baner pan ymwelwch â'r wefan hon yn eich gwahodd i dderbyn cwcis neu adolygu'ch gosodiadau. Byddwn yn gosod cwcis fel bod eich cyfrifiadur yn gwybod eich bod wedi ei weld ac i beidio â'i ddangos eto, a hefyd i storio'ch gosodiadau",
+
+    "li1": "Internet Explorer",
+    "li2": "Mozilla Firefox",
+    "li4-a": "Safari",
+    "li4": ", a ddefnyddir yn fwyaf cyffredin ar iPad, iPhone a chyfrifiaduron eraill Apple",
+    "li3": "Google Chrome",
+    "a3": "i reoli cwcis",
+
+    "li8": "ddim yn gwneud dim am 30 munud",
+    "li9": "yn cau eich porwr",
+    "li10": "troi eich cyfrifiadur i ffwrdd",
+
+    "caption3": "Cwcis diogelwch",
+    "caption4": "Cwcis gwasanaeth",
+
+    "th1": "Enw",
+    "th2": "Diben",
+    "th3": "Dod i ben",
+
+    "td10": "sessionID",
+    "td11": "Dyma'ch cwci sesiwn unigryw a gynhyrchir. Mae'r gwasanaeth angen hwn er mwyn gweithio. Bydd yn dod i ben 30 munud ar ôl dechrau, neu ar ddiwedd y gwasanaeth, pr’un bynnag sy’n digwydd gyntaf.",
+    "td12": "30 munud",
+    "td13": "cookies_agreed",
+    "td14": "Yn cofnodi a welwyd y neges cwcis ar frig y wefan, ar eich ymweliad cyntaf, fel na chaiff ei hailddangos ar bob ymweliad dilynol.",
+    "td15": "1 blwyddyn",
+
+    "analytics-header": "Cwcis sy'n mesur defnydd o wefan",
+    "analytics-summary": "Rydym yn defnyddio meddalwedd Google Analytics i gasglu gwybodaeth am sut rydych yn defnyddio'r wefan. Rydym yn defnyddio'r wybodaeth yma i wella'r wefan hon.",
+    "analytics-hint": "Nid ydym yn caniatau i Google ddefnyddio neu'r rannu'r data am sut rydych yn defnyddio'r safle yma.",
+    "analytics-list-heading": "Mae cwcis Google analytics yn casglu a storio gwybodaeth am:",
+    "analytics-list-item-1": "y dudalen rydych yn ymweld â hi - beth rydych yn clicio arno pan yn defnyddio'r wefan",
+    "analytics-list-item-2": "pa mor hir rydych yn ei dreulio ar bob tudalen",
+    "analytics-list-item-3": "sut rydych wedi cyrraedd y wefan",
+    "analytics-table-header": "Cwcis Google analytics",
+    "analytics-table-row-1-name": "_ga",
+    "analytics-table-row-1-purpose": "Yn cyfrif faint o bobl sy'n ymweld â'r wefan trwy olrhain a ydynt wedi ymweld o'r blaen.",
+    "analytics-table-row-1-expires": "60 munud neu pan rydych yn cau eich porwr",
+    "analytics-table-row-2-name": "_gat",
+    "analytics-table-row-2-purpose": "Yn cyfrif faint o dudalennau sy'n cael eu gweld a pha mor aml.",
+    "analytics-table-row-2-expires": "10 munud"
+}

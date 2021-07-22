@@ -1,0 +1,63 @@
+{
+    "h1": "Uwchlwytho eich nodyn ffitrwydd",
+    "list": {
+        "li1": "Cymerwch lun o’ch nodyn ffitrwydd neu ei sganio i’ch dyfais.",
+        "li2": {
+            "main": "Sicrhewch:",
+            "sub1":"rydych mewn lle gyda digon o olau",
+            "sub2": "bod y nodyn ffitrwydd cyfan yn y ddelwedd"
+        },
+        "li3": "Arbedwch y llun neu sgan o’ch nodyn ffitrwydd rhywle hawdd i’w ddod o hyd iddo ar eich dyfais."
+    },
+    "text": "Bydd eich llun neu sgan yn cael ei wirio’n awtomatig i wneud yn siwr ei fod yn ddigon da.",
+    "insetText": {
+        "li1": "dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn naill ai JPG, BMP, PNG, TIF neu PDF.",
+        "li2": "mae’n rhaid i’r ffeil dewisedig fod yn llai na 10MB",
+        "li3": "<strong>peidiwch â llwytho ‘screenshot’</strong> o’ch nodyn ffitrwydd gan na fydd yn gweithio"
+    },
+    "details-link-text": "Cael rhagor o gymorth i gael eich llun yn iawn",
+    "details-link-hidden-text": ", cliciwch am fwy o wybodaeth",
+    "details-summary-text": "Dilynwch y cyfarwyddiadau isod i’ch helpu i uwchlwytho eich nodyn ffitrwydd",
+    "p": "Llwytho...",
+    "buttonText": "Parhau",
+    "upload": "Dewiswch ffeil i uwchlwytho",
+    "back": "Yn ôl",
+    "missing": "Mae’n rhaid i chi ddewis ffeil i barhau",
+    "invalid": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF",
+    "failed-ocr": "Mae’n rhaid i’r ffeil a ddewiswyd fod yn glir ac yn ddarllenadwy a chynnwys y nodyn ffitrwydd cyfan",
+    "tooBig": "Mae’n rhaid i’ch nodyn ffitrwydd fod yn 10mb neu lai",
+    "step-nav-reveal": "Dangos pob un",
+    "step-nav-1": {
+        "headline": "Daliwch y ddyfais yn uniongyrchol uwchben y nodyn ffitrwydd",
+        "li1": "mae’n well dal y ddyfais tua 20cm neu 1 troedfedd uwchben y nodyn ffitrwydd",
+        "li2": "osgoi tynnu’r llun ar ongl",
+        "li3": "daliwch y ddyfais yn uniongyrchol uwchben y nodyn ffitrwydd"
+    },
+    "step-nav-2": {
+        "headline": "Dewch o hyd i le wedi’i oleuo’n dda ac osgoi cysgodion",
+        "subHeading": "Sicrhewch:",
+        "li1": "bod eich nodyn ffitrwydd wedi’i oleuo",
+        "li2": "bod sgrin y dyfais yn digon olau i weld delwedd eich nodyn ffitrwydd yn glir",
+        "li3": "nid oes unrhyw beth rhwng y nodyn ffitrwydd a’r golau er mwyn osgoi cysgodion"
+    },
+    "step-nav-3": {
+        "headline": "Sicrhewch fod eich nodyn ffitrwydd ar ei ochr neu’n landscape'.",
+        "text": "Sicrhewch fod eich delwedd yn cynnwys y nodyn ffitrwydd cyfan trwy ddal eich dyfais ar ei ochr neu’n <strong>landscape</strong>."
+    },
+    "step-nav-4": {
+        "headline": "Sicrhewch fod y nodyn ffitrwydd cyfan yn y llun",
+        "text": "Sicrhewch fod eich delwedd yn cynnwys eich nodyn ffitrwydd cyfan. Dylai lenwi’r llun a dylai’r 4 cornel fod y tu fewn iddo."
+    },
+    "step-nav-5": {
+        "headline": "Sicrhewch fod y delwedd yn glir ac nid yn aneglur",
+        "text1": "Bydd delwedd clir yn ein helpu i gael mynediad gwell at eich nodyn ffitrwydd.",
+        "text2": "Os nad ydych yn siwr sut i gael delwedd clir, edrychwch yn lawlyfr eich dyfais."
+    },
+    "image-alts": {
+        "both-scans": "Unigolyn yn tynnu llun o ongl ochr yn anghywir ac unigolyn arall yn tynnu ffotograff yn gywir oddi uchod",
+        "fit-note-shadow": "Llun anghywir gyda chysgod mawr yn blocio cyd-destun y nodyn ffitrwydd ac enghraifft o sut y dylai llun o nodyn ffitrwydd edrych",
+        "fit-note-landscape": "Ffôn symudol yn tynnu llun portread anghywir o nodyn ffitrwydd tirwedd a ffôn symudol yn tynnu llun tirwedd cywir o nodyn ffitrwydd tirwedd",
+        "fit-note-zoom": "Enghraifft o lun anghywir o nodyn ffitrwydd sydd wedi'i chwyddo i mewn ac nad yw'n cynnwys y nodyn ffitrwydd cyfan ochr yn ochr ag enghraifft dda o sut y dylai'r llun o'r nodyn ffitrwydd edrych.",
+        "fit-note-blur": "Enghraifft o lun aneglur anghywir o nodyn ffitrwydd ochr yn ochr ag enghraifft gywir o lun clir o nodyn ffitrwydd"
+    }
+}

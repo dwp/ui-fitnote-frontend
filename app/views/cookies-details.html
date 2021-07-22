@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-cookies') }}{% endblock %}
+
+{% block body %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+        <h1 class="govuk-!-font-size-48 margin-bottom-50">{{ t('cookies-details:h1') }}</h1>
+        <p>{{ t('cookies-details:p1') }}</p>
+
+        <div class="govuk-inset-text">
+            <p class="govuk-!-font-size-19">{{ t('cookies-details:p2') }} <a class="govuk-link"
+                    href="/cookies/cookie_policy">{{ t('cookies-details:a1') }}</a>.</p>
+        </div>
+        <h2 class="govuk-heading-m">{{ t('cookies-details:h2-1') }}</h2>
+        <p>{{ t('cookies-details:p3') }}</p>
+        <p>{{ t('cookies-details:p4') }} <a href="https://www.whatsmybrowser.org/" class="govuk-link"
+                target="_new">{{ t('cookies-details:a2') }}</a> {{ t('cookies-details:p5') }}</p>
+        <p>{{ t('cookies-details:p6') }}</p>
+        <ul class="govuk-!-font-size-19 govuk-list govuk-list--bullet">
+            <li>
+                <a href="https://support.microsoft.com/en-us/products/windows?os=windows-10" class="govuk-link"
+                    target="_new">{{ t('cookies-details:li1') }}</a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/?v=a" class="govuk-link"
+                    target="_new">{{ t('cookies-details:li2') }}</a></li>
+            <li>
+                <a href="https://support.google.com/accounts/answer/61416?hl=en" class="govuk-link"
+                    target="_new">{{ t('cookies-details:li3') }}</a>
+            </li>
+            <li>
+                <a href="https://www.apple.com" class="govuk-link" target="_new">{{ t('cookies-details:li4-a') }}</a>{{ t('cookies-details:li4') }}
+            </li>
+        </ul>
+        <p>{{ t('cookies-details:p7') }} <a href="http://www.aboutcookies.org/Default.aspx?page=1" class="govuk-link"
+                target="_new">{{ t('cookies-details:a3') }}</a> {{ t('cookies-details:p8') }}</p>
+        
+        {# Analytics section #}
+        <h2 class="govuk-heading-m">{{ t('cookies-details:analytics-header') }}</h2>
+        <p>{{ t('cookies-details:analytics-summary') }}</p>
+        <div class="govuk-inset-text">
+            <p class="govuk-!-font-size-19">{{ t('cookies-details:analytics-hint') }}</p>
+        </div>
+        <p>{{ t('cookies-details:analytics-list-heading') }}</p>
+        <ul class="govuk-!-font-size-19 govuk-list govuk-list--bullet">
+            <li>{{ t('cookies-details:analytics-list-item-1') }}</li>
+            <li>{{ t('cookies-details:analytics-list-item-2') }}</li>
+            <li>{{ t('cookies-details:analytics-list-item-3') }}</li>
+        </ul>
+
+        <table class="govuk-table govuk-!-font-size-16">
+            <caption class="govuk-table__caption">{{ t('cookies-details:analytics-table-header') }}</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th1') }}</th>
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th2') }}</th>
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th3') }}</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">{{ t('cookies-details:analytics-table-row-1-name') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:analytics-table-row-1-purpose') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:analytics-table-row-1-expires') }}</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">{{ t('cookies-details:analytics-table-row-2-name') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:analytics-table-row-2-purpose') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:analytics-table-row-2-expires') }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2 class="govuk-heading-m">{{ t('cookies-details:h2-3') }}</h2>
+        <p>{{ t('cookies-details:p13') }}</p>
+        <p>{{ t('cookies-details:p14') }}</p>
+        <ul class="govuk-!-font-size-19 govuk-list govuk-list--bullet">
+            <li>{{ t('cookies-details:li8') }}</li>
+            <li>{{ t('cookies-details:li9') }}</li>
+            <li>{{ t('cookies-details:li10') }}</li>
+        </ul>
+        <table class="govuk-table govuk-!-font-size-16">
+            <caption class="govuk-table__caption">{{ t('cookies-details:caption3') }}</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th1') }}</th>
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th2') }}</th>
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th3') }}</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">{{ t('cookies-details:td10') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:td11') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:td12') }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="govuk-heading-m">{{ t('cookies-details:h2-4') }}</h2>
+        <p>
+            {{ t('cookies-details:p15') }}
+        </p>
+        <table class="govuk-table govuk-!-font-size-16">
+            <caption class="govuk-table__caption">{{ t('cookies-details:caption4') }}</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th1') }}</th>
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th2') }}</th>
+                    <th class="govuk-table__header" scope="col">{{ t('cookies-details:th3') }}</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">{{ t('cookies-details:td13') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:td14') }}</td>
+                    <td class="govuk-table__cell">{{ t('cookies-details:td15') }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}

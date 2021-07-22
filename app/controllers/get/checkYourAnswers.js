@@ -1,4 +1,5 @@
 var rp = require('request-promise-native');
+const config = require('config');
 
 function checkYourAnswersPage(req, res) {
     var logType = logger.child({widget : 'checkYourAnswersPage'});
@@ -14,13 +15,13 @@ function checkYourAnswersPage(req, res) {
         body : {sessionId : req.cookies.sessionId}
     };
 
-    options.url = config.apiURL + '/queryNino';
+    options.url = config.get('api.url') + '/queryNino';
     queue.push(rp(options));
 
-    options.url = config.apiURL + '/queryAddress';
+    options.url = config.get('api.url') + '/queryAddress';
     queue.push(rp(options));
 
-    options.url = config.apiURL + '/queryMobile';
+    options.url = config.get('api.url') + '/queryMobile';
     queue.push(rp(options));
 
     Promise.all(queue)
@@ -33,16 +34,14 @@ function checkYourAnswersPage(req, res) {
                 res.redirect('/index');
             } else {
                 res.render('check-your-answers', {
-                    sessionId: req.cookies.sessionId,
-                    version: config.version,
-                    environment: config.nodeEnvironment,
-                    viewedMessage: req.cookies.cookies_agreed,
-                    timeStamp: Date.now(),
-                    currentPage: 'check-your-answers',
-                    nino: nino,
-                    house: house,
-                    postcode: postcode,
-                    mobile: mobile
+                    sessionId : req.cookies.sessionId,
+                    version : process.env.npm_package_version,
+                    environment : config.util.getEnv('NODE_ENV'),
+                    timeStamp : Date.now(),
+                    nino : nino,
+                    house : house,
+                    postcode : postcode,
+                    mobile : mobile
                 });
             }
         })

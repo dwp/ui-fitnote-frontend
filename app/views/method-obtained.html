@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-03') }}{% endblock %}
+{% block back_link %}
+<a href="/identify?ref=method-obtained" class="govuk-back-link">{{ t('method-obtained:back') }}</a>
+{% endblock %}
+
+{% block body %}
+{% include "includes/govuk-error-summary.html" %}
+<div class="grid-row govuk-body">
+    <div class="column-two-thirds">
+        <form action="/method-obtained" method="post" class="form" name="methodObtainedForm" id="formData"
+            data-form="method-obtained" autocomplete="off" onsubmit="return submitForm();">
+            <div id="govuk-form-group-error" class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            {{ t('method-obtained:h1') }}
+                        </h1>
+                    </legend>
+                    <div class="govuk-hint">
+                        {{ t('method-obtained:hint') }}
+                    </div>
+                    <span id="method-obtained-error" class="govuk-error-message" aria-hidden="true">
+                        <span class="govuk-visually-hidden">Error:</span> {{ t('errors:method-obtained.missing') }}
+                    </span>
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="method-obtained-paper" name="methodObtained"
+                                type="radio" value="paper" {% if previousPageCYA == 1 %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" for="method-obtained-paper">
+                                {{ t('method-obtained:radioLabels.paper') }}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="method-obtained-sms" name="methodObtained"
+                                type="radio" value="sms" {% if previousPageCYA == 2 %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 2 }}" for="method-obtained-sms">
+                                {{ t('method-obtained:radioLabels.sms') }}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="method-obtained-email" name="methodObtained"
+                                type="radio" value="email" {% if previousPageCYA == 3 %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 3 }}" for="method-obtained-email">
+                                {{ t('method-obtained:radioLabels.email') }}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <input type="submit" class="govuk-button" value="{{ t('method-obtained:button') }}">
+            </div>
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script> var errorDictionary = {{ validationErrors | safe }}</script>
+<script src="/javascript/validate-method-obtained.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

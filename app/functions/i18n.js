@@ -9,6 +9,7 @@
 *   string language = The language code to use (ISO 639-1)
 *   function i18nTranslator = A class instance to translate for the current req
 */
+const config = require('config');
 
 module.exports = function(app, appLocaleDirs, supportedLocales) {
     // Initialise the I18n utility
@@ -27,7 +28,7 @@ module.exports = function(app, appLocaleDirs, supportedLocales) {
     app.use(function(req, res, next) {
         if (typeof req.query.lang !== 'undefined' && supportedLocales.indexOf(req.query.lang) > -1) {
             req.language = req.query.lang === 'cy' ? 'cy' : 'en';
-            res.cookie('language', req.language, {httpOnly : true, secure : true, sameSite : true, expires : 0});
+            res.cookie('language', req.language, {httpOnly : true, secure : config.get('cookieOptions.secure') === 'true', sameSite : true, expires : 0});
         } else {
             req.language = req.cookies.language || supportedLocales[0];
         }

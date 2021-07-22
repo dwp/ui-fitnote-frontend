@@ -1,18 +1,18 @@
 var bunyan = require('bunyan');
 var bsyslog = require('bunyan-syslog-udp');
-var config = require(appRootDirectory + '/app/config.js');
-var logger;
+var config = require('config');
+var logger = config.get('logger');
 var streamsContent;
 
 if (config.nodeEnvironment !== 'test') {
-    if (config.loggerHost && config.loggerPort && config.loggerName) {
+    if (logger.host && logger.port && logger.name) {
         streamsContent =  [{
             type : 'raw',
             level : 'debug',
             stream : bsyslog.createBunyanStream({
-                name : config.loggerName,
-                host : config.loggerHost,
-                port : config.loggerPort,
+                name : logger.tag,
+                host : logger.host,
+                port : logger.port,
                 facility : 'local0'
             })
         }];
@@ -27,7 +27,7 @@ if (config.nodeEnvironment !== 'test') {
 }
 
 logger = bunyan.createLogger({
-    name : config.loggerName,
+    name : logger.tag,
     serializers : {
         err : bunyan.stdSerializers.err
     },

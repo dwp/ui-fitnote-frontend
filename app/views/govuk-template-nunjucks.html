@@ -1,11 +1,20 @@
+{% from "macros/cookies.html" import cookieBanner with context %}
+
 <!DOCTYPE html>
 <html lang="{{ language }}">
+
 <head>
+    {% if cookiesConsented === 'true' %}
+    {% include "includes/gtm-script.html" %}
+    {% else %}
+    <!-- Google Tag Manager is currently disabled -->
+    {% endif %}
+
     <meta charset="utf-8" />
     <meta name="robots" content="noindex,nofollow" />
     {% set assetsVersion = timeStamp %}
     {% if environment == 'prod' %}
-        {% set assetsVersion = version %}
+    {% set assetsVersion = version %}
     {% endif %}
     {% set cssPath ='/stylesheets' %}
     {% set imagePath ='/images' %}
@@ -17,46 +26,50 @@
     {% include "includes/meta.html" %}
     {% block meta %}{% endblock %}
 
+
     <link href="{{ cssPath }}/application.css?version={{assetsVersion}}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{ cssPath }}/ui-fitnote-frontend.css?version={{assetsVersion}}" media="all" rel="stylesheet" type="text/css" />
     <link href="{{ cssPath }}/font.css?version={{assetsVersion}}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{{ cssPath }}/govuk-template-print.css?version={{assetsVersion}}" media="print" rel="stylesheet" type="text/css" />
+    <link href="{{ cssPath }}/govuk-template-print.css?version={{assetsVersion}}" media="print" rel="stylesheet"
+        type="text/css" />
     <!--[if lt IE 9]>
-        <script src="/javascript/govuk.js?version={{assetsVersion}}"></script>
+        <script src="{{ jsPath }}/govuk.js?version={{assetsVersion}}"></script>
+        <link href="{{ cssPath }}/ui-fitnote-frontend-ie8.css?version={{assetsVersion}}" media="all" rel="stylesheet" type="text/css" />
     <![endif]-->
-{% include "includes/google-tracking.html" %}
-{% block googleTags %}{% endblock %}
+
+    {% include "includes/timeout-dialog/timeout-dialog.njk" %}
+
 </head>
 
-<body class="js-disabled {% block body_classes %}{% endblock %}">
-<script>
-    document.body.className = document.body.className.replace("js-disabled","js-enabled");
-</script>
-    {% block body_start %}{% endblock %}
-
-    <div id="skiplink-container" class="bg-gds-black">
-        <div class="margin-centre  column-maxw-960">
-            <a href="#content" class="margin-vertical-15  display-offscreen gds-white bg-gds-black">{{ t('app:skip') }}</a>
-        </div>
-    </div>
-
-    {% if viewedMessage == undefined %}
-    <div class="global-cookie-message bg-gds-light-blue-25 pad-horizontal-10 pad-vertical-15">
-        {% include "includes/cookie-message.html" %}
-        {% block cookie_message %}{% endblock %}
-    </div>
+<body class="govuk-template__body js-disabled {% block body_classes %}{% endblock %}">
+    {% if cookiesConsented === 'true' %}
+    {% include "includes/gtm-noscript.html" %}
+    {% else %}
+    <!-- Google Tag Manager is currently disabled -->
     {% endif %}
 
+    <script>
+        document.body.className = document.body.className.replace("js-disabled", "js-enabled");
+    </script>
+    {% block body_start %}{% endblock %}
+
+    {{cookieBanner()}}
+    <a href="#content" class="govuk-skip-link">{{ t('app:skip') }}</a>
+    
     {% include "includes/header.html" %}
     {% block header %}{% endblock %}
-
-    <main id="content" class="container">
+    <div class="govuk-width-container">
         {% include "includes/phase-banner.html" %}
-        {% block body %}{% endblock %}
-    </main>
+        {% block back_link %}{% endblock %}
+        <main id="content" class="govuk-main-wrapper" role="main">
+            {% block body %}{% endblock %}
+        </main>
+    </div>
 
     {% include "includes/footer.html" %}
     {% block footer %}{% endblock %}
 
     {% block body_end %}{% endblock %}
 </body>
+
 </html>

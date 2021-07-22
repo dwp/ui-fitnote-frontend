@@ -21,3 +21,5 @@ test.json
 Dockerfile
 Jenkinsfile
 CHANGELOG.md
+gitlab-ci/
+.gitlab-ci.yml

@@ -1,5 +1,6 @@
 var newSession = require(appRootDirectory + '/app/functions/createSessionId');
 var retry = require(appRootDirectory + '/app/functions/retryCookie');
+const config = require('config');
 
 function indexPage(req, res) {
     var sessionId;
@@ -10,11 +11,9 @@ function indexPage(req, res) {
 
     res.render('index', {
         sessionId : sessionId,
-        version : config.version,
+        version : process.env.npm_package_version,
         timeStamp : Date.now(),
-        environment : config.nodeEnvironment,
-        viewedMessage : req.cookies.cookies_agreed,
-        currentPage : 'index'
+        environment : config.util.getEnv('NODE_ENV')
     });
 }
 

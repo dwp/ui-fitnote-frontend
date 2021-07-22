@@ -1,0 +1,48 @@
+{
+    "service" : {
+        "provider" : "Secure Comms",
+        "name" : "Send your fit note for your ESA claim",
+        "listenonhttp" : "true",
+        "port" : "3000",
+        "logs" : "logs/",
+        "key" : "./ssl/192.168.105.5.key.pem",
+        "cert" : "./ssl/192.168.105.5.cert.pem",
+        "ca" : {
+            "intermediate" : "./ssl/ca-inter.cert.pem",
+            "root" : "./ssl/ca-root.cert.pem"
+        },
+        "minFileSize" : 500000,
+        "maxFileSize" : 10000000
+    },
+
+    "logger":{
+        "tag": "fitnote",
+        "host": "",
+        "port": ""
+    },
+
+    "api" : {
+        "url" : "http://localhost:3004"
+    } ,
+
+    "notify": {
+        "mailto": "secure.communicationsproject@dwp.gov.uk",
+        "api_key": "dwp_sendyourfitnotedev-f0cde76d-05b0-4a1e-a8eb-6fe18dbc58fc-cf82519c-334a-4864-9d80-242473872920",
+        "proxyHost": null,
+        "proxyPort": null
+    },
+
+    "sessionInfo" : {
+        "expiryPeriod" : 600000,
+        "timeoutCountdown" : 300000
+    },
+
+    "cookieOptions": {
+        "secure": false,
+        "expiryPeriod": 3600
+    },
+    "GTM": {
+        "id": "GTM-PVWF7WT",
+        "domain": ".gov.uk"
+    }
+}

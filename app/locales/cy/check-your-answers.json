@@ -1,8 +1,7 @@
 {
   "h1" : "Gwiriwch eich manylion cyn anfon eich nodyn ffitrwydd",
   "nino" : "rhif Yswiriant Gwladol",
-  "house" : "Enw neu rif y tŷ",
-  "postcode" : "Cod post",
+  "address" : "Eich cyfeiriad",
   "confirmText" : "Neges testun i gadarnhau",
   "mobile" : "Rhif ffôn symudol",
   "button" : "Derbyn ac anfon nodyn ffitrwydd",
@@ -10,5 +9,8 @@
   "changeNino" : " eich rhif Yswiriant Gwladol",
   "changeAddress" : " eich cyfeiriad",
   "changeMobile" : " eich rhif ffôn symudol",
-  "changeConfirmation" : " p'un ai ydych am gael neges testun i gadarnhau"
+  "changeConfirmation" : " p'un ai ydych am gael neges testun i gadarnhau",
+  "yes": "Oes",
+  "no": "Na",
+  "back": "Yn ôl"
 }

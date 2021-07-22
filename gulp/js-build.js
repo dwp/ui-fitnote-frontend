@@ -4,7 +4,6 @@ var gulp = require('gulp'),
     debug = require('gulp-debug');
 
 /* istanbul ignore next */
-gulp.task('js-build', ['js-govuk-build', 'js-app-build', 'js-vendor-build']);
 
 /* istanbul ignore next */
 gulp.task('js-app-build', function appBuild() {
@@ -29,3 +28,5 @@ gulp.task('js-vendor-build', function vendorBuild() {
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(gulpPaths.dest.js));
 });
+
+gulp.task('js-build', gulp.series('js-govuk-build', 'js-app-build', 'js-vendor-build'));

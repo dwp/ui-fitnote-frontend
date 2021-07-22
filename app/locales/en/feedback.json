@@ -12,8 +12,11 @@
     
     "helpMore": "Do you want to help some more?",
     "helpMoreText":"To make this service better we'd like to ask you a few short questions about your experience today. Only give your contact details if you agree to this.",
+    "helpMoreAria":"Do you want to help some more? To make this service better we'd like to ask you a few short questions about your experience today. Only give your contact details if you agree to this.",
     "yourName": "Your name",
+    "yourname-aria-label": "Enter your name",
     "phone": "Your phone number",
+    "phone-aria-label": "Enter your phone number",
     
     "button": "Send feedback"
 }

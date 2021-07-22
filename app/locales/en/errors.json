@@ -1,39 +1,41 @@
 {
-    "error-summary-h2": "There's a problem",
+    "error-summary-h2": "There is a problem",
     "error-summary-service-fail": "Sorry, there was a problem with the service",
-    "error-summary-p": "Check your form. You must:",
+    "error-summary-p": "",
     "error-summary-p1": "Try again",
-
     "nino": {
-        "nino": "Enter your National Insurance number",
-        "nino-format": "Enter a valid National Insurance number format. For example, QQ 12 34 56 C"
+        "nino": "Enter a National Insurance number in the correct format",
+        "nino-format": "Enter a National Insurance number in the correct format"
     },
-
     "address": {
-        "house-number": "Enter your house number",
-        "postcode" : "Enter your postcode",
-        "postcode-format": "Check postcode format"
+        "house-number": "Enter your house name or number",
+        "postcode": "Enter your postcode",
+        "postcode-format": "Enter a real postcode"
     },
-
     "text-message": {
-        "missing": "Select Yes or No",
-        "mobile": "Enter your mobile number",
-        "format": "Check mobile phone number format"
+        "missing": "Select Yes if you would like to receive a text message",
+        "mobile": "Enter a mobile number, like 07700 900 982 or +44 7700 900 982",
+        "format": "Enter a mobile number, like 07700 900 982 or +44 7700 900 982"
     },
-
     "device": {
-        "missing": "Select the type of device you are using"
+        "missing": "Select which type of device you are using"
     },
-
+    "identify": {
+        "missing": "Select yes if you have a fit note"
+    },
     "feedback": {
         "required": "Select a satisfaction rating",
         "maxlength": "Enter improvement suggestions using 1200 characters or less",
         "phone": "Enter a valid phone number",
         "name": "Enter a shorter name (maximum 1000 characters)"
     },
-
-    "fileType": "File type not allowed",
     "validFileType": "Accepted file types are PDF, JPEG, BMP, PNG and GIF",
-    "choose": "Choose another file"
-
+    "choose": "Choose another file",
+    "heicf": "Your file type is not supported. It must be a JPG, JPEG, BMP, PNG, TIF or PDF",
+    "method-obtained": {
+        "missing": "Select how you received your fit note"
+    },
+    "upload": {
+        "fileType": "The selected file must be a JPG, JPEG, BMP, PNG, TIF or PDF"
+    }
 }

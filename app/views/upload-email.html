@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-06') }}{% endblock %}
+
+{% block back_link %}
+<a href="/method-obtained?ref=upload-email" class="govuk-back-link">{{ t('upload-email:back') }}</a>
+{% endblock %}
+
+{% block body %}
+{% include "includes/govuk-error-summary.html" %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+        <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload-email:h1') }}</h1>
+
+        <ol class="govuk-list govuk-list--number">
+            <li class="govuk-!-padding-bottom-3">{{ t('upload-email:list.li1') }}</li>
+            <li class="govuk-!-padding-bottom-3">{{ t('upload-email:list.li2') }}</li>
+            <li>
+                {{ t('upload-email:list.li3.main') }}
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>{{ t('upload-email:list.li3.sub')|safe }}</li>
+                </ul>
+            </li>
+        </ol>
+        <p class="govuk-!-padding-top-2">
+            <strong>
+                {{ t('upload-email:text') }}
+            </strong>
+        <p>
+        <div class="govuk-inset-text">
+            <ul class="govuk-list govuk-list--bullet">
+                <li>{{ t('upload-email:insetText.li1') }}</li>
+                <li>{{ t('upload-email:insetText.li2') }}</li>
+                <li>{{ t('upload-email:insetText.li3')|safe }}</li>
+            </ul>
+        </div>
+
+
+        <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData"
+            data-form="takeAPhoto" autocomplete="off">
+            <div class="govuk-form-group">
+                <div class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
+                    <label for="userPhotoID">
+                        <h2 class="govuk-heading-m">{{ t('upload-email:upload') }}</h2>
+                    </label>
+                    {% if errors.photo or errors.photoOCR %}
+                    {% for error, value in errors %}
+                    <span id="file-upload-1-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{value.message}}
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+                    <input type="file" accept="image/*,application/pdf"
+                        id="userPhotoID" name="userPhoto" class="govuk-file-upload">
+                </div>
+
+                <div class="govuk-form-group" aria-hidden="true">
+                    <label for="imageNameID" aria-hidden="true">Leave blank</label>
+                    <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value=""
+                        autofill="off">
+                </div>
+
+                <div id="js-loading-message" class="display-offscreen">
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                    <p>{{ t('upload-email:p') }}</p>
+                </div>
+                <div id="js-submitButtonContainer" class="clearfix">
+                    <input type="submit" class="govuk-button" value="{{ t('upload-email:buttonText') }}"
+                        id="submitButton">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+
+
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script src="/javascript/get-a-photo.js?version={{assetsVersion}}"></script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+<script src="/govuk/all.js"></script>
+<script>
+    var ErrorSummary = window.GOVUKFrontend.ErrorSummary
+    var $errorSummary = document.querySelector('[data-module="govuk-error-summary"]');
+    if ($errorSummary) {
+        new ErrorSummary($errorSummary).init();
+    }
+</script>
+{% endblock %}
+

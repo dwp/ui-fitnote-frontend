@@ -1,0 +1,22 @@
+{
+    "h1": "Dim ond nodyn ffitrwydd gall gael ei uwchlwytho a’i brosesu gan y gwasanaeth hwn",
+    "noFitNote": {
+        "text": "Os nad oes gennych nodyn ffitrwydd ac mae angen un arnoch, cysylltwch â’ch meddyg neu feddygfa. Mae’r canlynol yn enghreifftiau o lythyr meddygol, nodyn ynysu a MED 10. nid ydynt yn nodyn ffitrwydd ac ni allant gael eu uwchlwytho i’r gwasanaeth hwn."
+    },
+    "medicalEvidence": {
+        "text1": "Fodd bynnag, gallwch bostio tystiolaeth feddygol arall, fel llythyr meddygol, nodyn ynysu neu MED 10 i",
+        "postalAddress": "Freepost DWP ESA 26.",
+        "text2": "Sicrhewch fod gennych gopi neu gopi dyblyg o’ch tystiolaeth cyn anfon eich tystiolaeth."
+    },
+    "details": {
+        "summary": "Sut i bostio tystiolaeth feddygol",
+        "text1": "Gall tystiolaeth feddygol gael ei bostio’n uniongyrchol i ESA gan ddefnyddio’r cyfeiriad",
+        "strong": "Freepost DWP ESA 26.",
+        "text2": "Nid oes angen stamp arnoch."
+    },
+    "imgAlts": {
+        "img1":"Enghreifftiau o lythyr meddygol, nodyn ynysu a MED10",
+        "img2":"Amlen bost gyda'r cyfeiriad post"
+    },
+    "link":"Mynd yn ôl i Anfon eich nodyn ffitrwydd"
+}

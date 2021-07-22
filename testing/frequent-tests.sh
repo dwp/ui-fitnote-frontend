@@ -2,7 +2,7 @@
 
 echo "Please Note: An internet connection is REQUIRED for all tests to run successfully"
 
-cd ../
+cd ../ || exit
 
 # Jasmine unit tests
 echo "Starting Jasmine tests"
@@ -10,11 +10,11 @@ jasmine JASMINE_CONFIG_PATH=jasmine.json --stop-on-failure=true
 
 # Jasmine unit tests
 echo "Starting Istanbull Test Coverage..."
-istanbul cover --include-all-sources jasmine JASMINE_CONFIG_PATH=jasmine.json
-open -g coverage/lcov-report/index.html
+nyc jasmine JASMINE_CONFIG_PATH=jasmine.json
+open -g coverage/lcov-report/index.html &
 
 # Start the test server in background
-json-server --port 3004 testing/db.json &
+# json-server --port 3004 testing/db.json &
 
 # Start Node in test mode in background
 npm run test --scripts-prepend-node-path &
@@ -24,15 +24,15 @@ echo "Waiting for Node to start..."
 sleep 5
 
 # Javascript Lint checks
-echo "Starting esLint..."
-eslint */*.js
+# echo "Starting esLint..."
+# eslint */*.js
 
 # Sass Lint checks
 echo "Starting Sass Lint..."
 sass-lint -c .sass-lint.yml 'assets/scss/*.scss' -v -q
 
 # Run Valimate HTML validation tests
-cd testing
+cd testing/configs || exit
 valimate
 
 # Kill the running processes afterwards

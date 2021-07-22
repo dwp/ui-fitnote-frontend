@@ -59,26 +59,10 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
     <!--[if lt IE 9]>
         !function(e,t){function n(e,t){var n=e.createElement("p"),r=e.getElementsByTagName("head")[0]||e.documentElement;return n.innerHTML="x<style>"+t+"</style>",r.insertBefore(n.lastChild,r.firstChild)}function r(){var e=E.elements;return"string"==typeof e?e.split(" "):e}function a(e,t){var n=E.elements;"string"!=typeof n&&(n=n.join(" ")),"string"!=typeof e&&(e=e.join(" ")),E.elements=n+" "+e,m(t)}function o(e){var t=y[e[g]];return t||(t={},v++,e[g]=v,y[v]=t),t}function c(e,n,r){if(n||(n=t),s)return n.createElement(e);r||(r=o(n));var a;return a=r.cache[e]?r.cache[e].cloneNode():p.test(e)?(r.cache[e]=r.createElem(e)).cloneNode():r.createElem(e),!a.canHaveChildren||h.test(e)||a.tagUrn?a:r.frag.appendChild(a)}function i(e,n){if(e||(e=t),s)return e.createDocumentFragment();n=n||o(e);for(var a=n.frag.cloneNode(),c=0,i=r(),l=i.length;l>c;c++)a.createElement(i[c]);return a}function l(e,t){t.cache||(t.cache={},t.createElem=e.createElement,t.createFrag=e.createDocumentFragment,t.frag=t.createFrag()),e.createElement=function(n){return E.shivMethods?c(n,e,t):t.createElem(n)},e.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+r().join().replace(/[\w\-:]+/g,function(e){return t.createElem(e),t.frag.createElement(e),'c("'+e+'")'})+");return n}")(E,t.frag)}function m(e){e||(e=t);var r=o(e);return!E.shivCSS||u||r.hasCSS||(r.hasCSS=!!n(e,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),s||l(e,r),e}var u,s,d="3.7.3",f=e.html5||{},h=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,p=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,g="_html5shiv",v=0,y={};!function(){try{var e=t.createElement("a");e.innerHTML="<xyz></xyz>",u="hidden"in e,s=1==e.childNodes.length||function(){t.createElement("a");var e=t.createDocumentFragment();return"undefined"==typeof e.cloneNode||"undefined"==typeof e.createDocumentFragment||"undefined"==typeof e.createElement}()}catch(e){u=!0,s=!0}}();var E={elements:f.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video",version:d,shivCSS:f.shivCSS!==!1,supportsUnknownElements:s,shivMethods:f.shivMethods!==!1,type:"default",shivDocument:m,createElement:c,createDocumentFragment:i,addElements:a};e.html5=E,m(t),"object"==typeof module&&module.exports&&(module.exports=E)}("undefined"!=typeof window?window:this,document);
     <![endif]-->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-57523228-37', 'auto');
-        ga('set', 'dimension1', '{{ sessionId }}');
-        ga('set', 'dimension2', '{{ version }}');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview', 'Error Page [422-desktop]');
-        ga('send', 'event', 'Error - validation', 'userPhotoID', "This hasn't worked.", { 'metric2':  1 });
-    </script>
 </head>
 
 <body class="js-disabled">
-    <div id="skiplink-container" class="bg-gds-black">
-        <div class="margin-centre  column-maxw-960">
-            <a href="#content" class="margin-vertical-15  display-offscreen gds-white bg-gds-black">{{ t('app:skip') }}</a>
-        </div>
-    </div>
+    <a href="#content" class="govuk-skip-link">Skip to main content</a>
 
     <header id="global-header">
         <div class="header-wrapper clearfix">
@@ -94,12 +78,12 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
         </div>
     </header>
 
-    <main id="content" class="container">
+    <main id="content" class="container govuk-body">
         <div class="phase-banner phase-banner-beta border-top-solid border-top-colour-govuk-blue border-top-10">
             <div>
                 <strong class="phase-tag">BETA</strong>
                 {{ t('app:phase-banner-text-1') }}
-                <a href="/feedback" onclick="ga('send', 'event', 'Link - click', 'Feedback', '/feedback' )">{{ t('app:feedback') }}</a>
+                <a href="/feedback">{{ t('app:feedback') }}</a>
                 {{ t('app:phase-banner-text-2') }}
             </div>
         </div>
@@ -109,7 +93,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
                     <h1 class="heading-medium error-summary-heading" style="margin:0">{{ t('422-desktop:h1') }}</h1>
                 </div>
                 <p>{{ t('422-desktop:p') }}</p>
-                <ul class="list list-bullet">
+                <ul class="govuk-list govuk-list--bullet">
                     <li>{{ t('422-desktop:li1') }}</li>
                     <li>{{ t('422-desktop:li2') }}</li>
                 </ul>

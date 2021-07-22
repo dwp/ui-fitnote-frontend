@@ -1,11 +1,11 @@
+const config = require('config');
+
 function completePage(req, res) {
     res.render('complete', {
-        version : config.version,
+        version : process.env.npm_package_version,
         timeStamp : Date.now(),
-        environment : config.nodeEnvironment,
-        viewedMessage : req.cookies.cookies_agreed,
-        sessionId : req.cookies.sessionId,
-        currentPage : 'complete'
+        environment : config.util.getEnv('NODE_ENV'),
+        sessionId : req.cookies.sessionId
     });
 
     // Make sure the cookies are cleared AFTER page render, so GA can get values, but cleared for security

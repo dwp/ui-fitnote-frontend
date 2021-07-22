@@ -13,6 +13,18 @@ figure img {
     width: 100%;
 }
 
+.medical-letters {
+    max-width: 100%;
+}
+
+.freepost-letter {
+    max-width: 40%;
+}
+
+.both-scans, .fit-note-shadow, .fit-note-landscape, .fit-note-zoom, .fit-note-blur  {
+    max-width: 100%;
+}
+
 @media (min-width: 641px) {
     figcaption {
         float: left;

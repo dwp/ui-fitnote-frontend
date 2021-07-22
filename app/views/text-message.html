@@ -1,76 +1,68 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-09') }}{% endblock %}
 
-{% block googleTags %}
-<script>
-    ga('send', 'pageview');
-
-    {% if errors %}
-        {% for error, value in errors %}
-            ga("send", "event", "Error - validation", '{{value.field}}', '{{value.message}}' );
-        {% endfor %}
-    {% endif %}
-</script>
-
+{% block back_link %}
+{% if previousPageCYA %}
+<a href="/check-your-answers" class="govuk-back-link">{{ t('device:back') }}</a>
+{% else %}
+<a href="/address" class="govuk-back-link">{{ t('device:back') }}</a>
+{% endif %}
 {% endblock %}
 
 {% block body %}
-
-    {% if previousPageCYA %}
-        <a href="/check-your-answers" class="link-back">{{ t('device:back') }}</a>
-    {% else %}
-        <a href="/address" class="link-back">{{ t('device:back') }}</a>
-    {% endif %}
-
-    {% include "includes/error-summary.html" %}
-
-    <div class="grid-row">
-        <div class="column-two-thirds">
-            <h1 class="heading-large">{{ t('text-message:h1') }}</h1>
+    {% include "includes/govuk-error-summary.html" %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">{{ t('text-message:h1') }}</h1>
+            <div id="contact-hint" class="govuk-hint">
+                {{ t('text-message:hint') }}
+            </div>
             <form action="/send-text-message" method="post" class="form" name="text-messageForm" id="formData" data-form="text-message" autocomplete="off" onsubmit="return submitForm();">
-                <div class="form-group{{ ' error' if errors.radioMessage }}">
-                    <fieldset class="inline">
+
+                <div id="govuk-form-group-error" class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-label="{{ t('text-message:form-aria-label') }}">
                         <legend>
-                            <span class="display-offscreen">{{ t('text-message:legend') }}</span>
-                            <span class="gds-red bold display-b" aria-hidden="true" id="error-message-radio">{{ t('errors:text-message.missing') }}</span>
-                            {% if errors.radioMessage %}
-                            <span class="gds-red bold display-b" id="error-message-radio">{{ t('errors:text-message.missing') }}</span>
-                            {% endif %}
+                            <span class="govuk-error-message" aria-hidden="true" id="error-message-radio"></span>
                         </legend>
 
-                        <label class="block-label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}" id="yesLabel" for="radioYes">
-                            <input id="radioYes" type="radio" name="textReminder" value="Yes"
-                                   {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %}>
-                            {{ t('text-message:yes') }}
-                        </label>
-                        
-                        <label class="block-label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}" id="noLabel" for="radioNo">
-                            <input id="radioNo" type="radio" name="textReminder" value="No"
-                                   {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
-                            {{ t('text-message:no') }}
-                        </label>
-                        
-                        <div class="panel form-group {% if errors.textMessage %}error{% endif %}" id="mobileNumberPanel">
-                            <label for="mobileNumberID" class="form-label">{{ t('text-message:mobile-number') }}</label>
-                            <span class="gds-red bold display-b" aria-hidden="true" id="error-message-text-messageFieldID"></span>
-                            {% if errors.textMessageMobile %}
-                                <span class="gds-red bold  display-b" id="error-message-text-messageFieldID">{{ t('errors:text-message.mobile') }}</span>
-                            {% endif %}
-                            {% if errors.textMessageFormat %}
-                                <span class="gds-red bold  display-b" id="error-message-text-messageFieldID">{{ t('errors:text-message.format') }}</span>
-                            {% endif %}
-                            <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="form-control" value="{{ mobile }}"  maxlength="20">
-                            <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPage }}">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="radioYes" type="radio" name="textReminder" value="Yes"
+                                {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}" id="yesLabel" for="radioYes">
+                                {{ t('text-message:yes') }}
+                            </label>
                         </div>
 
-                        <div class="form-group" aria-hidden="true">
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="mobileNumberPanel">
+                            <div id="mobile-form" class="govuk-form-group">
+                              <label class="govuk-label" for="mobileNumberID">
+                                {{ t('text-message:mobile-number') }}
+                              </label>
+                              <span class="govuk-error-message" aria-hidden="true" id="error-message-text-messageFieldID"></span>
+                              <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="govuk-input govuk-!-width-one-third" value="{{ mobile }}"  maxlength="20" aria-label="{{ t('text-message:mobile-number-aria-label') }}">
+                              <label for="previousPageId" aria-hidden="true">Leave blank</label>
+                              <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPageCYA }}">
+                            </div>
+                        </div>
+                        
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="radioNo" type="radio" name="textReminder" value="No"
+                                    {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}" id="noLabel" for="radioNo">
+                                {{ t('text-message:no') }}
+                            </label>
+
+                        </div>
+
+
+                        <div class="govuk-form-group" aria-hidden="true">
                             <label for="landlineID" aria-hidden="true">Landline</label>
                             <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value="" autofill="off">
                         </div>
                     </fieldset>
                 </div>
-                <div class="form-group">
-                    <input type="submit" id="add-your-details" class="button primary-button" value="{{ t('app:continue') }}">
+                <div class="govuk-form-group">
+                    <input type="submit" id="add-your-details" class="govuk-button" value="{{ t('app:continue') }}">
                 </div>
             </form>
         </div>
@@ -79,11 +71,12 @@
 {% endblock %}
 
 {% block body_end %}
+{{super()}}
     <script> var errorDictionary = {{ validationErrors | safe }}</script>
     <script src="/javascript/validate-text-message.js?version={{assetsVersion}}" defer></script>
     <script>
         var lang = '{{ lang }}';
         var expires = '{{ exp }}';
     </script>
-    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+
 {% endblock %}

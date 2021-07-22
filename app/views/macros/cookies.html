@@ -1,0 +1,22 @@
+{% macro cookieBanner() %}
+{% if showCookieConstentMessage %}
+<div id="global-cookie-message" class="bg-gds-grey">
+    {% include "includes/cookie-message.html" %}
+    {% block cookie_message %}{% endblock %}
+</div>
+{% else %}
+  {% if showCookieChoiceConfirmationBanner %}
+    {% if cookiesConsented === 'true' %}
+    <div id="global-cookie-message" class="bg-gds-grey">
+        {% include "includes/cookie-message-accept.html" %}
+        {% block cookie_message_accept %}{% endblock %}
+    </div>
+    {% elif cookiesConsented === 'false' %}
+    <div id="global-cookie-message" class="bg-gds-grey">
+        {% include "includes/cookie-message-reject.html" %}
+        {% block cookie_message_reject %}{% endblock %}
+    </div>
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% endmacro %}

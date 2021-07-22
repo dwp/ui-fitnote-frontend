@@ -1,0 +1,63 @@
+{
+    "h1": "Upload your fit note",
+    "list": {
+        "li1": "Take a photo of your fit note or scan it to your device.",
+        "li2": {
+            "main": "Make sure:",
+            "sub1": "you're in a well lit place",
+            "sub2": "all of your fit note is in the image"
+        },
+        "li3": "Save the photo or scan of your fit note somewhere you can easily find on your device <strong>(i.e. computer, phone, tablet, etc).</strong>"
+    },
+    "text": "Your file will automatically be checked to make sure the quality is good enough",
+    "insetText": {
+        "li1": "the selected file must be a JPG, BMP, PNG, TIF or PDF.",
+        "li2": "the selected file must be smaller than 10MB.",
+        "li3": "ensure all 4 corners of the fit note are included"
+    },
+    "details-link-text": "Get more help to get your photo right",
+    "details-link-hidden-text": ", click for more information",
+    "details-summary-text": "Please follow the instructions below to help you upload your fit note",
+    "p": "Uploading...",
+    "buttonText": "Continue",
+    "upload": "Choose a file to upload",
+    "back": "Back",
+    "missing": "You must select a file to continue",
+    "invalid": "The selected file must be a JPG, JPEG, BMP, PNG, TIF or PDF",
+    "failed-ocr": "The selected file must be clear and readable, containing the whole fit note",
+    "tooBig": "The selected file must be smaller than 10MB",
+    "step-nav-reveal": "Show all",
+    "step-nav-1": {
+        "headline": "Hold the device directly above the fit note",
+        "li1": "it is best to hold the device about 20cm or 1 foot above the fit note",
+        "li2": "avoid taking the photo at an angle",
+        "li3": "hold the device directly above the fit note"
+    },
+    "step-nav-2": {
+        "headline": "Find a well lit place and avoid shadows",
+        "subHeading": "Make sure:",
+        "li1": "your fit note is well lit",
+        "li2": "the device screen is bright enough to see the image of your fit note clearly",
+        "li3": "nothing is between your fit note and the light to avoid any shadows"
+    },
+    "step-nav-3": {
+        "headline": "Make sure your fit note is sideways or 'landscape'",
+        "text": "Ensure that your image includes your whole fit note by holding your device sideways or 'landscape'."
+    },
+    "step-nav-4": {
+        "headline": "Make sure the whole fit note is in the photo",
+        "text": "Ensure that your image includes your whole fit note. It should fill the photo and all 4 corners should be inside it."
+    },
+    "step-nav-5": {
+        "headline": "Make sure the image is clear and not blurred",
+        "text1": "A clear image will help us to better access your fit note.",
+        "text2": "If you are not sure how to get a clear, sharp image, please check your device manual."
+    },
+    "image-alts": {
+        "both-scans": "Incorrectly taking a photograph from a side angle and correctly from above",
+        "fit-note-shadow": "Incorrectly having a photograph with a shadow and a correct clear photograph",
+        "fit-note-landscape": "An incorrect photograph of a landscape fit note taken portrait and correctly landscape",
+        "fit-note-zoom": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note",
+        "fit-note-blur": "Incorrect blurred photograph and a correct clear photograph"
+    }
+}

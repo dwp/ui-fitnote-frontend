@@ -1,19 +1,24 @@
+/* eslint-disable complexity */
 function takePhotoPage(req, res) {
-    var errorMessage;
-    var photoError;
-    var route = (typeof req.cookies.route !== 'undefined') ? req.cookies.route : 
-        (req.originalUrl.indexOf('upload') > -1) ? 'upload' : 'take';
+    const config = require('config');
 
-    var page = `${route}-a-photo`;
-    var fileError = false;
-    var typeError = false;
-    var minSizeError = false;
-    var maxSizeError = false;
+    let errorMessage;
+    let photoError;
+    let route;
+
+    if (typeof req.cookies.route !== 'undefined') {
+        route = req.cookies.route;
+    }
+
+    const page = route;
+    let fileError = false;
+    let typeError = false;
+    let maxSizeError = false;
 
     if (req.query.error === 'serviceFailed') {
         photoError = {
-            message : req.i18nTranslator.t('take-a-photo:serviceFail'),
-            field : 'formData'
+            message : req.i18nTranslator.t(`${route}:serviceFail`),
+            field : 'userPhotoID'
         };
     }
 
@@ -23,47 +28,58 @@ function takePhotoPage(req, res) {
     if (req.query.type === '1') {
         typeError = true;
     }
-    if (req.query.size === '1') {
-        minSizeError = true;
+    if (req.query.type === '2') {
+        typeError = true;
     }
     if (req.query.size === '2') {
         maxSizeError = true;
     }
-    if (req.query.type === '1' || req.query.size === '1' || req.query.size === '2') {
+    if (req.query.type === '1' || req.query.type === '2' || req.query.size === '1' || req.query.size === '2') {
         fileError = true;
         if (req.query.type === '1') {
             photoError = {
                 message : req.i18nTranslator.t('errors:choose'),
-                field : 'formData'
+                field : 'userPhotoID'
+            };
+        } else if (req.query.type === '2') {
+            photoError = {
+                message : req.i18nTranslator.t('errors:heicf'),
+                field : 'userPhotoID'
             };
         } else {
             photoError = {
-                message : req.i18nTranslator.t(`${route}-a-photo:another`),
-                field : 'formData'
+                message : req.i18nTranslator.t(`${route}:tooBig`),
+                field : 'userPhotoID'
             };
         }
     }
 
     if (req.query.error === 'invalidPhoto') {
-        photoError =  {
-            message : req.i18nTranslator.t('take-a-photo:invalid'),
-            field : 'formData'
+        photoError = {
+            message : req.i18nTranslator.t(`${route}:invalid`),
+            field : 'userPhotoID'
         };
     }
 
     if (req.query.error === 'noPhoto') {
-        photoError =  {
-            message : req.i18nTranslator.t('take-a-photo:missing'),
-            field : 'formData'
+        photoError = {
+            message : req.i18nTranslator.t(`${route}:missing`),
+            field : 'userPhotoID'
         };
     }
 
     if (req.query.error === 'ocrFailed') {
-        res.cookie('retry', parseInt(req.cookies.retry, 0) + 1, {httpOnly : true, secure : true, sameSite : true, expires : 0});
-        photoError =  {
+        const int = parseInt(req.cookies.retry, 0) + 1;
+        res.cookie('retry', int, {
+            httpOnly : true,
+            secure : config.get('cookieOptions.secure') === 'true',
+            sameSite : true,
+            expires : 0
+        });
+        photoError = {
             retry : req.cookies.retry,
-            message : req.i18nTranslator.t(`${route}-a-photo:failed-ocr`),
-            field : 'formData'
+            message : req.i18nTranslator.t(`${route}:failed-ocr`),
+            field : 'userPhotoID'
         };
     }
 
@@ -78,19 +94,15 @@ function takePhotoPage(req, res) {
             photo : photoError
         };
     }
-
     res.render(page, {
         sessionId : req.cookies.sessionId,
-        version : config.version,
-        environment : config.nodeEnvironment,
-        viewedMessage : req.cookies.cookies_agreed,
+        version : process.env.npm_package_version,
+        environment : config.util.getEnv('NODE_ENV'),
         timeStamp : Date.now(),
-        currentPage : page,
         route : route,
         errors : errorMessage,
         fileError : fileError,
         typeError : typeError,
-        minSizeError : minSizeError,
         maxSizeError : maxSizeError,
         serviceFail : req.query.error === 'serviceFailed',
         invalidPhoto : req.query.error === 'invalidPhoto'

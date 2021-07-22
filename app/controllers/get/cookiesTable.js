@@ -1,10 +1,10 @@
+const config = require('config');
+
 function cookiesTablePage(req, res) {
     res.render('cookies-table', {
-        version : config.version,
+        version : process.env.npm_package_version,
         timeStamp : Date.now(),
-        environment : config.nodeEnvironment,
-        viewedMessage : req.cookies.cookies_agreed,
-        currentPage : 'cookies-table'
+        environment : config.util.getEnv('NODE_ENV')
     });
 }
 

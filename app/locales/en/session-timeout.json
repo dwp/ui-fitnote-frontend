@@ -1,5 +1,13 @@
 {
-    "h1": "Sorry you'll have to start again",
-    "p": "You haven't entered any details for 30 minutes so we've cleared your information to keep it secure.",
-    "button": "Start again"
+    "pageTitle": "Your session has ended due to inactivity - Send your fit note - GOV.UK",
+    "title": "Your session has ended due to inactivity",
+    "p1": "Your session automatically ends if you don't use the service for 30 minutes.",
+    "p2": "We do this for your security. The information that you entered has not been saved.",
+    "p3": "<p>Return to the <a class='govuk-link' href=\"https://www.gov.uk/send-fit-note\">start page</a>.</p>",
+    "button": "Start again",
+    "dialog" : {
+        "message" : "We will reset your application if you do not respond in",
+        "keepAliveButton": "Get another 30 minutes",
+        "deleteYourAnswersButton": "Start again"
+    }
 }

@@ -5,14 +5,14 @@ var gulp = require('gulp'),
 /* istanbul ignore next */
 gulp.task('eslint', function goEslint() {
     return gulp.src([gulpPaths.src.nodeJs])
-        .pipe(eslint('./testing/configs/.eslintrc.json'))
+        .pipe(eslint('./.eslintrc.js'))
         .pipe(eslint.format());
 });
 
 /* istanbul ignore next */
 gulp.task('eslintProd', function goEslintProd() {
     return gulp.src([gulpPaths.src.nodeJs])
-        .pipe(eslint('./testing/configs/.eslintrc.json'))
+        .pipe(eslint('./.eslintrc.js'))
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });

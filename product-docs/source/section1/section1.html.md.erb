@@ -1,0 +1,40 @@
+---
+title: Section 1
+weight: 20
+layout: layout
+---
+
+# Section 1
+
+## Subsection A
+
+Some searchable content
+
+## Subsection B
+
+Some other content
+
+### Code Example
+
+    variables:
+    SERVICE_NAME: Sample Docs Site
+
+    cache:
+    paths:
+    - vendor
+
+    pages:
+    image: ruby:2.6
+    script:
+    - chmod -R +x $CI_PROJECT_DIR/product-docs/build/
+    - sh $CI_PROJECT_DIR/product-docs/build/install-pages-tooling.sh
+    - sh $CI_PROJECT_DIR/product-docs/build/build-pages-docs.sh
+    artifacts:
+        paths:
+        - public
+    only:
+        refs:
+        - develop
+        - /^[Ff]-.*$/
+
+

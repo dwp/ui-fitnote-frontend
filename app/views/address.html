@@ -1,79 +1,64 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:service-name') }}{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-08') }}{% endblock %}
 
-{% block googleTags %}
-    <script>
-        ga('send', 'pageview');
-        {% if errors.houseNumber %}
-            ga("send", "event", "Error - validation", '{{errors.houseNumber.field}}', '{{errors.houseNumber.message}}' );
-        {% endif %}
-
-        {% if errors.postcode %}
-            ga("send", "event", "Error - validation", '{{errors.postcode.field}}', '{{errors.postcode.message}}' );
-        {% endif %}
-    </script>
+{% block back_link %}
+{% if previousPageCYA %}
+<a href="/check-your-answers" class="govuk-back-link">{{ t('device:back') }}</a>
+{% else %}
+<a href="/nino" class="govuk-back-link">{{ t('device:back') }}</a>
+{% endif %}
 {% endblock %}
 
 {% block body %}
-
-    {% if previousPage === '/check-your-answers' %}
-        <a href="/check-your-answers" class="link-back">{{ t('device:back') }}</a>
-    {% else %}
-        <a href="/nino" class="link-back">{{ t('device:back') }}</a>
-    {% endif %}
-
-    {% include "includes/error-summary.html" %}
-
-    <div class="grid-row">
-        <div class="column-two-thirds">
-            <h1 class="heading-large">{{ t('address:h1') }}</h1>
-            <form action="/send-address" method="post" class="form" name="amendAddress" id="formData" data-form="updateAddress" autocomplete="off" onsubmit="return submitForm();">
-                <fieldset class="form-group">
-                    <legend class="display-offscreen">{{ t('address:legend') }}</legend>
-
-                    <div class="form-group {% if errors.houseNumber %}error{% endif %}">
-                        <label for="houseNumberID" class="form-label">{{ t('address:house-number') }}</label>
-                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-houseNumberID">{{ t('errors:address.house-number') }}</span>
-                        {% if errors.houseNumber %}
-                            <span class="gds-red bold display-b" id="error-message-houseNumberID">{{ t('errors:address.house-number') }}</span>
-                        {% endif %}
-                        <input type="text" name="houseNumberField" id="houseNumberID" class="form-control {{error.houseNumberCompleted}}" value="{{ house }}" data-required="required" maxlength="35">
-                    </div>
-
-                    <div class="form-group {% if errors.postcode or errors.postcodeFormat %}error{% endif %}">
-                        <label for="postcodeID" class="form-label">{{ t('address:postcode') }}</label>
-                        <span class="gds-red bold display-b" aria-hidden="true" id="error-message-postcodeID"></span>
-                        {% if errors.postcode %}
-                            <span class="gds-red bold display-b" id="error-message-postcodeID">{{ t('errors:address.postcode') }}</span>
-                        {% endif %}
-                        {% if errors.postcodeFormat %}
-                            <span class="gds-red bold display-b" id="error-message-postcodeID">{{ t('errors:address.postcode-format') }}</span>
-                        {% endif %}
-                        <input type="text" name="postcodeField" id="postcodeID" class="form-control {{error.postcodeCompleted}}" value="{{ postcode }}" data-required="required" maxlength="8">
-                    </div>
-
-                    <div class="form-group" aria-hidden="true">
-                        <label for="countyID" aria-hidden="true">Leave blank</label>
-                        <input type="text"  name="countyField" id="countyID" aria-hidden="true" value="" autofill="off">
-                        <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPage }}">
-                    </div>
-                </fieldset>
-
-                <div class="form-group">
-                    <input type="submit" id="amendAddressButton" class="button primary-button" value="{{ t('app:continue') }}">
+{% include "includes/govuk-error-summary.html" %}
+<div class="govuk-grid-row govuk-body">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">{{ t('address:h1') }}</h1>
+        <form action="/send-address" method="post" class="form" name="amendAddress" id="formData"
+            data-form="updateAddress" autocomplete="off" onsubmit="return submitForm();">
+            <fieldset class="govuk-fieldset">
+                <legend class="display-offscreen">{{ t('address:legend') }}</legend>
+                <div id="govuk-form-group-error-house" class="govuk-form-group">
+                    <label for="houseNumberID" class="govuk-label">{{ t('address:house-number') }}</label>
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-houseNumberID"></span>
+                    <input type="text" name="houseNumberField" id="houseNumberID"
+                        class="govuk-input govuk-!-width-two-thirds {{error.houseNumberCompleted}}" value="{{ house }}"
+                        data-required="required" maxlength="35" aria-label="{{ t('address:house-number-aria-label') }}">
                 </div>
-            </form>
-        </div>
-        {% include "includes/sidebar.html" %}
+
+                <div id="govuk-form-group-error-postcode" class="govuk-form-group">
+                    <label for="postcodeID" class="govuk-label">{{ t('address:postcode') }}</label>
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-postcodeID"></span>
+                    <input type="text" name="postcodeField" id="postcodeID"
+                        class="govuk-input govuk-input--width-10 {{error.postcodeCompleted}}" value="{{ postcode }}"
+                        data-required="required" maxlength="8" aria-label="{{ t('address:postcode-aria-label') }}">
+                </div>
+
+                <div class="govuk-form-group" aria-hidden="true">
+                    <label for="countyID" aria-hidden="true">Leave blank</label>
+                    <input type="text" name="countyField" id="countyID" aria-hidden="true" value="" autofill="off">
+                    <label for="previousPageId" aria-hidden="true">Leave blank</label>
+                    <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true"
+                        value="{{ previousPageCYA }}">
+                </div>
+            </fieldset>
+
+            <div class="govuk-form-group">
+                <input type="submit" id="amendAddressButton" class="govuk-button" value="{{ t('app:continue') }}">
+            </div>
+        </form>
     </div>
+    {% include "includes/sidebar.html" %}
+</div>
 {% endblock %}
 
 {% block body_end %}
-    <script> var errorDictionary = {{ validationErrors | safe }}</script>
-    <script src="/javascript/validate-address.js?version={{assetsVersion}}"></script>
-    <script>
-        var lang = '{{ lang }}';
-        var expires = '{{ exp }}';
-    </script>
-    <script src="/javascript/timeout.js?version={{assetsVersion}}" defer></script>
+{{super()}}
+<script> var errorDictionary = {{ validationErrors | safe }}</script>
+<script src="/javascript/validate-address.js?version={{assetsVersion}}"></script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+
 {% endblock %}

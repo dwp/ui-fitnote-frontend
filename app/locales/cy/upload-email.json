@@ -1,0 +1,25 @@
+{
+    "h1": "Uwchlwytho eich nodyn ffitrwydd",
+    "list": {
+        "li1": "Agorwch yr e-bost a anfonwyd atoch gan eich meddyg sy’n cynnwys eich nodyn ffitrwydd.",
+        "li2": "Lawrlwythwch y nodyn ffitrwydd roedd wedi’i atodi i e-bost eich meddyg.",
+        "li3": {
+            "main": "Uwchlwytho eich nodyn ffitrwydd",
+            "sub": "efallai bod eich nodyn ffitrwydd wedi cael ei arbed ar eich dyfais mewn ffolder <strong>Downloads</strong>, <strong>Recents</strong> neu <strong>Saved As</strong>"
+        }
+    },
+    "text": "Bydd eich ffeil yn cael ei wirio’n awtomatig i wneud yn siwr ei fod yn ddigon da.",
+    "insetText": {
+        "li1": "rhaid bod ffurf y ffeil naill ai JPG, BMP, PNG, TIF neu PDF",
+        "li2": "mae’n rhaid i’r ffeil dewisedig fod yn llai na 10MB",
+        "li3": "<strong>peidiwch â llwytho ‘screenshot’</strong> o’ch nodyn ffitrwydd gan na fydd yn gweithio"
+    },
+    "p": "Llwytho...",
+    "buttonText": "Parhau",
+    "upload": "Dewiswch ffeil i uwchlwytho",
+    "back": "Yn ôl",
+    "missing": "Mae’n rhaid i chi ddewis ffeil i barhau",
+    "invalid": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF",
+    "failed-ocr": "Mae’n rhaid i’r ffeil a ddewiswyd fod yn glir ac yn ddarllenadwy a chynnwys y nodyn ffitrwydd cyfan",
+    "tooBig": "Mae’n rhaid i’ch nodyn ffitrwydd fod yn 10mb neu lai"
+}

@@ -1,4 +1,9 @@
 {
     "heading": "National Insurance number",
-    "hint": "It's on your National Insurance card, benefit letter, payslip or P60. For example, QQ 12 34 56 C."
+    "hint": "It's on your National Insurance card, benefit letter, payslip or P60. For example, QQ 12 34 56 C.",
+    "details-link-text": "What is my National Insurance number?",
+    "details-link-hidden-text": "Click for more information",
+    "details-summary-text": "If you are unable to locate your National Insurance number, refer to ",
+    "nino-link-text": "find your National Insurance number on GOV.UK (opens in a new tab)",
+    "nino-input-aria-label": "Enter your National Insurance number. It's on your National Insurance card, benefit letter, payslip or P60. For example, QQ 12 34 56 C."
 }

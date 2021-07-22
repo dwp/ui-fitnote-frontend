@@ -1,0 +1,16 @@
+{% from "hmrc/components/timeout-dialog/macro.njk" import hmrcTimeoutDialog %}
+
+{# Session timeout dialog #}
+{{ hmrcTimeoutDialog ({
+      timeout: timeoutDialog.timeout,
+      countdown: timeoutDialog.countdown,
+      keepAliveUrl: timeoutDialog.keepAliveUrl,
+      signOutUrl: timeoutDialog.signOutUrl,
+      timeoutUrl: timeoutDialog.timeoutUrl,
+      message: t("session-timeout:dialog.message"),
+      keepAliveButtonText: t("session-timeout:dialog.keepAliveButton"),
+      signOutButtonText: t("session-timeout:dialog.deleteYourAnswersButton"),
+      language: language
+  }) }}
+
+{% include "includes/timeout-dialog/scripts.njk" %}

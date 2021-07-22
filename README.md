@@ -14,6 +14,7 @@ This is the front end Node server and client facing code (HTML, CSS, JS and [Nun
 8. [Versioning](#versioning)
 9. [Internationalisation](#i18n)
 10. [Notify Integration](Notify integration)
+11. [Configuration](#Configuration)
 
 
 ## APPLICATION ARCHITECTURE
@@ -50,13 +51,16 @@ This will install all the global packages required and run ``npm update`` to ins
 ### Local Environment
 
 To run the application locally:
+build the app
+
 ```
-gulp dev
+npm run build
 ```
 
-or
+then run it:
+
 ```
-npm run dev
+npm run start
 ```
 To run the fake endpoints server run in the root dir in parallel with run command:
 
@@ -98,9 +102,21 @@ Linting tasks are run onChange in local mode, or can be run manually using:
 gulp linting
 ```
 
+## Updating node modules
+To pass gitlab pipeline you have to keep node modules up to date.
+To check for latest updates, update `package.json` and generate a new `npm-shrinkwrap.json` run:
+```
+npm run deps:update
+```
+
 ### SASS Linting
 
-Rules are defined in ``.sass-lint.yml`` file and are run automatically when a SASS file is edited, if Gulp is being run.
+Rules are defined in `.stylelintrc.yml` file where the `stylelint-config-recommended` package rules are being used. Stylelint can be run locally after installing by using the below commands:
+
+```
+npm install
+npm run quality:stylelint
+```
 
 ### JS Linting
 
@@ -151,3 +167,27 @@ https://www.notifications.service.gov.uk/
 * If proxy routing is required then specify a url for the proxy server
     
     
+
+## Configuration
+
+Fitnote UI is currently uses a default json file (app/configs/dev.json) which can be overridden with the following env vars
+
+| Env var | Default | Description |
+| ------------ | ------------- | ------------------------|
+| SERVICE_PORT | 3000 | Port This Service Listens On |
+| SERVICE_HTTP | false | True for Plain HTTP, False for HTTPS |
+| SERVICE_KEY | ./ssl/192.168.105.5.key.pem | SSL Keyfile (serviceHTTP true overrides this) |
+| SERVICE_CERT | ./ssl/192.168.105.5.cert.pem | SSL Cert (serviceHTTP true overrides this) |
+| SERVICE_CA_INTER | ./ssl/ca-inter.cert.pem | CA Intermediate Cert (serviceHTTP true overrides this) |
+| SERVICE_CA_ROOT | ./ssl/ca-root.cert.pem | CA Root Cert (serviceHTTP true overrides this) |
+| MAX_FILE_SIZE | 10000000 | Maximum  Upload File Size |
+| SESSION_EXPIRY_PERIOD | 900000 | Session Cookie Expiry Time |
+| TIMEOUT_DIALOG_COUNTDOWN | 600000 | With how many second remaining should the timeout dialog appear |
+| API_URL | | Full API URL |
+| NOTIFY_API_KEY | | Notify API Key |
+| FEEDBACK_MAILTO | | Feedback Mailto: |
+| NOTIFY_PROXY | null | URL of Proxy for Notify if Required |
+| COOKIE_SECURE | false | Use Secure Cookies |
+| GOOGLE_TAG_MANAGER_ID | "GTM-PVWF7WT" | GTM ID |
+| GOOGLE_TAG_MANAGER_DOMAIN | localhost | Domain name for GTM cookies |
+

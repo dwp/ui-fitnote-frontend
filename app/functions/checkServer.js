@@ -1,17 +1,22 @@
 var net = require('net');
+const config = require('config');
 
-exports.apiCheck = function apiCheck(portNumber, ipaddress, protocol) {
+exports.apiCheck = function apiCheck(uri) {
     var client;
-    var url = protocol + ipaddress + ':' + portNumber;
-
     function apiConnected() {
-        logger.info('API Connected: ' + url);
+        if (config.util.getEnv('NODE_ENV') !== 'test') {
+            logger.info('API Connected: ' + uri);
+        }
     }
 
     function apiFail(err) {
-        logger.error('API Error : ' + err.message);
+        if (config.util.getEnv('NODE_ENV') !== 'test') {
+            logger.error('API Error : ' + err.message);
+        }
     }
+    const url = require('url');
+    const myURL = url.parse(uri, true);
 
-    client = net.connect(portNumber, ipaddress, apiConnected);
+    client = net.connect(myURL.port, myURL.hostname, apiConnected);
     client.on('error', apiFail);
 };

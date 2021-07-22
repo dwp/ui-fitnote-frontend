@@ -2,14 +2,13 @@ var checkHouseNumber;
 var checkPostCode;
 var checkPostCodeFormat;
 var flag = false;
-var ga;
 var errorMessageHouseNumberID = document.getElementById('error-message-houseNumberID');
 var errorMessagePostcodeNumberID = document.getElementById('error-message-postcodeID');
 var houseNumberID = document.getElementById('houseNumberID');
 var postcodeID = document.getElementById('postcodeID');
-var errorSummaryHouse = '<li class="ls-none"><a href="#houseNumberID" id="error-field-houseNumberID" data-related="houseNumber"  class="bold small gds-red">' + errorDictionary.address['house-number'] + '</a></li>';
-var errorSummaryPostcode = '<li class="ls-none"><a href="#postcodeID" id="error-field-postcodeID" data-related="postcode" class="bold small gds-red">' + errorDictionary.address.postcode + '</a></li>';
-var errorSummaryPostcodeFormat = '<li class="ls-none"><a href="#postcodeID" id="error-field-postcodeID" data-related="postcode" class="bold small gds-red">' + errorDictionary.address['postcode-format'] + '</a></li>';
+var errorSummaryHouse = '<li><a href="#houseNumberID">' + errorDictionary.address['house-number'] + '</a></li>';
+var errorSummaryPostcode = '<li><a href="#postcodeID">' + errorDictionary.address.postcode + '</a></li>';
+var errorSummaryPostcodeFormat = '<li><a href="#postcodeID">' + errorDictionary.address['postcode-format'] + '</a></li>';
 var errorSummaryLi;
 
 function isInputEmpty(inputField) {
@@ -19,23 +18,28 @@ function isInputEmpty(inputField) {
     return true;
 }
 
-function showErrorFields(field) {
+function showErrorFields(field, message) {
     field.setAttribute('aria-hidden', false);
-    field.parentElement.className = 'form-group error';
+    field.innerHTML = '<span class="govuk-visually-hidden">Error:</span>' + message;
 }
 
 function hideErrorFields(field) {
     field.setAttribute('aria-hidden', true);
-    field.parentElement.className = 'form-group';
 }
 
+
 function getErrorSummary(li) {
-    return '<h2 class="bold-medium" id="error-summary-heading">' + errorDictionary['error-summary-h2'] + '</h2><p>'+ errorDictionary['error-summary-p'] +'</p><div id="error-summary-list-id"><ul class="error-summary-list">' + li + '</ul></div>';
+    return li
 }
 
 function isValidPostcode(postcode) {
     var regex = /^(?![QVX])[A-Z]((?![IJZ])[A-Z][0-9]([0-9]?|[ABEHMNPRVWXY]?)|[0-9]([0-9]?|[ABCDEFGHJKPSTUW]?))[0-9](?![CIKMOV])[A-Z]{2}$/;
     return regex.test(postcode.toUpperCase().replace(/[\s|\-]/g, ''));
+}
+
+function addErrorClass(id, className) {
+    var element = document.getElementById(id);
+    element.classList.add(className);
 }
 
 function checkAddress() {
@@ -49,27 +53,34 @@ function checkAddress() {
         hideErrorFields(errorMessagePostcodeNumberID);
         hideErrorFields(errorMessageHouseNumberID);
         errorSummaryLi = '';
+        document.getElementById('houseNumberID').classList.remove('govuk-input--error');
+        document.getElementById('postcodeID').classList.remove('govuk-input--error');
+        document.getElementById('govuk-form-group-error-house').classList.remove('govuk-form-group--error');
+        document.getElementById('govuk-form-group-error-postcode').classList.remove('govuk-form-group--error');
 
         if (!checkHouseNumber) {
             errorSummaryLi += errorSummaryHouse;
-            showErrorFields(errorMessageHouseNumberID);
-            ga('send', 'event', 'Error - validation', 'houseNumberID', 'Enter your house number');
+            showErrorFields(errorMessageHouseNumberID, errorDictionary.address['house-number']);
+            addErrorClass('govuk-form-group-error-house', 'govuk-form-group--error')
+            addErrorClass('houseNumberID', 'govuk-input--error')
         }
 
         if (!checkPostCode) {
             errorSummaryLi += errorSummaryPostcode;
-            errorMessagePostcodeNumberID.innerHTML = errorDictionary.address.postcode
-            showErrorFields(errorMessagePostcodeNumberID);
-            ga('send', 'event', 'Error - validation', 'postcodeID', 'Enter your postcode');
+            showErrorFields(errorMessagePostcodeNumberID, errorDictionary.address.postcode);
+            addErrorClass('govuk-form-group-error-postcode', 'govuk-form-group--error')
+            addErrorClass('postcodeID', 'govuk-input--error')
         } else if (!checkPostCodeFormat) {
             errorSummaryLi += errorSummaryPostcodeFormat;
-            errorMessagePostcodeNumberID.innerHTML = errorDictionary.address['postcode-format'];
-            showErrorFields(errorMessagePostcodeNumberID);
-            ga('send', 'event', 'Error - validation', 'postcodeID', 'Check postcode format');
+            showErrorFields(errorMessagePostcodeNumberID, errorDictionary.address['postcode-format']);
+            addErrorClass('govuk-form-group-error-postcode', 'govuk-form-group--error')
+            addErrorClass('postcodeID', 'govuk-input--error')
         }
 
-        document.getElementById('error-summary').innerHTML = getErrorSummary(errorSummaryLi);
-        document.getElementById('error-summary').setAttribute('aria-hidden', false);
+        document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
+        document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorSummaryLi);
+        document.getElementById("govuk-error-summary").focus();
+        flag = false;
     }
 }
 
