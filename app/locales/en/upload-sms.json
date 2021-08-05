@@ -19,7 +19,7 @@
         "li3": "ensure all 4 corners of the fit note are included"
     },
     "p": "Uploading...",
-    "buttonText": "Continue",
+    "buttonText": "Upload file",
     "upload": "Choose a file to upload",
     "back": "Back",
     "missing": "You must select a file to continue",

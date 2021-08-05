@@ -5,7 +5,7 @@
     "h2-4": "Cookies message",
 
     "a1": "change which cookies you are happy for us to use",
-    "a2": "browser you are using",
+    "a2": "browser you are using (opens in a new tab)",
 
     "p1": "We need to use some essential cookies to make the 'Send your fit note for your ESA claim' website work.",
     "p2": "You can",
@@ -19,12 +19,12 @@
     "p14": "These cookies are automatically removed from your computer when you complete your application or if you:",
     "p15": "You may see a banner when you visit this website inviting you to accept cookies or review your settings. We’ll set cookies so that your computer knows you’ve seen it and not to show it again, and also to store your settings.",
 
-    "li1": "Internet Explorer",
-    "li2": "Mozilla Firefox",
-    "li4-a": "Safari",
+    "li1": "Internet Explorer (opens in a new tab)",
+    "li2": "Mozilla Firefox (opens in a new tab)",
+    "li4-a": "Safari (opens in a new tab)",
     "li4": ", commonly used on iPads, iPhones and other Apple computers",
-    "li3": "Google Chrome",
-    "a3": "how to manage cookies",
+    "li3": "Google Chrome (opens in a new tab)",
+    "a3": "how to manage cookies (opens in a new tab)",
 
     "li8": "don't do anything for 30 minutes",
     "li9": "close your browser",

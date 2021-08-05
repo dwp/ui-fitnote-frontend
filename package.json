@@ -1,7 +1,7 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "0.39.0",
+  "version": "0.40.0",
   "scripts": {
     "postinstall": "npm run build",
     "start": "node ./bin/server.js",
@@ -91,7 +91,6 @@
     "multer": "1.4.2",
     "nodemon": "2.0.12",
     "notifications-node-client": "5.1.0",
-    "npm": "7.20.0",
     "nunjucks": "3.2.3",
     "nyc": "15.1.0",
     "path": "0.12.7",

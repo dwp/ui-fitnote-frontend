@@ -18,15 +18,14 @@ function sendAddress(req, res) {
     var postcodeSanitised = isSanitised.sanitiseField(postcodeRaw);
     var postcodeValid = validatePostcode.validatePostcode(postcodeSanitised.toUpperCase());
     var fakeCountyRaw = req.body.countyField;
-    var houseNumberSanitised = houseNumberRaw;
     var previousPageCYA = req.body.previousPage;
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
     var passedHoneypot = checkHoneypot.honeypot(fakeCountyRaw, 'BOT: honeypot detected a bot, Address Page, County Field');
-    var ishouseNumberBlank = checkBlank.notBlank(houseNumberSanitised);
+    var ishouseNumberBlank = checkBlank.notBlank(houseNumberRaw);
     var fitnote = {
         sessionId : req.cookies.sessionId,
-        houseNameOrNumber : houseNumberSanitised,
-        postcode : postcodeSanitised
+        houseNameOrNumber : houseNumberRaw.trim(),
+        postcode : postcodeRaw.trim()
     };
 
     var options = {
