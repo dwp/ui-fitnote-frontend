@@ -5,7 +5,7 @@
     "h2-4": "Neges cwcis",
 
     "a1": "newid eich cwcis rydych yn hapus i ni eu defnyddio.",
-    "a2": "y porwr rydych yn ei ddefnyddio",
+    "a2": "y porwr rydych yn ei ddefnyddio (agor mewn tab newydd)",
 
     "p1": "Rydym angen defnyddio cwcis angenrheidiol i wneud y wefan ‘Anfon eich nodyn ffitrwydd ar gyfer eich cais ESA’ weithio.",
     "p2": "Gallwch",
@@ -19,12 +19,12 @@
     "p14": "Mae'r cwcis hyn yn cael eu dileu o'ch cyfrifiadur yn awtomatig pan fyddwch yn cwblhau'ch cais neu os byddwch:",
     "p15": "Efallai y byddwch yn gweld baner pan ymwelwch â'r wefan hon yn eich gwahodd i dderbyn cwcis neu adolygu'ch gosodiadau. Byddwn yn gosod cwcis fel bod eich cyfrifiadur yn gwybod eich bod wedi ei weld ac i beidio â'i ddangos eto, a hefyd i storio'ch gosodiadau",
 
-    "li1": "Internet Explorer",
-    "li2": "Mozilla Firefox",
-    "li4-a": "Safari",
+    "li1": "Internet Explorer (agor mewn tab newydd)",
+    "li2": "Mozilla Firefox (agor mewn tab newydd)",
+    "li4-a": "Safari (agor mewn tab newydd)",
     "li4": ", a ddefnyddir yn fwyaf cyffredin ar iPad, iPhone a chyfrifiaduron eraill Apple",
-    "li3": "Google Chrome",
-    "a3": "i reoli cwcis",
+    "li3": "Google Chrome (agor mewn tab newydd)",
+    "a3": "i reoli cwcis (agor mewn tab newydd)",
 
     "li8": "ddim yn gwneud dim am 30 munud",
     "li9": "yn cau eich porwr",

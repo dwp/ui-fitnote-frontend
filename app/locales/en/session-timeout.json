@@ -3,7 +3,7 @@
     "title": "Your session has ended due to inactivity",
     "p1": "Your session automatically ends if you don't use the service for 30 minutes.",
     "p2": "We do this for your security. The information that you entered has not been saved.",
-    "p3": "<p>Return to the <a class='govuk-link' href=\"https://www.gov.uk/send-fit-note\">start page</a>.</p>",
+    "p3": "<p>Return to <a class='govuk-link' href=\"/\">Send your fit note for your ESA claim</a>.</p>",
     "button": "Start again",
     "dialog" : {
         "message" : "We will reset your application if you do not respond in",

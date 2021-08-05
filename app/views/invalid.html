@@ -12,30 +12,31 @@
             {{ t('invalid:h1') }}
         </h1>
         <p class="govuk-body">
-            {{ t('invalid:noFitNote.text') }}
+            {{ t('invalid:noFitNote.text1') }}
         </p>
-        <img src="/images/example-medical-letters.png" class="medical-letters" alt="{{ t('invalid:imgAlts.img1') }}">
+        <p class="govuk-body">
+            {{ t('invalid:noFitNote.text2') }}
+        </p>
+        <p class="govuk-body">
+            {{ t('invalid:noFitNote.text3') }}
+        </p>
+        <img src="/images/example-medical-letters.png" class="medical-letters" alt="">
+        <h2 class="govuk-heading-m">{{ t('invalid:medicalEvidence.h2')}}</h2>
         <p class="govuk-body">
             {{ t('invalid:medicalEvidence.text1')}}
-            {{ t('invalid:medicalEvidence.postalAddress')}}
+        </p>
+        <div class="govuk-inset-text">
+            <ul class="govuk-list">
+              <li>{{ t('invalid:medicalEvidence.postalAddress.text1')}}</li>
+              <li>{{ t('invalid:medicalEvidence.postalAddress.text2')}}</li>
+            </ul>
+        </div>
+        <p class="govuk-body">
             {{ t('invalid:medicalEvidence.text2')}}
         </p>
-        <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                    {{ t('invalid:details.summary')}}
-                </span>
-            </summary>
-            <div class="govuk-details__text">
-                {{ t('invalid:details.text1')}}
-                {{ t('invalid:details.strong')}}
-                {{ t('invalid:details.text2')}}
-                <div class="govuk-!-padding-bottom-4"></div>
-                <img src="/images/freepost-letter.png" class="freepost-letter" alt="{{ t('invalid:imgAlts.img2') }}">
-            </div>
-        </details>
         <a href="/identify?ref=invalid" class="govuk-link">{{ t('invalid:link') }}</a>
     </div>
     {% include "includes/sidebar.html" %}
 </div>
+
 {% endblock %}
