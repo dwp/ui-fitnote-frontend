@@ -1,7 +1,7 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "0.40.0",
+  "version": "0.41.0",
   "scripts": {
     "postinstall": "npm run build",
     "start": "node ./bin/server.js",
@@ -56,8 +56,8 @@
     "zombie": "6.1.4"
   },
   "dependencies": {
-    "@dwp/govuk-casa": "7.0.3",
-    "async": "3.2.0",
+    "@dwp/govuk-casa": "7.0.5",
+    "async": "3.2.1",
     "body-parser": "1.19.0",
     "bunyan": "1.8.15",
     "bunyan-syslog-udp": "0.2.0",
@@ -86,9 +86,9 @@
     "gulp-uglify": "3.0.2",
     "gulp4-run-sequence": "1.0.1",
     "helmet": "4.6.0",
-    "hmrc-frontend": "2.0.0",
+    "hmrc-frontend": "2.2.0",
     "keep-alive-agent": "0.0.1",
-    "multer": "1.4.2",
+    "multer": "1.4.3",
     "nodemon": "2.0.12",
     "notifications-node-client": "5.1.0",
     "nunjucks": "3.2.3",

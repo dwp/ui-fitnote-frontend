@@ -8,7 +8,6 @@
     "a": "Send another fit note",
     "alt": "An image of a tick",
     "feedback": "What do you think of this service?",
-    "feedbackInfo": "(takes 30 seconds)",
     "govukUrl": "https://www.gov.uk/send-fit-note",
     "reference" : "Your reference is your National Insurance number"
 }
