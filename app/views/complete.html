@@ -27,3 +27,12 @@
         </div>
     </div>
 {% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+
+{% endblock %}

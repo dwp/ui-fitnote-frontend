@@ -56,5 +56,7 @@
     "required": "Field is required",
     "feedback": "feedback",
     "phase-banner-text-1": "This is a new service - your ",
-    "phase-banner-text-2": " will help us improve it."
+    "phase-banner-text-2": " will help us improve it.",
+    "fitnote-english-welsh-link": "Cymraeg",
+    "feedback-footer": "Feedback"
 }

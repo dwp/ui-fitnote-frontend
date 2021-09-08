@@ -2,9 +2,9 @@
 {% block pageTitle %}{{ t('app:page-title-01') }}{% endblock %}
 
 {% block body %}
-{% include "includes/govuk-error-summary.html" %}
 <div class="grid-row govuk-body">
-    <div class="column-two-thirds">
+    <div class="govuk-grid-column-two-thirds">
+        {% include "includes/govuk-error-summary.html" %}
         <form action="/identify" method="post" class="form" name="identifyForm" id="formData" data-form="identify"
             autocomplete="off" onsubmit="return submitForm();">
             <div id="govuk-form-group-error" class="govuk-form-group">

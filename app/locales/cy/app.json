@@ -54,5 +54,7 @@
   "required": "Mae angen maes",
   "feedback": "adborth",
   "phase-banner-text-1": "Mae hwn yn wasanaeth newydd - bydd eich ",
-  "phase-banner-text-2": " yn ein helpu i'w wella."
+  "phase-banner-text-2": " yn ein helpu i'w wella.",
+  "fitnote-english-welsh-link": "English",
+  "feedback-footer": "Adborth"
 }

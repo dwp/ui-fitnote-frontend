@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block body %}
-{% include "includes/govuk-error-summary.html" %}
 <div class="grid-row govuk-body">
-    <div class="column-two-thirds">
+    <div class="govuk-grid-column-two-thirds">
+        {% include "includes/govuk-error-summary.html" %}
         <form action="/method-obtained" method="post" class="form" name="methodObtainedForm" id="formData"
             data-form="method-obtained" autocomplete="off" onsubmit="return submitForm();">
             <div id="govuk-form-group-error" class="govuk-form-group">
@@ -58,4 +58,8 @@
 {{super()}}
 <script> var errorDictionary = {{ validationErrors | safe }}</script>
 <script src="/javascript/validate-method-obtained.js?version={{assetsVersion}}" defer></script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
 {% endblock %}

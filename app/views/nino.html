@@ -10,9 +10,9 @@
 {% endblock %}
 
 {% block body %}
-{% include "includes/govuk-error-summary.html" %}
 <div class="grid-row govuk-body">
-    <div class="column-two-thirds">
+    <div class="govuk-grid-column-two-thirds">
+        {% include "includes/govuk-error-summary.html" %}
         <form action="/send-nino" method="post" class="form" name="ninoForm" id="formData" data-form="nino"
             autocomplete="off" onsubmit="return submitForm();">
             <div id="govuk-form-group-error" class="govuk-form-group">

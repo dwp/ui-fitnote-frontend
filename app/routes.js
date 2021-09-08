@@ -79,11 +79,11 @@ function catchAll(req, res) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 router.get('/', catchSlash);
 router.get('/cookie-agree/', functions.legal.hasViewedCookieMsg);
-router.get('/cookies/cookie_policy', getControllers.cookiePolicy.cookiePolicyPage);
-router.get('/cookies/cookies_details', getControllers.cookiesDetails.cookiesDetailsPage);
+router.get('/cookies/cookie_policy', isAuthenticatedFunction, getControllers.cookiePolicy.cookiePolicyPage);
+router.get('/cookies/cookies_details', isAuthenticatedFunction, getControllers.cookiesDetails.cookiesDetailsPage);
 router.get('/cookies-table', getControllers.cookiesTable.cookiesTablePage);
-router.get('/accessibility-statement', getControllers.accessibility.accessibilityPage);
-router.get('/feedback', getControllers.feedback.feedbackPage);
+router.get('/accessibility-statement', isAuthenticatedFunction, getControllers.accessibility.accessibilityPage);
+router.get('/feedback', isAuthenticatedFunction, getControllers.feedback.feedbackPage);
 router.get('/thank-you', getControllers.feedback.thankYouPage);
 router.get('/refresh-session', getControllers.session.refresh);
 
@@ -91,8 +91,8 @@ router.get('/refresh-session', getControllers.session.refresh);
 router.get('/index', redirectGovUk);
 router.get('/identify', getControllers.identify.identify);
 router.get('/device', isAuthenticatedFunction, getControllers.device.device);
-router.get('/method-obtained', getControllers.methodObtained.methodObtained);
-router.get('/invalid', getControllers.invalid.invalid);
+router.get('/method-obtained', isAuthenticatedFunction, getControllers.methodObtained.methodObtained);
+router.get('/invalid', isAuthenticatedFunction, getControllers.invalid.invalid);
 router.get(['/upload-paper', '/upload-sms', '/upload-email'], isAuthenticatedFunction, getControllers.takePhoto.takePhotoPage);
 router.get('/nino', isAuthenticatedFunction, getControllers.nino.ninoPage);
 router.get('/address', isAuthenticatedFunction, getControllers.address.addressPage);

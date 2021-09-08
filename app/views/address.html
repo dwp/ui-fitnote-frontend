@@ -10,9 +10,9 @@
 {% endblock %}
 
 {% block body %}
-{% include "includes/govuk-error-summary.html" %}
 <div class="govuk-grid-row govuk-body">
     <div class="govuk-grid-column-two-thirds">
+        {% include "includes/govuk-error-summary.html" %}
         <h1 class="govuk-heading-l">{{ t('address:h1') }}</h1>
         <form action="/send-address" method="post" class="form" name="amendAddress" id="formData"
             data-form="updateAddress" autocomplete="off" onsubmit="return submitForm();">

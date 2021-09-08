@@ -1,18 +1,20 @@
-<div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" aria-hidden="{% if errors or fileError %}false{% else %}true{% endif %}" tabindex="-1"
+<div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
+    aria-hidden="{% if errors or fileError %}false{% else %}true{% endif %}" tabindex="-1"
     data-module="govuk-error-summary">
     {% if serviceFail %}
-            <h2 class="govuk-error-summary__title" id="error-summary-title">{{ t('errors:error-summary-service-fail') }}</h2>
+    <h2 class="govuk-error-summary__title" id="error-summary-title">{{ t('errors:error-summary-service-fail') }}
+    </h2>
     {% else %}
-            <h2 class="govuk-error-summary__title" id="error-summary-title">{{ t('errors:error-summary-h2') }}</h2>
+    <h2 class="govuk-error-summary__title" id="error-summary-title">{{ t('errors:error-summary-h2') }}</h2>
     {% endif %}
     <div class="govuk-error-summary__body">
         <ul id="error-summary-list" class="govuk-list govuk-error-summary__list">
             {% if errors or fileError %}
-                {% for error, value in errors %}
-                    <li>
-                        <a href="#{{value.field}}">{{value.message}}</a>
-                    </li>
-                {% endfor %}
+            {% for error, value in errors %}
+            <li>
+                <a href="#{{value.field}}">{{value.message}}</a>
+            </li>
+            {% endfor %}
             {% endif %}
         </ul>
     </div>

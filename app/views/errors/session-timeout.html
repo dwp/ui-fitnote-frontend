@@ -136,6 +136,16 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
                             </a>
                         </li>
                         <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="{{currentPage}}?{{ 'lang=cy' if language == 'en' else 'lang=en' }}">
+                                {{ t('app:fitnote-english-welsh-link') }}
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="/feedback">
+                                {{ t('app:feedback-footer') }}
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
                             <a class="govuk-footer__link" href="/accessibility-statement">
                                 {{ t('app:accessibility') }}
                             </a>

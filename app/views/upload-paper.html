@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block body %}
-{% include "includes/govuk-error-summary.html" %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-body">
+        {% include "includes/govuk-error-summary.html" %}
         <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload-paper:h1') }}</h1>
 
         <ol class="govuk-list govuk-list--number">

@@ -2,9 +2,9 @@
 {% block pageTitle %}{{ t('app:page-title-12') }}{% endblock %}
 
 {% block body %}
-{% include "includes/govuk-error-summary.html" %}
 <div class="govuk-grid-row">
 <div class="govuk-grid-column-two-thirds govuk-body">
+    {% include "includes/govuk-error-summary.html" %}
     <h1 class="govuk-heading-l">{{ t('feedback:h1') }}</h1>
     <form id="formData" action="/feedback" method="post" class="form" autocomplete="off" onsubmit="return submitForm();">
         <div id="govuk-form-group-error-rating" class="govuk-form-group">
@@ -104,4 +104,8 @@
 {{super()}}
     <script> var errorDictionary = {{ validationErrors | safe }}</script>
     <script src="/javascript/validate-feedback.js?version={{assetsVersion}}" defer></script>
+    <script>
+        var lang = '{{ lang }}';
+        var expires = '{{ exp }}';
+    </script>
 {% endblock %}
