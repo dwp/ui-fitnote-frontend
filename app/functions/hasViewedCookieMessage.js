@@ -13,7 +13,7 @@ exports.hasViewedCookieMsg = function hasViewedCookieMsg(req, res) {
 
     res.cookie(COOKIE_CONSENT_CHOICE, req.query.consent, {
         httpOnly : true,
-        secure : config.get('cookieOptions.secure') === 'true',
+        secure : config.get('cookieOptions.secure'),
         sameSite : sameSite,
         expires : cookieLength
     });

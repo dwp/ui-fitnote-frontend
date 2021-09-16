@@ -9,7 +9,7 @@ function methodObtainedPage(req, res) {
     if (typeof req.cookies.sessionId !== 'undefined') {
         if (isValid) {
             route = `upload-${methodObtained}`;
-            res.cookie('route', route, {httpOnly : true, secure : config.get('cookieOptions.secure') === 'true', sameSite : true, expires : 0});
+            res.cookie('route', route, {httpOnly : true, secure : config.get('cookieOptions.secure'), sameSite : true, expires : 0});
             res.redirect(`/${route}`);  
         } else {
             res.redirect('/method-obtained');

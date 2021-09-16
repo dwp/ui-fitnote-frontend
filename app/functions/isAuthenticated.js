@@ -1,6 +1,7 @@
 var logger = require(appRootDirectory + '/app/functions/bunyan');
 var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 const config = require('config');
+const getLanguage = require('./getLanguage');
 
 exports.isAuthenticated = function isAuthenticated(req, res, next) {
     var redirectUrl;
@@ -8,7 +9,7 @@ exports.isAuthenticated = function isAuthenticated(req, res, next) {
     if (config.util.getEnv('NODE_ENV') !== 'test') {
         if (req.cookies.sessionId) {
             logger.info('Session Valid');
-            res.locals.lang = req.language || 'en';
+            res.locals.lang = getLanguage(req.language);
             res.locals.exp = req.cookies.exp || false; 
             return next();
         }

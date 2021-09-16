@@ -1,6 +1,7 @@
 var request =  require('request');
 var logger = require(appRootDirectory + '/app/functions/bunyan');
 const config = require('config');
+const getLanguage = require(appRootDirectory + '/app/functions/getLanguage');
 
 function ninoPage(req, res) {
     var logType = logger.child({widget : 'ninoPage'});
@@ -8,7 +9,7 @@ function ninoPage(req, res) {
     var errorMessage;
     var ninoError;
     var ninoFormatError;
-    var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
+    var validationErrors = JSON.stringify(require('../../locales/' + getLanguage(req.language) + '/errors.json'));
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
     var previousPageCYA = 0;
     var route = typeof req.cookies.route !== 'undefined' ? req.cookies.route : 'take';

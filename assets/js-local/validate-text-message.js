@@ -4,7 +4,7 @@ var flag = false;
 var invalidCharsMessage;
 
 function focusOnTextBox() {
-    setTimeout(() => {
+    setTimeout(function () {
         document.getElementById('mobileNumberID').focus()
     }, 3500)
 }

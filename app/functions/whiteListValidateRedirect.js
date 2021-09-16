@@ -13,6 +13,8 @@ const redirectMapping = {
     "/address" : "/address",
     "/text-message" : "/text-message",
     "/check-your-answers" : "/check-your-answers",
+    "/feedback" : "/feedback",
+    "/thank-you" : "/thank-you",
     "/complete" : "/complete"
 };
 

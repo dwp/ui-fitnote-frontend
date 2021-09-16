@@ -17,7 +17,7 @@ exports.updateCookieSettings = function updateCookieSettings(req, res) {
     if (cookieConsentValid) {
         res.cookie(COOKIE_CONSENT_CHOICE, cookieConsentRaw, {
             httpOnly : true,
-            secure : config.get('cookieOptions.secure') === 'true',
+            secure : config.get('cookieOptions.secure'),
             sameSite : sameSite,
             expires : cookieLength
         });

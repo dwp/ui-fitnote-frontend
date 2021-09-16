@@ -1,6 +1,7 @@
 var request = require('request');
 var logger = require(appRootDirectory + '/app/functions/bunyan');
 var config = require('config');
+const getLanguage = require(appRootDirectory + '/app/functions/getLanguage');
 
 function addressPage(req, res) {
     var logType = logger.child({widget : 'addressPage'});
@@ -11,7 +12,7 @@ function addressPage(req, res) {
     var postcodeError;
     var postcodeFormatError;
     var previousPageCYA = 0;
-    var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
+    var validationErrors = JSON.stringify(require('../../locales/' + getLanguage(req.language) + '/errors.json'));
     var errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
     var options = {
         url : config.get('api.url') + '/queryAddress',

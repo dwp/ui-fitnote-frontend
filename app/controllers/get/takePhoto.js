@@ -72,7 +72,7 @@ function takePhotoPage(req, res) {
         const int = parseInt(req.cookies.retry, 0) + 1;
         res.cookie('retry', int, {
             httpOnly : true,
-            secure : config.get('cookieOptions.secure') === 'true',
+            secure : config.get('cookieOptions.secure'),
             sameSite : true,
             expires : 0
         });

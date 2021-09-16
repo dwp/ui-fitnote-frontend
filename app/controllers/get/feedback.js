@@ -1,7 +1,8 @@
 const config = require('config');
+const getLanguage = require(appRootDirectory + '/app/functions/getLanguage');
 
 function feedbackPage(req, res) {
-    var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
+    var validationErrors = JSON.stringify(require('../../locales/' + getLanguage(req.language) + '/errors.json'));
     var ratingError;
     var improvementsError;
     var nameError;
@@ -55,7 +56,7 @@ function feedbackPage(req, res) {
 
     res.cookie('feedback',
         previousPage, 
-        {httpOnly : true, secure : config.get('cookieOptions.secure') === 'true', sameSite : true, expires : 0});
+        {httpOnly : true, secure : config.get('cookieOptions.secure'), sameSite : true, expires : 0});
     
     res.render('feedback', {
         version : process.env.npm_package_version,

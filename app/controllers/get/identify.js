@@ -1,10 +1,11 @@
 var newSession = require(appRootDirectory + '/app/functions/createSessionId');
 var retry = require(appRootDirectory + '/app/functions/retryCookie');
 const config = require('config');
+const getLanguage = require(appRootDirectory + '/app/functions/getLanguage');
 
 function identifyPage(req, res) {
     var sessionId;
-    var validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
+    var validationErrors = JSON.stringify(require('../../locales/' + getLanguage(req.language) + '/errors.json'));
     var previousPageCYA = 0;
 
     if (req.query.hasOwnProperty('ref')) {

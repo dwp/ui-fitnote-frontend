@@ -1,7 +1,8 @@
 const config = require('config');
+const getLanguage = require(appRootDirectory + '/app/functions/getLanguage');
 
 function methodObtainedPage(req, res) {
-    const validationErrors = JSON.stringify(require('../../locales/' + (req.language || 'en') + '/errors.json'));
+    const validationErrors = JSON.stringify(require('../../locales/' + getLanguage(req.language) + '/errors.json'));
     var previousPageCYA = 0;
 
     if (req.query.hasOwnProperty('ref')) {

@@ -12,7 +12,7 @@ function devicePage(req, res) {
             route = (req.body.device === 'desktop') ? 'upload' : 'take';
             res.cookie('route', route, {
                 httpOnly : true,
-                secure : config.get('cookieOptions.secure') === 'true',
+                secure : config.get('cookieOptions.secure'),
                 sameSite : true,
                 expires : 0
             });

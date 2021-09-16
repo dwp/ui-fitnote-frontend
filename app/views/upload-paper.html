@@ -257,7 +257,8 @@
 
 {% block body_end %}
 {{super()}}
-<script src="/javascript/jquery-1.11.3.js"></script>
+<script src="/javascript/jquery.min.js?version={{assetsVersion}}">
+</script>
 <script src="/javascript/get-a-photo.js?version={{assetsVersion}}"></script>
 <script>
     var lang = '{{ lang }}';

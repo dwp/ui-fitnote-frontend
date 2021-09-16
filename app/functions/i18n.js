@@ -10,6 +10,7 @@
 *   function i18nTranslator = A class instance to translate for the current req
 */
 const config = require('config');
+const getLanguage = require('./getLanguage');
 
 module.exports = function(app, appLocaleDirs, supportedLocales) {
     // Initialise the I18n utility
@@ -28,13 +29,13 @@ module.exports = function(app, appLocaleDirs, supportedLocales) {
     app.use(function(req, res, next) {
         if (typeof req.query.lang !== 'undefined' && supportedLocales.indexOf(req.query.lang) > -1) {
             req.language = req.query.lang === 'cy' ? 'cy' : 'en';
-            res.cookie('language', req.language, {httpOnly : true, secure : config.get('cookieOptions.secure') === 'true', sameSite : true, expires : 0});
+            res.cookie('language', req.language, {httpOnly : true, secure : config.get('cookieOptions.secure'), sameSite : true, expires : 0});
         } else {
             req.language = req.cookies.language || supportedLocales[0];
         }
 
-        res.locals.language = req.language;
-        req.i18nTranslator = new I18n.Translator(req.language);
+        res.locals.language = getLanguage(req.language);
+        req.i18nTranslator = new I18n.Translator(getLanguage(req.language));
 
         next();
     });
