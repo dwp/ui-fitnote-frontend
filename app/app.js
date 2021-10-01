@@ -108,6 +108,13 @@ app.use(function(req, res, next) {
     });
     res.nunjucksEnvironment = env;
 
+    // Handling URIErrors
+    try {
+        decodeURIComponent(req.path);
+    } catch (e) {
+        res.redirect('/404');
+    }
+
     // Customise the `render()` response method to use this specific Nunjucks
     // environment for the current request.
     res.render = function(name, opts, callback) {

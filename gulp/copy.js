@@ -16,12 +16,4 @@ gulp.task('copyFonts', function copyJs(done) {
     done();
 });
 
-/* jquery */
-gulp.task('copyJquery', function copyJquery(done) {
-    gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(concat('jquery.min.js'))
-        .pipe(gulp.dest(gulpPaths.dest.js));
-    done();
-});
-
-gulp.task('copy', gulp.series('copyImages', 'copyFonts', 'copyJquery'));
+gulp.task('copy', gulp.series('copyImages', 'copyFonts'));
