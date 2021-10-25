@@ -3,5 +3,5 @@
 // - All NewLines
 // - All multiple instances of white space
 exports.sanitiseField = function sanitiseField(field) {
-    return field.replace(/\W+/g, '');
+  return field.replace(/\W+/g, '');
 };

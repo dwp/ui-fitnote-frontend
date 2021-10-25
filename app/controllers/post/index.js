@@ -1,5 +1,5 @@
 function index(req, res) {
-    res.redirect('/identify');
+  res.redirect('/identify');
 }
 
 module.exports.index = index;

@@ -33,7 +33,7 @@
     "choose": "Dewiswch ffeil arall",
     "heicf": "Nid yw eich math o ffeil yn cael ei gefnogi. Mae’n rhaid iddo fod yn JPG, JPEG, BMP, PNG, TIF neu PDF",
     "method-obtained": {
-        "missing": "Dewiswch sut rydych wedi derbyn eich nodyn ffitrwydd"
+        "missing": "Dewiswch sut gawsoch chi eich nodyn ffitrwydd"
     },
     "upload": {
         "fileType": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF"

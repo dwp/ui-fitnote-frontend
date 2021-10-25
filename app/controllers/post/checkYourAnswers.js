@@ -1,7 +1,7 @@
-var sendIt = require(appRootDirectory + '/app/controllers/post/submitDeclaration');
+const sendIt = require('./submitDeclaration');
 
 function acceptAndSend(req, res) {
-    sendIt.submitDeclaration(req, res);
+  sendIt.submitDeclaration(req, res);
 }
 
 module.exports.acceptAndSend = acceptAndSend;

@@ -1,0 +1,12 @@
+{
+    "h1": "Before you upload your digital fit note",
+    "list": {
+        "li1": "Make sure your fit note is landscape (horizontal) not portrait (vertical).",
+        "li2": "The whole fit note must be shown. It needs to be on 1 page.",
+        "li3": "Check that it is in focus and all text can be read.",
+        "li4": "It may be necessary to take a photo or crop it to create a landscape version."
+    },
+    "buttonText": "Continue to upload",
+    "back": "Back",
+    "fit-note-zoom-alt-text": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note"
+}

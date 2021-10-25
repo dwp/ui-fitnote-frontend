@@ -1,8 +1,7 @@
-
 const noop = () => {};
 
 module.exports = class Request {
-  constructor (journeyContextData, journeyContextValidation = {}) {
+  constructor() {
     this.body = {};
     this.cookies = {};
     this.headers = {};
@@ -14,7 +13,7 @@ module.exports = class Request {
       error: noop,
       trace: noop,
       warn: noop,
-      fatal: noop
+      fatal: noop,
     };
     this.sessionSaved = false;
     this.sessionDestroyed = false;
@@ -26,14 +25,14 @@ module.exports = class Request {
       save: (cb) => {
         this.sessionSaved = true;
         return cb();
-      }
+      },
     };
     this.i18nTranslator = {
-      t: (key, value) => `${key}${value ? `:${value}` : ''}`
+      t: (key, value) => `${key}${value ?? ''}`,
     };
   }
 
-  get (header) {
+  get(header) {
     return this.headers[header];
   }
 };

@@ -1,0 +1,12 @@
+{
+    "h1": "How to take a photo of your fit note",
+    "list": {
+        "li1": "You can use a smartphone, tablet or camera. Or you can use a scanner connected to a computer.",
+        "li2": "Make sure your fit note is landscape (horizontal) not portrait (vertical).",
+        "li3": "The whole fit note must be shown. It needs to be on 1 A4 page.",
+        "li4": "Check that the image is in focus and all the text can be read."
+    },
+    "buttonText": "Continue to upload",
+    "back": "Back",
+    "fit-note-zoom-alt-text": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note"
+}

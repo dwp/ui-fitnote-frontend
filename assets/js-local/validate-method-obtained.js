@@ -2,8 +2,7 @@ var flag = false;
 
 (function onLoady() {
     document.getElementById('method-obtained-paper').addEventListener('click', null, false);
-    document.getElementById('method-obtained-sms').addEventListener('click', null, false);
-    document.getElementById('method-obtained-email').addEventListener('click', null, false);
+    document.getElementById('method-obtained-digital').addEventListener('click', null, false);
 })();
 
 function getErrorSummary(msg) {

@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ t('app:page-title-04') }}{% endblock %}
+{% block pageTitle %}{{ t('app:page-title-06') }}{% endblock %}
 
 {% block back_link %}
-<a href="/method-obtained?ref=upload-paper" class="govuk-back-link">{{ t('upload-paper:back') }}</a>
+{% if previousPageCYA %}
+<a href="/guidance-digital" class="govuk-back-link">{{ t('upload:back') }}</a>
+{% else %}
+<a href="/guidance-paper" class="govuk-back-link">{{ t('upload:back') }}</a>
+{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -10,31 +14,14 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-body">
         {% include "includes/govuk-error-summary.html" %}
-        <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload-paper:h1') }}</h1>
-
-        <ol class="govuk-list govuk-list--number">
-            <li class="govuk-!-padding-bottom-3">{{ t('upload-paper:list.li1') }}</li>
-            <li class="govuk-!-padding-bottom-3">{{ t('upload-paper:list.li2') }}</li>
-            <li>
-                {{ t('upload-paper:list.li3') }}
-                <img src="/images/fit-note-zoom.png" class="fit-note-zoom" alt="">
-            </li>
-            <li> {{ t('upload-paper:list.li4')|safe }}</li>
-        </ol>
-        <div class="govuk-inset-text">
-            <ul class="govuk-list govuk-list--bullet">
-                <li>{{ t('upload-paper:insetText.li1') }}</li>
-                <li>{{ t('upload-paper:insetText.li2') }}</li>
-                <li>{{ t('upload-paper:insetText.li3')|safe }}</li>
-            </ul>
-        </div>
+        <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload:h1') }}</h1>
 
         <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData"
             data-form="takeAPhoto" autocomplete="off">
             <div class="govuk-form-group">
                 <div class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
-                    <label for="userPhotoID">
-                        <h2 class="govuk-heading-m">{{ t('upload-paper:upload') }}</h2>
+                    <label class="govuk-label" for="userPhotoID">
+                        {{ t('upload:upload') }}
                     </label>
                     {% if errors.photo or errors.photoOCR %}
                     {% for error, value in errors %}
@@ -53,16 +40,25 @@
                         autofill="off">
                 </div>
 
+                <p class="govuk-!-padding-top-2">
+                    {{ t('upload:text') }}
+                <p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>{{ t('upload:list.li1') }}</li>
+                    <li>{{ t('upload:list.li2') }}</li>
+                </ul>
+
                 <div id="js-loading-message" class="display-offscreen">
                     <div class="spinner">
                         <div class="bounce1"></div>
                         <div class="bounce2"></div>
                         <div class="bounce3"></div>
                     </div>
-                    <p>{{ t('upload-paper:p') }}</p>
+                    <p>{{ t('upload:p') }}</p>
                 </div>
                 <div id="js-submitButtonContainer" class="clearfix">
-                    <input type="submit" class="govuk-button" value="{{ t('upload-paper:buttonText') }}"
+                    <input type="submit" class="govuk-button" value="{{ t('upload:buttonText') }}"
                         id="submitButton">
                 </div>
             </div>
@@ -81,7 +77,6 @@
     var lang = '{{ lang }}';
     var expires = '{{ exp }}';
 </script>
-
 <script src="/govuk/all.js"></script>
 <script>
     var ErrorSummary = window.GOVUKFrontend.ErrorSummary
@@ -91,3 +86,4 @@
     }
 </script>
 {% endblock %}
+

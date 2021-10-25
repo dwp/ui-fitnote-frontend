@@ -8,7 +8,7 @@ const ie8 = process.env.IE8 === 'true' && oldie({
   rgba: { filter: true },
   rem: { disable: true },
   unmq: { disable: true },
-  pseudo: { disable: true }
+  pseudo: { disable: true },
 });
 
 module.exports = {
@@ -21,8 +21,8 @@ module.exports = {
       // dir to copy assets
       assetsPath: 'assets',
       // using hash names for assets (generates from asset content)
-      useHash: true
+      useHash: true,
     }]),
-    ie8
-  ]
+    ie8,
+  ],
 };

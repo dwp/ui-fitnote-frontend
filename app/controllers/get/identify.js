@@ -1,33 +1,36 @@
-var newSession = require(appRootDirectory + '/app/functions/createSessionId');
-var retry = require(appRootDirectory + '/app/functions/retryCookie');
 const config = require('config');
-const getLanguage = require(appRootDirectory + '/app/functions/getLanguage');
+const logger = require('../../functions/bunyan');
+const newSession = require('../../functions/createSessionId');
+const retry = require('../../functions/retryCookie');
+const getLanguage = require('../../functions/getLanguage');
+const enErrors = require('../../locales/en/errors.json');
+const cyErrors = require('../../locales/cy/errors.json');
 
 function identifyPage(req, res) {
-    var sessionId;
-    var validationErrors = JSON.stringify(require('../../locales/' + getLanguage(req.language) + '/errors.json'));
-    var previousPageCYA = 0;
+  const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
+  let previousPageCYA = 0;
+  const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
 
-    if (req.query.hasOwnProperty('ref')) {
-        if (req.query.ref === 'invalid') {
-            previousPageCYA = -1;
-        }
-        if (req.query.ref === 'method-obtained') {
-            previousPageCYA = 1;
-        }
+  if (hasRefProperty) {
+    if (req.query.ref === 'invalid') {
+      previousPageCYA = -1;
     }
-    logger.info('Creating Session ID');
-    sessionId = newSession.createSessionId(req, res);
-    retry.retryCookie(req, res);
+    if (req.query.ref === 'method-obtained') {
+      previousPageCYA = 1;
+    }
+  }
+  logger.info('Creating Session ID');
+  const sessionId = newSession.createSessionId(req, res);
+  retry.retryCookie(req, res);
 
-    res.render('identify', {
-        sessionId : sessionId,
-        version : process.env.npm_package_version,
-        timeStamp : Date.now(),
-        previousPageCYA : previousPageCYA,
-        environment : config.util.getEnv('NODE_ENV'),
-        validationErrors : validationErrors
-    });
+  res.render('identify', {
+    sessionId,
+    version: process.env.npm_package_version,
+    timeStamp: Date.now(),
+    previousPageCYA,
+    environment: config.util.getEnv('NODE_ENV'),
+    validationErrors,
+  });
 }
 
 module.exports.identify = identifyPage;

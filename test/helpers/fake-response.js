@@ -1,7 +1,7 @@
 const Request = require('./fake-request.js');
 
 module.exports = class Response {
-  constructor (request) {
+  constructor(request) {
     this.req = request || new Request();
     this.body = '';
     this.statusCode = 200;
@@ -10,53 +10,53 @@ module.exports = class Response {
     this.cookieOptions = {};
     this.locals = {
       casa: {
-        mountUrl: '/'
+        mountUrl: '/',
       },
-      t: (s) => (s)
+      t: (s) => (s),
     };
   }
 
-  cookie (cookieName, cookieValue, opts) {
+  cookie(cookieName, cookieValue, opts) {
     this.cookies[cookieName] = cookieValue;
     this.cookieOptions[cookieName] = opts;
     return this;
   }
 
-  get (name) {
+  get(name) {
     return this.headers[name];
   }
 
-  set (name, value) {
+  set(name, value) {
     this.headers[name] = value;
     return this;
   }
 
-  setHeader (name, value) {
+  setHeader(name, value) {
     this.set(name, value);
     return this;
   }
 
-  send (body) {
+  send(body) {
     this.body = body;
     return this;
   }
 
-  removeHeader (name) {
+  removeHeader(name) {
     delete this.headers[name];
     return this;
   }
 
-  redirect (url) {
+  redirect(url) {
     this.redirectedTo = url;
     return this;
   }
 
-  render (view, data) {
+  render(view, data) {
     this.rendered = { view, data };
     return this;
   }
 
-  status (statusCode) {
+  status(statusCode) {
     this.statusCode = statusCode;
     return this;
   }

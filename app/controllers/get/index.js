@@ -1,20 +1,19 @@
-var newSession = require(appRootDirectory + '/app/functions/createSessionId');
-var retry = require(appRootDirectory + '/app/functions/retryCookie');
 const config = require('config');
+const newSession = require('../../functions/createSessionId');
+const retry = require('../../functions/retryCookie');
+const logger = require('../../functions/bunyan');
 
 function indexPage(req, res) {
-    var sessionId;
-    
-    logger.info('Creating Session ID');
-    sessionId = newSession.createSessionId(req, res);
-    retry.retryCookie(req, res);
+  logger.info('Creating Session ID');
+  const sessionId = newSession.createSessionId(req, res);
+  retry.retryCookie(req, res);
 
-    res.render('index', {
-        sessionId : sessionId,
-        version : process.env.npm_package_version,
-        timeStamp : Date.now(),
-        environment : config.util.getEnv('NODE_ENV')
-    });
+  res.render('index', {
+    sessionId,
+    version: process.env.npm_package_version,
+    timeStamp: Date.now(),
+    environment: config.util.getEnv('NODE_ENV'),
+  });
 }
 
 module.exports.indexPage = indexPage;

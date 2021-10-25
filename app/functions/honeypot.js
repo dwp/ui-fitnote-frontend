@@ -1,9 +1,9 @@
-var logger = require(appRootDirectory + '/app/functions/bunyan');
+const logger = require('./bunyan');
 
 exports.honeypot = function honeypot(field, message) {
-    if (field) {
-        logger.info(message);
-        return false;
-    }
-    return true;
+  if (field) {
+    logger.info(message);
+    return false;
+  }
+  return true;
 };

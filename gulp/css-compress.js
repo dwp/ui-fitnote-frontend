@@ -1,10 +1,9 @@
 /* istanbul ignore next */
-var gulp = require('gulp'),
-    csso = require('gulp-csso');
+const gulp = require('gulp');
+const csso = require('gulp-csso');
+const gulpPaths = require('./_paths');
 
 /* istanbul ignore next */
-gulp.task('css-compress', gulp.series('css-build', function cssCombine() { 
-    return gulp.src(gulpPaths.dest.css + '/*.css')
-        .pipe(csso())
-        .pipe(gulp.dest(gulpPaths.dest.css));
-}));
+gulp.task('css-compress', gulp.series('css-build', () => gulp.src(`${gulpPaths.dest.css}/*.css`)
+  .pipe(csso())
+  .pipe(gulp.dest(gulpPaths.dest.css))));

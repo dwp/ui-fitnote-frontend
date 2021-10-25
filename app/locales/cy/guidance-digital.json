@@ -1,0 +1,12 @@
+{
+    "h1": "Cyn i chi lwytho eich nodyn ffitrwydd digidol",
+    "list": {
+        "li1": "Sicrhewch fod eich nodyn ffitrwydd mewn ffurf tirwedd (llorweddol) nid portread (fertigol).",
+        "li2": "Rhaid dangos y nodyn ffitrwydd cyfan. Mae angen iddo fod ar 1 dudalen.",
+        "li3": "Edrychwch i weld ei fod mewn ffocws ac y gellir darllen pob gair.",
+        "li4": "Efallai bydd angen cymryd llun neu ei addasu i greu fersiwn tirwedd."
+    },
+    "buttonText": "Parhau i lwytho",
+    "back": "Yn ôl",
+    "fit-note-zoom-alt-text": "Enghraifft o lun anghywir o nodyn ffitrwydd sydd wedi'i chwyddo i mewn ac nad yw'n cynnwys y nodyn ffitrwydd cyfan ochr yn ochr ag enghraifft dda o sut y dylai'r llun o'r nodyn ffitrwydd edrych."
+}

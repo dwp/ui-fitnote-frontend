@@ -1,6 +1,6 @@
-testing
 public
 node_modules
 logs
 assets
-test
+gulp/**
+gulpfile.js

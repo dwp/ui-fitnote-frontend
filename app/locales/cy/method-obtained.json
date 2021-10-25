@@ -1,9 +1,8 @@
 {
-    "h1": "Sut wnaethoch chi gael eich nodyn ffitrwydd?",
+    "h1": "Sut fath o nodyn ffitrwydd sydd gennych?",
     "radioLabels": {
-        "paper": "Copi Papur",
-        "sms": "Neges testun",
-        "email": "E-bost"
+        "paper": "Fersiwn papur (copi caled)",
+        "digital": "Fersiwn digidol (anfonwyd trwy neges destun neu e-bost)"
     },
     "button": "Parhau",
     "back": "Yn ôl"

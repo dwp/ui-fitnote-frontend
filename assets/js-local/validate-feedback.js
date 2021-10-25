@@ -20,7 +20,8 @@ function hideErrors() {
 
     document.getElementById('govuk-form-group-error-rating').classList.remove('govuk-form-group--error');
     document.getElementById('govuk-form-group-error-improvements').classList.remove('govuk-form-group--error');
-    document.getElementById('govuk-form-group-error').classList.remove('govuk-form-group--error');
+    document.getElementById('govuk-form-group-error-name').classList.remove('govuk-form-group--error');
+    document.getElementById('govuk-form-group-error-phone').classList.remove('govuk-form-group--error');
 
     document.getElementById('improvementsID').classList.remove('govuk-textarea--error');
     document.getElementById('nameID').classList.remove('govuk-input--error');
@@ -65,14 +66,14 @@ function isFormValid() {
             errorSummaryLi += errorName;
             nameError.setAttribute('aria-hidden', false);
             addErrorClass('nameID', 'govuk-input--error')
-            addErrorClass('govuk-form-group-error', 'govuk-form-group--error')
+            addErrorClass('govuk-form-group-error-name', 'govuk-form-group--error')
         }
 
         if (!phoneOK) {
             errorSummaryLi += errorPhone;
             phoneError.setAttribute('aria-hidden', false);
             addErrorClass('phoneID', 'govuk-input--error')
-            addErrorClass('govuk-form-group-error', 'govuk-form-group--error')
+            addErrorClass('govuk-form-group-error-phone', 'govuk-form-group--error')
         }
 
         document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorSummaryLi);

@@ -10,7 +10,8 @@
                         </a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="{{currentPage}}?{{ 'lang=cy' if lang == 'en' else 'lang=en' }}">
+                        <a class="govuk-footer__link"
+                           href="{{currentPage}}?{{ 'lang=cy' if language == 'en' else 'lang=en' }}"  hreflang="{{ 'cy' if language == 'en' else 'en' }}" lang="{{ 'cy' if language == 'en' else 'en' }}">
                             {{ t('app:fitnote-english-welsh-link') }}
                         </a>
                     </li>

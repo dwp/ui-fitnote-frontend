@@ -1,9 +1,8 @@
 {
-    "h1": "How did you get your fit note?",
+    "h1": "What type of fit note do you have?",
     "radioLabels": {
-        "paper": "Paper copy",
-        "sms": "Text message",
-        "email": "Email"
+        "paper": "Paper version (physical or hard copy)",
+        "digital": "Digital version (sent by text or email)"
     },
     "button": "Continue",
     "back": "Back"

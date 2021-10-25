@@ -1,29 +1,28 @@
 const config = require('config');
-const getLanguage = require(appRootDirectory + '/app/functions/getLanguage');
+const getLanguage = require('../../functions/getLanguage');
+const enErrors = require('../../locales/en/errors.json');
+const cyErrors = require('../../locales/cy/errors.json');
 
 function methodObtainedPage(req, res) {
-    const validationErrors = JSON.stringify(require('../../locales/' + getLanguage(req.language) + '/errors.json'));
-    var previousPageCYA = 0;
-
-    if (req.query.hasOwnProperty('ref')) {
-        if (req.query.ref === 'upload-paper') {
-            previousPageCYA = 1;
-        }
-        if (req.query.ref === 'upload-sms') {
-            previousPageCYA = 2;
-        }
-        if (req.query.ref === 'upload-email') {
-            previousPageCYA = 3;
-        }
+  const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
+  let previousPageCYA = 0;
+  const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
+  if (hasRefProperty) {
+    if (req.query.ref === 'guidance-digital') {
+      previousPageCYA = 1;
     }
-    res.render('method-obtained', {
-        sessionId : req.cookies.sessionId,
-        version : process.env.npm_package_version,
-        timeStamp : Date.now(),
-        previousPageCYA : previousPageCYA,
-        environment : config.util.getEnv('NODE_ENV'),
-        validationErrors : validationErrors
-    });
+    if (req.query.ref === 'guidance-paper') {
+      previousPageCYA = 2;
+    }
+  }
+  res.render('method-obtained', {
+    sessionId: req.cookies.sessionId,
+    version: process.env.npm_package_version,
+    timeStamp: Date.now(),
+    previousPageCYA,
+    environment: config.util.getEnv('NODE_ENV'),
+    validationErrors,
+  });
 }
 
 module.exports.methodObtained = methodObtainedPage;

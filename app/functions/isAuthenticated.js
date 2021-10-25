@@ -1,24 +1,24 @@
-var logger = require(appRootDirectory + '/app/functions/bunyan');
-var hasTimedOut = require(appRootDirectory + '/app/functions/timeoutRedirect');
 const config = require('config');
+const logger = require('./bunyan');
+const hasTimedOut = require('./timeoutRedirect');
 const getLanguage = require('./getLanguage');
 
 exports.isAuthenticated = function isAuthenticated(req, res, next) {
-    var redirectUrl;
+  let redirectUrl;
 
-    if (config.util.getEnv('NODE_ENV') !== 'test') {
-        if (req.cookies.sessionId) {
-            logger.info('Session Valid');
-            res.locals.lang = getLanguage(req.language);
-            res.locals.exp = req.cookies.exp || false; 
-            return next();
-        }
-
-        logger.error('No valid session');
-        redirectUrl = hasTimedOut.redirectTimeout('No Session ID');
-        return res.redirect(redirectUrl);
+  if (config.util.getEnv('NODE_ENV') !== 'test') {
+    if (req.cookies.sessionId) {
+      logger.info('Session Valid');
+      res.locals.lang = getLanguage(req.language);
+      res.locals.exp = req.cookies.exp || false;
+      return next();
     }
 
-    // Test only allows you to view all pages without a session ID.
-    return next();
+    logger.error('No valid session');
+    redirectUrl = hasTimedOut.redirectTimeout('No Session ID');
+    return res.redirect(redirectUrl);
+  }
+
+  // Test only allows you to view all pages without a session ID.
+  return next();
 };

@@ -1,9 +1,6 @@
-var logger = require(appRootDirectory + '/app/functions/bunyan');
+const logger = require('./bunyan');
 
 exports.redirectTimeout = function timeout(msg) {
-    var redirectUrl;
-
-    logger.info(msg);
-    redirectUrl = '/session-timeout';
-    return redirectUrl;
+  logger.info(msg);
+  return '/session-timeout';
 };

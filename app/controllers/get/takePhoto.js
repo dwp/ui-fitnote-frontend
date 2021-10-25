@@ -1,112 +1,156 @@
-/* eslint-disable complexity */
+const config = require('config');
+
+function getFileError(req) {
+  let fileError = false;
+  if (req.query.type === '1' || req.query.type === '2' || req.query.size === '1' || req.query.size === '2') {
+    fileError = true;
+  }
+  return fileError;
+}
+
+function getTypeError(req) {
+  let typeError = false;
+  if (req.query.type === '1' || req.query.type === '2') {
+    typeError = true;
+  }
+
+  return typeError;
+}
+
+function getMaxSizeError(req) {
+  let maxSizeError = false;
+  if (req.query.size === '2') {
+    maxSizeError = true;
+  }
+
+  return maxSizeError;
+}
+
+function getPhotoTypeError(req) {
+  let photoTypeError;
+  const maxSizeError = getMaxSizeError(req);
+  switch (req.query.type) {
+    case '1':
+      photoTypeError = {
+        message: req.i18nTranslator.t('errors:choose'),
+        field: 'userPhotoID',
+      };
+      break;
+    case '2':
+      photoTypeError = {
+        message: req.i18nTranslator.t('errors:heicf'),
+        field: 'userPhotoID',
+      };
+      break;
+    default:
+      photoTypeError = {};
+  }
+
+  if (maxSizeError) {
+    photoTypeError = {
+      message: req.i18nTranslator.t('upload:tooBig'),
+      field: 'userPhotoID',
+    };
+  }
+
+  return photoTypeError;
+}
+
+function getPhotoError(req, res) {
+  let photoError;
+  const int = parseInt(req.cookies.retry, 2) + 1;
+
+  switch (req.query.error) {
+    case 'serviceFailed':
+      photoError = {
+        message: req.i18nTranslator.t('upload:serviceFail'),
+        field: 'userPhotoID',
+      };
+      break;
+    case 'invalidPhoto':
+      photoError = {
+        message: req.i18nTranslator.t('upload:invalid'),
+        field: 'userPhotoID',
+      };
+      break;
+    case 'noPhoto':
+      photoError = {
+        message: req.i18nTranslator.t('upload:missing'),
+        field: 'userPhotoID',
+      };
+      break;
+    case 'ocrFailed':
+      res.cookie('retry', int, {
+        httpOnly: true,
+        secure: config.get('cookieOptions.secure'),
+        sameSite: true,
+        expires: 0,
+      });
+      photoError = {
+        retry: req.cookies.retry,
+        message: req.i18nTranslator.t('upload:failed-ocr'),
+        field: 'userPhotoID',
+      };
+      break;
+    default:
+      photoError = {};
+  }
+
+  return photoError;
+}
+
+function getErrorMessage(req, res) {
+  let errorMessage;
+  const fileError = getFileError(req);
+  const photoError = getPhotoError(req, res);
+  const photoTypeError = getPhotoTypeError(req);
+  if ((req.query.error !== 'invalidPhoto') && (req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && !fileError) {
+    errorMessage = '';
+  } else if (req.query.error === 'ocrFailed') {
+    errorMessage = {
+      photoOCR: { ...photoError, ...photoTypeError },
+    };
+  } else {
+    errorMessage = {
+      photo: { ...photoError, ...photoTypeError },
+    };
+  }
+
+  return errorMessage;
+}
+
 function takePhotoPage(req, res) {
-    const config = require('config');
+  let route;
+  let previousPageCYA;
 
-    let errorMessage;
-    let photoError;
-    let route;
+  if (typeof req.cookies.route !== 'undefined') {
+    route = req.cookies.route;
+  }
 
-    if (typeof req.cookies.route !== 'undefined') {
-        route = req.cookies.route;
-    }
+  const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
+  if (hasRefProperty) {
+    previousPageCYA = req.query.ref === 'digital' ? 1 : 0;
+  }
 
-    const page = route;
-    let fileError = false;
-    let typeError = false;
-    let maxSizeError = false;
+  const fileError = getFileError(req);
+  const typeError = getTypeError(req);
+  const maxSizeError = getMaxSizeError(req);
+  const errors = getErrorMessage(req, res);
 
-    if (req.query.error === 'serviceFailed') {
-        photoError = {
-            message : req.i18nTranslator.t(`${route}:serviceFail`),
-            field : 'userPhotoID'
-        };
-    }
-
-    if (req.query.type === '1' || req.query.size === '1' || req.query.size === '2') {
-        fileError = true;
-    }
-    if (req.query.type === '1') {
-        typeError = true;
-    }
-    if (req.query.type === '2') {
-        typeError = true;
-    }
-    if (req.query.size === '2') {
-        maxSizeError = true;
-    }
-    if (req.query.type === '1' || req.query.type === '2' || req.query.size === '1' || req.query.size === '2') {
-        fileError = true;
-        if (req.query.type === '1') {
-            photoError = {
-                message : req.i18nTranslator.t('errors:choose'),
-                field : 'userPhotoID'
-            };
-        } else if (req.query.type === '2') {
-            photoError = {
-                message : req.i18nTranslator.t('errors:heicf'),
-                field : 'userPhotoID'
-            };
-        } else {
-            photoError = {
-                message : req.i18nTranslator.t(`${route}:tooBig`),
-                field : 'userPhotoID'
-            };
-        }
-    }
-
-    if (req.query.error === 'invalidPhoto') {
-        photoError = {
-            message : req.i18nTranslator.t(`${route}:invalid`),
-            field : 'userPhotoID'
-        };
-    }
-
-    if (req.query.error === 'noPhoto') {
-        photoError = {
-            message : req.i18nTranslator.t(`${route}:missing`),
-            field : 'userPhotoID'
-        };
-    }
-
-    if (req.query.error === 'ocrFailed') {
-        const int = parseInt(req.cookies.retry, 0) + 1;
-        res.cookie('retry', int, {
-            httpOnly : true,
-            secure : config.get('cookieOptions.secure'),
-            sameSite : true,
-            expires : 0
-        });
-        photoError = {
-            retry : req.cookies.retry,
-            message : req.i18nTranslator.t(`${route}:failed-ocr`),
-            field : 'userPhotoID'
-        };
-    }
-
-    if ((req.query.error !== 'invalidPhoto') && (req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && !fileError) {
-        errorMessage = '';
-    } else if (req.query.error === 'ocrFailed') {
-        errorMessage = {
-            photoOCR : photoError
-        };
-    } else {
-        errorMessage = {
-            photo : photoError
-        };
-    }
-    res.render(page, {
-        sessionId : req.cookies.sessionId,
-        version : process.env.npm_package_version,
-        environment : config.util.getEnv('NODE_ENV'),
-        timeStamp : Date.now(),
-        route : route,
-        errors : errorMessage,
-        fileError : fileError,
-        typeError : typeError,
-        maxSizeError : maxSizeError,
-        serviceFail : req.query.error === 'serviceFailed',
-        invalidPhoto : req.query.error === 'invalidPhoto'
-    });
+  res.render('upload', {
+    sessionId: req.cookies.sessionId,
+    version: process.env.npm_package_version,
+    environment: config.util.getEnv('NODE_ENV'),
+    timeStamp: Date.now(),
+    previousPageCYA,
+    route,
+    errors,
+    fileError,
+    typeError,
+    maxSizeError,
+    serviceFail: req.query.error === 'serviceFailed',
+    invalidPhoto: req.query.error === 'invalidPhoto',
+  });
 }
 
 module.exports.takePhotoPage = takePhotoPage;

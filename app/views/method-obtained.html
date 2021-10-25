@@ -22,24 +22,17 @@
                     </span>
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="method-obtained-digital" name="methodObtained"
+                                type="radio" value="digital" {% if previousPageCYA == 1 %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" for="method-obtained-digital">
+                                {{ t('method-obtained:radioLabels.digital') }}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="method-obtained-paper" name="methodObtained"
-                                type="radio" value="paper" {% if previousPageCYA == 1 %} checked="checked" {% endif %}>
-                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" for="method-obtained-paper">
+                                type="radio" value="paper" {% if previousPageCYA == 2 %} checked="checked" {% endif %}>
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 2 }}" for="method-obtained-paper">
                                 {{ t('method-obtained:radioLabels.paper') }}
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="method-obtained-sms" name="methodObtained"
-                                type="radio" value="sms" {% if previousPageCYA == 2 %} checked="checked" {% endif %}>
-                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 2 }}" for="method-obtained-sms">
-                                {{ t('method-obtained:radioLabels.sms') }}
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="method-obtained-email" name="methodObtained"
-                                type="radio" value="email" {% if previousPageCYA == 3 %} checked="checked" {% endif %}>
-                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 3 }}" for="method-obtained-email">
-                                {{ t('method-obtained:radioLabels.email') }}
                             </label>
                         </div>
                     </div>

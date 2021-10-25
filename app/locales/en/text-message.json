@@ -3,7 +3,5 @@
     "yes": "Yes",
     "no": "No",
     "mobile-number": "Your mobile number",
-    "mobile-number-aria-label": "Enter your mobile number",
-    "hint": "It can take up to 24 hours for you to get the confirmation text.",
-    "form-aria-label": "Do you want a text message to confirm your fit note has been received? It can take up to 24 hours for you to get the confirmation text."
+    "hint": "It can take up to 24 hours for you to get the confirmation text."
 }

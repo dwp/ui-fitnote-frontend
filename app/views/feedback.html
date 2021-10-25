@@ -68,8 +68,8 @@
 
         <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:helpMore') }}</h2>
         <p>{{ t('feedback:helpMoreText') }}</p>
-        <div id="govuk-form-group-error" class="govuk-form-group" aria-label="{{ t('feedback:helpMoreAria') }}">
-            <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-label="{{ t('feedback:helpMoreAria') }}">
+            <div id="govuk-form-group-error-name" class="govuk-form-group">
                 <label class="govuk-label" for="nameID">
                     <span>{{ t('feedback:yourName') }}</span>
                     <span class="govuk-error-message" aria-hidden="true" id="error-message-nameID">
@@ -80,7 +80,7 @@
                        aria-label="{{ t('feedback:yourname-aria-label') }}">
             </div>
 
-            <div class="govuk-form-group">
+            <div id="govuk-form-group-error-phone" class="govuk-form-group">
                 <label class="govuk-label" for="phoneID">
                     <span>{{ t('feedback:phone') }}</span>
                     <span class="govuk-error-message" aria-hidden="true" id="error-message-phoneID">
@@ -90,7 +90,7 @@
                 <input type="text" name="phone" id="phoneID" class="govuk-input"
                        aria-label="{{ t('feedback:phone-aria-label') }}">
             </div>
-        </div>
+        </fieldset>
         <div class="form-group">
             <input id="submit-feedback" type="submit" class="govuk-button" value="{{ t('feedback:button') }}">
         </div>

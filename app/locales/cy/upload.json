@@ -1,0 +1,18 @@
+{
+    "h1": "Llwytho eich nodyn ffitrwydd",
+    "list": {
+        "li1": "JPG, BMP, PNG, TIF neu PDF",
+        "li2": "llai na 10MB"
+    },
+    "text": "Mae’n rhaid i’ch ffeil fod yn:",
+    "p": "Llwytho...",
+    "buttonText": "Llwytho ffeil",
+    "upload": "Llwytho ffeil",
+    "back": "Yn ôl",
+    "missing": "Mae’n rhaid i chi ddewis ffeil i barhau",
+    "invalid": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF",
+    "failed-ocr": "Mae’n rhaid i’r ffeil a ddewiswyd fod yn glir ac yn ddarllenadwy a chynnwys y nodyn ffitrwydd cyfan",
+    "tooBig": "Mae’n rhaid i’ch nodyn ffitrwydd fod yn 10mb neu lai",
+    "connection": "There was a problem uploading the image, please retry using a Wifi connection",
+    "serviceFail": "Ceisiwch eto"
+}

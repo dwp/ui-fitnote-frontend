@@ -1,6 +1,6 @@
 exports.notBlank = function notBlank(value) {
-    if (value === '' || typeof value === 'undefined' || value === null) {
-        return false;
-    }
-    return true;
+  if (value === '' || typeof value === 'undefined' || value === null) {
+    return false;
+  }
+  return true;
 };

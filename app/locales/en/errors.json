@@ -33,7 +33,7 @@
     "choose": "Choose another file",
     "heicf": "Your file type is not supported. It must be a JPG, JPEG, BMP, PNG, TIF or PDF",
     "method-obtained": {
-        "missing": "Select how you received your fit note"
+        "missing": "Select how you got your fit note"
     },
     "upload": {
         "fileType": "The selected file must be a JPG, JPEG, BMP, PNG, TIF or PDF"

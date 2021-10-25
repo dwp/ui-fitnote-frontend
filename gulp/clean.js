@@ -1,8 +1,7 @@
 /* istanbul ignore next */
-var gulp = require('gulp'),
-    del = require('del');
+const gulp = require('gulp');
+const del = require('del');
+const gulpPaths = require('./_paths');
 
 /* istanbul ignore next */
-gulp.task('clean', function(cb) {
-    return del([gulpPaths.dest.root + '**'], cb);
-});
+gulp.task('clean', (cb) => del([`${gulpPaths.dest.root}**`], cb));

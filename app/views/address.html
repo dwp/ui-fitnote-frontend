@@ -13,25 +13,27 @@
 <div class="govuk-grid-row govuk-body">
     <div class="govuk-grid-column-two-thirds">
         {% include "includes/govuk-error-summary.html" %}
-        <h1 class="govuk-heading-l">{{ t('address:h1') }}</h1>
         <form action="/send-address" method="post" class="form" name="amendAddress" id="formData"
-            data-form="updateAddress" autocomplete="off" onsubmit="return submitForm();">
+              data-form="updateAddress" autocomplete="off" onsubmit="return submitForm();">
             <fieldset class="govuk-fieldset">
-                <legend class="display-offscreen">{{ t('address:legend') }}</legend>
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-heading-l">{{ t('address:h1') }}</h1>
+                </legend>
+
                 <div id="govuk-form-group-error-house" class="govuk-form-group">
                     <label for="houseNumberID" class="govuk-label">{{ t('address:house-number') }}</label>
                     <span class="govuk-error-message" aria-hidden="true" id="error-message-houseNumberID"></span>
                     <input type="text" name="houseNumberField" id="houseNumberID"
-                        class="govuk-input govuk-!-width-two-thirds {{error.houseNumberCompleted}}" value="{{ house }}"
-                        data-required="required" maxlength="35" aria-label="{{ t('address:house-number-aria-label') }}">
+                           class="govuk-input govuk-!-width-two-thirds {{error.houseNumberCompleted}}" value="{{ house }}"
+                           data-required="required" maxlength="35">
                 </div>
 
                 <div id="govuk-form-group-error-postcode" class="govuk-form-group">
                     <label for="postcodeID" class="govuk-label">{{ t('address:postcode') }}</label>
                     <span class="govuk-error-message" aria-hidden="true" id="error-message-postcodeID"></span>
                     <input type="text" name="postcodeField" id="postcodeID"
-                        class="govuk-input govuk-input--width-10 {{error.postcodeCompleted}}" value="{{ postcode }}"
-                        data-required="required" maxlength="8" aria-label="{{ t('address:postcode-aria-label') }}">
+                           class="govuk-input govuk-input--width-10 {{error.postcodeCompleted}}" value="{{ postcode }}"
+                           data-required="required" maxlength="8">
                 </div>
 
                 <div class="govuk-form-group" aria-hidden="true">
@@ -39,7 +41,7 @@
                     <input type="text" name="countyField" id="countyID" aria-hidden="true" value="" autofill="off">
                     <label for="previousPageId" aria-hidden="true">Leave blank</label>
                     <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true"
-                        value="{{ previousPageCYA }}">
+                           value="{{ previousPageCYA }}">
                 </div>
             </fieldset>
 

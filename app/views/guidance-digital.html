@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-05') }}{% endblock %}
+
+{% block back_link %}
+<a href="/method-obtained?ref=guidance-digital" class="govuk-back-link">{{ t('guidance-digital:back') }}</a>
+{% endblock %}
+
+{% block body %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+        <form action="/guidance-digital" method="post" class="form" name="paperGuidanceForm" id="formData"
+            data-form="guidance-digital" autocomplete="off">
+            <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('guidance-digital:h1') }}</h1>
+
+            <ol class="govuk-list govuk-list--number govuk-!-padding-bottom-2">
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-digital:list.li1') }}</li>
+                <li>
+                    {{ t('guidance-digital:list.li2') }}
+                    <img src="/images/fit-note-zoom.png" class="fit-note-zoom" alt="">
+                </li>
+                <li class="govuk-!-padding-bottom-3"> {{ t('guidance-digital:list.li3') }}</li>
+                <li> {{ t('guidance-digital:list.li4')|safe }}</li>
+            </ol>
+
+            <label for="page" aria-hidden="true">Leave blank</label>
+            <input type="text" name="page" id="page" class="js-hidden" aria-hidden="true" value="digital">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                {{ t('guidance-digital:buttonText') }}
+            </button>
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+
+
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+{% endblock %}

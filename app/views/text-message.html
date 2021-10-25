@@ -13,55 +13,59 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% include "includes/govuk-error-summary.html" %}
-            <h1 class="govuk-heading-l">{{ t('text-message:h1') }}</h1>
-            <div id="contact-hint" class="govuk-hint">
-                {{ t('text-message:hint') }}
-            </div>
             <form action="/send-text-message" method="post" class="form" name="text-messageForm" id="formData" data-form="text-message" autocomplete="off" onsubmit="return submitForm();">
-
                 <div id="govuk-form-group-error" class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" aria-label="{{ t('text-message:form-aria-label') }}">
-                        <legend>
-                            <span class="govuk-error-message" aria-hidden="true" id="error-message-radio"></span>
-                        </legend>
-                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" aria-live="polite" aria-relevant="additions text" aria-atomic="false">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="radioYes" type="radio" name="textReminder" value="Yes"
-                                    {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %} data-aria-controls="mobileNumberPanel">
-                                <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}" id="yesLabel" for="radioYes">
-                                    {{ t('text-message:yes') }}
-                                </label>
-                            </div>
-    
-                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="mobileNumberPanel">
-                                <div id="mobile-form" class="govuk-form-group">
-                                  <label class="govuk-label" for="mobileNumberID">
-                                    {{ t('text-message:mobile-number') }}
-                                  </label>
-                                  <span class="govuk-error-message" aria-hidden="true" id="error-message-text-messageFieldID"></span>
-                                  <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="govuk-input govuk-!-width-one-third" value="{{ mobile }}"  maxlength="20" aria-label="{{ t('text-message:mobile-number-aria-label') }}">
-                                  <label for="previousPageId" aria-hidden="true">Leave blank</label>
-                                  <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPageCYA }}">
-                                </div>
-                            </div>
-                        </div>
-                        
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-heading-l">{{ t('text-message:h1') }}</h1>
+                    </legend>
+
+                    <div id="contact-hint" class="govuk-hint">
+                        {{ t('text-message:hint') }}
+                    </div>
+
+                    <legend>
+                        <span class="govuk-error-message" aria-hidden="true" id="error-message-radio"></span>
+                    </legend>
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" aria-live="polite" aria-relevant="additions text" aria-atomic="false">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="radioNo" type="radio" name="textReminder" value="No"
-                                    {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
-                            <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}" id="noLabel" for="radioNo">
-                                {{ t('text-message:no') }}
+                            <input class="govuk-radios__input" id="radioYes" type="radio" name="textReminder" value="Yes"
+                                   {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %} data-aria-controls="mobileNumberPanel">
+                            <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}" id="yesLabel" for="radioYes">
+                                {{ t('text-message:yes') }}
                             </label>
-
                         </div>
 
-
-                        <div class="govuk-form-group" aria-hidden="true">
-                            <label for="landlineID" aria-hidden="true">Landline</label>
-                            <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value="" autofill="off">
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="mobileNumberPanel">
+                            <div id="mobile-form" class="govuk-form-group">
+                                <label class="govuk-label" for="mobileNumberID">
+                                    {{ t('text-message:mobile-number') }}
+                                </label>
+                                <span class="govuk-error-message" aria-hidden="true" id="error-message-text-messageFieldID"></span>
+                                <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="govuk-input govuk-!-width-one-third" value="{{ mobile }}"  maxlength="20">
+                                <label for="previousPageId" aria-hidden="true">Leave blank</label>
+                                <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPageCYA }}">
+                            </div>
                         </div>
-                    </fieldset>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="radioNo" type="radio" name="textReminder" value="No"
+                               {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
+                        <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}" id="noLabel" for="radioNo">
+                            {{ t('text-message:no') }}
+                        </label>
+
+                    </div>
+
+                    <div class="govuk-form-group" aria-hidden="true">
+                        <label for="landlineID" aria-hidden="true">Landline</label>
+                        <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value="" autofill="off">
+                    </div>
+                </fieldset>
                 </div>
+
                 <div class="govuk-form-group">
                     <input type="submit" id="add-your-details" class="govuk-button" value="{{ t('app:continue') }}">
                 </div>
