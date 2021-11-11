@@ -19,7 +19,8 @@
         <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData"
             data-form="takeAPhoto" autocomplete="off">
             <div class="govuk-form-group">
-                <div class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
+                <div
+                    class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label" for="userPhotoID">
                         {{ t('upload:upload') }}
                     </label>
@@ -30,8 +31,8 @@
                     </span>
                     {% endfor %}
                     {% endif %}
-                    <input type="file" accept="image/*,application/pdf"
-                        id="userPhotoID" name="userPhoto" class="govuk-file-upload">
+                    <input type="file" accept="image/*,application/pdf" id="userPhotoID" name="userPhoto"
+                        class="govuk-file-upload">
                 </div>
 
                 <div class="govuk-form-group" aria-hidden="true">
@@ -58,8 +59,7 @@
                     <p>{{ t('upload:p') }}</p>
                 </div>
                 <div id="js-submitButtonContainer" class="clearfix">
-                    <input type="submit" class="govuk-button" value="{{ t('upload:buttonText') }}"
-                        id="submitButton">
+                    <input type="submit" class="govuk-button" value="{{ t('upload:buttonText') }}" id="submitButton">
                 </div>
             </div>
         </form>
@@ -76,6 +76,14 @@
 <script>
     var lang = '{{ lang }}';
     var expires = '{{ exp }}';
+    var err = '{{errors}}';
+    if (err) {
+        if (lang === 'en') {
+            document.title = 'Error: ' + "{{ t('app:page-title-06') }}";
+        } else {
+            document.title = 'Gwall: ' + "{{ t('app:page-title-06') }}";
+        }
+    }
 </script>
 <script src="/govuk/all.js"></script>
 <script>
@@ -86,4 +94,3 @@
     }
 </script>
 {% endblock %}
-

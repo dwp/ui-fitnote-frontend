@@ -1,0 +1,61 @@
+{% macro cookieBanner() %}
+{% set url = '/cookie-agree?postback=' %}
+{% set cookiePolicyUrl %}
+/cookies/cookie_policy?previousPage={{currentPage}}
+{% endset %}
+{% if showCookieConstentMessage or showCookieChoiceConfirmationBanner %}
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="{{t('app:cookieBanner.heading')}}">
+  {% if showCookieConstentMessage %}
+  <div class="govuk-cookie-banner__message govuk-width-container">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">{{t("app:cookieBanner.heading")}}</h2>
+
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">{{ t("app:cookieBanner.essentialCookies") }}</p>
+          <p class="govuk-body">{{ t("app:cookieBanner.analyticsCookies") }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <a id="show-accept" class="govuk-button" type="submit" data-module="track-click" data-accept-cookies="true"
+        data-track-category="cookieBanner" data-track-action="Cookie banner accepted"
+        href="{{url}}{{currentPage}}&consent={{true}}">{{t("app:cookieBanner.acceptCookies")}}</a>
+      <a id="show-reject" class="govuk-button" type="submit" data-module="track-click" data-accept-cookies="true"
+        data-track-category="cookieBanner" data-track-action="Cookie banner rejected"
+        href="{{url}}{{currentPage}}&consent={{false}}">{{t("app:cookieBanner.rejectCookies")}}</a>
+      <a class="govuk-link"
+        href="{{cookiePolicyUrl}}">{{t("app:cookieBanner.viewCookies")}}</a>
+    </div>
+  </div>
+  {% else %}
+  {% if showCookieChoiceConfirmationBanner %}
+  <div class="govuk-cookie-banner__message govuk-width-container" role="alert">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-cookie-banner__content">
+          {% if cookiesConsented === 'true' %}
+          {{t('app:cookieBanner.acceptedHtml', { url: cookiePolicyUrl }) | safe}}
+          {% elif cookiesConsented === 'false' %}
+          {{t('app:cookieBanner.rejectedHtml', { url: cookiePolicyUrl }) | safe}}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <a class="govuk-button" href="{{currentPage}}" data-module="govuk-button" data-hide-cookie-banner="true"
+        data-module="track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">
+        {{t("app:cookieBanner.hide")}}
+      </a>
+    </div>
+  </div>
+  {% endif %}
+  {% endif %}
+</div>
+{% endif %}
+{% endmacro %}

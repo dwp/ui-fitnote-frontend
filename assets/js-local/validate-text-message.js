@@ -76,6 +76,7 @@ function checkMobileNumber() {
     document.getElementById('mobileNumberPanel').classList.remove('border-none');
 
     if (!radioValueRaw) {
+        document.title =  errorPageTitle;
         document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
         document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorDictionary['text-message'].missing, 'radioYes');
         showErrorFields(errorMessageRadioID, errorDictionary['text-message'].missing);
@@ -87,6 +88,7 @@ function checkMobileNumber() {
 
     if (radioValueRaw.value === 'Yes') {
         if (mobileNumberID.value === '') {
+            document.title =  errorPageTitle;
             document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
             document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorDictionary['text-message'].mobile, 'mobileNumberID');
             showErrorFields(errorMessageMobileNumberID, errorDictionary['text-message'].mobile);
@@ -99,6 +101,7 @@ function checkMobileNumber() {
         }
 
         if (!mobileNumberValid(mobileNumberID.value)) {
+            document.title =  errorPageTitle;
             document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
             document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorDictionary['text-message'].format, 'mobileNumberID');
             showErrorFields(errorMessageMobileNumberID, errorDictionary['text-message'].format);

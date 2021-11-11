@@ -10,11 +10,12 @@
 {% endblock %}
 
 {% block body %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            {% include "includes/govuk-error-summary.html" %}
-            <form action="/send-text-message" method="post" class="form" name="text-messageForm" id="formData" data-form="text-message" autocomplete="off" onsubmit="return submitForm();">
-                <div id="govuk-form-group-error" class="govuk-form-group">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        {% include "includes/govuk-error-summary.html" %}
+        <form action="/send-text-message" method="post" class="form" name="text-messageForm" id="formData"
+            data-form="text-message" autocomplete="off" onsubmit="return submitForm();">
+            <div id="govuk-form-group-error" class="govuk-form-group">
 
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -28,11 +29,15 @@
                     <legend>
                         <span class="govuk-error-message" aria-hidden="true" id="error-message-radio"></span>
                     </legend>
-                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" aria-live="polite" aria-relevant="additions text" aria-atomic="false">
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" aria-live="polite"
+                        aria-relevant="additions text" aria-atomic="false">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="radioYes" type="radio" name="textReminder" value="Yes"
-                                   {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %} data-aria-controls="mobileNumberPanel">
-                            <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}" id="yesLabel" for="radioYes">
+                            <input class="govuk-radios__input" id="radioYes" type="radio" name="textReminder"
+                                value="Yes" {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %}
+                                data-aria-controls="mobileNumberPanel">
+                            <label
+                                class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}"
+                                id="yesLabel" for="radioYes">
                                 {{ t('text-message:yes') }}
                             </label>
                         </div>
@@ -42,18 +47,23 @@
                                 <label class="govuk-label" for="mobileNumberID">
                                     {{ t('text-message:mobile-number') }}
                                 </label>
-                                <span class="govuk-error-message" aria-hidden="true" id="error-message-text-messageFieldID"></span>
-                                <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID" class="govuk-input govuk-!-width-one-third" value="{{ mobile }}"  maxlength="20">
+                                <span class="govuk-error-message" aria-hidden="true"
+                                    id="error-message-text-messageFieldID"></span>
+                                <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID"
+                                    class="govuk-input govuk-!-width-one-third" value="{{ mobile }}" maxlength="20">
                                 <label for="previousPageId" aria-hidden="true">Leave blank</label>
-                                <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true" value="{{ previousPageCYA }}">
+                                <input type="text" name="previousPage" id="previousPageId" class="js-hidden"
+                                    aria-hidden="true" value="{{ previousPageCYA }}">
                             </div>
                         </div>
                     </div>
 
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="radioNo" type="radio" name="textReminder" value="No"
-                               {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
-                        <label class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}" id="noLabel" for="radioNo">
+                            {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
+                        <label
+                            class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}"
+                            id="noLabel" for="radioNo">
                             {{ t('text-message:no') }}
                         </label>
 
@@ -61,27 +71,34 @@
 
                     <div class="govuk-form-group" aria-hidden="true">
                         <label for="landlineID" aria-hidden="true">Landline</label>
-                        <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value="" autofill="off">
+                        <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value=""
+                            autofill="off">
                     </div>
                 </fieldset>
-                </div>
+            </div>
 
-                <div class="govuk-form-group">
-                    <input type="submit" id="add-your-details" class="govuk-button" value="{{ t('app:continue') }}">
-                </div>
-            </form>
-        </div>
-        {% include "includes/sidebar.html" %}
+            <div class="govuk-form-group">
+                <input type="submit" id="add-your-details" class="govuk-button" value="{{ t('app:continue') }}">
+            </div>
+        </form>
     </div>
+    {% include "includes/sidebar.html" %}
+</div>
 {% endblock %}
 
 {% block body_end %}
 {{super()}}
-    <script> var errorDictionary = {{ validationErrors | safe }}</script>
-    <script src="/javascript/validate-text-message.js?version={{assetsVersion}}" defer></script>
-    <script>
-        var lang = '{{ lang }}';
-        var expires = '{{ exp }}';
-    </script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+    var errorDictionary = {{ validationErrors | safe }};
+    var errorPageTitle;
+    if (lang === 'en') {
+        errorPageTitle = 'Error: ' + "{{ t('app:page-title-09') }}";
+    } else {
+        errorPageTitle = 'Gwall: ' + "{{ t('app:page-title-09') }}";
+    }
+</script>
+<script src="/javascript/validate-text-message.js?version={{assetsVersion}}" defer></script>
 
 {% endblock %}

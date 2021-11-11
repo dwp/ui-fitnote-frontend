@@ -59,6 +59,7 @@ function checkAddress() {
         document.getElementById('govuk-form-group-error-postcode').classList.remove('govuk-form-group--error');
 
         if (!checkHouseNumber) {
+            document.title =  errorPageTitle
             errorSummaryLi += errorSummaryHouse;
             showErrorFields(errorMessageHouseNumberID, errorDictionary.address['house-number']);
             addErrorClass('govuk-form-group-error-house', 'govuk-form-group--error')
@@ -66,11 +67,13 @@ function checkAddress() {
         }
 
         if (!checkPostCode) {
+            document.title =  errorPageTitle
             errorSummaryLi += errorSummaryPostcode;
             showErrorFields(errorMessagePostcodeNumberID, errorDictionary.address.postcode);
             addErrorClass('govuk-form-group-error-postcode', 'govuk-form-group--error')
             addErrorClass('postcodeID', 'govuk-input--error')
         } else if (!checkPostCodeFormat) {
+            document.title =  errorPageTitle
             errorSummaryLi += errorSummaryPostcodeFormat;
             showErrorFields(errorMessagePostcodeNumberID, errorDictionary.address['postcode-format']);
             addErrorClass('govuk-form-group-error-postcode', 'govuk-form-group--error')

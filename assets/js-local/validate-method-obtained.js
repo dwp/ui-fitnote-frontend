@@ -27,6 +27,7 @@ function checkMethodObtained() {
     if (radioValueRaw !== null) {
         flag = true;
     } else {
+        document.title =  errorPageTitle
         document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
         document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorDictionary['method-obtained'].missing);
         showErrorFields(errorMessageFieldID);

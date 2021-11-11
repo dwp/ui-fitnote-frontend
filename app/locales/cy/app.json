@@ -28,18 +28,6 @@
   "page-title-cookies-policy": "Sut rydym yn defnyddio cwcis – Anfon eich nodyn ffitrwydd - GOV.UK",
 
   "alt": "Symbol y Goron",
-  "cookie-banner-1": "A allwn ddefnyddio cwcis yn ein gwasanaethau?",
-  "cookie-banner-2": "Hoffem ddefnyddio cwcis dadansoddeg i gasglu gwybodaeth am sut rydych yn defnyddio ein gwasanaethau. Mae hyn yn ein helpu i'w gwella.",
-  "cookie-banner-3": "Gallwch",
-  "cookie-banner-4": " ddarllen mwy am ein cwcis ",
-  "cookie-banner-5": "cyn i chi benderfynu.",
-  "cookie-banner-6": " newid eich gosodiadau cwci ",
-  "cookie-banner-7": "ar unrhyw adeg.",
-  "cookie-button-1": "Ydw, rwy'n iawn gyda chwcis dadansoddeg ",
-  "cookie-button-2": "Na, peidiwch â defnyddio cwcis dadansoddeg",
-  "cookie-banner-reject": "Rydych wedi gwrthod cwcis dadansoddeg. Gallwch",
-  "cookie-banner-accept": "Rydych wedi derbyn cwcis dadansoddeg. Gallwch",
-  "cookie-banner-hide-button": "Cuddio",
   "skip": "Neidio i'r prif gynnwys",
   "support-links": "Dolenni cymorth",
   "ogl": "Open Government Licence",
@@ -56,5 +44,16 @@
   "phase-banner-text-1": "Mae hwn yn wasanaeth newydd - bydd eich ",
   "phase-banner-text-2": " yn ein helpu i'w wella.",
   "fitnote-english-welsh-link": "English",
-  "feedback-footer": "Adborth"
+  "feedback-footer": "Adborth",
+  "cookieBanner": {
+    "heading": "Cwcis ar Anfonwch eich nodyn ffitrwydd ar gyfer eich cais ESA",
+    "essentialCookies": "Rydym yn defnyddio rhai cwcis hanfodol i wneud i'r gwasanaeth hwn weithio.",
+    "analyticsCookies": "Hoffem hefyd ddefnyddio cwcis dadansoddi fel y gallwn ddeall sut rydych yn defnyddio'r gwasanaeth a gwneud gwelliannau.",
+    "acceptedHtml": "<p>Rydych wedi derbyn cwcis ychwanegol. Gallwch <a class=\"govuk-link\" href=\"${url}\">newid eich gosodiadau cwci</a> ar unrhyw adeg.</p>",
+    "rejectedHtml": "<p>Rydych wedi gwrthod cwcis ychwanegol. Gallwch <a class=\"govuk-link\" href=\"${url}\">newid eich gosodiadau cwci</a> ar unrhyw adeg.</p>",
+    "acceptCookies": "Derbyn Cwcis Dadansoddi",
+    "rejectCookies": "Gwrthod Cwcis Dadansoddi",
+    "hide": "Cuddio’r neges hon",
+    "viewCookies": "Gweld cwcis"
+  }
 }

@@ -19,7 +19,6 @@ const feedbackGet = require('./controllers/get/feedback');
 const checkYourAnswersGet = require('./controllers/get/checkYourAnswers');
 const cookiePolicyGet = require('./controllers/get/cookiePolicy');
 const cookiesDetailsGet = require('./controllers/get/cookiesDetails');
-const cookiesTableGet = require('./controllers/get/cookiesTable');
 const accessibilityGet = require('./controllers/get/accessibilityStatement');
 const unprocessableEntityGet = require('./controllers/get/photoQualityError');
 const desktopUnprocessableEntityGet = require('./controllers/get/desktopPhotoQualityError');
@@ -70,7 +69,6 @@ router.get('/', catchSlash);
 router.get('/cookie-agree/', legal.hasViewedCookieMsg);
 router.get('/cookies/cookie_policy', isAuthenticatedFunction, cookiePolicyGet.cookiePolicyPage);
 router.get('/cookies/cookies_details', isAuthenticatedFunction, cookiesDetailsGet.cookiesDetailsPage);
-router.get('/cookies-table', cookiesTableGet.cookiesTablePage);
 router.get('/accessibility-statement', isAuthenticatedFunction, accessibilityGet.accessibilityPage);
 router.get('/feedback', isAuthenticatedFunction, feedbackGet.feedbackPage);
 router.get('/thank-you', feedbackGet.thankYouPage);
@@ -102,7 +100,6 @@ router.get('/help-for-photo-step-5', isAuthenticatedFunction, helpForPhotoGet.he
 
 if (config.util.getEnv('NODE_ENV') === 'test') {
   router.get('/cookie-agree/:id', legal.hasViewedCookieMsg);
-  router.get('/cookies-table/:id', cookiesTableGet.cookiesTablePage);
 
   // Fitnote Pages
   router.get('/take-a-photo/:id', isAuthenticatedFunction, takePhotoGet.takePhotoPage);

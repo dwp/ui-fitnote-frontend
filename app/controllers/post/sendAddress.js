@@ -98,7 +98,7 @@ function sendAddress(req, res) {
   const fitnote = {
     sessionId: req.cookies.sessionId,
     houseNameOrNumber: houseNumberRaw.trim(),
-    postcode: postcodeRaw.trim(),
+    postcode: postcodeSanitised.toUpperCase(),
   };
 
   const houseNumberValid = validateHouseNumber(req);

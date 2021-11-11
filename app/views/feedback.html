@@ -102,10 +102,16 @@
 
 {% block body_end %}
 {{super()}}
-    <script> var errorDictionary = {{ validationErrors | safe }}</script>
-    <script src="/javascript/validate-feedback.js?version={{assetsVersion}}" defer></script>
     <script>
         var lang = '{{ lang }}';
         var expires = '{{ exp }}';
+        var errorDictionary = {{ validationErrors | safe }};
+        var errorPageTitle;
+        if (lang === 'en') {
+            errorPageTitle = 'Error: ' + "{{ t('app:page-title-12') }}";
+        } else {
+            errorPageTitle = 'Gwall: ' + "{{ t('app:page-title-12') }}";
+        }
     </script>
+    <script src="/javascript/validate-feedback.js?version={{assetsVersion}}" defer></script>
 {% endblock %}

@@ -50,12 +50,14 @@ function isFormValid() {
         hideErrors();
         var errorSummaryLi = '';
         if (!ratingOK) {
+            document.title =  errorPageTitle;
             errorSummaryLi += errorRating;
             ratingError.setAttribute('aria-hidden', false);
             addErrorClass('govuk-form-group-error-rating', 'govuk-form-group--error')
         }
 
         if (!improvementsOK) {
+            document.title =  errorPageTitle;
             errorSummaryLi += errorImprovements;
             improvementsError.setAttribute('aria-hidden', false);
             addErrorClass('improvementsID', 'govuk-textarea--error')
@@ -63,6 +65,7 @@ function isFormValid() {
         }
 
         if (!nameOK) {
+            document.title =  errorPageTitle;
             errorSummaryLi += errorName;
             nameError.setAttribute('aria-hidden', false);
             addErrorClass('nameID', 'govuk-input--error')
@@ -70,6 +73,7 @@ function isFormValid() {
         }
 
         if (!phoneOK) {
+            document.title =  errorPageTitle;
             errorSummaryLi += errorPhone;
             phoneError.setAttribute('aria-hidden', false);
             addErrorClass('phoneID', 'govuk-input--error')

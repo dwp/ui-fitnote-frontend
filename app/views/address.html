@@ -56,11 +56,17 @@
 
 {% block body_end %}
 {{super()}}
-<script> var errorDictionary = {{ validationErrors | safe }}</script>
-<script src="/javascript/validate-address.js?version={{assetsVersion}}"></script>
 <script>
     var lang = '{{ lang }}';
     var expires = '{{ exp }}';
+    var errorDictionary = {{ validationErrors | safe }};
+    var errorPageTitle;
+    if (lang === 'en') {
+        errorPageTitle = 'Error: ' + "{{ t('app:page-title-08') }}";
+    } else {
+        errorPageTitle = 'Gwall: ' + "{{ t('app:page-title-08') }}";
+    }
 </script>
+<script src="/javascript/validate-address.js?version={{assetsVersion}}"></script>
 
 {% endblock %}
