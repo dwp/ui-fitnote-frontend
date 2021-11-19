@@ -40,6 +40,11 @@ function showErrorFields(field, message) {
     field.innerHTML = '<span class="govuk-visually-hidden">Error:</span>' + message;
 }
 
+function hideErrorFields(field) {
+    field.setAttribute('aria-hidden', true);
+    field.innerHTML = '';
+}
+
 function mobileNumberValid(mobileNumber) {
     var regex = /^\+?[ 0-9]{11,20}$/;
     return regex.test(mobileNumber);
@@ -87,6 +92,7 @@ function checkMobileNumber() {
     }
 
     if (radioValueRaw.value === 'Yes') {
+        hideErrorFields(errorMessageRadioID);
         if (mobileNumberID.value === '') {
             document.title =  errorPageTitle;
             document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);

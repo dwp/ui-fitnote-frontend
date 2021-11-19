@@ -17,20 +17,21 @@
                             {{ t('method-obtained:h1') }}
                         </h1>
                     </legend>
-                    <span id="method-obtained-error" class="govuk-error-message" aria-hidden="true">
-                        <span class="govuk-visually-hidden">Error:</span> {{ t('errors:method-obtained.missing') }}
-                    </span>
+                  <span id="method-obtained-error" class="govuk-error-message"
+                        aria-hidden="true"></span>
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="method-obtained-digital" name="methodObtained"
-                                type="radio" value="digital" {% if previousPageCYA == 1 %} checked="checked" {% endif %}>
+                                type="radio" value="digital" {% if
+                                   previousPageCYA == 1 %} checked="checked" {% endif %} aria-describedby="method-obtained-error">
                             <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" for="method-obtained-digital">
                                 {{ t('method-obtained:radioLabels.digital') }}
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="method-obtained-paper" name="methodObtained"
-                                type="radio" value="paper" {% if previousPageCYA == 2 %} checked="checked" {% endif %}>
+                                type="radio" value="paper" {% if
+                                   previousPageCYA == 2 %} checked="checked" {% endif %} aria-describedby="method-obtained-error">
                             <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 2 }}" for="method-obtained-paper">
                                 {{ t('method-obtained:radioLabels.paper') }}
                             </label>

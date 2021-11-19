@@ -11,41 +11,44 @@
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:rating') }}</h2>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-ratingID">
-                        <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.required') }}
-                    </span>
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-ratingID"></span>
                 </legend>
                 <div class="govuk-radios">
                     <div class="govuk-radios__item">
-                        <input id="vSatisfied" type="radio" name="rating" value="Very satisfied" class="govuk-radios__input">
+                        <input id="vSatisfied" type="radio" name="rating"
+                               value="Very satisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
                         <label class="govuk-label govuk-radios__label" for="vSatisfied">
                             {{ t('feedback:very-satisfied') }}
                         </label>
                     </div>
 
                     <div class="govuk-radios__item">
-                        <input id="satisfied" type="radio" name="rating" value="Satisfied" class="govuk-radios__input">
+                        <input id="satisfied" type="radio" name="rating"
+                               value="Satisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
                         <label class="govuk-label govuk-radios__label" for="satisfied">
                             {{ t('feedback:satisfied') }}
                         </label>
                     </div>
 
                     <div class="govuk-radios__item">
-                        <input id="neither" type="radio" name="rating" value="Neither satisfied or dissatisfied" class="govuk-radios__input">
+                        <input id="neither" type="radio" name="rating"
+                               value="Neither satisfied or dissatisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
                         <label class="govuk-label govuk-radios__label" for="neither">
                             {{ t('feedback:neither') }}
                         </label>
                     </div>
 
                     <div class="govuk-radios__item">
-                        <input id="dissatisfied" type="radio" name="rating" value="Dissatisfied" class="govuk-radios__input">
+                        <input id="dissatisfied" type="radio" name="rating"
+                               value="Dissatisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
                         <label class="govuk-label govuk-radios__label" for="dissatisfied">
                             {{ t('feedback:dissatisfied') }}
                         </label>
                     </div>
 
                     <div class="govuk-radios__item">
-                        <input id="vDissatisfied" type="radio" name="rating" value="Very dissatisfied" class="govuk-radios__input">
+                        <input id="vDissatisfied" type="radio" name="rating"
+                               value="Very dissatisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
                         <label class="govuk-label govuk-radios__label" for="vDissatisfied">
                             {{ t('feedback:very-dissatisfied') }}
                         </label>
@@ -56,11 +59,10 @@
         <div id="govuk-form-group-error-improvements" class="govuk-form-group">
             <label for="improvementsID">
                 <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:improvements') }}</h2>
-                <span class="govuk-error-message" aria-hidden="true" id="error-message-improvementsID">
-                    <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.maxlength') }}
-                </span>
+                <span class="govuk-error-message" aria-hidden="true" id="error-message-improvementsID"></span>
             </label>
-            <textarea type="text" name="improvements" id="improvementsID" class="govuk-textarea" rows="5"></textarea>
+            <textarea type="text" name="improvements" id="improvementsID"
+                      class="govuk-textarea" rows="5" aria-describedby="error-message-improvementsID"></textarea>
         </div>
 
         <p>{{ t('feedback:limit') }}</p>
@@ -72,23 +74,20 @@
             <div id="govuk-form-group-error-name" class="govuk-form-group">
                 <label class="govuk-label" for="nameID">
                     <span>{{ t('feedback:yourName') }}</span>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-nameID">
-                    <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.name') }}
-                </span>
+                  <span class="govuk-error-message" aria-hidden="true" id="error-message-nameID"></span>
                 </label>
                 <input type="text" name="name" id="nameID" class="govuk-input"
-                       aria-label="{{ t('feedback:yourname-aria-label') }}">
+                       aria-label="{{ t('feedback:yourname-aria-label') }}"
+                       aria-describedby="error-message-nameID">
             </div>
 
             <div id="govuk-form-group-error-phone" class="govuk-form-group">
                 <label class="govuk-label" for="phoneID">
                     <span>{{ t('feedback:phone') }}</span>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-phoneID">
-                    <span class="govuk-visually-hidden">Error:</span> {{ t('errors:feedback.phone') }}
-                </span>
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-phoneID"></span>
                 </label>
                 <input type="text" name="phone" id="phoneID" class="govuk-input"
-                       aria-label="{{ t('feedback:phone-aria-label') }}">
+                       aria-label="{{ t('feedback:phone-aria-label') }}" aria-describedby="error-message-phoneID">
             </div>
         </fieldset>
         <div class="form-group">

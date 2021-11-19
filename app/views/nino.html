@@ -18,15 +18,20 @@
             <div id="govuk-form-group-error" class="govuk-form-group">
                 <label for="ninoFieldID">
                     <h1 class="govuk-heading-l govuk-!-font-weight-bold">{{ t('nino:heading') }}</h1>
-                    <span class="govuk-hint govuk-!-display-block">{{ t('nino:hint') }}</span>
+                    <span id ="national-insurance-number-hint" class="govuk-hint govuk-!-display-block">{{
+                      t('nino:hint') }}</span>
                 </label>
 
-                <span class="govuk-error-message" id="error-message-ninoFieldID" aria-hidden="true"></span>
-                <input type="text" name="ninoField" id="ninoFieldID" class="govuk-input govuk-!-width-one-half"
-                    value="{{ nino }}" maxlength="13" data-required="required">
-                <label for="previousPageId" aria-hidden="true">Leave blank</label>
-                <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true"
-                    value="{{ previousPageCYA }}">
+              <span class="govuk-error-message" aria-hidden="true"
+                    id="error-message-ninoFieldID"></span>
+              <input type="text" name="ninoField" id="ninoFieldID"
+                     class="govuk-input govuk-!-width-one-half"
+                     value="{{ nino }}" maxlength="13"
+                     data-required="required"
+                     aria-describedby="error-message-ninoFieldID">
+              <label for="previousPageId" aria-hidden="true">Leave blank</label>
+              <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true"
+                     value="{{ previousPageCYA }}">
             </div>
 
             <div class="govuk-form-group" aria-hidden="true">

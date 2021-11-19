@@ -1,3 +1,8 @@
+const fields = {
+    NAME_MAX_LENGTH: 1000,
+    PHONE_MAX_LENGTH: 1000,
+    IMPROVEMENTS_MAX_LENGTH: 1200,
+};
 var ratingError = document.getElementById('error-message-ratingID');
 var improvementsError = document.getElementById('error-message-improvementsID');
 var nameError = document.getElementById('error-message-nameID');
@@ -7,6 +12,16 @@ var errorImprovements = '<li><a href="#improvementsID">' + errorDictionary.feedb
 var errorName = '<li><a href="#nameID">' + errorDictionary.feedback.name + '</a></li>';
 var errorPhone = '<li><a href="#phoneID">' + errorDictionary.feedback.phone + '</a></li>';
 var flag = false;
+
+function showErrorFields(field, message) {
+    field.setAttribute('aria-hidden', false);
+    field.innerHTML = '<span class="govuk-visually-hidden">Error:</span>' + message;
+}
+
+function hideErrorFields(field) {
+    field.setAttribute('aria-hidden', true);
+    field.innerHTML = '';
+}
 
 function getErrorSummary(li) {
     return li
@@ -41,9 +56,9 @@ function isFormValid() {
     var phone = document.getElementById('phoneID');
 
     var ratingOK = selected != null;
-    var improvementsOK = improvements.value.length <= 1200;
-    var nameOK = name.value.length <= 1000;
-    var phoneOK = phone.value.length <= 1000 && (phone.value.length === 0 || phone.value.replace(/[^0-9]+/g, '').length > 8);
+    var improvementsOK = improvements.value.length <= fields.IMPROVEMENTS_MAX_LENGTH;
+    var nameOK = name.value.length <= fields.NAME_MAX_LENGTH;
+    var phoneOK = phone.value.length <= fields.PHONE_MAX_LENGTH && (phone.value.length === 0 || phone.value.replace(/[^0-9]+/g, '').length > 8);
 
     flag = ratingOK && improvementsOK && nameOK && phoneOK
     if(!flag) {
@@ -54,6 +69,9 @@ function isFormValid() {
             errorSummaryLi += errorRating;
             ratingError.setAttribute('aria-hidden', false);
             addErrorClass('govuk-form-group-error-rating', 'govuk-form-group--error')
+            showErrorFields(ratingError, errorDictionary['feedback'].required);
+        } else {
+            hideErrorFields(ratingError);
         }
 
         if (!improvementsOK) {
@@ -62,6 +80,9 @@ function isFormValid() {
             improvementsError.setAttribute('aria-hidden', false);
             addErrorClass('improvementsID', 'govuk-textarea--error')
             addErrorClass('govuk-form-group-error-improvements', 'govuk-form-group--error')
+            showErrorFields(improvementsError, errorDictionary.feedback.maxlength);
+        } else {
+            hideErrorFields(improvementsError);
         }
 
         if (!nameOK) {
@@ -70,6 +91,9 @@ function isFormValid() {
             nameError.setAttribute('aria-hidden', false);
             addErrorClass('nameID', 'govuk-input--error')
             addErrorClass('govuk-form-group-error-name', 'govuk-form-group--error')
+            showErrorFields(nameError, errorDictionary.feedback.name);
+        } else {
+            hideErrorFields(nameError);
         }
 
         if (!phoneOK) {
@@ -78,6 +102,9 @@ function isFormValid() {
             phoneError.setAttribute('aria-hidden', false);
             addErrorClass('phoneID', 'govuk-input--error')
             addErrorClass('govuk-form-group-error-phone', 'govuk-form-group--error')
+            showErrorFields(phoneError, errorDictionary.feedback.phone);
+        } else {
+            hideErrorFields(phoneError);
         }
 
         document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorSummaryLi);

@@ -11,8 +11,9 @@ function getErrorSummary(msg) {
         '</li>'
 }
 
-function showErrorFields(field) {
+function showErrorFields(field, message) {
     field.setAttribute('aria-hidden', false);
+    field.innerHTML = '<span class="govuk-visually-hidden">Error:</span>' + message;
 }
 
 function addErrorClass(id, className) {
@@ -30,7 +31,7 @@ function checkMethodObtained() {
         document.title =  errorPageTitle
         document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
         document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorDictionary['method-obtained'].missing);
-        showErrorFields(errorMessageFieldID);
+        showErrorFields(errorMessageFieldID, errorDictionary['method-obtained'].missing);
         addErrorClass('govuk-form-group-error', 'govuk-form-group--error')
         document.getElementById("govuk-error-summary").focus();
         flag = false;

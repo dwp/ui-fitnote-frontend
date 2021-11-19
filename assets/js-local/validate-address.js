@@ -25,6 +25,7 @@ function showErrorFields(field, message) {
 
 function hideErrorFields(field) {
     field.setAttribute('aria-hidden', true);
+    field.innerHTML = '';
 }
 
 

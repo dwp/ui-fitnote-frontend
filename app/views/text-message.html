@@ -34,7 +34,8 @@
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="radioYes" type="radio" name="textReminder"
                                 value="Yes" {% if previousPageCYA and mobile != '' %} checked="checked" {% endif %}
-                                data-aria-controls="mobileNumberPanel">
+                                data-aria-controls="mobileNumberPanel"
+                                   aria-describedby="contact-hint error-message-radio">
                             <label
                                 class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile != '' }}"
                                 id="yesLabel" for="radioYes">
@@ -50,7 +51,7 @@
                                 <span class="govuk-error-message" aria-hidden="true"
                                     id="error-message-text-messageFieldID"></span>
                                 <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID"
-                                    class="govuk-input govuk-!-width-one-third" value="{{ mobile }}" maxlength="20">
+                                    class="govuk-input govuk-!-width-one-third" value="{{ mobile }}" maxlength="20" aria-describedby="error-message-text-messageFieldID">
                                 <label for="previousPageId" aria-hidden="true">Leave blank</label>
                                 <input type="text" name="previousPage" id="previousPageId" class="js-hidden"
                                     aria-hidden="true" value="{{ previousPageCYA }}">
@@ -59,8 +60,10 @@
                     </div>
 
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="radioNo" type="radio" name="textReminder" value="No"
-                            {% if previousPageCYA and mobile == ''%} checked="checked" {% endif %}>
+                        <input class="govuk-radios__input" id="radioNo"
+                               type="radio" name="textReminder" value="No" aria-describedby="contact-hint error-message-radio"
+                            {% if previousPageCYA and mobile == ''%}
+                      checked="checked" {% endif %}>
                         <label
                             class="govuk-label govuk-radios__label selection-button-radio{{ ' selected' if previousPageCYA and mobile == '' }}"
                             id="noLabel" for="radioNo">
