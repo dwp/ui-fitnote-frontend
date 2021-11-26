@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 const redirectMapping = {
-  "/identify": '/identify',
-  "/invalid": "/invalid",
+  "/esa": '/esa',
+  "/no-esa": "/no-esa",
   "/method-obtained": "/method-obtained",
   "/guidance-digital": "/guidance-digital",
   "/guidance-paper": "/guidance-paper",

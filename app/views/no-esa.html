@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-02') }}{% endblock %}
+
+{% block back_link %}
+<a href="/esa?ref=no-esa" class="govuk-back-link">{{ t('device:back') }}</a>
+{% endblock %}
+
+{% block body %}
+<div class="grid-row govuk-body">
+    <div class="column-two-thirds">
+        <h1 class="govuk-heading-l">
+            {{ t('no-esa:h1') }}
+        </h1>
+        <p class="govuk-body">
+            {{t('no-esa:p1', { url: 'https://www.gov.uk/universal-credit/changes-of-circumstances#content' }) | safe}}
+        </p>
+        <p class="govuk-body">
+            {{t('no-esa:p2', { url: 'https://www.gov.uk/employment-support-allowance' }) | safe}}
+        </p>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+
+{% endblock %}

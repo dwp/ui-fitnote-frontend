@@ -2,21 +2,21 @@ const config = require('config');
 const logger = require('../../functions/bunyan');
 const hasTimedOut = require('../../functions/timeoutRedirect');
 
-function identifyPage(req, res) {
-  const { identify } = req.body;
+function esaPage(req, res) {
+  const { esa } = req.body;
   let redirectUrl;
   let route;
   logger.info(`Cookies: ${req.cookies.sessionId}`);
 
   if (typeof req.cookies.sessionId !== 'undefined') {
-    if (identify === 'Yes' || identify === 'No') {
-      route = identify === 'Yes' ? 'method-obtained' : 'invalid';
+    if (esa === 'Yes' || esa === 'No') {
+      route = esa === 'Yes' ? 'method-obtained' : 'no-esa';
       res.cookie('route', route, {
         httpOnly: true, secure: config.get('cookieOptions.secure'), sameSite: true, expires: 0,
       });
       res.redirect(`/${route}`);
     } else {
-      res.redirect('/identify');
+      res.redirect('/esa');
     }
   } else {
     redirectUrl = hasTimedOut.redirectTimeout('no valid session');
@@ -24,4 +24,4 @@ function identifyPage(req, res) {
   }
 }
 
-module.exports.identify = identifyPage;
+module.exports.esa = esaPage;

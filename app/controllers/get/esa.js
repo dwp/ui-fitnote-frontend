@@ -6,13 +6,13 @@ const getLanguage = require('../../functions/getLanguage');
 const enErrors = require('../../locales/en/errors.json');
 const cyErrors = require('../../locales/cy/errors.json');
 
-function identifyPage(req, res) {
+function esaPage(req, res) {
   const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
   let previousPageCYA = 0;
   const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
 
   if (hasRefProperty) {
-    if (req.query.ref === 'invalid') {
+    if (req.query.ref === 'no-esa') {
       previousPageCYA = -1;
     }
     if (req.query.ref === 'method-obtained') {
@@ -23,7 +23,7 @@ function identifyPage(req, res) {
   const sessionId = newSession.createSessionId(req, res);
   retry.retryCookie(req, res);
 
-  res.render('identify', {
+  res.render('esa', {
     sessionId,
     version: process.env.npm_package_version,
     timeStamp: Date.now(),
@@ -33,4 +33,4 @@ function identifyPage(req, res) {
   });
 }
 
-module.exports.identify = identifyPage;
+module.exports.esa = esaPage;

@@ -4,9 +4,9 @@ const router = new express.Router();
 const config = require('config');
 
 // getControllers
-const identifyGet = require('./controllers/get/identify');
+const esaGet = require('./controllers/get/esa');
 const methodObtainedGet = require('./controllers/get/methodObtained');
-const invalidGet = require('./controllers/get/invalid');
+const noEsaGet = require('./controllers/get/noEsa');
 const deviceGet = require('./controllers/get/device');
 const takePhotoGet = require('./controllers/get/takePhoto');
 const guidanceGet = require('./controllers/get/guidance');
@@ -26,7 +26,7 @@ const timeoutGet = require('./controllers/get/sessionTimeout');
 const sessionGet = require('./controllers/get/refresh');
 
 // postContollers
-const identifyPost = require('./controllers/post/identify');
+const esaPost = require('./controllers/post/esa');
 const methodObtainedPost = require('./controllers/post/methodObtained');
 const devicePost = require('./controllers/post/device');
 const photoPost = require('./controllers/post/sendPhoto');
@@ -50,7 +50,7 @@ const isAuthenticatedFunction = authentication.isAuthenticated;
 
 // Controller Functions
 function catchSlash(req, res) {
-  res.redirect(`/identify?lang=${res.locals.language}`);
+  res.redirect(`/esa?lang=${res.locals.language}`);
 }
 
 function redirectGovUk(req, res) {
@@ -76,10 +76,10 @@ router.get('/refresh-session', sessionGet.refresh);
 
 // Fitnote Pages
 router.get('/index', redirectGovUk);
-router.get('/identify', identifyGet.identify);
+router.get('/esa', esaGet.esa);
 router.get('/device', isAuthenticatedFunction, deviceGet.device);
 router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet.methodObtained);
-router.get('/invalid', isAuthenticatedFunction, invalidGet.invalid);
+router.get('/no-esa', isAuthenticatedFunction, noEsaGet.noEsa);
 router.get(['/guidance-digital', '/guidance-paper'], isAuthenticatedFunction, guidanceGet.guidance);
 router.get('/upload', isAuthenticatedFunction, takePhotoGet.takePhotoPage);
 router.get('/nino', isAuthenticatedFunction, ninoGet.ninoPage);
@@ -110,7 +110,7 @@ if (config.util.getEnv('NODE_ENV') === 'test') {
 }
 
 // Post Controllers
-router.post('/identify', identifyPost.identify);
+router.post('/esa', esaPost.esa);
 router.post('/method-obtained', methodObtainedPost.methodObtained);
 router.post('/device', devicePost.device);
 router.post('/update-cookie-settings', cookieSettings.updateCookieSettings);

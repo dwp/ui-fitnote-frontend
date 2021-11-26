@@ -20,8 +20,8 @@
     "device": {
         "missing": "Select which type of device you are using"
     },
-    "identify": {
-        "missing": "Select yes if you have a fit note"
+    "esa": {
+        "missing": "Select yes if you have applied for or get New Style Employment and Support Allowance (ESA)"
     },
     "feedback": {
         "required": "Select a satisfaction rating",

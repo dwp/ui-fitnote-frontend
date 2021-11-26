@@ -4,39 +4,36 @@
 {% block body %}
 <div class="grid-row govuk-body">
     <div class="govuk-grid-column-two-thirds">
-        <form action="/identify" method="post" class="form" name="identifyForm" id="formData" data-form="identify"
+        <form action="/esa" method="post" class="form" name="esaForm" id="formData" data-form="esa"
             autocomplete="off" onsubmit="return submitForm();">
           {% include "includes/govuk-error-summary.html" %}
             <div id="govuk-form-group-error" class="govuk-form-group">
                 <fieldset class="govuk-fieldset"
-                          aria-describedby="fit-note-hint error-message-radioIdentify">
+                          aria-describedby="error-message-radioEsa">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            {{ t('identify:h1') }}
+                            {{ t('esa:h1') }}
                         </h1>
                     </legend>
-                    <div id="fit-note-hint" class="govuk-hint">
-                        {{ t('identify:hint') }}
-                    </div>
-                  <span id="error-message-radioIdentify"
+                  <span id="error-message-radioEsa"
                         class="govuk-error-message" aria-hidden="true"></span>
-                    <div class="govuk-radios">
+                    <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="radioIdentifyYes" name="identify" type="radio"
+                            <input class="govuk-radios__input" id="radioEsaYes" name="esa" type="radio"
                                 value="Yes" {% if previousPageCYA == 1 %}
-                                   checked="checked" {% endif %} aria-describedby="error-message-radioIdentify">
-                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" id="radioIdentifyYesLabel"
-                                for="radioIdentifyYes">
-                                {{ t('identify:radio-yes') }}
+                                   checked="checked" {% endif %} aria-describedby="error-message-radioEsa">
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" id="radioEsaYesLabel"
+                                for="radioEsaYes">
+                                {{ t('esa:radio-yes') }}
                             </label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="radioIdentifyNo" name="identify" type="radio"
+                            <input class="govuk-radios__input" id="radioEsaNo" name="esa" type="radio"
                                 value="No" {% if previousPageCYA == -1 %}
-                                   checked="checked" {% endif %} aria-describedby="error-message-radioIdentify">
-                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == -1 }}" id="radioIdentifyNoLabel"
-                                for="radioIdentifyNo">
-                                {{ t('identify:radio-no') }}
+                                   checked="checked" {% endif %} aria-describedby="error-message-radioEsa">
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == -1 }}" id="radioEsaNoLabel"
+                                for="radioEsaNo">
+                                {{ t('esa:radio-no') }}
                             </label>
                         </div>
                     </div>
@@ -64,7 +61,7 @@
         errorPageTitle = 'Gwall: ' + "{{ t('app:page-title-01') }}";
     }
 </script>
-<script src="/javascript/validate-identify.js?version={{assetsVersion}}" defer></script>
+<script src="/javascript/validate-esa.js?version={{assetsVersion}}" defer></script>
 
 
 {% endblock %}

@@ -6,10 +6,10 @@
   "mobile" : "Mobile number",
   "button" : "Accept and send fit note",
   "change" : "Change",
-  "changeNino" : " your National Insurance number",
+  "changeNino" : " national insurance number",
   "changeAddress" : " your address",
-  "changeMobile" : " your mobile number",
-  "changeConfirmation" : " whether you want a confirmation text message",
+  "changeMobile" : " mobile number",
+  "changeConfirmation" : " confirmation text message",
   "yes": "Yes",
   "no": "No",
   "back": "Back"

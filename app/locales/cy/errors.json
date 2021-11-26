@@ -20,8 +20,8 @@
     "device": {
         "missing": "Dewiswch y math o ddyfais rydych yn ei ddefnyddio"
     },
-    "identify": {
-        "missing": "Dewiswch ie os oes gennych nodyn ffitrwydd"
+    "esa": {
+        "missing": "Dewiswch ydw os ydych chi wedi gwneud cais am neu’n cael Lwfans Cyflogaeth a Chymorth (ESA) Dull Newydd"
     },
     "feedback": {
         "required": "Dewiswch gyfradd bodlonrwydd",

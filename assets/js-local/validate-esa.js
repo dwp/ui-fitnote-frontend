@@ -1,13 +1,13 @@
 var flag = false;
 
 (function onLoady() {
-    document.getElementById('radioIdentifyYes').addEventListener('click', null, false);
-    document.getElementById('radioIdentifyNo').addEventListener('click', null, false);
+    document.getElementById('radioEsaYes').addEventListener('click', null, false);
+    document.getElementById('radioEsaNo').addEventListener('click', null, false);
 })();
 
 function getErrorSummary(msg) {
     return '<li>' +
-        '<a href="#radioIdentifyYes"">' + msg + '</a>' +
+        '<a href="#radioEsaYes"">' + msg + '</a>' +
         '</li>'
 }
 
@@ -21,17 +21,17 @@ function addErrorClass(id, className) {
     element.classList.add(className);
 }
 
-function checkIdentify() {
-    var errorMessageDeviceFieldID = document.getElementById('error-message-radioIdentify');
-    var radioValueRaw = document.querySelector('input[name="identify"]:checked');
+function checkEsa() {
+    var errorMessageDeviceFieldID = document.getElementById('error-message-radioEsa');
+    var radioValueRaw = document.querySelector('input[name="esa"]:checked');
 
     if (radioValueRaw !== null) {
         flag = true;
     } else {
         document.title =  errorPageTitle
         document.getElementById('govuk-error-summary').setAttribute('aria-hidden', false);
-        document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorDictionary['identify'].missing);
-        showErrorFields(errorMessageDeviceFieldID, errorDictionary['identify'].missing);
+        document.getElementById('error-summary-list').innerHTML = getErrorSummary(errorDictionary['esa'].missing);
+        showErrorFields(errorMessageDeviceFieldID, errorDictionary['esa'].missing);
         addErrorClass('govuk-form-group-error', 'govuk-form-group--error')
         document.getElementById("govuk-error-summary").focus();
         flag = false;
@@ -39,6 +39,6 @@ function checkIdentify() {
 }
 
 function submitForm() {
-    checkIdentify();
+    checkEsa();
     return flag;
 }

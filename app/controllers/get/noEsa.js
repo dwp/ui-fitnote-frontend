@@ -1,7 +1,7 @@
 const config = require('config');
 
-function invalidPage(req, res) {
-  res.render('invalid', {
+function noEsaPage(req, res) {
+  res.render('no-esa', {
     sessionId: req.cookies.sessionId,
     version: process.env.npm_package_version,
     timeStamp: Date.now(),
@@ -9,4 +9,4 @@ function invalidPage(req, res) {
   });
 }
 
-module.exports.invalid = invalidPage;
+module.exports.noEsa = noEsaPage;

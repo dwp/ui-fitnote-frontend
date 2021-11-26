@@ -1,5 +1,5 @@
 function index(req, res) {
-  res.redirect('/identify');
+  res.redirect('/esa');
 }
 
 module.exports.index = index;

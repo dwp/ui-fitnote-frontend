@@ -3,114 +3,117 @@
 
 {% block body %}
 <div class="govuk-grid-row">
-<div class="govuk-grid-column-two-thirds govuk-body">
-    {% include "includes/govuk-error-summary.html" %}
-    <h1 class="govuk-heading-l">{{ t('feedback:h1') }}</h1>
-    <form id="formData" action="/feedback" method="post" class="form" autocomplete="off" onsubmit="return submitForm();">
-        <div id="govuk-form-group-error-rating" class="govuk-form-group">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+        {% include "includes/govuk-error-summary.html" %}
+        <h1 class="govuk-heading-l">{{ t('feedback:h1') }}</h1>
+        <form id="formData" action="/feedback" method="post" class="form" autocomplete="off"
+            onsubmit="return submitForm();">
+            <div id="govuk-form-group-error-rating" class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:rating') }}</h2>
+                        <span class="govuk-error-message" aria-hidden="true" id="error-message-ratingID"></span>
+                    </legend>
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input id="vSatisfied" type="radio" name="rating" value="Very satisfied"
+                                class="govuk-radios__input" aria-describedby="error-message-ratingID">
+                            <label class="govuk-label govuk-radios__label" for="vSatisfied">
+                                {{ t('feedback:very-satisfied') }}
+                            </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                            <input id="satisfied" type="radio" name="rating" value="Satisfied"
+                                class="govuk-radios__input" aria-describedby="error-message-ratingID">
+                            <label class="govuk-label govuk-radios__label" for="satisfied">
+                                {{ t('feedback:satisfied') }}
+                            </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                            <input id="neither" type="radio" name="rating" value="Neither satisfied or dissatisfied"
+                                class="govuk-radios__input" aria-describedby="error-message-ratingID">
+                            <label class="govuk-label govuk-radios__label" for="neither">
+                                {{ t('feedback:neither') }}
+                            </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                            <input id="dissatisfied" type="radio" name="rating" value="Dissatisfied"
+                                class="govuk-radios__input" aria-describedby="error-message-ratingID">
+                            <label class="govuk-label govuk-radios__label" for="dissatisfied">
+                                {{ t('feedback:dissatisfied') }}
+                            </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                            <input id="vDissatisfied" type="radio" name="rating" value="Very dissatisfied"
+                                class="govuk-radios__input" aria-describedby="error-message-ratingID">
+                            <label class="govuk-label govuk-radios__label" for="vDissatisfied">
+                                {{ t('feedback:very-dissatisfied') }}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div id="govuk-form-group-error-improvements" class="govuk-form-group">
+                <label for="improvementsID">
+                    <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:improvements') }}</h2>
+                    <span class="govuk-error-message" aria-hidden="true" id="error-message-improvementsID"></span>
+                </label>
+                <textarea type="text" name="improvements" id="improvementsID" class="govuk-textarea" rows="5"
+                    aria-describedby="error-message-improvementsID"></textarea>
+            </div>
+
+            <p>{{ t('feedback:limit') }}</p>
+            <p>{{ t('feedback:info') }}</p>
+
             <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:rating') }}</h2>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-ratingID"></span>
+                <legend class="govuk-fieldset__legend">
+                    <h2 class="govuk-heading-m govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+                        {{ t('feedback:helpMore') }}</h2>
                 </legend>
-                <div class="govuk-radios">
-                    <div class="govuk-radios__item">
-                        <input id="vSatisfied" type="radio" name="rating"
-                               value="Very satisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
-                        <label class="govuk-label govuk-radios__label" for="vSatisfied">
-                            {{ t('feedback:very-satisfied') }}
-                        </label>
-                    </div>
+                <p>{{ t('feedback:helpMoreText') }}</p>
+                <div id="govuk-form-group-error-name" class="govuk-form-group">
+                    <label class="govuk-label" for="nameID">
+                        <span>{{ t('feedback:yourName') }}</span>
+                        <span class="govuk-error-message" aria-hidden="true" id="error-message-nameID"></span>
+                    </label>
+                    <input type="text" name="name" id="nameID" class="govuk-input"
+                        aria-describedby="error-message-nameID">
+                </div>
 
-                    <div class="govuk-radios__item">
-                        <input id="satisfied" type="radio" name="rating"
-                               value="Satisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
-                        <label class="govuk-label govuk-radios__label" for="satisfied">
-                            {{ t('feedback:satisfied') }}
-                        </label>
-                    </div>
-
-                    <div class="govuk-radios__item">
-                        <input id="neither" type="radio" name="rating"
-                               value="Neither satisfied or dissatisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
-                        <label class="govuk-label govuk-radios__label" for="neither">
-                            {{ t('feedback:neither') }}
-                        </label>
-                    </div>
-
-                    <div class="govuk-radios__item">
-                        <input id="dissatisfied" type="radio" name="rating"
-                               value="Dissatisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
-                        <label class="govuk-label govuk-radios__label" for="dissatisfied">
-                            {{ t('feedback:dissatisfied') }}
-                        </label>
-                    </div>
-
-                    <div class="govuk-radios__item">
-                        <input id="vDissatisfied" type="radio" name="rating"
-                               value="Very dissatisfied" class="govuk-radios__input" aria-describedby="error-message-ratingID">
-                        <label class="govuk-label govuk-radios__label" for="vDissatisfied">
-                            {{ t('feedback:very-dissatisfied') }}
-                        </label>
-                    </div>
+                <div id="govuk-form-group-error-phone" class="govuk-form-group">
+                    <label class="govuk-label" for="phoneID">
+                        <span>{{ t('feedback:phone') }}</span>
+                        <span class="govuk-error-message" aria-hidden="true" id="error-message-phoneID"></span>
+                    </label>
+                    <input type="text" name="phone" id="phoneID" class="govuk-input"
+                        aria-describedby="error-message-phoneID">
                 </div>
             </fieldset>
-        </div>
-        <div id="govuk-form-group-error-improvements" class="govuk-form-group">
-            <label for="improvementsID">
-                <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:improvements') }}</h2>
-                <span class="govuk-error-message" aria-hidden="true" id="error-message-improvementsID"></span>
-            </label>
-            <textarea type="text" name="improvements" id="improvementsID"
-                      class="govuk-textarea" rows="5" aria-describedby="error-message-improvementsID"></textarea>
-        </div>
-
-        <p>{{ t('feedback:limit') }}</p>
-        <p>{{ t('feedback:info') }}</p>
-
-        <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:helpMore') }}</h2>
-        <p>{{ t('feedback:helpMoreText') }}</p>
-        <fieldset class="govuk-fieldset" aria-label="{{ t('feedback:helpMoreAria') }}">
-            <div id="govuk-form-group-error-name" class="govuk-form-group">
-                <label class="govuk-label" for="nameID">
-                    <span>{{ t('feedback:yourName') }}</span>
-                  <span class="govuk-error-message" aria-hidden="true" id="error-message-nameID"></span>
-                </label>
-                <input type="text" name="name" id="nameID" class="govuk-input"
-                       aria-label="{{ t('feedback:yourname-aria-label') }}"
-                       aria-describedby="error-message-nameID">
+            <div class="form-group">
+                <input id="submit-feedback" type="submit" class="govuk-button" value="{{ t('feedback:button') }}">
             </div>
-
-            <div id="govuk-form-group-error-phone" class="govuk-form-group">
-                <label class="govuk-label" for="phoneID">
-                    <span>{{ t('feedback:phone') }}</span>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-phoneID"></span>
-                </label>
-                <input type="text" name="phone" id="phoneID" class="govuk-input"
-                       aria-label="{{ t('feedback:phone-aria-label') }}" aria-describedby="error-message-phoneID">
-            </div>
-        </fieldset>
-        <div class="form-group">
-            <input id="submit-feedback" type="submit" class="govuk-button" value="{{ t('feedback:button') }}">
-        </div>
-    </form>
-</div>
-{% include "includes/sidebar.html" %}
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
 </div>
 {% endblock %}
 
 {% block body_end %}
 {{super()}}
-    <script>
-        var lang = '{{ lang }}';
-        var expires = '{{ exp }}';
-        var errorDictionary = {{ validationErrors | safe }};
-        var errorPageTitle;
-        if (lang === 'en') {
-            errorPageTitle = 'Error: ' + "{{ t('app:page-title-12') }}";
-        } else {
-            errorPageTitle = 'Gwall: ' + "{{ t('app:page-title-12') }}";
-        }
-    </script>
-    <script src="/javascript/validate-feedback.js?version={{assetsVersion}}" defer></script>
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+    var errorDictionary = {{ validationErrors | safe }};
+    var errorPageTitle;
+    if (lang === 'en') {
+        errorPageTitle = 'Error: ' + "{{ t('app:page-title-12') }}";
+    } else {
+        errorPageTitle = 'Gwall: ' + "{{ t('app:page-title-12') }}";
+    }
+</script>
+<script src="/javascript/validate-feedback.js?version={{assetsVersion}}" defer></script>
 {% endblock %}
