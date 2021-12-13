@@ -12,59 +12,66 @@
 {% block body %}
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds govuk-body">
-        {% include "includes/govuk-error-summary.html" %}
-        <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload:h1') }}</h1>
+  <div class="govuk-grid-column-two-thirds govuk-body">
+    {% include "includes/govuk-error-summary.html" %}
+    <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload:h1') }}</h1>
 
-        <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData"
-            data-form="takeAPhoto" autocomplete="off">
-            <div class="govuk-form-group">
-                <div
-                    class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
-                    <label class="govuk-label" for="userPhotoID">
-                        {{ t('upload:upload') }}
-                    </label>
-                  <span id="file-upload-1-error" class="govuk-error-message">
+    <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData"
+          data-form="takeAPhoto" autocomplete="off">
+      <div class="govuk-form-group">
+        <div
+          class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
+          <label class="govuk-label" for="userPhotoID">
+            {{ t('upload:upload') }}
+          </label>
+          <span id="file-upload-1-error" class="govuk-error-message">
                     {% if errors.photo or errors.photoOCR %}
                       {% for error, value in errors %}
                           <span class="govuk-visually-hidden">Error:</span> {{value.message}}
                       {% endfor %}
                     {% endif %}
                   </span>
-                    <input type="file" accept="image/*,application/pdf" id="userPhotoID" name="userPhoto"
-                        class="govuk-file-upload" aria-describedby="file-upload-1-error">
-                </div>
+          <input type="file" accept="image/*,application/pdf" id="userPhotoID" name="userPhoto"
+                 class="govuk-file-upload" aria-describedby="file-upload-1-error">
+        </div>
 
-                <div class="govuk-form-group" aria-hidden="true">
-                    <label for="imageNameID" aria-hidden="true">Leave blank</label>
-                    <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value=""
-                        autofill="off">
-                </div>
+        <div class="govuk-form-group" aria-hidden="true">
+          <label for="imageNameID" aria-hidden="true">Leave blank</label>
+          <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value=""
+                 autofill="off">
+        </div>
 
-                <p class="govuk-!-padding-top-2">
-                    {{ t('upload:text') }}
-                <p>
+        <p class="govuk-!-padding-top-2">
+          {{ t('upload:text') }}
+        <p>
 
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>{{ t('upload:list.li1') }}</li>
-                    <li>{{ t('upload:list.li2') }}</li>
-                </ul>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ t('upload:list.li1') }}</li>
+          <li>{{ t('upload:list.li2') }}</li>
+        </ul>
 
-                <div id="js-loading-message" class="display-offscreen">
-                    <div class="spinner">
-                        <div class="bounce1"></div>
-                        <div class="bounce2"></div>
-                        <div class="bounce3"></div>
-                    </div>
-                    <p>{{ t('upload:p') }}</p>
-                </div>
-                <div id="js-submitButtonContainer" class="clearfix">
-                    <input type="submit" class="govuk-button" value="{{ t('upload:buttonText') }}" id="submitButton">
-                </div>
-            </div>
-        </form>
-    </div>
-    {% include "includes/sidebar.html" %}
+
+        <div id="js-submitButtonContainer" class="clearfix">
+          <input type="submit" class="govuk-button" value="{{ t('upload:buttonText') }}" id="submitButton">
+        </div>
+        <div id="js-loading-message" class="display-offscreen">
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+          <div id="upload-status" aria-live="polite" aria-atomic="true"></div>
+        </div>
+
+        <div class="govuk-inset-text">
+          <p>{{ t('upload:postalInstruction.p1') }}</p>
+          <p>{{ t('upload:postalInstruction.p2') }}</p>
+          <p>{{ t('upload:postalInstruction.p3') }}</p>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% include "includes/sidebar.html" %}
 </div>
 
 
@@ -74,23 +81,23 @@
 {{super()}}
 <script src="/javascript/get-a-photo.js?version={{assetsVersion}}"></script>
 <script>
-    var lang = '{{ lang }}';
-    var expires = '{{ exp }}';
-    var err = '{{errors}}';
-    if (err) {
-        if (lang === 'en') {
-            document.title = 'Error: ' + "{{ t('app:page-title-06') }}";
-        } else {
-            document.title = 'Gwall: ' + "{{ t('app:page-title-06') }}";
-        }
+  var lang = '{{ lang }}';
+  var expires = '{{ exp }}';
+  var err = '{{errors}}';
+  if (err) {
+    if (lang === 'en') {
+      document.title = 'Error: ' + "{{ t('app:page-title-06') }}";
+    } else {
+      document.title = 'Gwall: ' + "{{ t('app:page-title-06') }}";
     }
+  }
 </script>
 <script src="/govuk/all.js"></script>
 <script>
-    var ErrorSummary = window.GOVUKFrontend.ErrorSummary
-    var $errorSummary = document.querySelector('[data-module="govuk-error-summary"]');
-    if ($errorSummary) {
-        new ErrorSummary($errorSummary).init();
-    }
+  var ErrorSummary = window.GOVUKFrontend.ErrorSummary
+  var $errorSummary = document.querySelector('[data-module="govuk-error-summary"]');
+  if ($errorSummary) {
+    new ErrorSummary($errorSummary).init();
+  }
 </script>
 {% endblock %}

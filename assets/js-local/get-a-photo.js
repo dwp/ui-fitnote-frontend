@@ -7,6 +7,7 @@ window.onload = function takeAPhoto() {
         document.getElementById('js-loading-message').className += 'js-show';
         submitButton.className = 'js-hide';
         document.getElementById('formData').submit();
+        document.getElementById('upload-status').innerHTML+=("<p>Uploading</p>");
         return true;
     }
 

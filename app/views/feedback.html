@@ -10,11 +10,12 @@
             onsubmit="return submitForm();">
             <div id="govuk-form-group-error-rating" class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:rating') }}</h2>
-                        <span class="govuk-error-message" aria-hidden="true" id="error-message-ratingID"></span>
-                    </legend>
-                    <div class="govuk-radios">
+                  <legend
+                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-margin-bottom-6">
+                    {{ t('feedback:rating') }}
+                  </legend>
+                  <span class="govuk-error-message" aria-hidden="true" id="error-message-ratingID"></span>
+                  <div class="govuk-radios">
                         <div class="govuk-radios__item">
                             <input id="vSatisfied" type="radio" name="rating" value="Very satisfied"
                                 class="govuk-radios__input" aria-describedby="error-message-ratingID">
@@ -58,11 +59,11 @@
                 </fieldset>
             </div>
             <div id="govuk-form-group-error-improvements" class="govuk-form-group">
-                <label for="improvementsID">
-                    <h2 class="govuk-heading-m govuk-!-font-weight-bold">{{ t('feedback:improvements') }}</h2>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-improvementsID"></span>
-                </label>
-                <textarea type="text" name="improvements" id="improvementsID" class="govuk-textarea" rows="5"
+              <label for="improvementsID" class="govuk-label govuk-label--m govuk-!-margin-bottom-4">
+                {{ t('feedback:improvements') }}
+              </label>
+              <span class="govuk-error-message" aria-hidden="true" id="error-message-improvementsID"></span>
+              <textarea type="text" name="improvements" id="improvementsID" class="govuk-textarea" rows="5"
                     aria-describedby="error-message-improvementsID"></textarea>
             </div>
 
@@ -70,9 +71,8 @@
             <p>{{ t('feedback:info') }}</p>
 
             <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend">
-                    <h2 class="govuk-heading-m govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-                        {{ t('feedback:helpMore') }}</h2>
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-margin-bottom-2">
+                        {{ t('feedback:helpMore') }}
                 </legend>
                 <p>{{ t('feedback:helpMoreText') }}</p>
                 <div id="govuk-form-group-error-name" class="govuk-form-group">

@@ -14,7 +14,7 @@ const redirectMapping = {
   "/text-message": "/text-message",
   "/check-your-answers": "/check-your-answers",
   "/feedback": "/feedback",
-  "/thank-you": "/thank-you",
+  "/feedback-sent": "/feedback-sent",
   "/complete": "/complete",
 };
 

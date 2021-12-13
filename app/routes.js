@@ -71,7 +71,7 @@ router.get('/cookies/cookie_policy', isAuthenticatedFunction, cookiePolicyGet.co
 router.get('/cookies/cookies_details', isAuthenticatedFunction, cookiesDetailsGet.cookiesDetailsPage);
 router.get('/accessibility-statement', isAuthenticatedFunction, accessibilityGet.accessibilityPage);
 router.get('/feedback', isAuthenticatedFunction, feedbackGet.feedbackPage);
-router.get('/thank-you', feedbackGet.thankYouPage);
+router.get('/feedback-sent', feedbackGet.feedbackSentPage);
 router.get('/refresh-session', sessionGet.refresh);
 
 // Fitnote Pages

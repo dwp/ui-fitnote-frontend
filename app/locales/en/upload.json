@@ -1,12 +1,12 @@
 {
     "h1": "Upload your fit note",
     "list": {
-        "li1": "a JPG, BMP, PNG, TIF or PDF",
+        "li1": "a JPG, JPEG, BMP, PNG, TIF or PDF",
         "li2": "smaller than 10MB"
     },
     "text": "Your file must be:",
     "p": "Uploading...",
-    "buttonText": "Upload file",
+    "buttonText": "Upload and continue",
     "upload": "Upload a file",
     "back": "Back",
     "missing": "You must select a file to continue",
@@ -14,5 +14,10 @@
     "failed-ocr": "The selected file must be clear and readable, containing the whole fit note",
     "tooBig": "The selected file must be smaller than 10MB",
     "connection": "There was a problem uploading the image, please retry using a Wifi connection",
-    "serviceFail": "Try again"
+    "serviceFail": "Try again",
+    "postalInstruction": {
+        "p1": "If you keep having problems uploading your fit note, you should post it to us instead.",
+        "p2": "Freepost DWP ESA 26",
+        "p3": "You do not need a stamp."
+    }
 }

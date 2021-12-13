@@ -1,6 +1,5 @@
 const config = require('config');
 const { NotifyClient } = require('notifications-node-client');
-const querystring = require('querystring');
 const logger = require('../../functions/bunyan');
 const checkHoneypot = require('../../functions/honeypot');
 
@@ -38,9 +37,6 @@ function sendFeedback(req, res) {
   const fromPage = req.cookies.feedback || '';
   const fakePhoneRaw = req.body.phoneField;
   const passedHoneypot = checkHoneypot.honeypot(fakePhoneRaw, 'BOT: honeypot detected a bot, Feedback Page, Phone Field');
-  const postSubmissionRedirect = (fromPage !== '/complete') ? `?${querystring.stringify({
-    return: fromPage,
-  })}` : '';
 
   const validateForm = validateFormFields(req);
   if (validateForm.ratingValid === '1' && validateForm.improvementsValid === '1' && validateForm.nameValid === '1' && validateForm.phoneValid === '1') {
@@ -58,7 +54,7 @@ function sendFeedback(req, res) {
         .then(() => {
           logType.info('Feedback sent successfully');
           res.clearCookie('feedback');
-          res.redirect(`/thank-you${postSubmissionRedirect}`);
+          res.redirect('/feedback-sent');
         })
         .catch((err) => {
           logType.error(`Error sending feedback via notify: ${err}`);
@@ -67,7 +63,7 @@ function sendFeedback(req, res) {
     } else {
       res.clearCookie('feedback');
       logType.info('BOT detected. Doing fake send');
-      res.redirect('/thank-you'); // don't post the request just go to the next page.
+      res.redirect('/feedback-sent'); // don't post the request just go to the next page.
     }
   } else {
     logType.info('Form Fields Invalid');

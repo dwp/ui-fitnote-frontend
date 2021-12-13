@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-13') }}{% endblock %}
+
+{% block body %}
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-top-7">{{ t('feedback-sent:h1') }}</h1>
+    <p>{{ t('feedback-sent:p1') }}</p>
+    <p>{{ t('feedback-sent:p2') }}</p>
+</div>
+{% include "includes/sidebar.html" %}
+</div>
+{% endblock %}

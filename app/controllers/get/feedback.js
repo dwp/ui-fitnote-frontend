@@ -77,8 +77,8 @@ function feedbackPage(req, res) {
   });
 }
 
-function thankYouPage(req, res) {
-  res.render('thank-you', {
+function feedbackSentPage(req, res) {
+  res.render('feedback-sent', {
     version: process.env.npm_package_version,
     timeStamp: Date.now(),
     environment: config.util.getEnv('NODE_ENV'),
@@ -87,4 +87,4 @@ function thankYouPage(req, res) {
 }
 
 module.exports.feedbackPage = feedbackPage;
-module.exports.thankYouPage = thankYouPage;
+module.exports.feedbackSentPage = feedbackSentPage;
