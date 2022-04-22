@@ -61,7 +61,6 @@ function processRequest(req, res, logType) {
 }
 
 function apiCallback(req, res, logType) {
-  const errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
   function handleFormError() {
     logType.info('Form Fields Invalid');
     res.redirect('address?houseNumber=0&postcode=0');
@@ -81,7 +80,7 @@ function apiCallback(req, res, logType) {
       }
     } else {
       logType.debug(`Error${err}`);
-      res.status(500).render(errorUrl);
+      res.status(500).redirect('/500');
     }
   };
 }

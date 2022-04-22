@@ -3,6 +3,10 @@ var passedNino;
 var checkNinoField;
 var flag = false;
 
+(function onLoady() {
+    document.getElementById("formData").onsubmit = function() {return submitForm()};
+})();
+
 function sanitiseNino(nino) {
     return nino.toUpperCase().replace(/[\s|\-]/g, '');
 }

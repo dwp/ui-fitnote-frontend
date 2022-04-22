@@ -22,6 +22,7 @@ const cookiesDetailsGet = require('./controllers/get/cookiesDetails');
 const accessibilityGet = require('./controllers/get/accessibilityStatement');
 const unprocessableEntityGet = require('./controllers/get/photoQualityError');
 const desktopUnprocessableEntityGet = require('./controllers/get/desktopPhotoQualityError');
+const serverErrorGet = require('./controllers/get/serverError');
 const timeoutGet = require('./controllers/get/sessionTimeout');
 const sessionGet = require('./controllers/get/refresh');
 
@@ -129,6 +130,7 @@ router.get('/healthcheck', healthcheck.healthCheck);
 // ERRORS (must be defined after all routes)
 router.get('/422', unprocessableEntityGet.photoQualityError);
 router.get('/422-desktop', desktopUnprocessableEntityGet.desktopPhotoQualityError);
+router.get('/500', serverErrorGet.serverError);
 router.get('/session-timeout', timeoutGet.sessionTimeout);
 
 // Catch all unknown routes and redirect to 404 page

@@ -1,11 +1,12 @@
 window.onload = function takeAPhoto() {
     var validImageFileTypes = new RegExp('^image/');
     var pageUrl = window.location.pathname;
-    var submitButton = document.getElementById('js-submitButtonContainer');
-
+    var submitBtnContainer = document.getElementById('js-submitButtonContainer');
+    var submitButton = document.querySelector('input[type="submit"]')
+    
     function showLoader() {
         document.getElementById('js-loading-message').className += 'js-show';
-        submitButton.className = 'js-hide';
+        submitBtnContainer.className = 'js-hide';
         document.getElementById('formData').submit();
         document.getElementById('upload-status').innerHTML+=("<p>Uploading</p>");
         return true;

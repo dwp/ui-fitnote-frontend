@@ -47,9 +47,8 @@ function checkYourAnswersPage(req, res) {
       }
     })
     .catch((err) => {
-      const errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
       logType.error(err);
-      res.render(errorUrl);
+      res.render('errors/500');
     });
 }
 

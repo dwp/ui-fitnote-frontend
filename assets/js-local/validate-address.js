@@ -11,6 +11,10 @@ var errorSummaryPostcode = '<li><a href="#postcodeID">' + errorDictionary.addres
 var errorSummaryPostcodeFormat = '<li><a href="#postcodeID">' + errorDictionary.address['postcode-format'] + '</a></li>';
 var errorSummaryLi;
 
+(function onLoady() {
+    document.getElementById("formData").onsubmit = function() {return submitForm()};
+})();
+
 function isInputEmpty(inputField) {
     if ((inputField.value === '') || (inputField.value === 'null')) {
         return false;

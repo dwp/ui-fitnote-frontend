@@ -40,11 +40,11 @@ function apiCallback(req, res, logType) {
       if (response.statusCode === 200 || response.statusCode === 201) {
         processRequest(req, res, logType);
       } else {
-        res.status(500).render('errors/500');
+        res.status(500).redirect('/500');
       }
     } else {
       logType.debug(`Error${err}`);
-      res.status(500).render('errors/500');
+      res.status(500).redirect('/500');
     }
   };
 }

@@ -14,7 +14,7 @@
     <div class="govuk-grid-column-two-thirds">
         {% include "includes/govuk-error-summary.html" %}
         <form action="/send-address" method="post" class="form" name="amendAddress" id="formData"
-              data-form="updateAddress" autocomplete="off" onsubmit="return submitForm();">
+              data-form="updateAddress" autocomplete="off">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-heading-l">{{ t('address:h1') }}</h1>
@@ -22,7 +22,7 @@
 
                 <div id="govuk-form-group-error-house" class="govuk-form-group">
                     <label for="houseNumberID" class="govuk-label">{{ t('address:house-number') }}</label>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-houseNumberID"></span>
+                    <p class="govuk-error-message" aria-hidden="true" id="error-message-houseNumberID"></p>
                     <input type="text" name="houseNumberField" id="houseNumberID"
                            class="govuk-input govuk-!-width-two-thirds {{error.houseNumberCompleted}}" value="{{ house }}"
                            data-required="required" maxlength="35" aria-describedby="error-message-houseNumberID">
@@ -30,7 +30,7 @@
 
                 <div id="govuk-form-group-error-postcode" class="govuk-form-group">
                     <label for="postcodeID" class="govuk-label">{{ t('address:postcode') }}</label>
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-postcodeID"></span>
+                    <p class="govuk-error-message" aria-hidden="true" id="error-message-postcodeID"></p>
                     <input type="text" name="postcodeField" id="postcodeID"
                            class="govuk-input govuk-input--width-10 {{error.postcodeCompleted}}" value="{{ postcode }}"
                            data-required="required" maxlength="8" aria-describedby="error-message-postcodeID">
@@ -38,7 +38,7 @@
 
                 <div class="govuk-form-group" aria-hidden="true">
                     <label for="countyID" aria-hidden="true">Leave blank</label>
-                    <input type="text" name="countyField" id="countyID" aria-hidden="true" value="" autofill="off">
+                    <input type="text" name="countyField" id="countyID" aria-hidden="true" value="">
                     <label for="previousPageId" aria-hidden="true">Leave blank</label>
                     <input type="text" name="previousPage" id="previousPageId" class="js-hidden" aria-hidden="true"
                            value="{{ previousPageCYA }}">

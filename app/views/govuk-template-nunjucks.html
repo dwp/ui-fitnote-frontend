@@ -54,14 +54,14 @@
     {% block body_start %}{% endblock %}
 
     {{cookieBanner()}}
-    <a href="#content" class="govuk-skip-link">{{ t('app:skip') }}</a>
+    <a href="#content" class="govuk-skip-link" data-module="govuk-skip-link">{{ t('app:skip') }}</a>
     
     {% include "includes/header.html" %}
     {% block header %}{% endblock %}
     <div class="govuk-width-container">
         {% include "includes/phase-banner.html" %}
         {% block back_link %}{% endblock %}
-        <main id="content" class="govuk-main-wrapper" role="main">
+        <main id="content" role="main">
             {% block body %}{% endblock %}
         </main>
     </div>

@@ -13,10 +13,14 @@ const config = require('config');
 
 const app = express();
 
+const { UNSAFE_INLINE } = require('./constants');
+
 // middleware
 const cookieConsentMW = require('./middleware/cookie-consent');
-const nonceMW = require('./middleware/nonce');
+const { generateNonce, attachNonceToLocals } = require('./middleware/nonce');
 const timeoutDialogMW = require('./middleware/timeout-dialog');
+
+const nonce = generateNonce();
 
 // Global Vars
 const oneYear = 31557600000;
@@ -58,9 +62,9 @@ app.use(parallel([
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", 'https://www.googletagmanager.com', analyticsLink],
+        scriptSrc: ["'self'", `'${UNSAFE_INLINE}'`, 'https://www.googletagmanager.com', analyticsLink],
         connectSrc: ["'self'", analyticsLink],
-        styleSrc: ["'self'", "'unsafe-inline'", 'data:'],
+        styleSrc: ["'self'", `'${UNSAFE_INLINE}'`, 'data:'],
         fontSrc: ["'self'", 'https: data:'],
         imgSrc: ["'self'", 'data:', 'www.googletagmanager.com', analyticsLink],
       },
@@ -76,7 +80,7 @@ app.use(parallel([
   cookieConsentMW,
   haltOnTimedout,
   expressSanitized(), // (5)
-  nonceMW, // (6)
+  attachNonceToLocals(nonce), // (6)
   timeoutDialogMW,
   express.static(`${appRootDirectory}/public`, { maxAge: oneYear }), // (7)
   favicon('public/images/favicon.ico'), // (8)

@@ -1,6 +1,5 @@
 <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
-    aria-hidden="{% if errors or fileError %}false{% else %}true{% endif %}" tabindex="-1"
-    data-module="govuk-error-summary">
+    aria-hidden="{% if errors or fileError %}false{% else %}true{% endif %}" tabindex="-1" data-module="govuk-error-summary">
     {% if serviceFail %}
     <h2 class="govuk-error-summary__title" id="error-summary-title">{{ t('errors:error-summary-service-fail') }}
     </h2>

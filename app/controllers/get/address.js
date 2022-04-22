@@ -65,7 +65,6 @@ function addressPage(req, res) {
   let postcode = '';
   let previousPageCYA = 0;
   const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
-  const errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
 
   const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
   if (hasRefProperty) {
@@ -90,7 +89,7 @@ function addressPage(req, res) {
       });
     } else {
       logType.error(`Response.statusCode from /queryAddress api is ${response.statusCode}`);
-      res.render(errorUrl);
+      res.render('errors/500');
     }
   }
 

@@ -3,6 +3,10 @@ const fields = {
     PHONE_MAX_LENGTH: 1000,
     IMPROVEMENTS_MAX_LENGTH: 1200,
 };
+(function onLoady() {
+    document.getElementById("formData").onsubmit = function() {return submitForm()};
+})();
+
 var ratingError = document.getElementById('error-message-ratingID');
 var improvementsError = document.getElementById('error-message-improvementsID');
 var nameError = document.getElementById('error-message-nameID');

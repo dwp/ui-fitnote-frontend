@@ -14,7 +14,7 @@
     <div class="govuk-grid-column-two-thirds">
         {% include "includes/govuk-error-summary.html" %}
         <form action="/send-text-message" method="post" class="form" name="text-messageForm" id="formData"
-            data-form="text-message" autocomplete="off" onsubmit="return submitForm();">
+            data-form="text-message" autocomplete="off">
             <div id="govuk-form-group-error" class="govuk-form-group">
 
                 <fieldset class="govuk-fieldset" aria-describedby="contact-hint error-message-radio">
@@ -26,7 +26,7 @@
                         {{ t('text-message:hint') }}
                     </div>
 
-                    <span class="govuk-error-message" aria-hidden="true" id="error-message-radio"></span>
+                    <p class="govuk-error-message" aria-hidden="true" id="error-message-radio"></p>
 
                     <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" aria-live="polite"
                         aria-relevant="additions text" aria-atomic="false">
@@ -46,8 +46,8 @@
                                 <label class="govuk-label" for="mobileNumberID">
                                     {{ t('text-message:mobile-number') }}
                                 </label>
-                                <span class="govuk-error-message" aria-hidden="true"
-                                    id="error-message-text-messageFieldID"></span>
+                                <p class="govuk-error-message" aria-hidden="true"
+                                    id="error-message-text-messageFieldID"></p>
                                 <input type="text" inputmode="numeric" name="mobileNumberField" id="mobileNumberID"
                                     class="govuk-input govuk-!-width-one-third" value="{{ mobile }}" maxlength="20" aria-describedby="error-message-text-messageFieldID">
                                 <label for="previousPageId" aria-hidden="true">Leave blank</label>
@@ -72,8 +72,7 @@
 
                     <div class="govuk-form-group" aria-hidden="true">
                         <label for="landlineID" aria-hidden="true">Landline</label>
-                        <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value=""
-                            autofill="off">
+                        <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value="">
                     </div>
                 </fieldset>
             </div>

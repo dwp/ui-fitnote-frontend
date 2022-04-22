@@ -71,7 +71,6 @@ function textMessagePage(req, res) {
   const logType = logger.child({ widget: 'textMessagePage' });
   let mobile;
   const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
-  const errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
   let previousPageCYA = 0;
 
   const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
@@ -95,7 +94,7 @@ function textMessagePage(req, res) {
       });
     } else {
       logType.error(`Response.statusCode from /queryMobile api is ${response.statusCode}`);
-      res.render(errorUrl);
+      res.render('errors/500');
     }
   }
 

@@ -1,3 +1,10 @@
 {
-  
+  "1067342": {
+    "active": true,
+    "notes": "Ignoring while package is not updated. Does not affect the service."
+  },
+  "1069972": {
+    "active": true,
+    "notes": "Ignoring while package is not updated. Does not affect the service."
+  }
 }

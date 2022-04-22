@@ -24,21 +24,20 @@
           <label class="govuk-label" for="userPhotoID">
             {{ t('upload:upload') }}
           </label>
-          <span id="file-upload-1-error" class="govuk-error-message">
+          <p id="file-upload-1-error" class="govuk-error-message">
                     {% if errors.photo or errors.photoOCR %}
                       {% for error, value in errors %}
                           <span class="govuk-visually-hidden">Error:</span> {{value.message}}
                       {% endfor %}
                     {% endif %}
-                  </span>
+          </p>
           <input type="file" accept="image/*,application/pdf" id="userPhotoID" name="userPhoto"
                  class="govuk-file-upload" aria-describedby="file-upload-1-error">
         </div>
 
         <div class="govuk-form-group" aria-hidden="true">
           <label for="imageNameID" aria-hidden="true">Leave blank</label>
-          <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value=""
-                 autofill="off">
+          <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value="">
         </div>
 
         <p class="govuk-!-padding-top-2">

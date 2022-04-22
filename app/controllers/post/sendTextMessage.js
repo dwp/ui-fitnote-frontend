@@ -22,7 +22,6 @@ function apiOptions(fitnote) {
 }
 
 function apiCallback(req, res, logType) {
-  const errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
   return function callback(err, response) {
     sessionExpiry.refreshTime(res, logType);
     if (!err) {
@@ -33,11 +32,11 @@ function apiCallback(req, res, logType) {
         res.redirect('/check-your-answers');
       } else {
         logType.error(err);
-        res.render(errorUrl);
+        res.status(500).redirect('/500');
       }
     } else {
       logType.error(err);
-      res.render(errorUrl);
+      res.status(500).redirect('/500');
     }
   };
 }

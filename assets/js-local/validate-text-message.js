@@ -3,6 +3,10 @@
 var flag = false;
 var invalidCharsMessage;
 
+(function onLoady() {
+    document.getElementById("formData").onsubmit = function() {return submitForm()};
+})();
+
 function focusOnTextBox() {
     setTimeout(function () {
         document.getElementById('mobileNumberID').focus()

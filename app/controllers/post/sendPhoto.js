@@ -86,7 +86,7 @@ function sendPhoto(req, res) {
 
   function handleCriticalFormError(err, msg) {
     logType.fatal({ err }, msg);
-    return res.status(500).render('errors/500');
+    return res.status(500).redirect('/500');
   }
 
   // infinite request to image status api call until fitnoteStatus is updated

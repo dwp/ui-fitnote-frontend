@@ -3,7 +3,9 @@ var flag = false;
 (function onLoady() {
     document.getElementById('radioEsaYes').addEventListener('click', null, false);
     document.getElementById('radioEsaNo').addEventListener('click', null, false);
+    document.getElementById("formData").onsubmit = function() {return submitForm()};
 })();
+
 
 function getErrorSummary(msg) {
     return '<li>' +

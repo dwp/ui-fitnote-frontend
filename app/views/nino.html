@@ -14,16 +14,15 @@
     <div class="govuk-grid-column-two-thirds">
         {% include "includes/govuk-error-summary.html" %}
         <form action="/send-nino" method="post" class="form" name="ninoForm" id="formData" data-form="nino"
-            autocomplete="off" onsubmit="return submitForm();">
+            autocomplete="off">
             <div id="govuk-form-group-error" class="govuk-form-group">
-                <label for="ninoFieldID">
-                    <h1 class="govuk-heading-l govuk-!-font-weight-bold">{{ t('nino:heading') }}</h1>
-                </label>
-                <span id ="national-insurance-number-hint" class="govuk-hint govuk-!-display-block">{{
-                  t('nino:hint') }}</span>
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-heading-l" for="ninoFieldID">{{ t('nino:heading') }}</label>
+                </h1>
+                <div id ="national-insurance-number-hint" class="govuk-hint govuk-!-display-block">{{
+                  t('nino:hint') }}</div>
 
-              <span class="govuk-error-message" aria-hidden="true"
-                    id="error-message-ninoFieldID"></span>
+              <p class="govuk-error-message" aria-hidden="true" id="error-message-ninoFieldID"></p>
               <input type="text" name="ninoField" id="ninoFieldID"
                      class="govuk-input govuk-!-width-one-half"
                      value="{{ nino }}" maxlength="13"
@@ -36,7 +35,7 @@
 
             <div class="govuk-form-group" aria-hidden="true">
                 <label for="emailID" aria-hidden="true">Leave blank</label>
-                <input type="text" name="emailField" id="emailID" aria-hidden="true" value="" autofill="off">
+                <input type="text" name="emailField" id="emailID" aria-hidden="true" value="">
             </div>
 
             <details class="govuk-details" data-module="govuk-details">

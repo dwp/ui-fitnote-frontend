@@ -58,7 +58,7 @@ function sendFeedback(req, res) {
         })
         .catch((err) => {
           logType.error(`Error sending feedback via notify: ${err}`);
-          res.status(500).render('errors/500');
+          res.status(500).redirect('/500');
         });
     } else {
       res.clearCookie('feedback');

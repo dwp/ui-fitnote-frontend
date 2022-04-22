@@ -6,7 +6,6 @@ const hasTimedOut = require('../../functions/timeoutRedirect');
 function submitDeclaration(req, res) {
   const logType = logger.child({ widget: 'confirmation' });
   let redirectUrl;
-  const errorUrl = req.cookies.lang === 'cy' ? 'errors/500-cy' : 'errors/500';
   const fitnote = {
     sessionId: req.cookies.sessionId,
     accepted: true,
@@ -31,7 +30,7 @@ function submitDeclaration(req, res) {
 
   function handleFormError(err, errorMsg) {
     logType.fatal(`${errorMsg}:${err}`);
-    res.status(500).render(errorUrl);
+    res.status(500).redirect('/500');
   }
 
   function callback(err, response, body) {

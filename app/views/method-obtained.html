@@ -9,7 +9,7 @@
     <div class="govuk-grid-column-two-thirds">
         {% include "includes/govuk-error-summary.html" %}
         <form action="/method-obtained" method="post" class="form" name="methodObtainedForm" id="formData"
-            data-form="method-obtained" autocomplete="off" onsubmit="return submitForm();">
+            data-form="method-obtained" autocomplete="off">
             <div id="govuk-form-group-error" class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -17,8 +17,7 @@
                             {{ t('method-obtained:h1') }}
                         </h1>
                     </legend>
-                  <span id="method-obtained-error" class="govuk-error-message"
-                        aria-hidden="true"></span>
+                  <p id="method-obtained-error" class="govuk-error-message" aria-hidden="true"></p>
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="method-obtained-digital" name="methodObtained"

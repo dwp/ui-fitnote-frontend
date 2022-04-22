@@ -3,6 +3,7 @@ var flag = false;
 (function onLoady() {
     document.getElementById('method-obtained-paper').addEventListener('click', null, false);
     document.getElementById('method-obtained-digital').addEventListener('click', null, false);
+    document.getElementById("formData").onsubmit = function() {return submitForm()};
 })();
 
 function getErrorSummary(msg) {
