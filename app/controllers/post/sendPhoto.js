@@ -111,6 +111,8 @@ function sendPhoto(req, res) {
             return res.redirect('/422');
           case 'FAILED_ERROR':
             return res.redirect(`/${route}&error=invalidPhoto`);
+          case 'FAILED_IMG_MAX_REPLAY':
+            return res.redirect(`/${route}&error=maxReplay`);
           default:
             return res.redirect(`/${route}`);
         }

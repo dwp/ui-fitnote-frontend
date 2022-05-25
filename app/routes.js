@@ -7,10 +7,8 @@ const config = require('config');
 const esaGet = require('./controllers/get/esa');
 const methodObtainedGet = require('./controllers/get/methodObtained');
 const noEsaGet = require('./controllers/get/noEsa');
-const deviceGet = require('./controllers/get/device');
 const takePhotoGet = require('./controllers/get/takePhoto');
 const guidanceGet = require('./controllers/get/guidance');
-const helpForPhotoGet = require('./controllers/get/helpForPhoto');
 const ninoGet = require('./controllers/get/nino');
 const addressGet = require('./controllers/get/address');
 const textMessageGet = require('./controllers/get/textMessage');
@@ -29,7 +27,6 @@ const sessionGet = require('./controllers/get/refresh');
 // postContollers
 const esaPost = require('./controllers/post/esa');
 const methodObtainedPost = require('./controllers/post/methodObtained');
-const devicePost = require('./controllers/post/device');
 const photoPost = require('./controllers/post/sendPhoto');
 const guidancePost = require('./controllers/post/guidance');
 const ninoPost = require('./controllers/post/sendNino');
@@ -78,7 +75,6 @@ router.get('/refresh-session', sessionGet.refresh);
 // Fitnote Pages
 router.get('/index', redirectGovUk);
 router.get('/esa', esaGet.esa);
-router.get('/device', isAuthenticatedFunction, deviceGet.device);
 router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet.methodObtained);
 router.get('/no-esa', isAuthenticatedFunction, noEsaGet.noEsa);
 router.get(['/guidance-digital', '/guidance-paper'], isAuthenticatedFunction, guidanceGet.guidance);
@@ -89,13 +85,6 @@ router.get('/change-number', isAuthenticatedFunction, textMessageGet.textMessage
 router.get('/text-message', isAuthenticatedFunction, textMessageGet.textMessagePage);
 router.get('/complete', isAuthenticatedFunction, completeGet.completePage);
 router.get('/check-your-answers', isAuthenticatedFunction, checkYourAnswersGet.checkYourAnswersPage);
-
-// Help pages for photo upload
-router.get('/help-for-photo-step-1', isAuthenticatedFunction, helpForPhotoGet.helpForPhotoStep1Page);
-router.get('/help-for-photo-step-2', isAuthenticatedFunction, helpForPhotoGet.helpForPhotoStep2Page);
-router.get('/help-for-photo-step-3', isAuthenticatedFunction, helpForPhotoGet.helpForPhotoStep3Page);
-router.get('/help-for-photo-step-4', isAuthenticatedFunction, helpForPhotoGet.helpForPhotoStep4Page);
-router.get('/help-for-photo-step-5', isAuthenticatedFunction, helpForPhotoGet.helpForPhotoStep5Page);
 
 // Accessibility Tests GET only
 
@@ -113,7 +102,6 @@ if (config.util.getEnv('NODE_ENV') === 'test') {
 // Post Controllers
 router.post('/esa', esaPost.esa);
 router.post('/method-obtained', methodObtainedPost.methodObtained);
-router.post('/device', devicePost.device);
 router.post('/update-cookie-settings', cookieSettings.updateCookieSettings);
 router.post('/send-photo', photoPost.sendPhoto);
 router.post(['/guidance-digital', '/guidance-paper'], guidancePost.guidance);

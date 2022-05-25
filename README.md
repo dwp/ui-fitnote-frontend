@@ -60,14 +60,8 @@ npm run build
 then run it:
 
 ```
-npm run start
+npm run dev
 ```
-To run the fake endpoints server run in the root dir in parallel with run command:
-
-```
-json-server --port 3004 --watch testing/db.json
-```
-
 ### Test Environment
 
 This is used exclusively for the testing scripts.

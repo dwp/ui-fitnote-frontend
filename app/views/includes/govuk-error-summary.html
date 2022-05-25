@@ -11,7 +11,7 @@
             {% if errors or fileError %}
             {% for error, value in errors %}
             <li>
-                <a href="#{{value.field}}">{{value.message}}</a>
+                <a href="#{{value.field}}">{{value.message | striptags(true) | escape | nl2br}}</a>
             </li>
             {% endfor %}
             {% endif %}

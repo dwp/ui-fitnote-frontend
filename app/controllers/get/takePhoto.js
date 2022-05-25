@@ -92,6 +92,12 @@ function getPhotoError(req, res) {
         field: 'userPhotoID',
       };
       break;
+    case 'maxReplay':
+      photoError = {
+        message: req.i18nTranslator.t('upload:maxReplay'),
+        field: 'userPhotoID',
+      };
+      break;
     default:
       photoError = {};
   }
@@ -104,7 +110,7 @@ function getErrorMessage(req, res) {
   const fileError = getFileError(req);
   const photoError = getPhotoError(req, res);
   const photoTypeError = getPhotoTypeError(req);
-  if ((req.query.error !== 'invalidPhoto') && (req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && !fileError) {
+  if ((req.query.error !== 'invalidPhoto') && (req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && (req.query.error !== 'maxReplay') && !fileError) {
     errorMessage = '';
   } else if (req.query.error === 'ocrFailed') {
     errorMessage = {
@@ -150,6 +156,7 @@ function takePhotoPage(req, res) {
     maxSizeError,
     serviceFail: req.query.error === 'serviceFailed',
     invalidPhoto: req.query.error === 'invalidPhoto',
+    maxReplay: req.query.error === 'maxReplay',
   });
 }
 

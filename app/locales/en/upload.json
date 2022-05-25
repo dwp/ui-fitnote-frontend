@@ -19,5 +19,6 @@
         "p1": "If you keep having problems uploading your fit note, you should post it to us instead.",
         "p2": "Freepost DWP ESA 26",
         "p3": "You do not need a stamp."
-    }
+    },
+    "maxReplay": "You have tried to upload your fit note too many times.\nTry again later or you can post it to us." 
 }

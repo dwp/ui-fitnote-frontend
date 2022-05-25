@@ -12,7 +12,7 @@ exports.createSessionId = function createSessionId(req, res) {
   const expires = new Date(Date.now() + config.get('sessionInfo.expiryPeriod'));
   logger.info('Session ID and Expiry generated');
   res.cookie('sessionId', id, {
-    httpOnly: true, secure: config.get('cookieOptions.secure'), sameSite: true, expires,
+    httpOnly: true, secure: config.get('cookieOptions.secure'), sameSite: true, expires: 0,
   });
   res.cookie('exp', expires.toUTCString(), {
     httpOnly: true, secure: config.get('cookieOptions.secure'), sameSite: true, expires: 0,
