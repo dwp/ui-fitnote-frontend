@@ -16,15 +16,7 @@
     },
     "howAccessibleThisServiceIs": {
         "h2": "Pa mor hygyrch yw’r gwasanaeth hwn",
-        "p1": "Mae'r gwasanaeth yn defnyddio arddulliau, patrymau a chydrannau cyffredin o System Ddylunio GOV.UK yr ystyrir yn eang eu bod yn hygyrch",
-        "p2": "Efallai y bydd rhai pobl yn ei chael hi'n anodd defnyddio rhannau o'r gwasanaeth hwn:",
-        "li1": "mae gan un neu fwy o ddelweddau destun amgen sy'n hirach na'r disgwyl. Mae hyn yn methu WCAG v2.1, 1.1.1 A (Cynnwys heblaw testun).",
-        "li2": "nid oes gan rai elfennau liwiau cyferbyniol cryf, naill ai â ffocws neu heb ffocws, a allai ei gwneud hi'n anoddach gwahaniaethu rhwng lliwiau cefndir neu destun. Mae hyn yn methu WCAG v2.1, 1.4.11 AA (Cyferbyniad heblaw testun).",
-        "li3": "pan fydd y defnyddiwr yn dewis ffeil i'w llwytho i fyny, rydym yn trosglwyddo rheolaeth i ryngwyneb System Weithredu'r ddyfais. Ni hysbysir y defnyddiwr bod y ffenestr i ddewis ffeil yn agored ac efallai y bydd technoleg gynorthwyol yn canolbwyntio ai peidio.",
-        "li4": "nid oes gan rai tudalennau deitl sy’n golygu y gall darllenydd sgrin eu cyhoeddi fel rhai ‘gwag’. Mae hyn yn methu WCAG v2.1, 1.3.5 AA (Nodi pwrpas mewnbwn).",
-        "li5": "nid oes gan rai meysydd label sy’n golygu y gall darllenydd sgrin eu hepgor neu eu cyhoeddi fel rhai ‘gwag’. Mae hyn yn methu WCAG v2.1, 1.3.5 AA (Nodi pwrpas mewnbwn).",
-        "li6": "lle gall y defnyddiwr wirio a newid ei ddata, mae gan sawl maes yr un testun cyswllt ‘Change’ a gall darllenydd sgrin gyhoeddi ‘change, ymwelwyd â dolen’ wrth dablu rhwng dolenni. Mae hyn yn ei gwneud hi'n anodd gwybod pa wybodaeth y mae'r dolenni'n cyfeirio ati. Mae hyn yn methu WCAG v2.1, 2.4.4(Pwrpas cyswllt - yn ei gyd-destun).",
-        "li7": "mae gan rai tudalennau wallau ARIA a allai beri i ddarllenydd sgrin gyhoeddi'r wybodaeth anghywir neu ddim gwybodaeth o gwbl. Mae hyn yn methu WCAGv2.1, 1.3.1 A (Gwybodaeth a pherthnasoedd)."
+        "p1": "Mae'r gwasanaeth yn defnyddio arddulliau, patrymau a chydrannau cyffredin o System Ddylunio GOV.UK yr ystyrir yn eang eu bod yn hygyrch"
     },
     "difficultyUsingService": {
         "h2": "Beth i'w wneud os ydych chi'n cael anhawster defnyddio'r gwasanaeth hwn",
@@ -42,12 +34,12 @@
     "technicalInformationAboutServiceAccessibility": {
         "h2": "Gwybodaeth dechnegol am hygyrchedd y gwasanaeth hwn",
         "p1": "Mae'r Adran Gwaith a Phensiynau wedi ymrwymo i wneud y gwasanaeth hwn yn hygyrch, yn unol â Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus 2018 (Gwefannau a Cheisiadau Symudol) (Rhif 2).",
-        "p2": "Nid yw'r gwasanaeth hwn yn cydymffurfio'n llawn â fersiwn 2.1 Canllawiau Hygyrchedd Cynnwys Gwe."
+        "p2": "Mae'r gwasanaeth hwn yn cydymffurfio'n llawn â safon AA Canllawiau Hygyrchedd Cynnwys Gwe (WCAG) fersiwn 2.1."
     },
     "howWeTested": {
         "h2": "Sut wnaethom brofi'r gwasanaeth hwn",
-        "p1": "Profwyd y gwasanaeth ddiwethaf ar 1 Medi 2020 a gwiriwyd ei fod yn cydymffurfio â WCAG 2.1 AA. Cynhaliwyd y profion gan yr Adran Gwaith a Phensiynau",
-        "p2": "Profwyd y gwasanaeth gan ddefnyddio profion llaw ac awtomataidd. Mae hyn wedi nodi problemau, y soniwyd amdanynt yn yr adran ‘defnyddio’r gwasanaeth hwn’ uchod, yr ydym yn gweithio i’w datrys.",
-        "p3": "Paratowyd y dudalen hon ar 8 Medi 2020 a'i diweddaru ddiwethaf ar 18 Medi 2020."
+        "p1": "Profwyd y gwasanaeth ddiwethaf ar 30 Mawrth 2022 a gwiriwyd ei fod yn cydymffurfio â WCAG 2.1 AA. Cafodd y profion eu cynnal gan yr Adran Gwaith a Phensiynau.",
+        "p2": "Profwyd y gwasanaeth gan ddefnyddio profion â llaw ac awtomataidd.",
+        "p3": "Paratowyd y dudalen hon ar 7 Gorffennaf 2022."
     }
 }

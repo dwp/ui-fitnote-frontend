@@ -62,7 +62,7 @@ function sendNino(req, res) {
 
   const fitnote = {
     sessionId: req.cookies.sessionId,
-    nino: convertedNino,
+    nino: ninoRaw.trim(),
   };
 
   function handleErrors(ninoDoneValue) {
