@@ -7,18 +7,6 @@
         <form action="/esa" method="post" class="form" name="esaForm" id="formData" data-form="esa"
             autocomplete="off">
           {% include "includes/govuk-error-summary.html" %}
-            <!-- To be removed after WAF release -->
-            <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                  <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-                    Important
-                  </h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                  <p class="govuk-notification-banner__heading">{{ t('esa:maintenance') }}</p>
-                </div>
-            </div>
-            <!-- End -->
             <div id="govuk-form-group-error" class="govuk-form-group">
                 <fieldset class="govuk-fieldset"
                           aria-describedby="error-message-radioEsa">

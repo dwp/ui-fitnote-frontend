@@ -1,7 +1,7 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "0.53.0",
+  "version": "0.54.0",
   "scripts": {
     "postinstall": "npm run build",
     "start": "node ./bin/server.js",
