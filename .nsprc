@@ -1,14 +1,30 @@
 {
-  "1081346": {
+  "1090141": {
     "active": true,
-    "notes": "Ignoring while package is not updated. Does not affect the service."
+    "notes": "Moment.js vulnerable to Inefficient Regular Expression Complexity bunyan > moment"
   },
-  "1081348": {
+  "1090135": {
     "active": true,
-    "notes": "Ignoring while package is not updated. Does not affect the service."
+    "notes": "qs vulnerable to Prototype Pollution request > qs"
   },
-  "1081761": {
+  "1090137": {
     "active": true,
-    "notes": "Ignoring while package is not updated. Does not affect the service."
+    "notes": "qs vulnerable to Prototype Pollution @dwp/govuk-casa > body-parser > qs"
+  },
+  "1090161": {
+    "active": true,
+    "notes": "Luxon Inefficient Regular Expression Complexity @dwp/govuk-casa > validator"
+  },
+  "1089128": {
+    "active": true,
+    "notes": "Inefficient Regular Expression Complexity in chalk/ansi-regex gulp-dart-sass > strip-ansi > ansi-regex"
+  },
+  "1089130": {
+    "active": true,
+    "notes": "Inefficient Regular Expression Complexity in chalk/ansi-regex gulp-mocha > mocha > yargs > string-width > ansi-regex"
+  },
+  "1088664": {
+    "active": true,
+    "notes": "minimatch ReDos vulnerability gulp-mocha>mocha>minimatch"
   }
 }
