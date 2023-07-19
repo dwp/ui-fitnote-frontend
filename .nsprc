@@ -1,30 +1,18 @@
 {
-  "1090141": {
-    "active": true,
-    "notes": "Moment.js vulnerable to Inefficient Regular Expression Complexity bunyan > moment"
-  },
-  "1090135": {
-    "active": true,
-    "notes": "qs vulnerable to Prototype Pollution request > qs"
-  },
   "1090137": {
     "active": true,
-    "notes": "qs vulnerable to Prototype Pollution @dwp/govuk-casa > body-parser > qs"
+    "notes": "qs vulnerable to Prototype Pollution @dwp/govuk-casa > body-parser > qs. This will be addressed in casa version 8 upgrade - HTF-2359"
   },
   "1090161": {
     "active": true,
-    "notes": "Luxon Inefficient Regular Expression Complexity @dwp/govuk-casa > validator"
+    "notes": "Luxon Inefficient Regular Expression Complexity @dwp/govuk-casa > validator. This will be addressed in casa version 8 upgrade - HTF-2359"
   },
-  "1089128": {
+  "1091174": {
     "active": true,
-    "notes": "Inefficient Regular Expression Complexity in chalk/ansi-regex gulp-dart-sass > strip-ansi > ansi-regex"
+    "notes": "minimatch ReDos vulnerability gulp-mocha>mocha>minimatch.This will be addressed in casa version 8 upgrade - HTF-2359"
   },
-  "1089130": {
-    "active": true,
-    "notes": "Inefficient Regular Expression Complexity in chalk/ansi-regex gulp-mocha > mocha > yargs > string-width > ansi-regex"
-  },
-  "1088664": {
-    "active": true,
-    "notes": "minimatch ReDos vulnerability gulp-mocha>mocha>minimatch"
-  }
+    "1091181": {
+     "active": true,
+     "notes": "glob-parent before 5.1.2 vulnerable to Regular, This will be addressed when parent packages are updated"
+    }
 }

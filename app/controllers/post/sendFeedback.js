@@ -3,11 +3,17 @@ const { NotifyClient } = require('notifications-node-client');
 const logger = require('../../functions/bunyan');
 const checkHoneypot = require('../../functions/honeypot');
 
+const notifyProxyHost = config.get('notify.proxyHost') === 'null' ? null : config.get('notify.proxyHost');
+const notifyProxyPort = config.get('notify.proxyPort') === 'null' ? null : config.get('notify.proxyPort');
+
 const notifyClient = new NotifyClient(config.get('notify.api_key'));
-notifyClient.setProxy({
-  host: config.get('notify.proxyHost'),
-  port: config.get('notify.proxyPort'),
-});
+
+if (notifyProxyHost && notifyProxyPort) {
+  notifyClient.setProxy({
+    host: notifyProxyHost,
+    port: notifyProxyPort,
+  });
+}
 
 function validateFormFields(req) {
   const ratingRaw = req.body.rating;

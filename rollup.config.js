@@ -12,11 +12,7 @@ const plugins = [
       // Dedupe NodeList.forEach() included in both hmrc-frontend and
       // govuk-frontend
       find: /.*common$/,
-      replacement: 'govuk-frontend-src/src/govuk/common.mjs',
-    }, {
-      // HMRC are bundling already bundled GOVUK polyfills, map to originals
-      find: /govuk-frontend\/govuk\/vendor\/polyfills/,
-      replacement: 'govuk-frontend-src/src/govuk/vendor/polyfills',
+      replacement: 'govuk-frontend/govuk-esm/common.mjs',
     }],
   }),
   legacy({}),

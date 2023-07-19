@@ -15,8 +15,8 @@ window.onload = function takeAPhoto() {
     submitButton.onclick = function photoChange(e) {
         try {
             if ((!validImageFileTypes.test(e.target.files[0].type) && e.target.files[0].type !== 'application/pdf')) {
-                window.location = pageUrl + '?type=1';
-            } else if (e.target.files[0].size > 10000000) {
+                window.location = pageUrl + '?type=2';
+            } else if (e.target.files[0].size > 15000000) {
                 window.location = pageUrl + '?size=2';
             } else {
                 showLoader();

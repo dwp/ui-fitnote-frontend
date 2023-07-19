@@ -62,10 +62,6 @@ function errorRoute(req, logType) {
   const validImageFileTypes = new RegExp('^image/');
   if ((!validImageFileTypes.test(req.file.mimetype)) && req.file.mimetype !== 'application/pdf') {
     logType.info(`File type (${req.file.mimetype}) is invalid`);
-    errRoute = `/${route}&type=1`;
-  }
-  if (req.file.mimetype === 'image/heic' || req.file.mimetype === 'image/heif') {
-    logType.info(`File type (${req.file.mimetype}) is invalid as it is heic or heif`);
     errRoute = `/${route}&type=2`;
   }
   if ((req.file.size > config.get('service.maxFileSize'))) {
@@ -110,9 +106,12 @@ function sendPhoto(req, res) {
           case 'FAILED_IMG_SIZE':
             return res.redirect('/422');
           case 'FAILED_ERROR':
+          case 'FAILED_IMG_COMPRESS':
             return res.redirect(`/${route}&error=invalidPhoto`);
           case 'FAILED_IMG_MAX_REPLAY':
             return res.redirect(`/${route}&error=maxReplay`);
+          case 'FAILED_IMG_FILE_TYPE':
+            return res.redirect(`/${route}&type=2`);
           default:
             return res.redirect(`/${route}`);
         }

@@ -57,6 +57,13 @@ function haltOnTimedout(req, res, next) {
 // 7. ANY static content MUST be in the public area or it will not get served.
 // 8. Required to serve Favicon
 const analyticsLink = 'https://www.google-analytics.com';
+let upgradeInsecureRequests = [];
+
+// Only upgrade http requests in production
+if (process.env.NODE_ENV !== 'production') {
+  upgradeInsecureRequests = null;
+}
+
 app.use(parallel([
   helmet({
     contentSecurityPolicy: {
@@ -67,6 +74,7 @@ app.use(parallel([
         styleSrc: ["'self'", `'${UNSAFE_INLINE}'`, 'data:'],
         fontSrc: ["'self'", 'https: data:'],
         imgSrc: ["'self'", 'data:', 'www.googletagmanager.com', analyticsLink],
+        upgradeInsecureRequests,
       },
     },
     hsts: false,

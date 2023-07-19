@@ -29,13 +29,13 @@
         "phone": "Enter a valid phone number",
         "name": "Enter a shorter name (maximum 1000 characters)"
     },
-    "validFileType": "Accepted file types are PDF, JPEG, BMP, PNG and GIF",
+    "validFileType": "Accepted file types are JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
     "choose": "Choose another file",
-    "heicf": "Your file type is not supported. It must be a JPG, JPEG, BMP, PNG, TIF or PDF",
+    "invalidFileType": "Your file type is not supported. It must be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
     "method-obtained": {
         "missing": "Select how you got your fit note"
     },
     "upload": {
-        "fileType": "The selected file must be a JPG, JPEG, BMP, PNG, TIF or PDF"
+        "fileType": "The selected file must be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF"
     }
 }

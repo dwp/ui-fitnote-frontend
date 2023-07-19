@@ -16,7 +16,7 @@
     "failed-ocr": "Upload another photo or scan",
 
     "another": "Upload another photo or scan",
-    "fileSize": "The file size should be between 500KB and 10MB.",
+    "fileSize": "The file size should be between 500KB and 15MB.",
     "tooSmall": "Your file is too small.",
     "tooBig": "Your file is too big."
 }

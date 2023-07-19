@@ -38,7 +38,7 @@ function getPhotoTypeError(req) {
       break;
     case '2':
       photoTypeError = {
-        message: req.i18nTranslator.t('errors:heicf'),
+        message: req.i18nTranslator.t('errors:invalidFileType'),
         field: 'userPhotoID',
       };
       break;

@@ -24,7 +24,7 @@
     "serviceFail": "Try again",
 
     "another": "Take another photo",
-    "fileSize": "The file size should be between 500KB and 10MB.",
+    "fileSize": "The file size should be between 500KB and 15MB.",
     "tooSmall": "The image file is too small.",
     "tooBig": "The image file is too big."
 

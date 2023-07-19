@@ -1,8 +1,8 @@
 {
     "h1": "Upload your fit note",
     "list": {
-        "li1": "a JPG, JPEG, BMP, PNG, TIF or PDF",
-        "li2": "smaller than 10MB"
+        "li1": "a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
+        "li2": "smaller than 15MB"
     },
     "text": "Your file must be:",
     "p": "Uploading...",
@@ -10,9 +10,9 @@
     "upload": "Upload a file",
     "back": "Back",
     "missing": "You must select a file to continue",
-    "invalid": "The selected file must be a JPG, JPEG, BMP, PNG, TIF or PDF",
+    "invalid": "The selected file must be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
     "failed-ocr": "The selected file must be clear and readable, containing the whole fit note",
-    "tooBig": "The selected file must be smaller than 10MB",
+    "tooBig": "The selected file must be smaller than 15MB",
     "connection": "There was a problem uploading the image, please retry using a Wifi connection",
     "serviceFail": "Try again",
     "postalInstruction": {
