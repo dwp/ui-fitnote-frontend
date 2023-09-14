@@ -3,8 +3,8 @@
         "port": "SERVICE_PORT",
         "minFileSize": "MIN_FILE_SIZE",
         "maxFileSize": "MAX_FILE_SIZE",
+        "checkStatusDelay": "CHECK_STATUS_DELAY",
         "name": "SERVICE_NAME",
-
         "ca": {
             "intermediate": "SERVICE_CA_INTER",
             "root": "SERVICE_CA_ROOT"

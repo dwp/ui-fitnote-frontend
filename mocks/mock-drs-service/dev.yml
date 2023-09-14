@@ -1,0 +1,27 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8888
+  adminConnectors:
+  - type: http
+    port: 0
+  requestLog:
+    type: external
+    
+rejectGenerateErrorFrequency: 7
+rejectSubmissionFrequency: 3
+
+soapSubmissionStore: /soap-output
+
+logging:
+  level: INFO
+  loggers:
+    "uk.gov": DEBUG
+
+s3Configuration:
+  serviceEndpointOverride: ${S3_SERVICE_ENDPOINT_OVERRIDE:-null}
+  pathStyleAccessEnabled: ${S3_PATH_STYLE_ACCESS_ENABLED:-false}
+  region: ${S3_REGION:-eu-west-2}
+  bucketName: ${S3_BUCKET_NAME:-null}
+  writeMessageEnabled: ${S3_WRITE_MESSAGE_ENABLED:-false}
+  writePdfEnabled: ${S3_WRITE_PDF_ENABLED:-false}

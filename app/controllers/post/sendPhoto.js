@@ -1,29 +1,14 @@
 const rp = require('request-promise-native');
 const multer = require('multer');
 const config = require('config');
+const filesize = require('filesize');
 
 const logger = require('../../functions/bunyan');
 const encoder = require('../../functions/base64Encode');
+const photoRoute = require('../../functions/getPhotoRoute');
 const checkHoneypot = require('../../functions/honeypot');
 const hasTimedOut = require('../../functions/timeoutRedirect');
 const sessionExpiry = require('../../functions/refreshSessionExpiryTime.js');
-
-function getRoute(req) {
-  let route;
-  if (typeof req.cookies.route !== 'undefined') {
-    if (req.cookies.route === 'upload-digital') {
-      route = 'upload?ref=digital';
-    } else if (req.cookies.route === 'upload-paper') {
-      route = 'upload?ref=paper';
-    } else {
-      route = req.cookies.route;
-    }
-  } else {
-    route = '';
-  }
-
-  return route;
-}
 
 function encodeImage(req) {
   if (typeof req.file !== 'undefined') {
@@ -54,19 +39,35 @@ function apiUploadOptions(req, logType) {
   };
 }
 
+function getFileSize(byteSize) {
+  let sizeObject = filesize.filesize(byteSize, { exponent: 2, output: 'object' });
+  if (sizeObject.value >= 1) {
+    return filesize.filesize(byteSize, { exponent: 2, round: 1 });
+  }
+  sizeObject = filesize.filesize(byteSize, { exponent: 1, round: 0, output: 'object' });
+  if (sizeObject.value >= 1) {
+    return filesize.filesize(byteSize, { exponent: 1, round: 0 });
+  }
+  return filesize.filesize(byteSize, { exponent: 0, round: 0, fullform: true });
+}
+
 function errorRoute(req, logType) {
-  logType.info(`File type is ${req.file.mimetype}`);
-  logType.info(`File size is ${req.file.size}`);
-  const route = getRoute(req);
+  const { sessionId } = req.cookies;
+  const route = photoRoute.getRoute(req);
   let errRoute;
+  const fileSize = getFileSize(req.file.size);
   const validImageFileTypes = new RegExp('^image/');
   if ((!validImageFileTypes.test(req.file.mimetype)) && req.file.mimetype !== 'application/pdf') {
-    logType.info(`File type (${req.file.mimetype}) is invalid`);
+    logType.info(`File type (${req.file.mimetype}) is invalid, for sessionId ${sessionId}`);
     errRoute = `/${route}&type=2`;
   }
   if ((req.file.size > config.get('service.maxFileSize'))) {
-    logType.info(`File size (${req.file.size}) is invalid`);
+    logType.info(`File size (${fileSize}) is invalid, for sessionId ${sessionId}`);
     errRoute = `/${route}&size=2`;
+  }
+  if (!errRoute) {
+    logType.info(`File type is ${req.file.mimetype}, for sessionId ${sessionId}`);
+    logType.info(`File size is ${fileSize}, for sessionId ${sessionId}`);
   }
 
   return errRoute;
@@ -78,51 +79,11 @@ function sendPhoto(req, res) {
   const storage = multer.memoryStorage();
   const upload = multer({ storage }).single('userPhoto');
 
-  const route = getRoute(req);
+  const route = photoRoute.getRoute(req);
 
   function handleCriticalFormError(err, msg) {
     logType.fatal({ err }, msg);
     return res.status(500).redirect('/500');
-  }
-
-  // infinite request to image status api call until fitnoteStatus is updated
-  function requestRetry(options) {
-    // Return a request
-    return rp(options).then((imgResponse) => {
-      const { fitnoteStatus } = imgResponse;
-      // check if successful. If so, return the response transformed to json
-      if (fitnoteStatus === 'UPLOADED') {
-        // return a call to requestRetry
-        return requestRetry(options);
-      }
-      logType.info(`body ${fitnoteStatus}`);
-      if (config.nodeEnvironment !== 'test') {
-        switch (fitnoteStatus) {
-          case 'SUCCEEDED':
-            return res.redirect('/nino');
-          case 'FAILED_IMG_OCR':
-          case 'FAILED_IMG_OCR_PARTIAL':
-            return res.redirect(`/${route}&error=ocrFailed`);
-          case 'FAILED_IMG_SIZE':
-            return res.redirect('/422');
-          case 'FAILED_ERROR':
-          case 'FAILED_IMG_COMPRESS':
-            return res.redirect(`/${route}&error=invalidPhoto`);
-          case 'FAILED_IMG_MAX_REPLAY':
-            return res.redirect(`/${route}&error=maxReplay`);
-          case 'FAILED_IMG_FILE_TYPE':
-            return res.redirect(`/${route}&type=2`);
-          default:
-            return res.redirect(`/${route}`);
-        }
-      } else {
-        return res.redirect(`/${route}`);
-      }
-    })
-      .catch((imgErr) => {
-        logType.error('Error from imageStatus api call is : ', imgErr);
-        res.redirect(`/${route}&error=serviceFailed`);
-      });
   }
 
   function requestUploadCallback(err) {
@@ -133,15 +94,12 @@ function sendPhoto(req, res) {
     }
 
     rp(apiUploadOptions(req, logType))
-      .then(() => {
+      .then((response) => {
         sessionExpiry.refreshTime(res, logType);
-        const imgStatusOptions = {
-          url: `${config.get('api.url')}/imagestatus?sessionId=${req.cookies.sessionId}`,
-          method: 'GET',
-          json: true,
-        };
-
-        requestRetry(imgStatusOptions);
+        if (response.sessionId != null) {
+          logType.info('Submitted image successfully');
+          res.redirect('/photo-audit');
+        }
       })
       .catch(() => {
         handleCriticalFormError(err, 'API not responding');

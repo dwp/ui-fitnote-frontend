@@ -1,5 +1,5 @@
 {
-  "1090137": {
+  "1093399": {
     "active": true,
     "notes": "qs vulnerable to Prototype Pollution @dwp/govuk-casa > body-parser > qs. This will be addressed in casa version 8 upgrade - HTF-2359"
   },
@@ -7,7 +7,7 @@
     "active": true,
     "notes": "Luxon Inefficient Regular Expression Complexity @dwp/govuk-casa > validator. This will be addressed in casa version 8 upgrade - HTF-2359"
   },
-  "1091174": {
+  "1092637": {
     "active": true,
     "notes": "minimatch ReDos vulnerability gulp-mocha>mocha>minimatch.This will be addressed in casa version 8 upgrade - HTF-2359"
   },

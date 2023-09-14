@@ -1,0 +1,132 @@
+# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3.yml up`
+# Add the `-d` flag at the end for detached execution
+# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3.yml down`
+version: "3"
+
+networks:
+  qa-fitnote-ui-tests:
+
+services:
+  redis-cluster:
+    image: grokzen/redis-cluster:6.2.10
+    expose:
+      - 7000
+      - 7001
+      - 7002
+      - 7003
+      - 7004
+      - 7005
+    networks:
+      - qa-fitnote-ui-tests
+
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:1.0.3
+    ports:
+      - 4566:4566
+    environment:
+      - KMS_PROVIDER=local-kms
+      - AWS_ACCESS_KEY_ID=my-key
+      - AWS_SECRET_ACCESS_KEY=its-a-secret
+      - AWS_REGION=us-east-1
+      - SERVICES=s3,sns,sqs,kms
+      - HOSTNAME_EXTERNAL=localstack
+    expose:
+      - 4566
+    volumes:
+      - ./mocks/localstack/docker-entrypoint-initaws.d:/docker-entrypoint-initaws.d
+    networks:
+      - qa-fitnote-ui-tests
+
+  fitnote-controller:
+    image: $CONTROLLER_IMAGE
+    environment:
+      - SERVER_APP_PORT=3004
+      - REDIS_STORE_URI=redis-cluster:7000
+      - AWS_ACCESS_KEY_ID=my-key
+      - AWS_SECRET_ACCESS_KEY=its-a-secret
+      - AWS_REGION=us-east-1
+      - KMS_ENDPOINT_OVERRIDE=http://localstack:4566
+      - REDIS_DATA_KEY_REQUESTID=alias/redis_request_id
+      - SNS_DATA_KEY_REQUEST_ID=alias/test_event_request_id
+      - SNS_TOPIC_NAME=fitnote-topic
+      - SNS_ROUTING_KEY=sns.fitnote.new
+      - SNS_SUBJECT=fitnote-controller
+      - S3_ENDPOINT_OVERRIDE=http://localstack:4566
+      - ENDPOINT_OVERRIDE=http://localstack:4566
+      - S3_BUCKET_NAME=sns-bucket
+      - REGION=us-east-1
+      - ESTIMATED_REQUEST_MEMORY_MB=1
+    expose:
+      - 3004
+    ports:
+      - 3004:3004
+    networks:
+      - qa-fitnote-ui-tests
+
+  test-ui:
+    image: $APP_IMAGE
+    environment:
+      - PORT=3000
+      - API_URL=http://fitnote-controller:3004
+      - REDIS_HOST=redis-cluster
+      - REDIS_PORT=7000
+      - REDIS_CLUSTER=true
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    networks:
+      - qa-fitnote-ui-tests
+
+  chrome:
+    image: selenium/node-chrome:4.0.0-beta-1-20210215
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - qa-fitnote-ui-tests
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - "6900:5900"
+    logging:
+      driver: none
+
+  selenium-hub:
+    image: selenium/hub:4.0.0-beta-1-20210215
+    container_name: selenium-hub
+    networks:
+      - qa-fitnote-ui-tests
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+    logging:
+      driver: none
+
+  fitnote-test-harness:
+    container_name: maven_journey_test
+    image: '${TEST_IMAGE_CONTAINER}'
+    environment:
+      - TEST_RUNNER=TestRunner
+      - SELENIUM_URL=http://selenium-hub
+      - SELENIUM_PORT=4444
+      - JAVA_OPTS=-Dselenium.LOGGER.level=NONE -DLOG_LEVEL=NONE
+      - FIT_NOTE_URI=http://test-ui:3000
+      - CUCUMBER_REPORTS=${PWD}/cucumber-reports
+      - MVN_SETTINGS_FILE_SAAS=$MVN_SETTINGS_FILE_SAAS
+      - SUITE_XML_FILE=src/test/resources/testng/remote/chrome.xml
+      - TEST_TAG=
+    volumes:
+      - ./cucumber-reports:/usr/src/mymaven/cucumber-reports
+    networks:
+      - qa-fitnote-ui-tests
+    depends_on:
+      - selenium-hub
+      - test-ui
+      - chrome
+

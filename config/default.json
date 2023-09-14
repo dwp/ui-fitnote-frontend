@@ -12,7 +12,8 @@
             "root" : "./ssl/ca-root.cert.pem"
         },
         "minFileSize" : 500000,
-        "maxFileSize" : 15000000
+        "maxFileSize" : 10000000,
+        "checkStatusDelay": 10000
     },
 
     "logger":{

@@ -24,7 +24,7 @@
     "serviceFail": "Ceisiwch eto",
 
     "another": "Cymerwch lun arall",
-    "fileSize": "Dylai maint y ffeil fod rhwng 500KB a 15MB",
+    "fileSize": "Dylai maint y ffeil fod rhwng 500KB a 10MB",
     "tooSmall": "Mae'r ffeil delwedd yn rhy fach",
     "tooBig": "Mae'r ffeil delwedd yn rhy fawr"
 }

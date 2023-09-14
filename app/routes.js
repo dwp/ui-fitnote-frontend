@@ -7,8 +7,10 @@ const config = require('config');
 const esaGet = require('./controllers/get/esa');
 const methodObtainedGet = require('./controllers/get/methodObtained');
 const noEsaGet = require('./controllers/get/noEsa');
-const takePhotoGet = require('./controllers/get/takePhoto');
 const guidanceGet = require('./controllers/get/guidance');
+const takePhotoGet = require('./controllers/get/takePhoto');
+const photoAuditGet = require('./controllers/get/photoAudit');
+const photoStatusGet = require('./controllers/get/photoStatus');
 const ninoGet = require('./controllers/get/nino');
 const addressGet = require('./controllers/get/address');
 const textMessageGet = require('./controllers/get/textMessage');
@@ -79,6 +81,8 @@ router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet.method
 router.get('/no-esa', isAuthenticatedFunction, noEsaGet.noEsa);
 router.get(['/guidance-digital', '/guidance-paper'], isAuthenticatedFunction, guidanceGet.guidance);
 router.get('/upload', isAuthenticatedFunction, takePhotoGet.takePhotoPage);
+router.get('/photo-audit', isAuthenticatedFunction, photoAuditGet.photoAuditPage);
+router.get('/photo-status', isAuthenticatedFunction, photoStatusGet.photoStatus);
 router.get('/nino', isAuthenticatedFunction, ninoGet.ninoPage);
 router.get('/address', isAuthenticatedFunction, addressGet.addressPage);
 router.get('/change-number', isAuthenticatedFunction, textMessageGet.textMessagePage);
@@ -93,6 +97,7 @@ if (config.util.getEnv('NODE_ENV') === 'test') {
 
   // Fitnote Pages
   router.get('/take-a-photo/:id', isAuthenticatedFunction, takePhotoGet.takePhotoPage);
+  // router.get('/photo-audit/:id', isAuthenticatedFunction, photoAuditGet.photoAuditPage);
   router.get('/nino/:id', isAuthenticatedFunction, ninoGet.ninoPage);
   router.get('/address/:id', isAuthenticatedFunction, addressGet.addressPage);
   router.get('/text-message/:id', isAuthenticatedFunction, textMessageGet.textMessagePage);

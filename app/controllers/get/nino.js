@@ -2,6 +2,7 @@ const config = require('config');
 const request = require('request');
 const logger = require('../../functions/bunyan');
 const getLanguage = require('../../functions/getLanguage');
+const photoRoute = require('../../functions/getPhotoRoute');
 const enErrors = require('../../locales/en/errors.json');
 const cyErrors = require('../../locales/cy/errors.json');
 
@@ -49,28 +50,11 @@ function getErrorMessage(req) {
   return errorMessage;
 }
 
-function getRoute(req) {
-  let route;
-  if (typeof req.cookies.route !== 'undefined') {
-    if (req.cookies.route === 'upload-digital') {
-      route = 'upload?ref=digital';
-    } else if (req.cookies.route === 'upload-paper') {
-      route = 'upload?ref=paper';
-    } else {
-      route = req.cookies.route;
-    }
-  } else {
-    route = 'take';
-  }
-
-  return route;
-}
-
 function ninoPage(req, res) {
   const logType = logger.child({ widget: 'ninoPage' });
   let nino = '';
   const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
-  const route = getRoute(req);
+  const route = photoRoute.getRoute(req);
   let previousPageCYA = 0;
   const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
   if (hasRefProperty) {
