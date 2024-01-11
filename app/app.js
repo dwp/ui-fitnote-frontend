@@ -66,6 +66,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(parallel([
   helmet({
+    referrerPolicy: {
+      policy: 'strict-origin-when-cross-origin',
+    },
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
