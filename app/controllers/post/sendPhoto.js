@@ -62,7 +62,7 @@ function errorRoute(req, logType) {
     errRoute = `/${route}&type=2`;
   }
   if ((req.file.size > config.get('service.maxFileSize'))) {
-    logType.info(`File size (${fileSize}) is invalid, for sessionId ${sessionId}`);
+    logType.info(`File size ${fileSize} is invalid, for sessionId ${sessionId}`);
     errRoute = `/${route}&size=2`;
   }
   if (!errRoute) {
