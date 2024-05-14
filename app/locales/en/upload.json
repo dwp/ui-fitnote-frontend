@@ -12,7 +12,7 @@
     "missing": "You must select a file to continue",
     "invalid": "The selected file must be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
     "failed-ocr": "The selected file must be clear and readable, containing the whole fit note",
-    "tooBig": "The selected file must be smaller than 10MB",
+    "tooBig": "The file you selected is too large to be processed. It must be smaller than 10MB",
     "connection": "There was a problem uploading the image, please retry using a Wifi connection",
     "serviceFail": "Try again",
     "postalInstruction": {
@@ -20,5 +20,5 @@
         "p2": "Freepost DWP ESA 26",
         "p3": "You do not need a stamp."
     },
-    "maxReplay": "You have tried to upload your fit note too many times.\nTry again later or you can post it to us." 
+    "maxReplay": "You have tried to upload your fit note too many times. Wait 5 minutes and upload it again or you can post it to: Freepost, DWP ESA 26. You do not need a stamp." 
 }

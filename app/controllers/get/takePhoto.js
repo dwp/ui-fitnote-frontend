@@ -2,7 +2,7 @@ const config = require('config');
 
 function getFileError(req) {
   let fileError = false;
-  if (req.query.type === '1' || req.query.type === '2' || req.query.size === '1' || req.query.size === '2') {
+  if (req.query.type === '2' || req.query.size === '2') {
     fileError = true;
   }
   return fileError;
@@ -10,7 +10,7 @@ function getFileError(req) {
 
 function getTypeError(req) {
   let typeError = false;
-  if (req.query.type === '1' || req.query.type === '2') {
+  if (req.query.type === '2') {
     typeError = true;
   }
 
@@ -27,23 +27,14 @@ function getMaxSizeError(req) {
 }
 
 function getPhotoTypeError(req) {
-  let photoTypeError;
+  let photoTypeError = {};
   const maxSizeError = getMaxSizeError(req);
-  switch (req.query.type) {
-    case '1':
-      photoTypeError = {
-        message: req.i18nTranslator.t('errors:choose'),
-        field: 'userPhotoID',
-      };
-      break;
-    case '2':
-      photoTypeError = {
-        message: req.i18nTranslator.t('errors:invalidFileType'),
-        field: 'userPhotoID',
-      };
-      break;
-    default:
-      photoTypeError = {};
+
+  if (req.query.type === '2') {
+    photoTypeError = {
+      message: req.i18nTranslator.t('errors:invalidFileType'),
+      field: 'userPhotoID',
+    };
   }
 
   if (maxSizeError) {
@@ -64,12 +55,6 @@ function getPhotoError(req, res) {
     case 'serviceFailed':
       photoError = {
         message: req.i18nTranslator.t('upload:serviceFail'),
-        field: 'userPhotoID',
-      };
-      break;
-    case 'invalidPhoto':
-      photoError = {
-        message: req.i18nTranslator.t('upload:invalid'),
         field: 'userPhotoID',
       };
       break;
@@ -110,7 +95,7 @@ function getErrorMessage(req, res) {
   const fileError = getFileError(req);
   const photoError = getPhotoError(req, res);
   const photoTypeError = getPhotoTypeError(req);
-  if ((req.query.error !== 'invalidPhoto') && (req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && (req.query.error !== 'maxReplay') && !fileError) {
+  if ((req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && (req.query.error !== 'maxReplay') && !fileError) {
     errorMessage = '';
   } else if (req.query.error === 'ocrFailed') {
     errorMessage = {

@@ -8,6 +8,7 @@ const esaGet = require('./controllers/get/esa');
 const methodObtainedGet = require('./controllers/get/methodObtained');
 const noEsaGet = require('./controllers/get/noEsa');
 const guidanceGet = require('./controllers/get/guidance');
+const guidancePostGet = require('./controllers/get/guidancePost');
 const takePhotoGet = require('./controllers/get/takePhoto');
 const photoAuditGet = require('./controllers/get/photoAudit');
 const photoStatusGet = require('./controllers/get/photoStatus');
@@ -15,7 +16,6 @@ const ninoGet = require('./controllers/get/nino');
 const addressGet = require('./controllers/get/address');
 const textMessageGet = require('./controllers/get/textMessage');
 const completeGet = require('./controllers/get/complete');
-const feedbackGet = require('./controllers/get/feedback');
 const checkYourAnswersGet = require('./controllers/get/checkYourAnswers');
 const cookiePolicyGet = require('./controllers/get/cookiePolicy');
 const cookiesDetailsGet = require('./controllers/get/cookiesDetails');
@@ -35,7 +35,6 @@ const ninoPost = require('./controllers/post/sendNino');
 const addressPost = require('./controllers/post/sendAddress');
 const textMessagePost = require('./controllers/post/sendTextMessage');
 const acceptProcessPost = require('./controllers/post/submitDeclaration');
-const feedbackPost = require('./controllers/post/sendFeedback');
 const checkYourAnswersPost = require('./controllers/post/checkYourAnswers');
 
 // functions
@@ -70,8 +69,6 @@ router.get('/cookie-agree/', legal.hasViewedCookieMsg);
 router.get('/cookies/cookie_policy', isAuthenticatedFunction, cookiePolicyGet.cookiePolicyPage);
 router.get('/cookies/cookies_details', isAuthenticatedFunction, cookiesDetailsGet.cookiesDetailsPage);
 router.get('/accessibility-statement', isAuthenticatedFunction, accessibilityGet.accessibilityPage);
-router.get('/feedback', isAuthenticatedFunction, feedbackGet.feedbackPage);
-router.get('/feedback-sent', feedbackGet.feedbackSentPage);
 router.get('/refresh-session', sessionGet.refresh);
 
 // Fitnote Pages
@@ -80,6 +77,7 @@ router.get('/esa', esaGet.esa);
 router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet.methodObtained);
 router.get('/no-esa', isAuthenticatedFunction, noEsaGet.noEsa);
 router.get(['/guidance-digital', '/guidance-paper'], isAuthenticatedFunction, guidanceGet.guidance);
+router.get('/guidance-post', isAuthenticatedFunction, guidancePostGet.guidancePost);
 router.get('/upload', isAuthenticatedFunction, takePhotoGet.takePhotoPage);
 router.get('/photo-audit', isAuthenticatedFunction, photoAuditGet.photoAuditPage);
 router.get('/photo-status', isAuthenticatedFunction, photoStatusGet.photoStatus);
@@ -89,6 +87,11 @@ router.get('/change-number', isAuthenticatedFunction, textMessageGet.textMessage
 router.get('/text-message', isAuthenticatedFunction, textMessageGet.textMessagePage);
 router.get('/complete', isAuthenticatedFunction, completeGet.completePage);
 router.get('/check-your-answers', isAuthenticatedFunction, checkYourAnswersGet.checkYourAnswersPage);
+
+// Feedback redirect to MS forms
+router.get('/feedback', (req, res) => {
+  res.redirect(308, 'https://forms.office.com/pages/responsepage.aspx?id=DpxP-knna0i8NIr6EGM3VsmUfSVlj39Dm5IoDLk2jmRUMThGTFhLMURFTkRISFdKMTA0U1dWUTg3NiQlQCN0PWcu');
+});
 
 // Accessibility Tests GET only
 
@@ -114,7 +117,6 @@ router.post('/send-nino', ninoPost.sendNino);
 router.post('/send-text-message', textMessagePost.sendTextMessageConfirmation);
 router.post('/send-address', addressPost.sendAddress);
 router.post('/submit-declaration', acceptProcessPost.submitDeclaration);
-router.post('/feedback', feedbackPost.sendFeedback);
 router.post('/check-your-answers', checkYourAnswersPost.acceptAndSend);
 
 // Endpoints

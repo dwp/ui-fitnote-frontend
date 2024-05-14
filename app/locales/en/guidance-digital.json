@@ -1,12 +1,14 @@
 {
     "h1": "Before you upload your digital fit note",
+    "p1": "It is important that your fit note can be read by our system, or it could be rejected.",
+    "p2": "If it contains a data matrix (a black and white square that looks like a QR code), it should be clear.",
+    "p3": "Before you upload it, make sure:",
     "list": {
-        "li1": "Make sure your fit note is landscape (horizontal) not portrait (vertical).",
-        "li2": "The whole fit note must be shown. It needs to be on 1 page.",
-        "li3": "Check that it is in focus and all text can be read.",
-        "li4": "It may be necessary to take a photo or crop it to create a landscape version."
+        "li1": "all the text can be read easily",
+        "li2": "it is on 1 page with your contact details visible",
+        "li3": "the whole fit note is visible, including all four corners"
     },
     "buttonText": "Continue to upload",
     "back": "Back",
-    "fit-note-zoom-alt-text": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note"
+    "fit-note-zoom-alt-text": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note"
 }

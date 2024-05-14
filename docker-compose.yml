@@ -38,6 +38,18 @@ services:
     networks:
       - qa-fitnote-ui-tests
 
+  datamatrix-controller:
+    image: $DATAMATRIX_IMAGE
+    environment:
+      - SERVER_APP_PORT=3009
+      - ESTIMATED_REQUEST_MEMORY_MB=1
+    expose:
+      - 3009
+    ports:
+      - 3009:3009
+    networks:
+      - qa-fitnote-ui-tests
+
   fitnote-controller:
     image: $CONTROLLER_IMAGE
     environment:
@@ -57,6 +69,7 @@ services:
       - S3_BUCKET_NAME=sns-bucket
       - REGION=us-east-1
       - ESTIMATED_REQUEST_MEMORY_MB=1
+      - DATA_MATRIX_CREATOR_SERVICE_URL=http://datamatrix-controller:3009
     expose:
       - 3004
     ports:

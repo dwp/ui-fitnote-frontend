@@ -1,11 +1,30 @@
 {
-    "h1": "Sut i gymryd llun o’ch nodyn ffitrwydd",
-    "list": {
-        "li1": "Gallwch ddefnyddio ffôn clyfar, llechen neu gamera. Neu gallwch ddefnyddio sganiwr wedi'i gysylltu â chyfrifiadur.",
-        "li2": "Mae’n rhaid i chi ddal eich ffôn clyfar, llechen neu gamera mewn ffurf tirwedd (llorweddol) pan yn cymryd y llun. Mae’n rhaid i’r nodyn ffitrwydd hefyd fod yn dirwedd.",
-        "li3": "Rhaid dangos y nodyn ffitrwydd cyfan. Mae angen iddo fod ar 1 dudalen.",
-        "li4": "Edrychwch i weld bod y llun mewn ffocws ac y gellir darllen pob gair."
+    "h1": "Anfon eich nodyn ffitrwydd papur i DWP",
+    "info": "Os oes gennych nodyn ffitrwydd papur, gallwch ddefnyddio'r gwasanaeth hwn i'w anfon atom ar-lein. Os na allwch ei anfon ar-lein, ",
+    "post-link": "gallwch ei bostio (agor mewn tab newydd).",
+    "h2": "Anfon ar-lein",
+    "online-info": "Mae dwy ffordd i anfon eich nodyn ffitrwydd papur ar-lein. Gallwch naill ai:",
+    "info-list": {
+      "li1": "dynnu lun o'ch nodyn ffitrwydd",
+      "li2": "sganio eich nodyn ffitrwydd"
     },
+    "p1": "Mae'n bwysig bod llun neu sgan eich nodyn ffitrwydd yn glir fel y gellir ei ddarllen gan ein system. Os na ellir ei ddarllen, gall gael ei wrthod.",
+    "p2": "Gall y ddelwedd enghreifftiol gyda'r groes goch gael ei wrthod oherwydd bod yr ymylon ar goll. Byddai'r ddelwedd enghreifftiol gyda'r tic gwyrdd yn cael ei derbyn oherwydd bod y nodyn ffitrwydd cyfan i'w weld.",
+    "h3": "Tynnu lun o'ch nodyn ffitrwydd",
+    "list-take": {
+      "li1": "Rhowch y nodyn ffitrwydd ar wyneb gwastad, gwnewch yn siwr nad oes ganddo unrhyw gilfachau neu blygiadau a'i fod yn gorwedd yn syth.",
+      "li2": "Dylai fod wedi'i oleuo'n dda a heb unrhyw gysgodion.",
+      "li3": "Os oes gan eich nodyn ffitrwydd fatrics data (sgwâr du a gwyn sy'n edrych fel cod QR), gwnewch yn siwr ei fod i'w weld yn amlwg.",
+      "li4": "Dylai'r nodyn ffitrwydd cyfan fod yn weladwy yn y llun."
+    },
+    "h4": "Sganio eich nodyn ffitrwydd",
+    "list-scan": {
+      "li1": "Gwnewch yn siŵr bod y sganiwr wedi'i gysylltu â gliniadur neu ddyfais arall.",
+      "li2": "Rhowch y nodyn ffitrwydd ochr y cynnwys i lawr ar y sganiwr. Os yw'ch nodyn ffitrwydd yn 2 ochr, rhaid i chi sganio'r ochr sy'n dangos eich manylion.",
+      "li3": "Gwnewch yn siwr bod y nodyn ffitrwydd yn gorwedd yn syth ac nid oes unrhyw gilfachau neu blygiadau.",
+      "li4": "Arbedwch y ddelwedd wedi'i sganio yn rhywle sy'n hawdd dod o hyd iddo yn ddiweddarach."
+    },
+    "p3": "Efallai y gallwch sganio'ch nodyn ffitrwydd gan ddefnyddio ffôn clyfar yn hytrach na sganiwr. Os oes gennych ffôn clyfar, gwiriwch i weld a all wneud hyn.",
     "buttonText": "Parhau i lwytho",
     "back": "Yn ôl",
     "fit-note-zoom-alt-text": "Enghraifft o lun anghywir o nodyn ffitrwydd sydd wedi'i chwyddo i mewn ac nad yw'n cynnwys y nodyn ffitrwydd cyfan ochr yn ochr ag enghraifft dda o sut y dylai'r llun o'r nodyn ffitrwydd edrych."

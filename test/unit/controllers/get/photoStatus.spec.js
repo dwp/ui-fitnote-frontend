@@ -26,6 +26,7 @@ describe('Photo status', () => {
       cookies_agreed: true,
     },
   };
+  const queryString = '/&error=serviceFailed';
   let res = {};
   it("sets imageStatus to 'service-fail' if fitnote controller api is not available", (done) => {
     nock(API_URL).get(IMAGE_STATUS).replyWithError({
@@ -44,7 +45,7 @@ describe('Photo status', () => {
         return {
           send(body) {
             assert.equal(code, 200);
-            assert.equal(body, '/&error=serviceFailed');
+            assert.equal(body, queryString);
             done();
           },
         };
@@ -62,7 +63,7 @@ describe('Photo status', () => {
         return {
           send(body) {
             assert.equal(code, 200);
-            assert.equal(body, '/&error=serviceFailed');
+            assert.equal(body, queryString);
             done();
           },
         };
@@ -80,7 +81,7 @@ describe('Photo status', () => {
         return {
           send(body) {
             assert.equal(code, 200);
-            assert.equal(body, '/&error=serviceFailed');
+            assert.equal(body, queryString);
             done();
           },
         };

@@ -31,7 +31,7 @@
     },
     "validFileType": "Accepted file types are JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
     "choose": "Choose another file",
-    "invalidFileType": "Your file type is not supported. It must be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
+    "invalidFileType": "We cannot process the type of file you selected. You will need to make another copy of your fit note in one of these file types: JPG, JPEG, BMP, PNG, TIF, HEIC, HEIF or PDF.",
     "method-obtained": {
         "missing": "Select how you got your fit note"
     },

@@ -1,10 +1,12 @@
 {
     "h1": "Cyn i chi lwytho eich nodyn ffitrwydd digidol",
+    "p1": "Mae'n bwysig y gall ein system ddarllen eich nodyn ffitrwydd, neu gallai gael ei wrthod.",
+    "p2": "Os yw'n cynnwys matrics data (sgwâr du a gwyn sy'n edrych fel cod QR), dylai fod yn glir.",
+    "p3": "Cyn i chi ei lwytho, gwnewch yn siwr:",
     "list": {
-        "li1": "Sicrhewch fod eich nodyn ffitrwydd mewn ffurf tirwedd (llorweddol) nid portread (fertigol).",
-        "li2": "Rhaid dangos y nodyn ffitrwydd cyfan. Mae angen iddo fod ar 1 dudalen.",
-        "li3": "Edrychwch i weld ei fod mewn ffocws ac y gellir darllen pob gair.",
-        "li4": "Efallai bydd angen cymryd llun neu ei addasu i greu fersiwn tirwedd."
+        "li1": "gellir darllen yr holl destun yn hawdd",
+        "li2": "mae ar dudalen 1 gyda'ch manylion cyswllt yn weladwy",
+        "li3": "mae'r nodyn ffitrwydd cyfan i'w weld, gan gynnwys pob un o'r pedair cornel"
     },
     "buttonText": "Parhau i lwytho",
     "back": "Yn ôl",

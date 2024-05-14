@@ -1,11 +1,30 @@
 {
-    "h1": "How to take a photo of your fit note",
-    "list": {
-        "li1": "You can use a smartphone, camera or tablet. Or you can use a scanner connected to a computer.",
-        "li2": "You must hold your smartphone, tablet or camera in landscape mode (sideways) when taking the photo. The fit note must also be landscape.",
-        "li3": "The whole fit note must be shown. It needs to be on 1 page.",
-        "li4": "Check that the image is in focus and all the text can be read."
+    "h1": "Sending your paper fit note to DWP",
+    "info": "If you have a paper fit note, you can use this service to send it to us online. If you cannot send it online, ",
+    "post-link": "you can post it (opens in a new tab).",
+    "h2": "Send online",
+    "online-info": "There are two ways to send your paper fit note online. You can either:",
+    "info-list": {
+        "li1": "take a photo of your fit note",
+        "li2": "scan your fit note"
     },
+    "p1": "It's important that the photo or scan of your fit note is clear so it can be read by our system. If it cannot be read, it could be rejected.",
+    "p2": "The example image with the red cross could be rejected because the edges are missing. The example image with the green tick would be accepted because the whole fit note is visible.",
+    "h3": "Take a photo of your fit note",
+    "list-take": {
+        "li1": "Put the fit note on a flat surface, make sure it has no creases or folds and is lying straight.",
+        "li2": "It should be well lit and without any shadows.",
+        "li3": "If your fit note has a data matrix (a black and white square that looks like a QR code), make sure it's clearly visible.",
+        "li4": "The whole of the fit note should be visible in the photo."
+    },
+    "h4": "Scan your fit note",
+    "list-scan": {
+      "li1": "Make sure the scanner is connected to a laptop or other device.",
+      "li2": "Place the fit note text side down on the scanner. If your fit note is 2-sided, you must scan the side which shows your details.",
+      "li3": "Make sure the fit note is lying straight and there are no creases or folds.",
+      "li4": "Save the scanned image somewhere that's easy to find later."
+    },
+    "p3": "You might be able to scan your fit note using a smartphone instead of a scanner. If you have a smartphone, check to see if it can do this.",
     "buttonText": "Continue to upload",
     "back": "Back",
     "fit-note-zoom-alt-text": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note"

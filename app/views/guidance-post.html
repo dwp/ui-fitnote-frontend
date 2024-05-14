@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-17') }}{% endblock %}
+
+{% block body %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+
+        <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('guidance-post:h1') }}</h1>
+        <p>{{ t('guidance-post:p1') }}</p>
+        <p>{{ t('guidance-post:p2') }}</p>
+        <div class="govuk-inset-text">
+            {{ t('guidance-post:insetText') | safe }}
+        </div>
+        <p>{{ t('guidance-post:p3') }}</p>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+
+
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+{% endblock %}

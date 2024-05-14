@@ -131,7 +131,9 @@ app.use((req, res, next) => {
     const optsRender = { ...opts || {}, ...res.locals || {} };
     env.render(nameRender, optsRender, callback || ((err, data) => {
       if (err) {
-        throw new Error(err);
+        logger.info(`Tried to render page: ${name}`);
+        logger.error(err);
+        res.redirect('/');
       } else {
         res.send(data);
       }

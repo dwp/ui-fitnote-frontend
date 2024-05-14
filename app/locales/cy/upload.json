@@ -12,7 +12,7 @@
   "missing": "Mae’n rhaid i chi ddewis ffeil i barhau",
   "invalid": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF",
   "failed-ocr": "Mae’n rhaid i’r ffeil a ddewiswyd fod yn glir ac yn ddarllenadwy a chynnwys y nodyn ffitrwydd cyfan",
-  "tooBig": "Mae’n rhaid i’ch nodyn ffitrwydd fod yn 10mb neu lai",
+  "tooBig": "Mae'r ffeil a ddewiswyd gennych yn rhy fawr i'w phrosesu.   Rhaid iddo fod yn llai na 10MB",
   "connection": "There was a problem uploading the image, please retry using a Wifi connection",
   "serviceFail": "Ceisiwch eto",
   "postalInstruction": {
@@ -20,5 +20,5 @@
     "p2": "Rhadbost DWP ESA 26",
     "p3": "Nid oes angen stamp arnoch."
   },
-  "maxReplay": "Rydych wedi ceisio llwytho eich nodyn ffitrwydd gormod o weithiau.\nRhowch gynnig arall yn nes ymlaen neu gallwch ei bostio atom."
+  "maxReplay": "Rydych wedi ceisio llwytho eich nodyn ffitrwydd gormod o weithiau. Arhoswch am 5 munud a llwythwch ef eto neu gallwch ei bostio i: Freepost, DWP ESA 26. Nid oes angen stamp arnoch."
 }

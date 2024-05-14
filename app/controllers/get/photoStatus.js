@@ -36,15 +36,13 @@ function photoStatus(req, res) {
             res.status(200).send(`/${route}&error=ocrFailed`);
             break;
           case 'FAILED_IMG_SIZE':
-            res.status(200).send('/422');
-            break;
-          case 'FAILED_ERROR':
-          case 'FAILED_IMG_COMPRESS':
-            res.status(200).send(`/${route}&error=invalidPhoto`);
+            res.status(200).send(`/${route}&size=2`);
             break;
           case 'FAILED_IMG_MAX_REPLAY':
             res.status(200).send(`/${route}&error=maxReplay`);
             break;
+          case 'FAILED_ERROR':
+          case 'FAILED_IMG_COMPRESS':
           case 'FAILED_IMG_FILE_TYPE':
             res.status(200).send(`/${route}&type=2`);
             break;

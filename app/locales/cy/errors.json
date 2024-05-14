@@ -31,7 +31,7 @@
     },
     "validFileType": "Y ffeiliau a dderbynnir yw PDF, JPEG, BMP, PNG and GIF",
     "choose": "Dewiswch ffeil arall",
-    "invalidFileType": "Nid yw eich math o ffeil yn cael ei gefnogi. Mae’n rhaid iddo fod yn JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF neu PDF",
+    "invalidFileType": "Ni allwn brosesu'r math o ffeil a ddewiswyd gennych. Bydd   angen i chi wneud copi arall o'ch nodyn ffitrwydd yn un o'r mathau hyn o ffeiliau: JPG, JPEG, BMP, PNG, TIF, HEIC, HEIF neu PDF.",
     "method-obtained": {
         "missing": "Dewiswch sut gawsoch chi eich nodyn ffitrwydd"
     },

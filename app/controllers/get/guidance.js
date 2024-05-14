@@ -1,16 +1,16 @@
 const config = require('config');
 
 function guidancePage(req, res) {
-  let route;
-
-  if (typeof req.cookies.route !== 'undefined') {
-    if (req.cookies.route === 'upload-digital') {
-      route = 'guidance-digital';
-    } else if (req.cookies.route === 'upload-paper') {
-      route = 'guidance-paper';
-    } else {
-      route = req.cookies.route;
-    }
+  const validCookie = {
+    'upload-digital': 'guidance-digital',
+    'guidance-digital': 'guidance-digital',
+    'upload-paper': 'guidance-paper',
+    'guidance-paper': 'guidance-paper',
+  };
+  const route = validCookie[req.cookies.route];
+  if (typeof route === 'undefined') {
+    res.redirect('/');
+    return;
   }
 
   const page = route;
