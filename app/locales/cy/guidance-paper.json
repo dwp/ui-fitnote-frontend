@@ -1,7 +1,7 @@
 {
     "h1": "Anfon eich nodyn ffitrwydd papur i DWP",
     "info": "Os oes gennych nodyn ffitrwydd papur, gallwch ddefnyddio'r gwasanaeth hwn i'w anfon atom ar-lein. Os na allwch ei anfon ar-lein, ",
-    "post-link": "gallwch ei bostio (agor mewn tab newydd).",
+    "post-link": "darganfyddwch sut i bostio eich nodyn ffitrwydd papur atom (agor mewn tab newydd).",
     "h2": "Anfon ar-lein",
     "online-info": "Mae dwy ffordd i anfon eich nodyn ffitrwydd papur ar-lein. Gallwch naill ai:",
     "info-list": {
@@ -26,6 +26,5 @@
     },
     "p3": "Efallai y gallwch sganio'ch nodyn ffitrwydd gan ddefnyddio ffôn clyfar yn hytrach na sganiwr. Os oes gennych ffôn clyfar, gwiriwch i weld a all wneud hyn.",
     "buttonText": "Parhau i lwytho",
-    "back": "Yn ôl",
-    "fit-note-zoom-alt-text": "Enghraifft o lun anghywir o nodyn ffitrwydd sydd wedi'i chwyddo i mewn ac nad yw'n cynnwys y nodyn ffitrwydd cyfan ochr yn ochr ag enghraifft dda o sut y dylai'r llun o'r nodyn ffitrwydd edrych."
+    "back": "Yn ôl"
 }

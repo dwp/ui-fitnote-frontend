@@ -1,10 +1,11 @@
 {
     "pageTitle": "Datganiad hygyrchedd",
-    "h1": "Datganiad hygyrchedd ar gyfer Anfon eich nodyn ffitrwydd ar gyfer eich cais ESAh",
+    "h1": "Datganiad hygyrchedd ar gyfer Anfon eich nodyn ffitrwydd ar gyfer eich cais ESA",
     "p1": "Mae'r gwasanaeth hwn yn rhan o wefan ehangach GOV.UK. Mae <a class=\"govuk-link\" href=\"https://www.gov.uk/help/accessibility-statement/\">datganiad hygyrchedd ar wahân ar gyfer prif wefan GOV.UK</a> ar wahân ",
     "p2": "Nid yw'r dudalen hon ond yn cynnwys gwybodaeth am Anfon eich nodyn ffitrwydd ar gyfer eich gwasanaeth hawlio ESA, sydd ar gael yn <a class=\"govuk-link\" href=\"https://www.gov.uk/anfon-eich-nodyn-ffitrwydd-ar-gyfer-eich-cais-esa\">https://www.gov.uk/anfon-eich-nodyn-ffitrwydd-ar-gyfer-eich-cais-esa</a>",
     "usingThisService": {
         "h2": "Defnyddio'r gwasanaeth hwn",
+
         "p1": "Mae’r gwasanaeth hwn yn cael ei redeg gan yr Adran Gwaith a Phensiynau (DWP). Rydym am i gymaint o bobl ȃ phosibl allu defnyddio’r gwasanaeth hwn. Er enghraifft, mae hynny’n golygu y dylech allu:",
         "li1": "newid lliwiau, lefelau cyferbynnu a ffontiau",
         "li2": "chwyddo hyd at 300% heb i’r testun ollwng oddi ar y sgrin",
@@ -34,11 +35,11 @@
     "technicalInformationAboutServiceAccessibility": {
         "h2": "Gwybodaeth dechnegol am hygyrchedd y gwasanaeth hwn",
         "p1": "Mae'r Adran Gwaith a Phensiynau wedi ymrwymo i wneud y gwasanaeth hwn yn hygyrch, yn unol â Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus 2018 (Gwefannau a Cheisiadau Symudol) (Rhif 2).",
-        "p2": "Mae'r gwasanaeth hwn yn cydymffurfio'n llawn â safon AA Canllawiau Hygyrchedd Cynnwys Gwe (WCAG) fersiwn 2.1."
+        "p2": "Mae'r gwasanaeth hwn yn cydymffurfio'n llawn â safon AA Canllawiau Hygyrchedd Cynnwys Gwe (WCAG) fersiwn 2.2."
     },
     "howWeTested": {
         "h2": "Sut wnaethom brofi'r gwasanaeth hwn",
-        "p1": "Profwyd y gwasanaeth ddiwethaf ar 19 Mawrth 2024 a gwiriwyd ei fod yn cydymffurfio â WCAG 2.1 AA. Cafodd y profion eu cynnal gan yr Adran Gwaith a Phensiynau.",
+        "p1": "Profwyd y gwasanaeth ddiwethaf ar 14 Awst 2024 a gwiriwyd ei fod yn cydymffurfio â WCAG 2.2 AA. Cafodd y profion eu cynnal gan yr Adran Gwaith a Phensiynau.",
         "p2": "Profwyd y gwasanaeth gan ddefnyddio profion â llaw ac awtomataidd.",
         "p3": "Paratowyd y dudalen hon ar 7 Gorffennaf 2022."
     }

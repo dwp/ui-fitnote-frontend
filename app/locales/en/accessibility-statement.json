@@ -1,5 +1,5 @@
 {
-    "pageTitle": "Accessibility statement",
+    "pageTitle": "Accessibility statement for Send your fit note for your ESA claim",
     "h1": "Accessibility statement for Send your fit note for your ESA claim",
     "p1": "This service is part of the wider GOV.UK website. There's a separate <a class=\"govuk-link\" href=\"https://www.gov.uk/help/accessibility-statement/\">accessibility statement for the main GOV.UK website.</a>",
     "p2": "This page only contains information about the Send your fit note for your ESA claim service, available at <a class=\"govuk-link\" href=\"https://www.gov.uk/send-fit-note\">https://www.gov.uk/send-fit-note</a>",
@@ -34,11 +34,11 @@
     "technicalInformationAboutServiceAccessibility": {
         "h2": "Technical information about this service's accessibility",
         "p1": "The Department for Work and Pensions is committed to making this service accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.",
-        "p2": "This service is fully compliant with the Web Content Accessibility Guidelines version 2.1 AA standard."
+        "p2": "This service is fully compliant with the Web Content Accessibility Guidelines version 2.2 AA standard."
     },
     "howWeTested": {
         "h2": "How we tested this service",
-        "p1": "The service was last tested on 19 March 2024 and was checked for compliance with WCAG 2.1 AA. The tests were carried out by the Department for Work and Pensions.",
+        "p1": "The service was last tested on 14 August 2024 and was checked for compliance with WCAG 2.2 AA. The tests were carried out by the Department for Work and Pensions.",
         "p2": "The service was tested using both manual and automated testing.",
         "p3": "This page was prepared on 7 July 2022."
     }

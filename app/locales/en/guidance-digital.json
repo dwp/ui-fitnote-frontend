@@ -8,7 +8,7 @@
         "li2": "it is on 1 page with your contact details visible",
         "li3": "the whole fit note is visible, including all four corners"
     },
+    "p4": "The example image with the red cross could be rejected because the edges are missing. The example image with the green tick would be accepted because the whole fit note is visible.",
     "buttonText": "Continue to upload",
-    "back": "Back",
-    "fit-note-zoom-alt-text": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note"
+    "back": "Back"
 }

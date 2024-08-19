@@ -56,7 +56,8 @@ function haltOnTimedout(req, res, next) {
 // 6. Google tag manager nonce
 // 7. ANY static content MUST be in the public area or it will not get served.
 // 8. Required to serve Favicon
-const analyticsLink = 'https://www.google-analytics.com';
+const googleAnalytics = '*.google-analytics.com';
+const googleTM = '*.googletagmanager.com';
 let upgradeInsecureRequests = [];
 
 // Only upgrade http requests in production
@@ -70,13 +71,17 @@ app.use(parallel([
       policy: 'strict-origin-when-cross-origin',
     },
     contentSecurityPolicy: {
+      useDefaults: true,
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", `'${UNSAFE_INLINE}'`, 'https://www.googletagmanager.com', analyticsLink],
-        connectSrc: ["'self'", analyticsLink],
-        styleSrc: ["'self'", `'${UNSAFE_INLINE}'`, 'data:'],
-        fontSrc: ["'self'", 'https: data:'],
-        imgSrc: ["'self'", 'data:', 'www.googletagmanager.com', analyticsLink],
+        scriptSrc: ["'self'", `'${UNSAFE_INLINE}'`, googleAnalytics, googleTM, 'https://tagmanager.google.com'],
+        connectSrc: ["'self'", googleAnalytics, '*.analytics.google.com', googleTM],
+        styleSrc: ["'self'", `'${UNSAFE_INLINE}'`, 'data:', 'https://fonts.googleapis.com'],
+        fontSrc: ["'self'", 'https: data:', 'https://fonts.gstatic.com'],
+        imgSrc: ["'self'", 'data:', googleAnalytics, '*.analytics.google.com', googleTM, 'https://ssl.gstatic.com', 'https://www.gstatic.com'],
+        frameSrc: ["'self'", googleTM],
+        frameAncestors: ["'self'"],
+        formAction: ["'self'"],
         upgradeInsecureRequests,
       },
     },

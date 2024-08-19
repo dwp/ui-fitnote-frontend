@@ -25,7 +25,7 @@
                     <p class="govuk-error-message" aria-hidden="true" id="error-message-houseNumberID"></p>
                     <input type="text" name="houseNumberField" id="houseNumberID"
                            class="govuk-input govuk-!-width-two-thirds {{error.houseNumberCompleted}}" value="{{ house }}"
-                           data-required="required" maxlength="35" aria-describedby="error-message-houseNumberID">
+                           data-required="required" maxlength="35" aria-describedby="error-message-houseNumberID" autocomplete="address-line1">
                 </div>
 
                 <div id="govuk-form-group-error-postcode" class="govuk-form-group">
@@ -33,7 +33,7 @@
                     <p class="govuk-error-message" aria-hidden="true" id="error-message-postcodeID"></p>
                     <input type="text" name="postcodeField" id="postcodeID"
                            class="govuk-input govuk-input--width-10 {{error.postcodeCompleted}}" value="{{ postcode }}"
-                           data-required="required" maxlength="8" aria-describedby="error-message-postcodeID">
+                           data-required="required" maxlength="8" aria-describedby="error-message-postcodeID" autocomplete="postal-code">
                 </div>
 
                 <div class="govuk-form-group" aria-hidden="true">

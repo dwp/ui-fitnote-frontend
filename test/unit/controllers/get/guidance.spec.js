@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const guidance = require('../../../../app/controllers/get/guidance');
 const config = require('config');
+const guidance = require('../../../../app/controllers/get/guidance');
 
 const { assert } = chai;
 
@@ -18,10 +18,13 @@ describe('Guidance Page', () => {
     },
   };
 
+  const digitalTemplate = 'guidance-digital';
+  const paperTemplate = 'guidance-paper';
+
   it('load guidance digital page after visiting upload page', (done) => {
     const res = {
       render(template, options) {
-        assert.equal(template, 'guidance-digital');
+        assert.equal(template, digitalTemplate);
         assert.equal(options.version, process.env.npm_package_version);
         assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
         assert.equal(options.sessionId, '97w1y2guyg1wd555');
@@ -35,7 +38,7 @@ describe('Guidance Page', () => {
   it('load guidance paper page after visiting upload page', (done) => {
     const res = {
       render(template, options) {
-        assert.equal(template, 'guidance-paper');
+        assert.equal(template, paperTemplate);
         assert.equal(options.version, process.env.npm_package_version);
         assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
         assert.equal(options.sessionId, '97w1y2guyg1wd555');
@@ -49,28 +52,28 @@ describe('Guidance Page', () => {
   it('load guidance paper page after visiting method obtained', (done) => {
     const res = {
       render(template, options) {
-        assert.equal(template, 'guidance-paper');
+        assert.equal(template, paperTemplate);
         assert.equal(options.version, process.env.npm_package_version);
         assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
         assert.equal(options.sessionId, '97w1y2guyg1wd555');
         done();
       },
     };
-    req.cookies.route = 'guidance-paper';
+    req.cookies.route = paperTemplate;
     guidance.guidance(req, res);
   });
 
   it('load guidance digital page after visiting method obtained', (done) => {
     const res = {
       render(template, options) {
-        assert.equal(template, 'guidance-digital');
+        assert.equal(template, digitalTemplate);
         assert.equal(options.version, process.env.npm_package_version);
         assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
         assert.equal(options.sessionId, '97w1y2guyg1wd555');
         done();
       },
     };
-    req.cookies.route = 'guidance-digital';
+    req.cookies.route = digitalTemplate;
     guidance.guidance(req, res);
   });
 

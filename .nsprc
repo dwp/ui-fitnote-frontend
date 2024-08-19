@@ -1,18 +1,1 @@
-{
-  "1095212": {
-    "active": true,
-    "notes": "Babel vulnerable to arbitrary code execution @babel/traverse. This will be addressed in casa version 8 upgrade - HTF-2359"
-  },
-  "1095007": {
-    "active": true,
-    "notes": "glob-parent vulnerable to Regular Expression  glob-stream>glob-parent. This will be addressed in casa version 8 upgrade - HTF-2359"
-  },
-  "1095513": {
-    "active": true,
-    "notes": "minimatch ReDos vulnerability gulp-mocha>mocha>minimatch.This will be addressed in casa version 8 upgrade - HTF-2359"
-  },
-  "1096485": {
-    "active": true,
-    "notes": "minimatch ReDoS vulnerability.This will be addressed in casa version 8 upgrade"
-  }
-}
+{}

@@ -1,7 +1,7 @@
 {
     "h1": "Sending your paper fit note to DWP",
     "info": "If you have a paper fit note, you can use this service to send it to us online. If you cannot send it online, ",
-    "post-link": "you can post it (opens in a new tab).",
+    "post-link": "find out how to post your paper fit note to us (opens in new tab).",
     "h2": "Send online",
     "online-info": "There are two ways to send your paper fit note online. You can either:",
     "info-list": {
@@ -26,6 +26,5 @@
     },
     "p3": "You might be able to scan your fit note using a smartphone instead of a scanner. If you have a smartphone, check to see if it can do this.",
     "buttonText": "Continue to upload",
-    "back": "Back",
-    "fit-note-zoom-alt-text": "An incorrect photograph of a zoomed in fit note and a correct clear photograph of a fit note"
+    "back": "Back"
 }
