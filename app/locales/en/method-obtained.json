@@ -1,8 +1,12 @@
 {
-    "h1": "What type of fit note do you have?",
+    "h1": "Which type of fit note do you have?",
     "radioLabels": {
-        "paper": "Paper version (physical or hard copy)",
-        "digital": "Digital version (sent by text or email)"
+        "paper": "I have a paper fit note",
+        "digital": "I have a digital fit note"
+    },
+    "hintTexts": {
+        "paper": "A paper fit note will have been handed to you or sent to you in the post",
+        "digital": "A digital fit note will have been sent to you by email or text, or you might have been given a weblink to access it online"
     },
     "button": "Continue",
     "back": "Back"

@@ -5,8 +5,8 @@ const hasTimedOut = require('../../functions/timeoutRedirect');
 function methodObtainedPage(req, res) {
   const { methodObtained } = req.body;
   const isValid = methodObtained === 'paper' || methodObtained === 'digital';
-  let route; let
-    redirectUrl;
+  let route;
+  let redirectUrl;
 
   if (typeof req.cookies.sessionId !== 'undefined') {
     if (isValid) {

@@ -1,8 +1,12 @@
 {
-    "h1": "Sut fath o nodyn ffitrwydd sydd gennych?",
+    "h1": "Pa fath o nodyn ffitrwydd sydd gennych?",
     "radioLabels": {
-        "paper": "Fersiwn papur (copi caled)",
-        "digital": "Fersiwn digidol (anfonwyd trwy neges destun neu e-bost)"
+        "paper": "Mae gennyf nodyn ffitrwydd papur",
+        "digital": "Mae gennyf nodyn ffitrwydd digidol"
+    },
+    "hintTexts": {
+        "paper": "Bydd nodyn ffitrwydd papur wedi cael ei roi i chi neu ei anfon i chi trwy'r post",
+        "digital": "Bydd nodyn ffitrwydd digidol wedi cael ei anfon i chi trwy e-bost neu neges destun, neu efallai bod dolen gwe wedi cael ei roi i chi gael mynediad iddo ar-lein"
     },
     "button": "Parhau",
     "back": "Yn ôl"

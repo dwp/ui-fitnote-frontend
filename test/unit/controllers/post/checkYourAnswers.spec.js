@@ -6,6 +6,7 @@ const sinon = require('sinon');
 const app = require('../../../../app/app');
 const sendNino = require('../../../../app/controllers/post/sendNino.js');
 const sendAddress = require('../../../../app/controllers/post/sendAddress.js');
+const sendPhoto = require('../../../../app/controllers/post/sendPhoto.js');
 const cya = require('../../../../app/controllers/post/checkYourAnswers.js');
 
 const { assert } = chai;
@@ -26,7 +27,7 @@ function buildReq(fileObj) {
     },
     file: fileObj,
     cookies: {
-      sessionId
+      sessionId,
     },
   };
 }
@@ -78,8 +79,10 @@ describe('CYA (POST)', () => {
     chai.request(app)
       .post(page)
       .end((err) => {
-        if (err) done(err);
+        if (err) {
+          done(err);
+        }
         cya.acceptAndSend(req, buildRes('/complete', done()));
-      })
-  })
+      });
+  });
 });

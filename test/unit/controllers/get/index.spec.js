@@ -23,6 +23,7 @@ describe('Index Page', () => {
     index.indexPage(req, res);
     assert.equal(loggerSpy.firstCall.firstArg, 'Creating Session ID');
     assert.equal(loggerSpy.called, true);
+    loggerSpy.restore();
   });
 
   it('should call retryCookie() function', () => {

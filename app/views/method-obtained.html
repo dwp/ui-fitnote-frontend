@@ -26,6 +26,9 @@
                             <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" for="method-obtained-digital">
                                 {{ t('method-obtained:radioLabels.digital') }}
                             </label>
+                            <div class="govuk-hint govuk-radios__hint">
+                                {{ t('method-obtained:hintTexts.digital') }}
+                            </div>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="method-obtained-paper" name="methodObtained"
@@ -34,6 +37,9 @@
                             <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 2 }}" for="method-obtained-paper">
                                 {{ t('method-obtained:radioLabels.paper') }}
                             </label>
+                            <div class="govuk-hint govuk-radios__hint">
+                                {{ t('method-obtained:hintTexts.paper') }}
+                            </div>
                         </div>
                     </div>
                 </fieldset>
