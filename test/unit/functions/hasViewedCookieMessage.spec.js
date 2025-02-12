@@ -39,6 +39,7 @@ describe('hasViewedCookieMsg', () => {
     hasViewedCookieMsg(req, res);
     expect(res.cookieData[0].name).to.be.equal('cookies_agreed');
     expect(res.cookieData[0].value).to.be.equal('true');
+    expect(res.redirectedTo).to.equal('/complete');
   });
 
   it('Viewed cookie message (not consented to cookies) and redirected to path', (done) => {
@@ -54,6 +55,7 @@ describe('hasViewedCookieMsg', () => {
 
     hasViewedCookieMsg(req, res);
     expect(res.cookieData).to.be.equal([]);
+    expect(res.redirectedTo).to.equal('/complete');
   });
 
   it('Viewed cookie message with invalid postback and rendered to error message ', (done) => {
@@ -69,5 +71,6 @@ describe('hasViewedCookieMsg', () => {
     hasViewedCookieMsg(req, res);
     expect(res.cookieData[0].name).to.be.equal('cookies_agreed');
     expect(res.cookieData[0].value).to.be.equal('true');
+    expect(res.status).to.equal(500);
   });
 });

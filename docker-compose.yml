@@ -95,7 +95,7 @@ services:
   chrome:
     image: selenium/node-chrome:4.0.0-beta-1-20210215@sha256:77ab44c15a207c2c0a859c1e1155394f4bfcb645ee338fb4c5417149f52d4acc
     volumes:
-      - /dev/shm:/dev/shm
+      - /tmp:/tmp
     networks:
       - qa-fitnote-ui-tests
     depends_on:

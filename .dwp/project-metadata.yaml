@@ -6,11 +6,11 @@ project:
   - project_id: 27163959
     component_name: ui-fitnote-frontend
 
-    version: 1.7.0
+    version: 1.9.0
 
     last_verified:
-      date: "2024-10-31"
-      name: "@stephen.nimako"
+      date: "2025-01-20"
+      name: "@shamsi.shumi"
 
     tags:
       payments: false

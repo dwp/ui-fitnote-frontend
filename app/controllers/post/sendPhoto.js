@@ -86,8 +86,9 @@ function sendPhoto(req, res) {
     return res.status(500).redirect('/500');
   }
 
-  function requestUploadCallback(err) {
+  function requestUploadCallback(err, counter) {
     const errRoute = errorRoute(req, logType);
+    let count = counter;
     if (typeof req.file !== 'undefined' && errRoute) {
       res.redirect(errRoute);
       return;
@@ -97,12 +98,21 @@ function sendPhoto(req, res) {
       .then((response) => {
         sessionExpiry.refreshTime(res, logType);
         if (response.sessionId != null) {
+          logType.info(`API call attempts successful on: ${count} ${count > 0 ? 'retry' : ''}`);
           logType.info('Submitted image successfully');
           res.redirect('/photo-audit');
         }
       })
       .catch(() => {
-        handleCriticalFormError(err, 'API not responding');
+        if (count > 4) {
+          logType.error('Failed 5 times');
+          handleCriticalFormError(err, 'API not responding');
+        } else {
+          count += 1;
+          setTimeout(() => {
+            requestUploadCallback(err, count);
+          }, count * 2 * 1000);
+        }
       });
   }
 
@@ -126,7 +136,7 @@ function sendPhoto(req, res) {
         logType.info('BOT detected. Doing fake send');
         res.redirect('/nino'); // don't post the request just go to the next page.
       } else {
-        requestUploadCallback(err);
+        requestUploadCallback(err, 0);
       }
     } else {
       const redirectUrl = hasTimedOut.redirectTimeout('no valid session');

@@ -2,5 +2,11 @@
   "1099520": {
     "active": true,
     "notes": "[@dwp/govuk-casa>body-parser] body-parser vulnerable to denial of service when url encoding is enabled"
+  },
+
+  "1100563": {
+    "active": true,
+    "notes": "Regular Expression Denial of Service (ReDoS) in cross-spawn"
   }
+
 }

@@ -41,6 +41,7 @@ describe('updateCookieSettings', () => {
     expect(res.locals.showCookieChoiceConfirmationBanner).to.be.equal(true);
     expect(res.cookieData[0].name).to.be.equal('cookies_agreed');
     expect(res.cookieData[0].value).to.be.equal('true');
+    expect(res.redirectedTo).to.equal('/upload');
   });
 
   it('Should update cookie settings (cookie consent false) and redirect to previous path', (done) => {
@@ -52,6 +53,7 @@ describe('updateCookieSettings', () => {
     updateCookieSettings(req, res);
     expect(res.locals.showCookieChoiceConfirmationBanner).to.be.equal(true);
     expect(res.cookieData).to.be.equal([]);
+    expect(res.redirectedTo).to.equal('/upload');
   });
 
   it('Should update cookie settings and redirect to cookie policy page', (done) => {
@@ -64,6 +66,7 @@ describe('updateCookieSettings', () => {
     expect(res.locals.showCookieChoiceConfirmationBanner).to.be.equal(true);
     expect(res.cookieData[0].name).to.be.equal('cookies_agreed');
     expect(res.cookieData[0].value).to.be.equal('true');
+    expect(res.redirectedTo).to.equal('/cookies/cookie_policy');
   });
 
   it('Should update cookie settings and render error page when previous page is not validated', (done) => {
@@ -75,5 +78,6 @@ describe('updateCookieSettings', () => {
     expect(res.locals.showCookieChoiceConfirmationBanner).to.be.equal(true);
     expect(res.cookieData[0].name).to.be.equal('cookies_agreed');
     expect(res.cookieData[0].value).to.be.equal('true');
+    expect(res.status).to.equal(500);
   });
 });

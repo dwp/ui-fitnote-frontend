@@ -2,7 +2,7 @@ const url = require('url');
 const config = require('config');
 const { COOKIE_CONSENT_CHOICE, COOKIE_UPDATE_QUERY_PARAM } = require('../constants');
 const { clearAllCookies } = require('./utils/clearAllCookies');
-const whiteListValidateRedirect = require('./whiteListValidateRedirect');
+const allowedUrls = require('./whiteListValidateRedirect');
 
 const logger = require('./bunyan');
 
@@ -36,12 +36,13 @@ exports.updateCookieSettings = function updateCookieSettings(req, res) {
   qs[COOKIE_UPDATE_QUERY_PARAM] = 1;
 
   if (req.body.previousPage) {
-    redirectPath = whiteListValidateRedirect(req.body.previousPage);
-    if (redirectPath) {
-      redirectUrl = url.format({
-        pathname: redirectPath,
-        query: { ...qs },
-      });
+    redirectPath = req.body.previousPage;
+    redirectUrl = url.format({
+      pathname: redirectPath,
+      query: { ...qs },
+    });
+    if (allowedUrls.includes(redirectUrl)
+      || allowedUrls.some((allowedUrl) => redirectUrl.startsWith(allowedUrl))) {
       return res.redirect(redirectUrl);
     }
     return res.status(500).render('errors/500');
