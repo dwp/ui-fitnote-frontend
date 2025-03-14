@@ -1,19 +1,21 @@
 {
-  "h1": "Llwytho eich nodyn ffitrwydd",
+  "h1": "Dewis a llwytho eich nodyn ffitrwydd",
   "list": {
-    "li1": "JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF neu PDF",
-    "li2": "llai na 10MB"
+    "li1": "fod yn JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF neu PDF",
+    "li2": "fod yn llai na 10MB",
+    "li3": "peidio â bod wedi’i ddiogelu gan gyfrinair - os oes gan eich nodyn ffitrwydd gyfrinair, bydd angen i chi ei arbed fel ffeil newydd heb gyfrinair a’i lwytho"
   },
-  "text": "Mae’n rhaid i’ch ffeil fod yn:",
+  "text": "Rhaid i’ch ffeil:",
   "p": "Llwytho...",
   "buttonText": "Llwytho a pharhau",
-  "upload": "Llwytho ffeil",
+  "h2": "Dewiswch eich ffeil yn gyntaf",
   "back": "Yn ôl",
-  "missing": "Mae’n rhaid i chi ddewis ffeil i barhau",
+  "missing": "Dewiswch y ffeil rydych eisiau llwytho",
   "invalid": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF",
   "failed-ocr": "Mae’n rhaid i’r ffeil a ddewiswyd fod yn glir ac yn ddarllenadwy a chynnwys y nodyn ffitrwydd cyfan",
   "tooBig": "Mae'r ffeil a ddewiswyd gennych yn rhy fawr i'w phrosesu.   Rhaid iddo fod yn llai na 10MB",
   "connection": "There was a problem uploading the image, please retry using a Wifi connection",
+  "password": "Ni allwch lwytho ffeil sydd wedi’i diogelu gan gyfrinair",
   "serviceFail": "Ceisiwch eto",
   "postalInstruction": {
     "p1": "Os ydych yn dal i gael problemau wrth lwytho'ch nodyn ffitrwydd, dylech ei bostio atom yn lle.",

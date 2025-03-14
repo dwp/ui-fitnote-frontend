@@ -3,11 +3,12 @@
     "h2": "Beth sy'n digwydd nesaf",
     "p1": "Cadwch eich nodyn ffitrwydd yn ddiogel, peidiwch â'i daflu i ffwrdd.",
     "p2": "Nid oes angen i chi wneud unrhyw beth arall, na ffonio i weld beth sy'n digwydd. Os oes problem byddwn yn cysylltu â chi.",
-    "p3": "Gall gymryd hyd at 24 awr i chi dderbyn neges testun o gadarnhad (Dydd Llun i ddydd Gwener, 8am i 8pm)",
-    "p4": "Bydd angen i chi barhau i anfon nodiadau ffitrwydd atom cyn belled â nad ydych yn ddigon iach i weithio. Byddwn yn dweud wrthych pryd y gallwch roi'r gorau i'w hanfon. Er enghraifft, os yw'ch nodyn ffitrwydd am 14 diwrnod, bydd angen i chi anfon un arall atom pan fyff hwnnw'n rhedeg allan.",
+    "p3": "Os ydych wedi rhoi eich rhif ffôn symudol presennol i ni, byddwch yn cael neges destun pan fyddwn yn derbyn eich nodyn ffitrwydd. Gallai hyn gymryd hyd at 24 awr i gyrraedd a bydd yn cael ei anfon rhwng dydd Llun a dydd Gwener, 8am i 8pm.",
+    "p4": "Bydd angen i chi barhau i anfon nodiadau ffitrwydd atom am cyn hired ag ydych yn analluog i weithio. Er enghraifft, os yw’ch nodyn ffitrwydd am 14 diwrnod, bydd angen i chi anfon un arall atom pan fydd yn dod i ben. Byddwn yn dweud wrthych pryd y gallwch roi’r gorau i’w hanfon.",
     "a": "Anfon nodyn ffitrwydd arall",
     "alt": "Darlun o dic",
-    "feedback": "Beth ydych yn feddwl o'r gwasanaeth hwn?",
+    "feedback": "Beth yw eich barn am y gwasanaeth hwn?",
+    "feedback-text": " (mae’n cymryd 30 eiliad)",
     "govukUrl": "https://www.gov.uk/anfon-eich-nodyn-ffitrwydd-ar-gyfer-eich-cais-esa",
     "reference" : "Eich rhif cyfeirnod yw eich rhif Yswiriant Gwladol"
 }

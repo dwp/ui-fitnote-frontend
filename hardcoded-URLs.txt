@@ -1,0 +1,13 @@
+Hardcoded URLs found in non-targeted files:
+File: ./.npmrc
+Line: 3:@dwp:registry=https://gitlab.com/api/v4/packages/npm/
+---
+File: ./.npmrc
+Line: 4://gitlab.com/api/v4/packages/npm/:_authToken=${GITLAB_REGISTRY_TOKEN}
+---
+File: ./package-lock.json
+Line: 1698:      "resolved": "https://gitlab.com/api/v4/projects/26089960/packages/npm/@dwp/eslint-config-base/-/@dwp/eslint-config-base-5.0.1.tgz",
+---
+File: ./package-lock.json
+Line: 1709:      "resolved": "https://gitlab.com/api/v4/projects/26878543/packages/npm/@dwp/govuk-casa/-/@dwp/govuk-casa-7.2.2.tgz",
+---

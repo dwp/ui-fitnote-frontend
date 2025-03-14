@@ -3,11 +3,12 @@
     "h2": "What happens next",
     "p1": "Keep your fit note safe, do not throw it away.",
     "p2": "You do not need to do anything else, or call to check on its progress. If there’s a problem you’ll be contacted.",
-    "p3": "It can take up to 24 hours for you to receive a text confirmation of the submission of your fit note (Monday to Friday, 8am to 8pm).",
-    "p4": "You will need to keep sending us fit notes as long as you're unfit for work. We will tell you when you can stop sending them. For example, if your fit note is for 14 days, you will need to send us another one when it runs out.",
+    "p3": "If you have given us your current mobile number, you will get a text when we receive your fit note. This might take up to 24 hours to arrive and will be sent between Monday and Friday, 8am to 8pm.",
+    "p4": "You will need to keep sending us fit notes as long as you're unfit for work. For example, if your fit note is for 14 days, you will need to send us another one when it runs out. We will tell you when you can stop sending them.",
     "a": "Send another fit note",
     "alt": "An image of a tick",
     "feedback": "What do you think of this service?",
+    "feedback-text": " (takes 30 seconds)",
     "govukUrl": "https://www.gov.uk/send-fit-note",
     "reference" : "Your reference is your National Insurance number"
 }

@@ -1,4 +1,6 @@
 {
+    "alert-heading": "Your fit note has been uploaded",
+    "alert-text": "You must answer the remaining questions to finish the process.",
     "heading": "Your National Insurance number",
     "hint": "It's on your National Insurance card, benefit letter, payslip or P60. For example, QQ 12 34 56 C.",
     "details-link-text": "What is my National Insurance number?",

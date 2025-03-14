@@ -8,7 +8,7 @@ networks:
 
 services:
   redis-cluster:
-    image: grokzen/redis-cluster:6.2.10@sha256:22f9f0db9359bfffefcc5b35382757dfc4aff9d12aaf4d013a954fe44bf29f41
+    image: grokzen/redis-cluster:6.2.14@sha256:c7fa7b3889d885ed1ed63f32ac1bf0ba6acea5f3d15efabafe59b3bfce81d860
     expose:
       - 7000
       - 7001

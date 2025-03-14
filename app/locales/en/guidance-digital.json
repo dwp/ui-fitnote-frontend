@@ -9,6 +9,12 @@
         "li3": "the whole fit note is visible, including all four corners"
     },
     "p4": "The example image with the red cross could be rejected because the edges are missing. The example image with the green tick would be accepted because the whole fit note is visible.",
+    "passwordFileGuidance": {
+        "h2": "What to do if your fit note has a password",
+        "p1": "If you need to enter a password to see your fit note, our system will not be able to read it and it will be rejected.",
+        "p2": "If possible, you should save your fit note as a new file without a password and upload this new version."
+    },
+    "p5": "You will need to enter your National Insurance number after you have uploaded your fit note. You can find this on your benefit letter, payslip or P60.",
     "buttonText": "Continue to upload",
     "back": "Back"
 }

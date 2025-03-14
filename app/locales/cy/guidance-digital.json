@@ -9,6 +9,12 @@
         "li3": "mae'r nodyn ffitrwydd cyfan i'w weld, gan gynnwys pob un o'r pedair cornel"
     },
     "p4": "Gall y ddelwedd enghreifftiol gyda'r groes goch gael ei wrthod oherwydd bod yr ymylon ar goll. Byddai'r ddelwedd enghreifftiol gyda'r tic gwyrdd yn cael ei derbyn oherwydd bod y nodyn ffitrwydd cyfan i'w weld.",
+    "passwordFileGuidance": {
+        "h2": "Beth i’w wneud os oes gan eich nodyn ffitrwydd gyfrinair",
+        "p1": "Os oes angen i chi roi cyfrinair i weld eich nodyn ffitrwydd, ni fydd ein system yn gallu ei ddarllen a bydd yn cael ei wrthod.",
+        "p2": "Os ydyw’n bosibl, dylech arbed eich nodyn ffitrwydd fel ffeil newydd heb gyfrinair a llwytho y fersiwn newydd hon."
+    },
+    "p5": "Bydd angen i chi roi eich rhif Yswiriant Gwladol ar ôl i chi lwytho eich nodyn ffitrwydd. Gallwch ddod o hyd i hwn ar eich llythyr budd-dal, slip cyflog neu P60.",
     "buttonText": "Parhau i lwytho",
     "back": "Yn ôl"
 }

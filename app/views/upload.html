@@ -21,9 +21,9 @@
       <div class="govuk-form-group">
         <div
           class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
-          <label class="govuk-label" for="userPhotoID">
-            {{ t('upload:upload') }}
-          </label>
+          <h2>
+            {{ t('upload:h2') }}
+          </h2>
           <p id="file-upload-1-error" class="govuk-error-message">
                     {% if errors.photo or errors.photoOCR %}
                       {% for error, value in errors %}
@@ -47,6 +47,7 @@
         <ul class="govuk-list govuk-list--bullet">
           <li>{{ t('upload:list.li1') }}</li>
           <li>{{ t('upload:list.li2') }}</li>
+          <li>{{ t('upload:list.li3') }}</li>
         </ul>
 
 

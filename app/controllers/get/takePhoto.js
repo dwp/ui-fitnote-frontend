@@ -83,6 +83,12 @@ function getPhotoError(req, res) {
         field: 'userPhotoID',
       };
       break;
+    case 'password':
+      photoError = {
+        message: req.i18nTranslator.t('upload:password'),
+        field: 'userPhotoID',
+      };
+      break;
     default:
       photoError = {};
   }
@@ -95,7 +101,7 @@ function getErrorMessage(req, res) {
   const fileError = getFileError(req);
   const photoError = getPhotoError(req, res);
   const photoTypeError = getPhotoTypeError(req);
-  if ((req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && (req.query.error !== 'maxReplay') && !fileError) {
+  if ((req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && (req.query.error !== 'maxReplay') && (req.query.error !== 'password') && !fileError) {
     errorMessage = '';
   } else if (req.query.error === 'ocrFailed') {
     errorMessage = {

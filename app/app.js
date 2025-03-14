@@ -113,7 +113,7 @@ app.set('view engine', 'html');
  * can use the same Nunjucks environment on application-specific routes.
  */
 app.use((req, res, next) => {
-  const env = nunjucks.configure([path.join(__dirname, '../app/views'), path.join(__dirname, '../node_modules/hmrc-frontend')], {
+  const env = nunjucks.configure([path.join(__dirname, '../app/views'), path.join(__dirname, '../node_modules/hmrc-frontend'), path.join(__dirname, '../node_modules/@ministryofjustice'), path.join(__dirname, '../node_modules/home-office-kit')], {
     autoescape: true,
     throwOnUndefined: false,
     trimBlocks: false,

@@ -1,19 +1,21 @@
 {
-    "h1": "Upload your fit note",
+    "h1": "Choose and upload your fit note",
     "list": {
-        "li1": "a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
-        "li2": "smaller than 10MB"
+        "li1": "be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
+        "li2": "be smaller than 10MB",
+        "li3": "not be password protected - if your fit note has a password, you will need to save it as a new file without a password and upload it"
     },
-    "text": "Your file must be:",
+    "text": "Your file must:",
     "p": "Uploading...",
     "buttonText": "Upload and continue",
-    "upload": "Upload a file",
+    "h2": "Choose your file first",
     "back": "Back",
-    "missing": "You must select a file to continue",
+    "missing": "Choose the file you want to upload",
     "invalid": "The selected file must be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
     "failed-ocr": "The selected file must be clear and readable, containing the whole fit note",
     "tooBig": "The file you selected is too large to be processed. It must be smaller than 10MB",
     "connection": "There was a problem uploading the image, please retry using a Wifi connection",
+    "password": "You cannot upload a password protected file",
     "serviceFail": "Try again",
     "postalInstruction": {
         "p1": "If you keep having problems uploading your fit note, you should post it to us instead.",

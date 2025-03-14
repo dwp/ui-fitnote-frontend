@@ -196,6 +196,25 @@ describe('Photo status', () => {
     photoStatus.photoStatus(req, res);
   });
 
+  it('returns a password error when controller returns FAILED_IMG_PASSWORD', (done) => {
+    nock(API_URL).get(IMAGE_STATUS).reply(200, { fitnoteStatus: 'FAILED_IMG_PASSWORD' });
+    res = {
+      status(code) {
+        return {
+          send(body) {
+            assert.equal(code, 200);
+            assert.equal(body, '/&error=password');
+            done();
+          },
+        };
+      },
+      cookie(name) {
+        assert.equal(name, 'exp');
+      },
+    };
+    photoStatus.photoStatus(req, res);
+  });
+
   it('returns a img type error when controller returns FAILED_IMG_FILE_TYPE', (done) => {
     nock(API_URL).get(IMAGE_STATUS).reply(200, { fitnoteStatus: 'FAILED_IMG_FILE_TYPE' });
     res = {

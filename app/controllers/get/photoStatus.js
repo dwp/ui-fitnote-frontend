@@ -41,6 +41,9 @@ function photoStatus(req, res) {
           case 'FAILED_IMG_MAX_REPLAY':
             res.status(200).send(`/${route}&error=maxReplay`);
             break;
+          case 'FAILED_IMG_PASSWORD':
+            res.status(200).send(`/${route}&error=password`);
+            break;
           case 'FAILED_ERROR':
           case 'FAILED_IMG_COMPRESS':
           case 'FAILED_IMG_FILE_TYPE':

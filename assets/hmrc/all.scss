@@ -2,6 +2,13 @@
 -------------------------------------------------- */
 @import "hmrc-frontend-src/src/components/timeout-dialog/timeout-dialog";
 
+/* MOJ */
+@import '@ministryofjustice/frontend/moj/components/ticket-panel/ticket-panel';
+
+/* Home Office */
+@import 'govuk-frontend/govuk/components/inset-text/index';
+@import 'home-office-kit/sass/alert';
+
 .hmrc-timeout-dialog__message[aria-hidden="true"]{
   display: block;
 }

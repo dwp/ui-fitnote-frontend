@@ -16,6 +16,15 @@
         <form action="/send-nino" method="post" class="form" name="ninoForm" id="formData" data-form="nino"
             autocomplete="off">
             <div id="govuk-form-group-error" class="govuk-form-group">
+                <div class="hods-alert hods-alert--success">
+                    <h2 class="hods-alert__heading">
+                        {{ t('nino:alert-heading') }}
+                    </h2>
+                    <p>
+                        {{ t('nino:alert-text') }}
+                    </p>
+                </div>
+
                 <h1 class="govuk-label-wrapper">
                     <label class="govuk-heading-l" for="ninoFieldID">{{ t('nino:heading') }}</label>
                 </h1>

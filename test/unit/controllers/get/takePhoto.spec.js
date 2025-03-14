@@ -121,4 +121,20 @@ describe('Take Photo Page (upload)', () => {
     };
     takePhoto.takePhotoPage(req, res);
   });
+
+  it('Should render the upload page with photo errors (password)', (done) => {
+    delete req.query.type;
+    delete req.query.ref;
+    req.query.error = 'password';
+    const res = {
+      render(template, options) {
+        assert.equal(req.i18nTranslator.t.calledWith('upload:password'), true);
+        assert.equal(template, 'upload');
+        assert.equal(options.version, process.env.npm_package_version);
+        assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
+        done();
+      },
+    };
+    takePhoto.takePhotoPage(req, res);
+  });
 });
