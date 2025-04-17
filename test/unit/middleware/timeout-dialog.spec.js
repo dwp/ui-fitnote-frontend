@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const Request = require('../../helpers/fake-request.js');
-const Response = require('../../helpers/fake-response.js');
-const timeoutDialog = require('../../../app/middleware/timeout-dialog.js');
+import { expect } from 'chai';
+import Request from '../../helpers/fake-request.js';
+import Response from '../../helpers/fake-response.js';
+import timeoutDialog from '../../../app/middleware/timeout-dialog.js';
 
 describe('Middleware: session-timeout', () => {
   it('should add timeoutDialog object to res.locals', () => {

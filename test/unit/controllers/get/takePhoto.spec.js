@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const sinon = require('sinon');
-const takePhoto = require('../../../../app/controllers/get/takePhoto');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import sinon from 'sinon';
+import takePhoto from '../../../../app/controllers/get/takePhoto.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -35,7 +35,7 @@ describe('Take Photo Page (upload)', () => {
         done();
       },
     };
-    takePhoto.takePhotoPage(req, res);
+    takePhoto(req, res);
   });
 
   it('Should render the upload page with file, size and type errors', (done) => {
@@ -54,7 +54,7 @@ describe('Take Photo Page (upload)', () => {
         done();
       },
     };
-    takePhoto.takePhotoPage(req, res);
+    takePhoto(req, res);
   });
 
   it('Should render the upload page with photo errors (service failed)', (done) => {
@@ -70,7 +70,7 @@ describe('Take Photo Page (upload)', () => {
         done();
       },
     };
-    takePhoto.takePhotoPage(req, res);
+    takePhoto(req, res);
   });
 
   it('Should render the upload page with photo errors (no photo)', (done) => {
@@ -86,7 +86,7 @@ describe('Take Photo Page (upload)', () => {
         done();
       },
     };
-    takePhoto.takePhotoPage(req, res);
+    takePhoto(req, res);
   });
 
   it('Should render the upload page with photo errors (ocr failed)', (done) => {
@@ -103,7 +103,7 @@ describe('Take Photo Page (upload)', () => {
         done();
       },
     };
-    takePhoto.takePhotoPage(req, res);
+    takePhoto(req, res);
   });
 
   it('Should render the upload page with photo errors (max replay)', (done) => {
@@ -119,7 +119,7 @@ describe('Take Photo Page (upload)', () => {
         done();
       },
     };
-    takePhoto.takePhotoPage(req, res);
+    takePhoto(req, res);
   });
 
   it('Should render the upload page with photo errors (password)', (done) => {
@@ -135,6 +135,6 @@ describe('Take Photo Page (upload)', () => {
         done();
       },
     };
-    takePhoto.takePhotoPage(req, res);
+    takePhoto(req, res);
   });
 });

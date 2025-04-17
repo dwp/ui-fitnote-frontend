@@ -1,7 +1,7 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const cookiePolicy = require('../../../../app/controllers/get/cookiePolicy');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import cookiePolicy from '../../../../app/controllers/get/cookiePolicy.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -18,6 +18,6 @@ describe('Cookie Policy', () => {
         done();
       },
     };
-    cookiePolicy.cookiePolicyPage(req, res);
+    cookiePolicy(req, res);
   });
 });

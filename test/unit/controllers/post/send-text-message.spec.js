@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const sinon = require('sinon');
-const sendTextMessage = require('../../../../app/controllers/post/sendTextMessage.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import sinon from 'sinon';
+import sendTextMessage from '../../../../app/controllers/post/sendTextMessage.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -45,24 +45,24 @@ describe('Send text message (POST)', () => {
 
   it('Send text message number and redirect to check-your-answers', (done) => {
     const res = buildRes('/check-your-answers', done);
-    sendTextMessage.sendTextMessageConfirmation(req, res);
+    sendTextMessage(req, res);
   });
 
   it('Send blank text message number and redirect to /text-message?text=1', (done) => {
     req.body.mobileNumberField = ''; // Blank number
     const res = buildRes('/text-message?text=1', done);
-    sendTextMessage.sendTextMessageConfirmation(req, res);
+    sendTextMessage(req, res);
   });
 
   it('Send invalid text message number and redirect to /text-message?text=2', (done) => {
     req.body.mobileNumberField = 'abc123'; // Invalid number
     const res = buildRes('/text-message?text=2', done());
-    sendTextMessage.sendTextMessageConfirmation(req, res);
+    sendTextMessage(req, res);
   });
 
   it('Send text message number with no sessionId and redirect to /session-timeout', (done) => {
     req.cookies.sessionId = undefined; // No SessionId
     const res = buildRes('/session-timeout', done());
-    sendTextMessage.sendTextMessageConfirmation(req, res);
+    sendTextMessage(req, res);
   });
 });

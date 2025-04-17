@@ -1,5 +1,5 @@
-const config = require('config');
-const logger = require('../../functions/bunyan');
+import config from 'config';
+import logger from '../../functions/bunyan.js';
 
 function serverError(req, res) {
   if (config.nodeEnvironment !== 'test') {
@@ -15,4 +15,4 @@ function serverError(req, res) {
   });
 }
 
-module.exports.serverError = serverError;
+export default serverError;

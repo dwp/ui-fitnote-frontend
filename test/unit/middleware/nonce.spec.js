@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import sinon from 'sinon';
 
-const { generateNonce, attachNonceToLocals } = require('../../../app/middleware/nonce');
+import { generateNonce, attachNonceToLocals } from '../../../app/middleware/nonce.js';
 
 describe('nonce', () => {
   describe('generateNonce', () => {

@@ -1,9 +1,9 @@
-const logger = require('./bunyan');
+import logger from './bunyan.js';
 
-exports.honeypot = function honeypot(field, message) {
+export default function honeypot(field, message) {
   if (field) {
     logger.info(message);
     return false;
   }
   return true;
-};
+}

@@ -1,7 +1,7 @@
-const config = require('config');
-const getLanguage = require('../../functions/getLanguage');
-const enErrors = require('../../locales/en/errors.json');
-const cyErrors = require('../../locales/cy/errors.json');
+import config from 'config';
+import getLanguage from '../../functions/getLanguage.js';
+import enErrors from '../../locales/en/errors.json' with { type: 'json' };
+import cyErrors from '../../locales/cy/errors.json' with { type: 'json' };
 
 function methodObtainedPage(req, res) {
   const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
@@ -25,4 +25,4 @@ function methodObtainedPage(req, res) {
   });
 }
 
-module.exports.methodObtained = methodObtainedPage;
+export default methodObtainedPage;

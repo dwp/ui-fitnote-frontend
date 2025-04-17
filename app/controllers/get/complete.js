@@ -1,5 +1,5 @@
-const config = require('config');
-const logger = require('../../functions/bunyan');
+import config from 'config';
+import logger from '../../functions/bunyan.js';
 
 function completePage(req, res) {
   res.render('complete', {
@@ -17,4 +17,5 @@ function completePage(req, res) {
   logger.info('Cleared Session ID');
   logger.info('Process Complete');
 }
-module.exports.completePage = completePage;
+
+export default completePage;

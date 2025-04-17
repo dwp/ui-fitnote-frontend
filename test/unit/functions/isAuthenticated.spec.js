@@ -1,7 +1,7 @@
-const chai = require('chai');
-const sinon = require('sinon');
-const config = require('config');
-const { isAuthenticated } = require('../../../app/functions/isAuthenticated');
+import chai from 'chai';
+import sinon from 'sinon';
+import config from 'config';
+import isAuthenticated from '../../../app/functions/isAuthenticated.js';
 
 const { expect } = chai;
 

@@ -1,7 +1,7 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const photoAudit = require('../../../../app/controllers/get/photoAudit');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import photoAudit from '../../../../app/controllers/get/photoAudit.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -27,6 +27,6 @@ describe('Photo Audit Page', () => {
         done();
       },
     };
-    photoAudit.photoAuditPage(req, res);
+    photoAudit(req, res);
   });
 });

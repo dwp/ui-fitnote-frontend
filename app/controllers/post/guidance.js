@@ -1,5 +1,5 @@
-const config = require('config');
-const hasTimedOut = require('../../functions/timeoutRedirect');
+import config from 'config';
+import hasTimedOut from '../../functions/timeoutRedirect.js';
 
 function guidancePage(req, res) {
   const { page } = req.body;
@@ -13,9 +13,9 @@ function guidancePage(req, res) {
     });
     res.redirect(`/${route}?ref=${page}`);
   } else {
-    redirectUrl = hasTimedOut.redirectTimeout('no valid session');
+    redirectUrl = hasTimedOut('no valid session');
     res.redirect(redirectUrl);
   }
 }
 
-module.exports.guidance = guidancePage;
+export default guidancePage;

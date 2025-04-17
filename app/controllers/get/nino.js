@@ -1,10 +1,10 @@
-const config = require('config');
-const request = require('request');
-const logger = require('../../functions/bunyan');
-const getLanguage = require('../../functions/getLanguage');
-const photoRoute = require('../../functions/getPhotoRoute');
-const enErrors = require('../../locales/en/errors.json');
-const cyErrors = require('../../locales/cy/errors.json');
+import config from 'config';
+import request from 'request';
+import logger from '../../functions/bunyan.js';
+import getLanguage from '../../functions/getLanguage.js';
+import photoRoute from '../../functions/getPhotoRoute.js';
+import enErrors from '../../locales/en/errors.json' with { type: 'json' };
+import cyErrors from '../../locales/cy/errors.json' with { type: 'json' };
 
 function apiOptions(req) {
   return {
@@ -54,7 +54,7 @@ function ninoPage(req, res) {
   const logType = logger.child({ widget: 'ninoPage' });
   let nino = '';
   const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
-  const route = photoRoute.getRoute(req);
+  const route = photoRoute(req);
   let previousPageCYA = 0;
   const hasRefProperty = Object.prototype.hasOwnProperty.call(req.query, 'ref');
   if (hasRefProperty) {
@@ -85,4 +85,4 @@ function ninoPage(req, res) {
   request(apiOptions(req), callback);
 }
 
-module.exports.ninoPage = ninoPage;
+export default ninoPage;

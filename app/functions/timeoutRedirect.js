@@ -1,6 +1,6 @@
-const logger = require('./bunyan');
+import logger from './bunyan.js';
 
-exports.redirectTimeout = function timeout(msg) {
+export default function timeout(msg) {
   logger.info(msg);
   return '/session-timeout';
-};
+}

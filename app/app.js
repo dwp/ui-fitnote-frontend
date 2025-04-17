@@ -1,24 +1,36 @@
+/* eslint-disable no-underscore-dangle */
 // Fit Note Application
-const nunjucks = require('nunjucks');
-const favicon = require('serve-favicon');
-const helmet = require('helmet');
-const async = require('async');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const express = require('express');
-const expressSanitized = require('express-sanitized');
-const timeout = require('connect-timeout');
-const path = require('path');
-const config = require('config');
+import nunjucks from 'nunjucks';
+import favicon from 'serve-favicon';
+import helmet from 'helmet';
+import async from 'async';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import express from 'express';
+import expressSanitized from 'express-sanitized';
+import timeout from 'connect-timeout';
+import path from 'path';
+import config from 'config';
+import { fileURLToPath } from 'url';
+
+import { UNSAFE_INLINE } from './constants.js';
+
+// middleware
+import cookieConsentMW from './middleware/cookie-consent.js';
+import { generateNonce, attachNonceToLocals } from './middleware/nonce.js';
+import timeoutDialogMW from './middleware/timeout-dialog.js';
+
+import init from './functions/i18n.js';
+
+import logger from './functions/bunyan.js';
+import routes from './routes.js';
+
+import apiCheck from './functions/checkServer.js';
 
 const app = express();
 
-const { UNSAFE_INLINE } = require('./constants');
-
-// middleware
-const cookieConsentMW = require('./middleware/cookie-consent');
-const { generateNonce, attachNonceToLocals } = require('./middleware/nonce');
-const timeoutDialogMW = require('./middleware/timeout-dialog');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const nonce = generateNonce();
 
@@ -27,12 +39,7 @@ const oneYear = 31557600000;
 
 const appRootDirectory = path.join(__dirname, '/..');
 
-const logger = require('./functions/bunyan');
-const routes = require('./routes');
-
-const serviceCheck = require('./functions/checkServer');
-
-serviceCheck.apiCheck(config.get('api.url'));
+apiCheck(config.get('api.url'));
 
 // Initialise The Application
 // Use Async and parallel function to load in parallel
@@ -148,7 +155,7 @@ app.use((req, res, next) => {
   next();
 });
 
-require('./functions/i18n.js')(app, ['app/locales'], ['en', 'cy']);
+init(app, ['app/locales'], ['en', 'cy']);
 
 // Make Variables in config.js available to Nunjucks templates
 app.use((req, res, next) => {
@@ -169,4 +176,4 @@ if (typeof (routes) !== 'function') {
   app.use('/', routes);
 }
 
-module.exports = app;
+export default app;

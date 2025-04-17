@@ -1,6 +1,6 @@
-const nock = require('nock');
-const chai = require('chai');
-const cya = require('../../../../app/controllers/get/checkYourAnswers.js');
+import nock from 'nock';
+import chai from 'chai';
+import cya from '../../../../app/controllers/get/checkYourAnswers.js';
 
 const { assert } = chai;
 const API_URL = 'http://localhost:3004';
@@ -40,7 +40,7 @@ describe('Check your answers page', () => {
         done();
       },
     };
-    cya.checkYourAnswersPage(req, res);
+    cya(req, res);
   });
 
   it('should render the 500 error page if there is an error from one of the apis', (done) => {
@@ -57,6 +57,6 @@ describe('Check your answers page', () => {
         done();
       },
     };
-    cya.checkYourAnswersPage(req, res);
+    cya(req, res);
   });
 });

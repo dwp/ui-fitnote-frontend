@@ -1,5 +1,5 @@
-const config = require('config');
-const logger = require('../../functions/bunyan');
+import config from 'config';
+import logger from '../../functions/bunyan.js';
 
 function photoQualityError(req, res) {
   if (config.nodeEnvironment !== 'test') {
@@ -16,4 +16,4 @@ function photoQualityError(req, res) {
   });
 }
 
-module.exports.photoQualityError = photoQualityError;
+export default photoQualityError;

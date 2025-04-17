@@ -1,7 +1,7 @@
-const request = require('request');
-const config = require('config');
-const logger = require('../../functions/bunyan');
-const hasTimedOut = require('../../functions/timeoutRedirect');
+import request from 'request';
+import config from 'config';
+import logger from '../../functions/bunyan.js';
+import hasTimedOut from '../../functions/timeoutRedirect.js';
 
 function submitDeclaration(req, res) {
   const logType = logger.child({ widget: 'confirmation' });
@@ -55,9 +55,9 @@ function submitDeclaration(req, res) {
   if (typeof req.cookies.sessionId !== 'undefined') {
     request(options, callback);
   } else {
-    redirectUrl = hasTimedOut.redirectTimeout('no valid session');
+    redirectUrl = hasTimedOut('no valid session');
     res.redirect(redirectUrl);
   }
 }
 
-module.exports.submitDeclaration = submitDeclaration;
+export default submitDeclaration;

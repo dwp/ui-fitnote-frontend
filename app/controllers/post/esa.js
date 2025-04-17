@@ -1,6 +1,6 @@
-const config = require('config');
-const logger = require('../../functions/bunyan');
-const hasTimedOut = require('../../functions/timeoutRedirect');
+import config from 'config';
+import logger from '../../functions/bunyan.js';
+import hasTimedOut from '../../functions/timeoutRedirect.js';
 
 function esaPage(req, res) {
   const { esa } = req.body;
@@ -19,9 +19,9 @@ function esaPage(req, res) {
       res.redirect('/esa');
     }
   } else {
-    redirectUrl = hasTimedOut.redirectTimeout('no valid session');
+    redirectUrl = hasTimedOut('no valid session');
     res.redirect(redirectUrl);
   }
 }
 
-module.exports.esa = esaPage;
+export default esaPage;

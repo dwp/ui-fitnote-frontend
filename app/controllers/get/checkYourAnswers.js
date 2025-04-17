@@ -1,6 +1,6 @@
-const rp = require('request-promise-native');
-const config = require('config');
-const logger = require('../../functions/bunyan');
+import rp from 'request-promise-native';
+import config from 'config';
+import logger from '../../functions/bunyan.js';
 
 function checkYourAnswersPage(req, res) {
   const logType = logger.child({ widget: 'checkYourAnswersPage' });
@@ -52,4 +52,4 @@ function checkYourAnswersPage(req, res) {
     });
 }
 
-module.exports.checkYourAnswersPage = checkYourAnswersPage;
+export default checkYourAnswersPage;

@@ -1,6 +1,6 @@
-const config = require('config');
-const logger = require('../bunyan');
-const { COOKIE_CONSENT_CHOICE } = require('../../constants');
+import config from 'config';
+import logger from '../bunyan.js';
+import { COOKIE_CONSENT_CHOICE } from '../../constants.js';
 
 const requiredCookies = ['sessionId', 'exp', 'route', COOKIE_CONSENT_CHOICE];
 
@@ -34,6 +34,4 @@ const clearAllCookies = (req, res) => {
   });
 };
 
-module.exports = {
-  clearAllCookies,
-};
+export default clearAllCookies;

@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { ninoValidateLoose } = require('../../../../app/functions/sanitise/validateNinoLoose');
+import { expect } from 'chai';
+import ninoValidateLoose from '../../../../app/functions/sanitise/validateNinoLoose.js';
 
 describe('ninoValidateLoose', () => {
   it('should validate nino with optional last letter missing', () => {

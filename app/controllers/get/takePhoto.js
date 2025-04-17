@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function getFileError(req) {
   let fileError = false;
@@ -151,4 +151,4 @@ function takePhotoPage(req, res) {
   });
 }
 
-module.exports.takePhotoPage = takePhotoPage;
+export default takePhotoPage;

@@ -1,19 +1,23 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const path = require('path');
-const fs = require('fs');
-const sinon = require('sinon');
-const app = require('../../../../app/app');
-const sendNino = require('../../../../app/controllers/post/sendNino.js');
-const sendAddress = require('../../../../app/controllers/post/sendAddress.js');
-const sendPhoto = require('../../../../app/controllers/post/sendPhoto.js');
-const cya = require('../../../../app/controllers/post/checkYourAnswers.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import path from 'path';
+import fs from 'fs';
+import sinon from 'sinon';
+import { fileURLToPath } from 'url';
+import app from '../../../../app/app.js';
+import sendNino from '../../../../app/controllers/post/sendNino.js';
+import sendAddress from '../../../../app/controllers/post/sendAddress.js';
+import sendPhoto from '../../../../app/controllers/post/sendPhoto.js';
+import cya from '../../../../app/controllers/post/checkYourAnswers.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
 
 const page = '/check-your-answers';
 const sessionId = '97w1y2guyg1we';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function buildReq(fileObj) {
   return {
@@ -49,12 +53,12 @@ function buildRes(expectedRedirect, done) {
 describe('CYA (POST)', () => {
   it('Submit nino', (done) => {
     const req = buildReq();
-    sendNino.sendNino(req, buildRes('/address', done()));
+    sendNino(req, buildRes('/address', done()));
   });
 
   it('Submit address', (done) => {
     const req = buildReq();
-    sendAddress.sendAddress(req, buildRes('/text-message', done()));
+    sendAddress(req, buildRes('/text-message', done()));
   });
 
   it('return type=2 (heic)', (done) => {
@@ -71,7 +75,7 @@ describe('CYA (POST)', () => {
     const req = buildReq(fileObj);
     const res = buildRes(expectedUrl, done());
 
-    sendPhoto.photoUploader(req, res);
+    sendPhoto(req, res);
   });
 
   it('CYA proceed to complete', (done) => {
@@ -82,7 +86,7 @@ describe('CYA (POST)', () => {
         if (err) {
           done(err);
         }
-        cya.acceptAndSend(req, buildRes('/complete', done()));
+        cya(req, buildRes('/complete', done()));
       });
   });
 });

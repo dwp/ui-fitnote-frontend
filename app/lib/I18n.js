@@ -11,9 +11,9 @@
  *   const I18n = require('govuk-casa/lib/I18n')();.
  */
 
-const npath = require('path');
-const fs = require('fs');
-const logger = require('../functions/bunyan');
+import npath from 'path';
+import fs from 'fs';
+import logger from '../functions/bunyan.js';
 
 const LOCALE_DATA = {};
 
@@ -113,7 +113,7 @@ function loadLocale(localeDirs, locale) {
   }
 }
 
-module.exports = function flatJson(localeDirs, supportedLocales) {
+export default function flatJson(localeDirs, supportedLocales) {
   // Load the locale into the `LOCALE_DATA` object.
 
   // Load data for all supported locales
@@ -127,4 +127,4 @@ module.exports = function flatJson(localeDirs, supportedLocales) {
   return {
     Translator,
   };
-};
+}

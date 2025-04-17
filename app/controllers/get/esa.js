@@ -1,10 +1,10 @@
-const config = require('config');
-const logger = require('../../functions/bunyan');
-const newSession = require('../../functions/createSessionId');
-const retry = require('../../functions/retryCookie');
-const getLanguage = require('../../functions/getLanguage');
-const enErrors = require('../../locales/en/errors.json');
-const cyErrors = require('../../locales/cy/errors.json');
+import config from 'config';
+import logger from '../../functions/bunyan.js';
+import createSessionId from '../../functions/createSessionId.js';
+import retryCookie from '../../functions/retryCookie.js';
+import getLanguage from '../../functions/getLanguage.js';
+import enErrors from '../../locales/en/errors.json' with { type: 'json' };
+import cyErrors from '../../locales/cy/errors.json' with { type: 'json' };
 
 function esaPage(req, res) {
   const validationErrors = getLanguage(req.language) === 'en' ? JSON.stringify(enErrors) : JSON.stringify(cyErrors);
@@ -20,8 +20,8 @@ function esaPage(req, res) {
     }
   }
   logger.info('Creating Session ID');
-  const sessionId = newSession.createSessionId(req, res);
-  retry.retryCookie(req, res);
+  const sessionId = createSessionId(req, res);
+  retryCookie(req, res);
 
   res.render('esa', {
     sessionId,
@@ -33,4 +33,4 @@ function esaPage(req, res) {
   });
 }
 
-module.exports.esa = esaPage;
+export default esaPage;

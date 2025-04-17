@@ -1,8 +1,8 @@
-const chai = require('chai');
-const sinon = require('sinon');
-const chaiHttp = require('chai-http');
-const express = require('express');
-const init = require('../../../app/functions/i18n');
+import chai from 'chai';
+import sinon from 'sinon';
+import chaiHttp from 'chai-http';
+import express from 'express';
+import init from '../../../app/functions/i18n.js';
 
 chai.use(chaiHttp);
 const { expect } = chai;

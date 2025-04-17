@@ -1,7 +1,8 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "2.0.0",
+  "version": "2.1.0",
+  "type": "module",
   "scripts": {
     "postinstall": "npm run build",
     "start": "node ./bin/server.js",
@@ -16,7 +17,7 @@
     "test": "npm run test:unit",
     "test:unit": "mocha -- -- test/unit/**/*",
     "deps:update": "npm-check-updates -u && npm i",
-    "quality:coverage": "nyc node_modules/.bin/_mocha -- -- test/unit/**/*",
+    "quality:coverage": "c8 node_modules/.bin/_mocha -- -- test/unit/**/*",
     "quality:lint:fix": "eslint --fix .",
     "quality:lint": "eslint .",
     "quality:stylelint": "stylelint \"assets/**/*.scss\" -f verbose",
@@ -25,11 +26,11 @@
     "ioredis": "5.5.0"
   },
   "devDependencies": {
-    "@babel/core": "7.26.9",
-    "@babel/eslint-parser": "7.26.8",
+    "@babel/core": "7.26.10",
+    "@babel/eslint-parser": "7.27.0",
     "@babel/preset-env": "7.26.9",
     "@dwp/eslint-config-base": "5.0.1",
-    "@rollup/plugin-alias": "3.1.9",
+    "@rollup/plugin-alias": "5.1.1",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-legacy": "3.0.2",
     "@rollup/plugin-node-resolve": "13.3.0",
@@ -38,37 +39,38 @@
     "chai-spies": "1.1.0",
     "eslint": "7.32.0",
     "eslint-plugin-sonarjs": "0.25.1",
-    "gulp": "4.0.2",
-    "hmrc-frontend-src": "https://github.com/hmrc/hmrc-frontend.git#v6.59.0",
+    "gulp": "5.0.0",
+    "hmrc-frontend-src": "https://github.com/hmrc/hmrc-frontend.git#v5.67.1",
     "html5shiv": "3.7.3",
     "mocha": "11.1.0",
     "nock": "13.5.6",
-    "npm-check-updates": "17.1.14",
+    "npm-check-updates": "17.1.16",
     "oldie": "1.3.0",
-    "postcss-cli": "11.0.0",
+    "postcss-cli": "11.0.1",
     "postcss-url": "10.1.3",
     "rollup": "2.79.1",
     "rollup-plugin-terser": "7.0.2",
-    "sass": "1.79.4",
-    "sinon": "19.0.2",
-    "stylelint": "13.13.1",
-    "stylelint-config-recommended": "5.0.0",
-    "stylelint-scss": "3.21.0"
+    "sass": "1.86.0",
+    "sinon": "19.0.5",
+    "stylelint": "16.17.0",
+    "stylelint-config-recommended": "15.0.0",
+    "stylelint-scss": "6.11.1"
   },
   "dependencies": {
-    "@dwp/govuk-casa": "^7.2.5",
+    "@dwp/govuk-casa": "7.2.6",
     "@ministryofjustice/frontend": "3.4.0",
     "async": "3.2.6",
     "autoprefixer": "10.4.21",
-    "body-parser": "1.20.3",
+    "body-parser": "2.2.0",
     "bunyan": "1.8.15",
     "bunyan-syslog-udp": "0.2.0",
+    "c8": "10.1.3",
     "chokidar": "4.0.3",
     "config": "3.3.12",
     "connect-timeout": "1.9.0",
     "cookie-parser": "1.4.7",
     "del": "6.1.1",
-    "express": "4.21.2",
+    "express": "5.1.0",
     "express-sanitized": "0.5.1",
     "express-session": "1.18.1",
     "filesize": "10.1.6",
@@ -76,16 +78,16 @@
     "gulp-concat": "2.6.1",
     "gulp-csso": "4.0.1",
     "gulp-dart-sass": "1.1.0",
-    "gulp-debug": "4.0.0",
-    "gulp-mocha": "8.0.0",
+    "gulp-debug": "5.0.1",
+    "gulp-mocha": "10.0.1",
     "gulp-postcss": "10.0.0",
     "gulp-uglify": "3.0.2",
     "gulp4-run-sequence": "1.0.2",
-    "helmet": "8.0.0",
-    "hmrc-frontend": "6.59.0",
-    "home-office-kit": "^1.2.0",
-    "multer": "1.4.5-lts.1",
-    "notifications-node-client": "7.0.6",
+    "helmet": "8.1.0",
+    "hmrc-frontend": "5.67.1",
+    "home-office-kit": "1.2.0",
+    "multer": "1.4.5-lts.2",
+    "notifications-node-client": "8.2.1",
     "nunjucks": "3.2.4",
     "nyc": "17.1.0",
     "postcss": "8.5.3",
@@ -103,14 +105,14 @@
       "braces": "3.0.3",
       "micromatch": "4.0.8"
     },
-    "axios": "0.29.0",
+    "axios": "1.8.4",
     "chokidar": "$chokidar",
     "express": "$express",
     "findup-sync": {
       "braces": "3.0.3",
       "micromatch": "4.0.8"
     },
-    "glob-parent": "5.1.2",
+    "glob-parent": "6.0.2",
     "got": "14.4.6",
     "gulp": {
       "braces": "3.0.3"
@@ -122,8 +124,7 @@
     "micromatch": {
       "braces": "3.0.3"
     },
-    "minimatch": "3.1.2",
-    "nanoid": "3.3.8",
+    "nanoid": "3.3.11",
     "oldie": {
       "postcss": "$postcss"
     },
@@ -148,6 +149,6 @@
     "stylelint": {
       "postcss": "$postcss"
     },
-    "tough-cookie": "5.1.1"
+    "tough-cookie": "5.1.2"
   }
 }

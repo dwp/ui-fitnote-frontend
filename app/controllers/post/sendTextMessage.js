@@ -1,11 +1,11 @@
-const request = require('request');
-const config = require('config');
-const logger = require('../../functions/bunyan');
-const checkHoneypot = require('../../functions/honeypot');
-const hasTimedOut = require('../../functions/timeoutRedirect');
-const checkBlank = require('../../functions/sanitise/isFieldBlank');
-const checkMobile = require('../../functions/sanitise/validateMobileNumber');
-const sessionExpiry = require('../../functions/refreshSessionExpiryTime.js');
+import request from 'request';
+import config from 'config';
+import logger from '../../functions/bunyan.js';
+import checkHoneypot from '../../functions/honeypot.js';
+import hasTimedOut from '../../functions/timeoutRedirect.js';
+import checkBlank from '../../functions/sanitise/isFieldBlank.js';
+import checkMobile from '../../functions/sanitise/validateMobileNumber.js';
+import sessionExpiry from '../../functions/refreshSessionExpiryTime.js';
 
 function apiOptions(fitnote) {
   return {
@@ -23,7 +23,7 @@ function apiOptions(fitnote) {
 
 function apiCallback(req, res, logType) {
   return function callback(err, response) {
-    sessionExpiry.refreshTime(res, logType);
+    sessionExpiry(res, logType);
     if (!err) {
       logType.info(`Response Received: ${response.statusCode}`);
 
@@ -56,8 +56,8 @@ function hasTextMessagePassed(req, res, logType) {
   const textPermission = req.body.textReminder;
   const mobRaw = req.body.mobileNumberField;
   let newMobile = mobRaw;
-  const isMobBlank = checkBlank.notBlank(mobRaw);
-  const validMobile = checkMobile.mobileValidate(mobRaw);
+  const isMobBlank = checkBlank(mobRaw);
+  const validMobile = checkMobile(mobRaw);
   const fitnote = {
     sessionId: req.cookies.sessionId,
   };
@@ -88,7 +88,7 @@ function sendTextMessageConfirmation(req, res) {
   let redirectUrl;
   const logType = logger.child({ widget: 'postTextMobile' });
   const fakeLandlineRaw = req.body.landlineField;
-  const passedHoneypot = checkHoneypot.honeypot(fakeLandlineRaw, 'BOT: honeypot detected a bot, Text Message Page, Landline Field');
+  const passedHoneypot = checkHoneypot(fakeLandlineRaw, 'BOT: honeypot detected a bot, Text Message Page, Landline Field');
 
   if (typeof req.cookies.sessionId !== 'undefined') {
     logType.info(`Passed Honeypot ${passedHoneypot}`);
@@ -99,9 +99,9 @@ function sendTextMessageConfirmation(req, res) {
       hasTextMessagePassed(req, res, logType);
     }
   } else {
-    redirectUrl = hasTimedOut.redirectTimeout('no valid session');
+    redirectUrl = hasTimedOut('no valid session');
     res.redirect(redirectUrl);
   }
 }
 
-module.exports.sendTextMessageConfirmation = sendTextMessageConfirmation;
+export default sendTextMessageConfirmation;

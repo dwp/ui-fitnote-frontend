@@ -1,6 +1,6 @@
-const Request = require('./fake-request.js');
+import Request from './fake-request.js';
 
-module.exports = class Response {
+export default class Response {
   constructor(request) {
     this.req = request || new Request();
     this.body = '';
@@ -60,4 +60,4 @@ module.exports = class Response {
     this.statusCode = statusCode;
     return this;
   }
-};
+}

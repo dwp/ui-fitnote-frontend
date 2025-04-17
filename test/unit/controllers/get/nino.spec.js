@@ -1,11 +1,11 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const nino = require('../../../../app/controllers/get/nino');
-const ninoMock = require('../../../mocks/ninoMock');
-const enErrors = require('../../../../app/locales/en/errors.json');
-const cyErrors = require('../../../../app/locales/cy/errors.json');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import nino from '../../../../app/controllers/get/nino.js';
+import ninoMock from '../../../mocks/ninoMock.js';
+import enErrors from '../../../../app/locales/en/errors.json' with { type: 'json' };
+import cyErrors from '../../../../app/locales/cy/errors.json' with { type: 'json' };
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -26,7 +26,7 @@ describe('National insurance Page', () => {
     nock(config.get('api.url'))
       .post(`/${endPoints.queryNino}`)
       .reply(200, body);
-    nino.ninoPage(req, res);
+    nino(req, res);
   });
 
   it('should check if the validationErrors content is in english', (done) => {
@@ -39,7 +39,7 @@ describe('National insurance Page', () => {
     nock(config.get('api.url'))
       .post(`/${endPoints.queryNino}`)
       .reply(200, body);
-    nino.ninoPage(req, res);
+    nino(req, res);
   });
 
   it('should check if the validationErrors content is in welsh', (done) => {
@@ -53,6 +53,6 @@ describe('National insurance Page', () => {
     nock(config.get('api.url'))
       .post(`/${endPoints.queryNino}`)
       .reply(200, body);
-    nino.ninoPage(req, res);
+    nino(req, res);
   });
 });

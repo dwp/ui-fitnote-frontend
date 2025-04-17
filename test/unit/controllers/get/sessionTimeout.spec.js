@@ -1,7 +1,7 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const sessionTimeout = require('../../../../app/controllers/get/sessionTimeout');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import sessionTimeout from '../../../../app/controllers/get/sessionTimeout.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -23,6 +23,6 @@ describe('Session Timeout Page', () => {
         done();
       },
     };
-    sessionTimeout.sessionTimeout(req, res);
+    sessionTimeout(req, res);
   });
 });

@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { numbersOnly } = require('../../../../app/functions/sanitise/isOnlyNumeric');
+import { expect } from 'chai';
+import numbersOnly from '../../../../app/functions/sanitise/isOnlyNumeric.js';
 
 describe('isOnlyNumeric', () => {
   it('should return only numeric values when given alphanumeric and special characters', () => {

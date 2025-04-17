@@ -1,14 +1,14 @@
-const config = require('config');
-const request = require('request');
-const photoRoute = require('../../functions/getPhotoRoute');
-const sessionExpiry = require('../../functions/refreshSessionExpiryTime');
-const logger = require('../../functions/bunyan');
+import config from 'config';
+import request from 'request';
+import photoRoute from '../../functions/getPhotoRoute.js';
+import sessionExpiry from '../../functions/refreshSessionExpiryTime.js';
+import logger from '../../functions/bunyan.js';
 
 function photoStatus(req, res) {
   const logType = logger.child({ widget: 'photoStatusChecker' });
-  const route = photoRoute.getRoute(req);
+  const route = photoRoute(req);
   const { sessionId } = req.cookies;
-  sessionExpiry.refreshTime(res, logType);
+  sessionExpiry(res, logType);
   const options = {
     url: `${config.get('api.url')}/imagestatus?sessionId=${sessionId}`,
     method: 'GET',
@@ -62,4 +62,4 @@ function photoStatus(req, res) {
   request(options, callback);
 }
 
-module.exports.photoStatus = photoStatus;
+export default photoStatus;

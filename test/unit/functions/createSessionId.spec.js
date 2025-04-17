@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { createSessionId } = require('../../../app/functions/createSessionId');
+import { expect } from 'chai';
+import createSessionId from '../../../app/functions/createSessionId.js';
 
 describe('createSessionId', () => {
   it('Should return sessionId and populate res data', () => {

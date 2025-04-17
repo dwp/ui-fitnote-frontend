@@ -1,9 +1,10 @@
-const request = require('request');
-const config = require('config');
-const logger = require('../../functions/bunyan');
-const getLanguage = require('../../functions/getLanguage');
-const enErrors = require('../../locales/en/errors.json');
-const cyErrors = require('../../locales/cy/errors.json');
+import request from 'request';
+import config from 'config';
+import logger from '../../functions/bunyan.js';
+import getLanguage from '../../functions/getLanguage.js';
+
+import enErrors from '../../locales/en/errors.json' with { type: 'json' };
+import cyErrors from '../../locales/cy/errors.json' with { type: 'json' };
 
 function apiOptions(req) {
   return {
@@ -96,4 +97,4 @@ function addressPage(req, res) {
   request(apiOptions(req), callback);
 }
 
-module.exports.addressPage = addressPage;
+export default addressPage;

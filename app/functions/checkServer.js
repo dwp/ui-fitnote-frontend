@@ -1,9 +1,9 @@
-const net = require('net');
-const config = require('config');
-const url = require('url');
-const logger = require('./bunyan');
+import net from 'net';
+import config from 'config';
+import url from 'url';
+import logger from './bunyan.js';
 
-exports.apiCheck = function apiCheck(uri) {
+export default function apiCheck(uri) {
   function apiConnected() {
     if (config.util.getEnv('NODE_ENV') !== 'test') {
       logger.info(`API Connected: ${uri}`);
@@ -19,4 +19,4 @@ exports.apiCheck = function apiCheck(uri) {
 
   const client = net.connect(myURL.port, myURL.hostname, apiConnected);
   client.on('error', apiFail);
-};
+}

@@ -14,12 +14,12 @@ Express facilitates API and middleware for the web application.
 Nunjucks is the JavaScript templating engine by Mozilla.
 */
 
-const https = require('https');
-const fs = require('fs');
-const config = require('config');
-const notifyValimate = require('valimate-notifier');
-const logger = require('../app/functions/bunyan');
-const app = require('../app/app.js');
+import https from 'https';
+import fs from 'fs';
+import config from 'config';
+import notifyValimate from 'valimate-notifier';
+import logger from '../app/functions/bunyan.js';
+import app from '../app/app.js';
 
 let credentials;
 let httpsServer;
@@ -73,6 +73,6 @@ process.on('SIGINT', () => {
   process.exit();
 });
 
-exports.closeServer = function closeServer() {
+export function closeServer() {
   process.exit();
 };

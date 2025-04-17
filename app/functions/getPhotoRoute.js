@@ -1,5 +1,5 @@
 // Convert a string in to a base 64 encoded string
-exports.getRoute = function getRoute(req) {
+export default function getRoute(req) {
   let route;
   if (typeof req.cookies.route !== 'undefined') {
     if (req.cookies.route === 'upload-digital') {
@@ -14,4 +14,4 @@ exports.getRoute = function getRoute(req) {
   }
 
   return route;
-};
+}

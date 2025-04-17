@@ -1,7 +1,7 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const guidance = require('../../../../app/controllers/get/guidance');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import guidance from '../../../../app/controllers/get/guidance.js';
 
 const { assert } = chai;
 
@@ -32,7 +32,7 @@ describe('Guidance Page', () => {
       },
     };
     req.cookies.route = 'upload-digital';
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 
   it('load guidance paper page after visiting upload page', (done) => {
@@ -46,7 +46,7 @@ describe('Guidance Page', () => {
       },
     };
     req.cookies.route = 'upload-paper';
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 
   it('load guidance paper page after visiting method obtained', (done) => {
@@ -60,7 +60,7 @@ describe('Guidance Page', () => {
       },
     };
     req.cookies.route = paperTemplate;
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 
   it('load guidance digital page after visiting method obtained', (done) => {
@@ -74,7 +74,7 @@ describe('Guidance Page', () => {
       },
     };
     req.cookies.route = digitalTemplate;
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 
   it('should redirect to esa page if no route cookie', (done) => {
@@ -85,7 +85,7 @@ describe('Guidance Page', () => {
         done();
       },
     };
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 
   it('should redirect to ESA page if route cookie is set to method-obtained', (done) => {
@@ -96,6 +96,6 @@ describe('Guidance Page', () => {
         done();
       },
     };
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 });

@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const address = require('../../../../app/controllers/get/address');
-const addressMock = require('../../../mocks/addressMock');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import address from '../../../../app/controllers/get/address.js';
+import addressMock from '../../../mocks/addressMock.js';
 
 const { expect } = chai;
 const { assert } = chai;
@@ -26,10 +26,7 @@ describe('Address Page', () => {
     nock(config.get('api.url'))
       .post(`/${endPoints.queryAddress}`)
       .reply(200, body);
-    const spy = chai.spy.on(address, 'addressPage');
-    address.addressPage(req, res);
-    expect(spy).to.have.been.called();
-    expect(spy).to.have.been.called.with(req, res);
+    address(req, res);
   });
 
   it('should rerender address page with the correct data retrieved from the API', (done) => {
@@ -45,7 +42,7 @@ describe('Address Page', () => {
         done();
       },
     };
-    address.addressPage(req, res);
+    address(req, res);
   });
 
   it('should render the address page without errors when getErrorMessage doesn\'t return any errors', (done) => {
@@ -60,7 +57,7 @@ describe('Address Page', () => {
         done();
       },
     };
-    address.addressPage(req, res);
+    address(req, res);
   });
 
   it('should rerender error template if any of APIs are wrong', (done) => {
@@ -73,6 +70,6 @@ describe('Address Page', () => {
         done();
       },
     };
-    address.addressPage(req, res);
+    address(req, res);
   });
 });

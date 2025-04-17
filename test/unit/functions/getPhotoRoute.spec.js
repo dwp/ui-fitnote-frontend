@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { getRoute } = require('../../../app/functions/getPhotoRoute');
+import { expect } from 'chai';
+import getRoute from '../../../app/functions/getPhotoRoute.js';
 
 describe('getPhotoRoute', () => {
   it('should default to "take" when no route in cookie', () => {

@@ -1,6 +1,6 @@
-const chai = require('chai');
-const sinon = require('sinon');
-const CookieConsent = require('../../../app/middleware/cookie-consent');
+import chai from 'chai';
+import sinon from 'sinon';
+import CookieConsent from '../../../app/middleware/cookie-consent.js';
 
 const { expect } = chai;
 

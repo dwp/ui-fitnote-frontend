@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function cookiePolicyPage(req, res) {
   res.render('cookie-policy', {
@@ -8,4 +8,4 @@ function cookiePolicyPage(req, res) {
   });
 }
 
-module.exports.cookiePolicyPage = cookiePolicyPage;
+export default cookiePolicyPage;

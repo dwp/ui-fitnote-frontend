@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
 
-const serverError = require('../../../../app/controllers/get/serverError');
+import serverError from '../../../../app/controllers/get/serverError.js';
 
 const { assert } = chai;
 
@@ -30,7 +30,7 @@ describe('serverError', () => {
         done();
       },
     };
-    serverError.serverError(req, res);
+    serverError(req, res);
   });
 
   it('should render the serverError page for test env', (done) => {
@@ -47,6 +47,6 @@ describe('serverError', () => {
         done();
       },
     };
-    serverError.serverError(req, res);
+    serverError(req, res);
   });
 });

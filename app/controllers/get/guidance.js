@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function guidancePage(req, res) {
   const validCookie = {
@@ -23,4 +23,4 @@ function guidancePage(req, res) {
   });
 }
 
-module.exports.guidance = guidancePage;
+export default guidancePage;

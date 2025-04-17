@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { ninoValidateStrict } = require('../../../../app/functions/sanitise/validateNinoStrict');
+import { expect } from 'chai';
+import ninoValidateStrict from '../../../../app/functions/sanitise/validateNinoStrict.js';
 
 describe('ninoValidateStrict', () => {
   it('should return true when valid nino', () => {

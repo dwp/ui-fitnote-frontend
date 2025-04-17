@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { notBlank } = require('../../../../app/functions/sanitise/isFieldBlank');
+import { expect } from 'chai';
+import notBlank from '../../../../app/functions/sanitise/isFieldBlank.js';
 
 describe('isFieldBlank', () => {
   it('should return false when field is empty string ', () => {

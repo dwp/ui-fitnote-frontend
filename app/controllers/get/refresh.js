@@ -1,7 +1,7 @@
-const config = require('config');
-const request = require('request');
-const sessionExpiry = require('../../functions/refreshSessionExpiryTime.js');
-const logger = require('../../functions/bunyan');
+import config from 'config';
+import request from 'request';
+import sessionExpiry from '../../functions/refreshSessionExpiryTime.js';
+import logger from '../../functions/bunyan.js';
 
 const logType = logger.child({ widget: 'session expiry refresh' });
 
@@ -16,7 +16,7 @@ function refresh(req, res) {
     if (!err) {
       logType.info(`Response received: ${response.statusCode}`);
       if (response.statusCode === 200) {
-        sessionExpiry.refreshTime(res, logType);
+        sessionExpiry(res, logType);
         res.status(200).json({ status: 200, message: 'OK' });
       } else {
         logType.error('Error extending backend session expiry time - missing sessionId');
@@ -31,4 +31,4 @@ function refresh(req, res) {
   request(options, callback);
 }
 
-module.exports.refresh = refresh;
+export default refresh;

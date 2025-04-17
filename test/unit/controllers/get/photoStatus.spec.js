@@ -1,7 +1,7 @@
-const nock = require('nock');
-const chai = require('chai');
-const config = require('config');
-const photoStatus = require('../../../../app/controllers/get/photoStatus.js');
+import nock from 'nock';
+import chai from 'chai';
+import config from 'config';
+import photoStatus from '../../../../app/controllers/get/photoStatus.js';
 
 const { assert } = chai;
 const API_URL = 'http://localhost:3004';
@@ -58,7 +58,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it("sets imageStatus to 'service-fail' if fitnote controller api returns a 400 response status code", (done) => {
@@ -77,7 +77,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it("sets imageStatus to 'service-fail' if fitnote controller api returns a 500 response status code", (done) => {
@@ -96,7 +96,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('sets imageStatus to succeeded if fitnote controller api returns a 200 response status code and PASS OCR', (done) => {
@@ -115,7 +115,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns a 200 response status code and UPLOADED when controller returns UPLOADED', (done) => {
@@ -136,7 +136,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns a ocrFailed error when controller returns FAILED_IMG_OCR', (done) => {
@@ -155,7 +155,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns a size error when controller returns FAILED_IMG_SIZE ', (done) => {
@@ -174,7 +174,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns a maxReplay error when controller returns FAILED_IMG_MAX_REPLAY', (done) => {
@@ -193,7 +193,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns a password error when controller returns FAILED_IMG_PASSWORD', (done) => {
@@ -212,7 +212,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns a img type error when controller returns FAILED_IMG_FILE_TYPE', (done) => {
@@ -231,7 +231,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns no error when controller returns non-error or success response', (done) => {
@@ -250,7 +250,7 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 
   it('returns no error when test environment', (done) => {
@@ -271,6 +271,6 @@ describe('Photo status', () => {
         assert.equal(name, 'exp');
       },
     };
-    photoStatus.photoStatus(req, res);
+    photoStatus(req, res);
   });
 });

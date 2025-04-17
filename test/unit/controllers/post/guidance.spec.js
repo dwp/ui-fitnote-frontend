@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const sinon = require('sinon');
-const guidance = require('../../../../app/controllers/post/guidance.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import sinon from 'sinon';
+import guidance from '../../../../app/controllers/post/guidance.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -40,12 +40,12 @@ describe('esa', () => {
 
   it('Should redirect to upload route with ref when body is populated', (done) => {
     const res = buildRes('/upload?ref=esa', done);
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 
   it('Should redirect timed out route when no sessionId in req', (done) => {
     delete req.cookies.sessionId;
     const res = buildRes('/session-timeout', done);
-    guidance.guidance(req, res);
+    guidance(req, res);
   });
 });

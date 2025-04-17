@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const sinon = require('sinon');
-const submitDeclaration = require('../../../../app/controllers/post/submitDeclaration.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import sinon from 'sinon';
+import submitDeclaration from '../../../../app/controllers/post/submitDeclaration.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -45,7 +45,7 @@ describe('Submit Declaration (POST)', () => {
       .post(declaration)
       .reply(200, req.body);
     const res = buildRes('/complete', done);
-    submitDeclaration.submitDeclaration(req, res);
+    submitDeclaration(req, res);
   });
 
   it('Submit declaration and redirect to /complete (201)', (done) => {
@@ -53,7 +53,7 @@ describe('Submit Declaration (POST)', () => {
       .post(declaration)
       .reply(201, req.body);
     const res = buildRes('/complete', done);
-    submitDeclaration.submitDeclaration(req, res);
+    submitDeclaration(req, res);
   });
 
   it('Submit declaration API responds with 400 and redirect to /500 ', (done) => {
@@ -61,7 +61,7 @@ describe('Submit Declaration (POST)', () => {
       .post(declaration)
       .reply(400, {});
     const res = buildRes('/500', done);
-    submitDeclaration.submitDeclaration(req, res);
+    submitDeclaration(req, res);
   });
 
   it('Submit declaration API responds with 429 and redirect to /500 ', (done) => {
@@ -69,7 +69,7 @@ describe('Submit Declaration (POST)', () => {
       .post(declaration)
       .reply(429, {});
     const res = buildRes('/500', done);
-    submitDeclaration.submitDeclaration(req, res);
+    submitDeclaration(req, res);
   });
 
   it('Submit declaration API responds with error and redirect to /500 ', (done) => {
@@ -77,12 +77,12 @@ describe('Submit Declaration (POST)', () => {
       .post(declaration)
       .replyWithError('API failure');
     const res = buildRes('/500', done);
-    submitDeclaration.submitDeclaration(req, res);
+    submitDeclaration(req, res);
   });
 
   it('Submit declaration and redirect to /session-timeout', (done) => {
     req.cookies.sessionId = undefined; // No SessionId
     const res = buildRes('/session-timeout', done);
-    submitDeclaration.submitDeclaration(req, res);
+    submitDeclaration(req, res);
   });
 });

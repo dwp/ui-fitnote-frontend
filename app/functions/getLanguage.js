@@ -1,4 +1,4 @@
-function getLanguage(lang) {
+export default function getLanguage(lang) {
   let l;
   if (lang === 'en' || lang === 'cy') {
     l = lang;
@@ -8,5 +8,3 @@ function getLanguage(lang) {
   }
   return l;
 }
-
-module.exports = getLanguage;

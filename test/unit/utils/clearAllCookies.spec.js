@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
-const config = require('config');
-const { clearAllCookies } = require('../../../app/functions/utils/clearAllCookies');
+import { expect } from 'chai';
+import sinon from 'sinon';
+import config from 'config';
+import clearAllCookies from '../../../app/functions/utils/clearAllCookies.js';
 
 describe('clearAllCookies', () => {
   const res = {

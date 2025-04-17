@@ -1,10 +1,10 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const sinon = require('sinon');
-const nock = require('nock');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import sinon from 'sinon';
+import nock from 'nock';
 
-const esa = require('../../../../app/controllers/get/esa');
+import esa from '../../../../app/controllers/get/esa.js';
 
 const { assert } = chai;
 
@@ -24,6 +24,7 @@ describe('esa', () => {
     language: 'en',
   };
 
+  
   it('should render the esa page with no-esa query ref', (done) => {
     req.query.ref = 'no-esa';
     const res = {
@@ -40,7 +41,7 @@ describe('esa', () => {
     nock(config.get('api.url'))
       .post('/esa')
       .reply(200, req.body);
-    esa.esa(req, res);
+    esa(req, res);
   });
 
   it('should render the esa page with method-obtained query ref', (done) => {
@@ -59,7 +60,7 @@ describe('esa', () => {
     nock(config.get('api.url'))
       .post('/esa')
       .reply(200, req.body);
-    esa.esa(req, res);
+    esa(req, res);
   });
 
   it('should render the esa page with no query ref', (done) => {
@@ -79,6 +80,6 @@ describe('esa', () => {
     nock(config.get('api.url'))
       .post('/esa')
       .reply(200, req.body);
-    esa.esa(req, res);
+    esa(req, res);
   });
 });

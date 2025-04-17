@@ -1,7 +1,7 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const sinon = require('sinon');
-const methodObtained = require('../../../../app/controllers/post/methodObtained.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import sinon from 'sinon';
+import methodObtained from '../../../../app/controllers/post/methodObtained.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -34,18 +34,18 @@ function buildRes(expectedRedirect, done) {
 describe('Method Obtained (POST)', () => {
   it('Should redirect to /method-obtained when method-obtained is null', (done) => {
     const res = buildRes('/method-obtained', done);
-    methodObtained.methodObtained(req, res);
+    methodObtained(req, res);
   });
 
   it('Should redirect to /guidance-paper when method-obtained is paper', (done) => {
     req.body.methodObtained = 'paper';
     const res = buildRes('/guidance-paper', done);
-    methodObtained.methodObtained(req, res);
+    methodObtained(req, res);
   });
 
   it('Should redirect to /guidance-digital when method-obtained is digital', (done) => {
     req.body.methodObtained = 'digital';
     const res = buildRes('/guidance-digital', done);
-    methodObtained.methodObtained(req, res);
+    methodObtained(req, res);
   });
 });

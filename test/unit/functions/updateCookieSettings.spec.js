@@ -1,5 +1,5 @@
-const chai = require('chai');
-const { updateCookieSettings } = require('../../../app/functions/updateCookieSettings');
+import chai from 'chai';
+import updateCookieSettings from '../../../app/functions/updateCookieSettings.js';
 
 const { expect } = chai;
 

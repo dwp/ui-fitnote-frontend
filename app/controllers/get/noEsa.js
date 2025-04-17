@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function noEsaPage(req, res) {
   res.render('no-esa', {
@@ -9,4 +9,4 @@ function noEsaPage(req, res) {
   });
 }
 
-module.exports.noEsa = noEsaPage;
+export default noEsaPage;

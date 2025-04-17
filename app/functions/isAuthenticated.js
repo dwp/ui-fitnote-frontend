@@ -1,9 +1,9 @@
-const config = require('config');
-const logger = require('./bunyan');
-const hasTimedOut = require('./timeoutRedirect');
-const getLanguage = require('./getLanguage');
+import config from 'config';
+import logger from './bunyan.js';
+import hasTimedOut from './timeoutRedirect.js';
+import getLanguage from './getLanguage.js';
 
-exports.isAuthenticated = function isAuthenticated(req, res, next) {
+export default function isAuthenticated(req, res, next) {
   let redirectUrl;
 
   if (config.util.getEnv('NODE_ENV') !== 'test') {
@@ -15,10 +15,10 @@ exports.isAuthenticated = function isAuthenticated(req, res, next) {
     }
 
     logger.error('No valid session');
-    redirectUrl = hasTimedOut.redirectTimeout('No Session ID');
+    redirectUrl = hasTimedOut('No Session ID');
     return res.redirect(redirectUrl);
   }
 
   // Test only allows you to view all pages without a session ID.
   return next();
-};
+}

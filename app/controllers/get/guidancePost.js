@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function guidancePostPage(req, res) {
   const route = 'guidance-post';
@@ -12,4 +12,4 @@ function guidancePostPage(req, res) {
   });
 }
 
-module.exports.guidancePost = guidancePostPage;
+export default guidancePostPage;

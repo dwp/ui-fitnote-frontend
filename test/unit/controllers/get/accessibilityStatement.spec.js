@@ -1,9 +1,9 @@
-const config = require('config');
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const spies = require('chai-spies');
-const nock = require('nock');
-const accessibilityStatement = require('../../../../app/controllers/get/accessibilityStatement');
+import config from 'config';
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import spies from 'chai-spies';
+import nock from 'nock';
+import accessibilityStatement from '../../../../app/controllers/get/accessibilityStatement.js';
 
 const { expect } = chai;
 const { assert } = chai;
@@ -29,7 +29,7 @@ describe('Accessibility Statement', () => {
       },
     };
     const spy = chai.spy.on(accessibilityStatement, 'accessibilityPage');
-    accessibilityStatement.accessibilityPage(req, res);
+    accessibilityStatement(req, res);
     expect(spy).to.have.been.called();
     expect(spy).to.have.been.called.with(req, res);
   });
@@ -47,6 +47,6 @@ describe('Accessibility Statement', () => {
         done();
       },
     };
-    accessibilityStatement.accessibilityPage(req, res);
+    accessibilityStatement(req, res);
   });
 });

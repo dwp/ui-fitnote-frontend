@@ -1,8 +1,8 @@
-const config = require('config');
-const logger = require('../functions/bunyan');
+import config from 'config';
+import logger from '../functions/bunyan.js';
 
 // Setup Timeout dialog
-function TimeoutDialog(req, res, next) {
+export default function TimeoutDialog(req, res, next) {
   const staticPatt = /^\/(assets|stylesheets|images|javascript)/gi;
   if (staticPatt.test(req.path)) {
     logger.debug('Skipping static path');
@@ -21,5 +21,3 @@ function TimeoutDialog(req, res, next) {
   };
   next();
 }
-
-module.exports = TimeoutDialog;

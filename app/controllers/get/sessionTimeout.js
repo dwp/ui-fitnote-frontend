@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function sessionTimeout(req, res) {
   res.render('errors/session-timeout', {
@@ -13,4 +13,5 @@ function sessionTimeout(req, res) {
   res.clearCookie('sessionId');
   res.clearCookie('retry');
 }
-module.exports.sessionTimeout = sessionTimeout;
+
+export default sessionTimeout;

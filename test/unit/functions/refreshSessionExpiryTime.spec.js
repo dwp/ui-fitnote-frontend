@@ -1,8 +1,8 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
-const config = require('config');
-const logger = require('../../../app/functions/bunyan');
-const { refreshTime } = require('../../../app/functions/refreshSessionExpiryTime');
+import { expect } from 'chai';
+import sinon from 'sinon';
+import config from 'config';
+import logger from '../../../app/functions/bunyan.js';
+import refreshTime from '../../../app/functions/refreshSessionExpiryTime.js';
 
 describe('refreshSessionExpiryTime', () => {
   const logType = logger.child({ widget: 'test' });

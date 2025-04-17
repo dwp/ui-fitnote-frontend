@@ -1,33 +1,29 @@
-const gulp = require('gulp');
-const requireDir = require('require-dir');
-const runSequence = require('gulp4-run-sequence');
+import gulp from 'gulp';
 
-// Load the gulp task files
-requireDir('./gulp');
+import './gulp/clean.js';
+import './gulp/copy.js';
+import './gulp/js-build.js';
+import './gulp/css-build.js';
+import './gulp/css-compress.js';
+import './gulp/js-compress.js';
+import './gulp/nodemon.js';
 
 // Run all tests, try all things so we can spot problems early. Runs watch task
-gulp.task('dev', (done) => {
-  'use strict';
-
-  runSequence(
+gulp.task('dev', gulp.series(
     'clean',
     'copy',
     'js-build',
-    ['css-compress', 'js-compress'],
-    'nodemon',
-  );
-  done();
-});
+    gulp.parallel('css-compress', 'js-compress'),
+    'watch'
+));
 
 // Production task, build all the resources ready for Node to serve.
-gulp.task('jenkins', (done) => {
-  'use strict';
-
-  runSequence(
+gulp.task('jenkins', gulp.series(
     'clean',
     'copy',
     'js-build',
-    ['css-compress', 'js-compress'],
-  );
-  done();
-});
+    gulp.parallel('css-compress', 'js-compress'),
+    'watch'
+));
+
+export default gulp;

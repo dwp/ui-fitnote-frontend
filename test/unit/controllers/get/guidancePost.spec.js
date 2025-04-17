@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
 
-const guidancePost = require('../../../../app/controllers/get/guidancePost');
+import guidancePost from '../../../../app/controllers/get/guidancePost.js';
 
 const { assert } = chai;
 
@@ -28,6 +28,6 @@ describe('guidancePost', () => {
         done();
       },
     };
-    guidancePost.guidancePost(req, res);
+    guidancePost(req, res);
   });
 });

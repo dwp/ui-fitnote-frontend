@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { healthCheck } = require('../../../app/middleware/healthcheck');
+import { expect } from 'chai';
+import healthCheck from '../../../app/middleware/healthcheck.js';
 
 describe('healthCheck', () => {
   it('should should return 200 and send okay', (done) => {

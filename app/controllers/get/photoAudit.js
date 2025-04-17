@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function photoAuditPage(req, res) {
   const route = 'photo-audit';
@@ -13,4 +13,4 @@ function photoAuditPage(req, res) {
   });
 }
 
-module.exports.photoAuditPage = photoAuditPage;
+export default photoAuditPage;

@@ -1,15 +1,16 @@
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 const { watch } = gulp;
-const runSequence = require('gulp4-run-sequence');
+import runSequence from 'gulp4-run-sequence';
 
 const srcdir = './app/';
 
-gulp.task('watch', () => {
-  watch(`${srcdir}**/*.js`, () => {
+gulp.task('watch', (done) => {
+  watch(`${srcdir}**/*.js`,{ persistent: false }, () => {
     runSequence('js');
   });
-  watch(`${srcdir}**/*.scss`, () => {
+  watch(`${srcdir}**/*.scss`, { persistent: false }, () => {
     runSequence('sass');
   });
+  done();
 });

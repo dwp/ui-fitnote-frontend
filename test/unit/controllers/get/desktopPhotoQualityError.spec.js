@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const sinon = require('sinon');
-const desktopPhotoQuality = require('../../../../app/controllers/get/desktopPhotoQualityError');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import sinon from 'sinon';
+import desktopPhotoQuality from '../../../../app/controllers/get/desktopPhotoQualityError.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -27,7 +27,7 @@ describe('Desktop Photo Quality Error', () => {
       },
       status: sinon.spy(),
     };
-    desktopPhotoQuality.desktopPhotoQualityError(req, res);
+    desktopPhotoQuality(req, res);
     assert.equal(res.clearCookie.firstCall.args[0], '422');
   });
 });

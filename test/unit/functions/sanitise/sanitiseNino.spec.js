@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { sanitiseNino } = require('../../../../app/functions/sanitise/sanitiseNino');
+import { expect } from 'chai';
+import sanitiseNino from '../../../../app/functions/sanitise/sanitiseNino.js';
 
 describe('sanitiseNino', () => {
   it('should return sanitised nino (removing spaces and hyphens)', () => {

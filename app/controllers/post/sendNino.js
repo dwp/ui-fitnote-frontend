@@ -1,12 +1,12 @@
-const request = require('request');
-const config = require('config');
-const logger = require('../../functions/bunyan');
-const isSanitised = require('../../functions/sanitise/sanitiseNino');
-const checkNino = require('../../functions/sanitise/validateNinoStrict');
-const hasTimedOut = require('../../functions/timeoutRedirect');
-const checkBlank = require('../../functions/sanitise/isFieldBlank');
-const checkHoneypot = require('../../functions/honeypot');
-const sessionExpiry = require('../../functions/refreshSessionExpiryTime.js');
+import request from 'request';
+import config from 'config';
+import logger from '../../functions/bunyan.js';
+import isSanitised from '../../functions/sanitise/sanitiseNino.js';
+import checkNino from '../../functions/sanitise/validateNinoStrict.js';
+import hasTimedOut from '../../functions/timeoutRedirect.js';
+import checkBlank from '../../functions/sanitise/isFieldBlank.js';
+import checkHoneypot from '../../functions/honeypot.js';
+import sessionExpiry from '../../functions/refreshSessionExpiryTime.js';
 
 function apiOptions(fitnote) {
   return {
@@ -34,7 +34,7 @@ function processRequest(req, res, logType) {
 
 function apiCallback(req, res, logType) {
   return function callback(err, response) {
-    sessionExpiry.refreshTime(res, logType);
+    sessionExpiry(res, logType);
     if (!err) {
       logType.info(`Response Received: ${response.statusCode}`);
       if (response.statusCode === 200 || response.statusCode === 201) {
@@ -53,11 +53,11 @@ function sendNino(req, res) {
   let ninoDone;
   const logType = logger.child({ widget: 'postNino' });
   const ninoRaw = req.body.ninoField;
-  const isNinoBlank = checkBlank.notBlank(ninoRaw);
+  const isNinoBlank = checkBlank(ninoRaw);
   const fakeEmailRaw = req.body.emailField;
-  const convertedNino = isSanitised.sanitiseNino(ninoRaw);
-  const passedNino = checkNino.ninoValidateStrict(convertedNino);
-  const passedHoneypot = checkHoneypot.honeypot(fakeEmailRaw, 'BOT: honeypot detected a bot, Nino Page, Email Field');
+  const convertedNino = isSanitised(ninoRaw);
+  const passedNino = checkNino(convertedNino);
+  const passedHoneypot = checkHoneypot(fakeEmailRaw, 'BOT: honeypot detected a bot, Nino Page, Email Field');
   let redirectUrl;
 
   const fitnote = {
@@ -92,9 +92,9 @@ function sendNino(req, res) {
       hasNinoPassed();
     }
   } else {
-    redirectUrl = hasTimedOut.redirectTimeout('no valid session');
+    redirectUrl = hasTimedOut('no valid session');
     res.redirect(redirectUrl);
   }
 }
 
-module.exports.sendNino = sendNino;
+export default sendNino;

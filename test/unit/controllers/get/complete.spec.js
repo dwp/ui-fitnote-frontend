@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const sinon = require('sinon');
-const complete = require('../../../../app/controllers/get/complete');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import sinon from 'sinon';
+import complete from '../../../../app/controllers/get/complete.js';
 
 const { assert } = chai;
 
@@ -29,7 +29,7 @@ describe('Complete Page', () => {
         done();
       },
     };
-    complete.completePage(req, res);
+    complete(req, res);
   });
 
   it('should call clearCookie() three times with args: sessionId, exp and retry', () => {
@@ -40,7 +40,7 @@ describe('Complete Page', () => {
       clearCookie: sinon.spy(),
     };
 
-    complete.completePage(req, res);
+    complete(req, res);
     assert.equal(res.clearCookie.callCount, 3);
     assert.equal(res.clearCookie.firstCall.args[0], 'sessionId');
     assert.equal(res.clearCookie.secondCall.args[0], 'exp');

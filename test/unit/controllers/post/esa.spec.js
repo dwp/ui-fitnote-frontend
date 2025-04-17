@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const sinon = require('sinon');
-const esa = require('../../../../app/controllers/post/esa.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import sinon from 'sinon';
+import esa from '../../../../app/controllers/post/esa.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -40,30 +40,30 @@ describe('esa', () => {
 
   it('Should redirect to method-obtained route when body is Yes', (done) => {
     const res = buildRes('/method-obtained', done);
-    esa.esa(req, res);
+    esa(req, res);
   });
 
   it('Should redirect to no-esa route when body is No', (done) => {
     req.body.esa = 'No';
     const res = buildRes('/no-esa', done);
-    esa.esa(req, res);
+    esa(req, res);
   });
 
   it('Should redirect to esa route when esa body is Unknown', (done) => {
     req.body.esa = 'unknown';
     const res = buildRes('/esa', done);
-    esa.esa(req, res);
+    esa(req, res);
   });
 
   it('Should redirect to esa route when esa body is undefined', (done) => {
     req.body.esa = undefined;
     const res = buildRes('/esa', done);
-    esa.esa(req, res);
+    esa(req, res);
   });
 
   it('Should redirect timed out route when no sessionId in req', (done) => {
     delete req.cookies.sessionId;
     const res = buildRes('/session-timeout', done);
-    esa.esa(req, res);
+    esa(req, res);
   });
 });

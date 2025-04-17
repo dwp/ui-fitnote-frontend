@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const { terser } = require('rollup-plugin-terser');
-const legacy = require('@rollup/plugin-legacy');
-const { babel } = require('@rollup/plugin-babel');
-const alias = require('@rollup/plugin-alias');
-const fs = require('fs');
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
+import legacy from '@rollup/plugin-legacy';
+import { babel } from '@rollup/plugin-babel';
+import alias from '@rollup/plugin-alias';
+import fs from 'fs';
 
 const plugins = [
   alias({
@@ -41,6 +41,6 @@ const createConfig = (file, outputFile) => ({
   plugins,
 });
 
-module.exports = [
+export default [
   createConfig('assets/hmrc/all.js', 'ui-fitnote-frontend.js'),
 ];

@@ -1,4 +1,4 @@
-const ninoMock = {
+export default {
   endPoints: {
     queryNino: 'queryNino',
     nino: 'nino',
@@ -17,5 +17,3 @@ const ninoMock = {
   },
   body: {},
 };
-
-module.exports = ninoMock;

@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const autoprefixer = require('autoprefixer');
-const postcssurl = require('postcss-url');
-const oldie = require('oldie');
-const path = require('path');
+import autoprefixer from 'autoprefixer';
+import postcssurl from 'postcss-url';
+import oldie from 'oldie';
+import path from 'path';
 
 const ie8 = process.env.IE8 === 'true' && oldie({
   rgba: { filter: true },
@@ -11,7 +11,7 @@ const ie8 = process.env.IE8 === 'true' && oldie({
   pseudo: { disable: true },
 });
 
-module.exports = {
+export default {
   plugins: [
     autoprefixer,
     postcssurl([{

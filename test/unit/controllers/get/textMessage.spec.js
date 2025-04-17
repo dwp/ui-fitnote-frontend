@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const sinon = require('sinon');
-const textMessage = require('../../../../app/controllers/get/textMessage');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import sinon from 'sinon';
+import textMessage from '../../../../app/controllers/get/textMessage.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -45,7 +45,7 @@ describe('Text Message Page', () => {
     nock(config.get('api.url'))
       .post(queryMobile)
       .reply(200, req.body);
-    textMessage.textMessagePage(req, res);
+    textMessage(req, res);
   });
 
   it('Should render the Text Message page with missing text message error', (done) => {
@@ -67,7 +67,7 @@ describe('Text Message Page', () => {
     nock(config.get('api.url'))
       .post(queryMobile)
       .reply(200, req);
-    textMessage.textMessagePage(req, res);
+    textMessage(req, res);
   });
 
   it('Should render the Text Message page with mobile error', (done) => {
@@ -86,7 +86,7 @@ describe('Text Message Page', () => {
     nock(config.get('api.url'))
       .post(queryMobile)
       .reply(200, req);
-    textMessage.textMessagePage(req, res);
+    textMessage(req, res);
   });
 
   it('Should render the Text Message page with format error', (done) => {
@@ -104,7 +104,7 @@ describe('Text Message Page', () => {
     nock(config.get('api.url'))
       .post(queryMobile)
       .reply(200, req);
-    textMessage.textMessagePage(req, res);
+    textMessage(req, res);
   });
 
   it('Should render errors/500 page when response is not 200', (done) => {
@@ -117,6 +117,6 @@ describe('Text Message Page', () => {
     nock(config.get('api.url'))
       .post(queryMobile)
       .reply(500, req);
-    textMessage.textMessagePage(req, res);
+    textMessage(req, res);
   });
 });

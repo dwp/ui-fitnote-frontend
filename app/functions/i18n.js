@@ -9,11 +9,11 @@
  *   string language = The language code to use (ISO 639-1)
  *   function i18nTranslator = A class instance to translate for the current req.
  */
-const config = require('config');
-const i18n = require('../lib/I18n');
-const getLanguage = require('./getLanguage');
+import config from 'config';
+import i18n from '../lib/I18n.js';
+import getLanguage from './getLanguage.js';
 
-module.exports = function init(app, appLocaleDirs, supportedLocales) {
+export default function init(app, appLocaleDirs, supportedLocales) {
   // Initialise the I18n utility
   const I18n = i18n(appLocaleDirs, supportedLocales);
 
@@ -55,4 +55,4 @@ module.exports = function init(app, appLocaleDirs, supportedLocales) {
 
     next();
   });
-};
+}

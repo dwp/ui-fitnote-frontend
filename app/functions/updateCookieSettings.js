@@ -1,12 +1,11 @@
-const url = require('url');
-const config = require('config');
-const { COOKIE_CONSENT_CHOICE, COOKIE_UPDATE_QUERY_PARAM } = require('../constants');
-const { clearAllCookies } = require('./utils/clearAllCookies');
-const allowedUrls = require('./whiteListValidateRedirect');
+import url from 'url';
+import config from 'config';
+import { COOKIE_CONSENT_CHOICE, COOKIE_UPDATE_QUERY_PARAM } from '../constants.js';
+import clearAllCookies from './utils/clearAllCookies.js';
+import { allowedUrls } from './whiteListValidateRedirect.js';
+import logger from './bunyan.js';
 
-const logger = require('./bunyan');
-
-exports.updateCookieSettings = function updateCookieSettings(req, res) {
+export default function updateCookieSettings(req, res) {
   const cookieLength = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000));
   const sameSite = true;
   const cookieConsentRaw = req.body.consent;
@@ -52,4 +51,4 @@ exports.updateCookieSettings = function updateCookieSettings(req, res) {
     query: { ...qs },
   });
   return res.redirect(redirectUrl);
-};
+}

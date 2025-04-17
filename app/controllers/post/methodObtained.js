@@ -1,6 +1,6 @@
-const config = require('config');
+import config from 'config';
 
-const hasTimedOut = require('../../functions/timeoutRedirect');
+import hasTimedOut from '../../functions/timeoutRedirect.js';
 
 function methodObtainedPage(req, res) {
   const { methodObtained } = req.body;
@@ -19,9 +19,9 @@ function methodObtainedPage(req, res) {
       res.redirect('/method-obtained');
     }
   } else {
-    redirectUrl = hasTimedOut.redirectTimeout('no valid session');
+    redirectUrl = hasTimedOut('no valid session');
     res.redirect(redirectUrl);
   }
 }
 
-module.exports.methodObtained = methodObtainedPage;
+export default methodObtainedPage;

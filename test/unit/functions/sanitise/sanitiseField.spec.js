@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { sanitiseField } = require('../../../../app/functions/sanitise/sanitiseField');
+import { expect } from 'chai';
+import sanitiseField from '../../../../app/functions/sanitise/sanitiseField.js';
 
 describe('sanitiseField', () => {
   it('should return sanitised text (removing non-alphanumerics, new lines and multiple whitespaces)', () => {

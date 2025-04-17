@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
 
-const noEsa = require('../../../../app/controllers/get/noEsa');
+import noEsa from '../../../../app/controllers/get/noEsa.js';
 
 const { assert } = chai;
 
@@ -27,6 +27,6 @@ describe('noEsa', () => {
         done();
       },
     };
-    noEsa.noEsa(req, res);
+    noEsa(req, res);
   });
 });

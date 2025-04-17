@@ -1,10 +1,11 @@
-const chai = require('chai');
+import chai from 'chai';
 
 const { assert } = chai;
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 
-const sendPhoto = require('../../../../app/controllers/post/sendPhoto.js');
+import sendPhoto from '../../../../app/controllers/post/sendPhoto.js';
 
 global.logger = {
   child: () => ({
@@ -21,6 +22,9 @@ global.config = {
   apiURL: 'http://localhost:3004',
   sessionExpiryPeriod: 120000,
 };
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 describe('Send file', () => {
   function buildReq(fileObj) {

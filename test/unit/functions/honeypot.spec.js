@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
-const logger = require('../../../app/functions/bunyan');
-const { honeypot } = require('../../../app/functions/honeypot');
+import { expect } from 'chai';
+import sinon from 'sinon';
+import logger from '../../../app/functions/bunyan.js';
+import honeypot from '../../../app/functions/honeypot.js';
 
 describe('honeypot', () => {
   let loggerInfoStub;

@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const sinon = require('sinon');
-const config = require('config');
-const photoQualityError = require('../../../../app/controllers/get/photoQualityError');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import sinon from 'sinon';
+import config from 'config';
+import photoQualityError from '../../../../app/controllers/get/photoQualityError.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -26,7 +26,7 @@ describe('Photo Quality Error Page', () => {
       },
       status: sinon.spy(),
     };
-    photoQualityError.photoQualityError(req, res);
+    photoQualityError(req, res);
     assert.equal(res.clearCookie.firstCall.args[0], '422');
   });
 });

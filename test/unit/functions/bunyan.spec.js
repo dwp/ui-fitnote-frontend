@@ -1,9 +1,10 @@
 /* eslint-disable global-require */
-const { expect } = require('chai');
-const sinon = require('sinon');
-const config = require('config');
-const bunyan = require('bunyan');
-const bsyslog = require('bunyan-syslog-udp');
+import { expect } from 'chai';
+import sinon from 'sinon';
+import config from 'config';
+import bunyan from 'bunyan';
+import bsyslog from 'bunyan-syslog-udp';
+import logger from '../../../app/functions/bunyan.js';
 
 describe('logger', () => {
   let createLoggerStub;
@@ -34,7 +35,6 @@ describe('logger', () => {
 
     createBunyanStreamStub.returns({});
 
-    const logger = require('../../../app/functions/bunyan');
     const testLogger = logger;
 
     expect(testLogger.streams.length).to.be.equal(1);
@@ -45,7 +45,6 @@ describe('logger', () => {
 
     createBunyanStreamStub.returns({});
 
-    const logger = require('../../../app/functions/bunyan');
     const testLogger = logger;
 
     expect(testLogger.streams.length).to.be.equal(1);
@@ -57,7 +56,6 @@ describe('logger', () => {
 
     createBunyanStreamStub.returns({});
 
-    const logger = require('../../../app/functions/bunyan');
     const testLogger = logger;
 
     expect(testLogger.streams.length).to.be.equal(1);

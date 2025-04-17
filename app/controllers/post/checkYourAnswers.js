@@ -1,7 +1,7 @@
-const sendIt = require('./submitDeclaration');
+import sendIt from './submitDeclaration.js';
 
 function acceptAndSend(req, res) {
-  sendIt.submitDeclaration(req, res);
+  sendIt(req, res);
 }
 
-module.exports.acceptAndSend = acceptAndSend;
+export default acceptAndSend;

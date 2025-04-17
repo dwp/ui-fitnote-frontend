@@ -1,13 +1,13 @@
-const uid = require('uid-safe').sync;
-const config = require('config');
-const getLanguage = require('./getLanguage');
-const logger = require('./bunyan');
+import { sync as uid } from 'uid-safe';
+import config from 'config';
+import getLanguage from './getLanguage.js';
+import logger from './bunyan.js';
 
 function generateId() {
   return uid(24);
 }
 
-exports.createSessionId = function createSessionId(req, res) {
+export default function createSessionId(req, res) {
   const id = generateId();
   const expires = new Date(Date.now() + config.get('sessionInfo.expiryPeriod'));
   logger.info('Session ID and Expiry generated');
@@ -22,4 +22,4 @@ exports.createSessionId = function createSessionId(req, res) {
   res.locals.lang = getLanguage(req.language);
 
   return id;
-};
+}

@@ -1,5 +1,5 @@
-const chai = require('chai');
-const { hasViewedCookieMsg } = require('../../../app/functions/hasViewedCookieMessage');
+import chai from 'chai';
+import hasViewedCookieMsg from '../../../app/functions/hasViewedCookieMessage.js';
 
 const { expect } = chai;
 

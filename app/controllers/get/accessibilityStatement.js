@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function accessibilityPage(req, res) {
   res.render('accessibility-statement', {
@@ -8,4 +8,4 @@ function accessibilityPage(req, res) {
   });
 }
 
-module.exports.accessibilityPage = accessibilityPage;
+export default accessibilityPage;

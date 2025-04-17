@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const methodObtainedPage = require('../../../../app/controllers/get/methodObtained');
-const enErrors = require('../../../../app/locales/en/errors.json');
-const cyErrors = require('../../../../app/locales/cy/errors.json');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import methodObtainedPage from '../../../../app/controllers/get/methodObtained.js';
+import enErrors from '../../../../app/locales/en/errors.json' with { type: 'json' };
+import cyErrors from '../../../../app/locales/cy/errors.json' with { type: 'json' };
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -27,7 +27,7 @@ describe('Method Obtained', () => {
       },
     };
 
-    methodObtainedPage.methodObtained(req, res);
+    methodObtainedPage(req, res);
   });
 
   it('should check if the validationErrors content is in english', () => {
@@ -36,7 +36,7 @@ describe('Method Obtained', () => {
         assert.equal(options.validationErrors, JSON.stringify(enErrors));
       },
     };
-    methodObtainedPage.methodObtained(req, res);
+    methodObtainedPage(req, res);
   });
 
   it('should check if the validationErrors content is in welsh', () => {
@@ -46,7 +46,7 @@ describe('Method Obtained', () => {
         assert.equal(options.validationErrors, JSON.stringify(cyErrors));
       },
     };
-    methodObtainedPage.methodObtained(req, res);
+    methodObtainedPage(req, res);
   });
 
   it('should check if the validationErrors content is in welsh', () => {
@@ -55,7 +55,7 @@ describe('Method Obtained', () => {
         assert.equal(options.validationErrors, JSON.stringify(cyErrors));
       },
     };
-    methodObtainedPage.methodObtained(req, res);
+    methodObtainedPage(req, res);
   });
 
   it('should check if the query.ref is guidance-digital', () => {
@@ -64,7 +64,7 @@ describe('Method Obtained', () => {
         assert.equal(options.previousPageCYA, '1');
       },
     };
-    methodObtainedPage.methodObtained(req, res);
+    methodObtainedPage(req, res);
   });
 
   it('should check if the query.ref is guidance-paper', () => {
@@ -74,6 +74,6 @@ describe('Method Obtained', () => {
         assert.equal(options.previousPageCYA, '2');
       },
     };
-    methodObtainedPage.methodObtained(req, res);
+    methodObtainedPage(req, res);
   });
 });

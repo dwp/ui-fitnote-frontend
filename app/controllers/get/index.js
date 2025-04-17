@@ -1,12 +1,12 @@
-const config = require('config');
-const newSession = require('../../functions/createSessionId');
-const retry = require('../../functions/retryCookie');
-const logger = require('../../functions/bunyan');
+import config from 'config';
+import newSession from '../../functions/createSessionId.js';
+import retry from '../../functions/retryCookie.js';
+import logger from '../../functions/bunyan.js';
 
 function indexPage(req, res) {
   logger.info('Creating Session ID');
-  const sessionId = newSession.createSessionId(req, res);
-  retry.retryCookie(req, res);
+  const sessionId = newSession(req, res);
+  retry(req, res);
 
   res.render('index', {
     sessionId,
@@ -16,4 +16,4 @@ function indexPage(req, res) {
   });
 }
 
-module.exports.indexPage = indexPage;
+export default indexPage;

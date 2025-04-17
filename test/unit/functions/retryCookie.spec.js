@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
-const config = require('config');
-const { retryCookie } = require('../../../app/functions/retryCookie');
+import { expect } from 'chai';
+import sinon from 'sinon';
+import config from 'config';
+import retryCookie from '../../../app/functions/retryCookie.js';
 
 describe('retryCookie', () => {
   let getStub;

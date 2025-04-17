@@ -1,9 +1,9 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
-const net = require('net');
-const config = require('config');
-const logger = require('../../../app/functions/bunyan');
-const { apiCheck } = require('../../../app/functions/checkServer');
+import { expect } from 'chai';
+import sinon from 'sinon';
+import net from 'net';
+import config from 'config';
+import logger from '../../../app/functions/bunyan.js';
+import apiCheck from '../../../app/functions/checkServer.js';
 
 describe('checkServer', () => {
   let connectionStub;

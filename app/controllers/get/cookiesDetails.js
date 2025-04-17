@@ -1,4 +1,4 @@
-const config = require('config');
+import config from 'config';
 
 function cookiesDetailsPage(req, res) {
   res.render('cookies-details', {
@@ -8,4 +8,4 @@ function cookiesDetailsPage(req, res) {
   });
 }
 
-module.exports.cookiesDetailsPage = cookiesDetailsPage;
+export default cookiesDetailsPage;

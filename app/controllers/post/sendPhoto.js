@@ -1,18 +1,18 @@
-const rp = require('request-promise-native');
-const multer = require('multer');
-const config = require('config');
-const filesize = require('filesize');
+import rp from 'request-promise-native';
+import multer from 'multer';
+import config from 'config';
+import filesize from 'filesize';
 
-const logger = require('../../functions/bunyan');
-const encoder = require('../../functions/base64Encode');
-const photoRoute = require('../../functions/getPhotoRoute');
-const checkHoneypot = require('../../functions/honeypot');
-const hasTimedOut = require('../../functions/timeoutRedirect');
-const sessionExpiry = require('../../functions/refreshSessionExpiryTime.js');
+import logger from '../../functions/bunyan.js';
+import encoder from '../../functions/base64Encode.js';
+import photoRoute from '../../functions/getPhotoRoute.js';
+import checkHoneypot from '../../functions/honeypot.js';
+import hasTimedOut from '../../functions/timeoutRedirect.js';
+import sessionExpiry from '../../functions/refreshSessionExpiryTime.js';
 
 function encodeImage(req) {
   if (typeof req.file !== 'undefined') {
-    return encoder.convertBase64(req.file.buffer);
+    return encoder(req.file.buffer);
   }
   return '';
 }
@@ -53,7 +53,7 @@ function getFileSize(byteSize) {
 
 function errorRoute(req, logType) {
   const { sessionId } = req.cookies;
-  const route = photoRoute.getRoute(req);
+  const route = photoRoute(req);
   let errRoute;
   const fileSize = getFileSize(req.file.size);
   const validImageFileTypes = new RegExp('^image/');
@@ -79,7 +79,7 @@ function sendPhoto(req, res) {
   const storage = multer.memoryStorage();
   const upload = multer({ storage }).single('userPhoto');
 
-  const route = photoRoute.getRoute(req);
+  const route = photoRoute(req);
 
   function handleCriticalFormError(err, msg) {
     logType.fatal({ err }, msg);
@@ -96,7 +96,7 @@ function sendPhoto(req, res) {
 
     rp(apiUploadOptions(req, logType))
       .then((response) => {
-        sessionExpiry.refreshTime(res, logType);
+        sessionExpiry(res, logType);
         if (response.sessionId != null) {
           logType.info(`API call attempts successful on: ${count} ${count > 0 ? 'retry' : ''}`);
           logType.info('Submitted image successfully');
@@ -129,7 +129,7 @@ function sendPhoto(req, res) {
       logType.error({ err }, 'Problem uploading image');
     } else if (typeof req.cookies.sessionId !== 'undefined') {
       const fakeImageNameRaw = req.body.imageNameField;
-      const passedHoneypot = checkHoneypot.honeypot(fakeImageNameRaw, 'BOT: honeypot detected a bot, Take a Photo Page, ImageName Field');
+      const passedHoneypot = checkHoneypot(fakeImageNameRaw, 'BOT: honeypot detected a bot, Take a Photo Page, ImageName Field');
       logType.info(`Passed Honeypot ${passedHoneypot}`);
 
       if (!passedHoneypot) {
@@ -139,7 +139,7 @@ function sendPhoto(req, res) {
         requestUploadCallback(err, 0);
       }
     } else {
-      const redirectUrl = hasTimedOut.redirectTimeout('no valid session');
+      const redirectUrl = hasTimedOut('no valid session');
       res.redirect(redirectUrl);
     }
   }
@@ -147,4 +147,4 @@ function sendPhoto(req, res) {
   upload(req, res, uploadCallback);
 }
 
-module.exports.sendPhoto = sendPhoto;
+export default sendPhoto;

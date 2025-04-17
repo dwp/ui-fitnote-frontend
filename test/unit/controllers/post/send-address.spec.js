@@ -1,9 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const nock = require('nock');
-const sinon = require('sinon');
-const sendAddress = require('../../../../app/controllers/post/sendAddress.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import nock from 'nock';
+import sinon from 'sinon';
+import sendAddress from '../../../../app/controllers/post/sendAddress.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -45,25 +45,25 @@ describe('Send Address (POST)', () => {
 
   it('Send Address and redirect to text-message', (done) => {
     const res = buildRes('/text-message', done);
-    sendAddress.sendAddress(req, res);
+    sendAddress(req, res);
   });
 
   it('Send INVALID address and redirect to address?houseNumber=1&postcode=0', (done) => {
     req.body.postcodeField = 'abcd'; // Invalid postcode
     const res = buildRes('address?houseNumber=1&postcode=0', done);
-    sendAddress.sendAddress(req, res);
+    sendAddress(req, res);
   });
 
   it('Send INVALID address and redirect to address?houseNumber=0&postcode=1', (done) => {
     req.body.houseNumberField = ''; // Invalid house number
     req.body.postcodeField = 'NW1 6XE';
     const res = buildRes('address?houseNumber=0&postcode=1', done);
-    sendAddress.sendAddress(req, res);
+    sendAddress(req, res);
   });
 
   it('Send address and redirect to /session-timeout', (done) => {
     req.cookies.sessionId = undefined; // No SessionId
     const res = buildRes('/session-timeout', done);
-    sendAddress.sendAddress(req, res);
+    sendAddress(req, res);
   });
 });

@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const getLanguage = require('../../../app/functions/getLanguage');
+import { expect } from 'chai';
+import getLanguage from '../../../app/functions/getLanguage.js';
 
 describe('getLanguage', () => {
   it("Should return language as english (en) if provided 'en' ", () => {

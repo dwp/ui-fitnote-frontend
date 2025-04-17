@@ -1,10 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const config = require('config');
-const sinon = require('sinon');
-const index = require('../../../../app/controllers/get/index');
-const retry = require('../../../../app/functions/retryCookie');
-const logger = require('../../../../app/functions/bunyan');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import config from 'config';
+import sinon from 'sinon';
+import index from '../../../../app/controllers/get/index.js';
+import logger from '../../../../app/functions/bunyan.js';
 
 const { assert } = chai;
 chai.use(chaiHttp);
@@ -20,7 +19,7 @@ describe('Index Page', () => {
     };
 
     const loggerSpy = sinon.spy(logger, 'info');
-    index.indexPage(req, res);
+    index(req, res);
     assert.equal(loggerSpy.firstCall.firstArg, 'Creating Session ID');
     assert.equal(loggerSpy.called, true);
     loggerSpy.restore();
@@ -28,14 +27,13 @@ describe('Index Page', () => {
 
   it('should call retryCookie() function', () => {
     const res = {
-      cookie: sinon.spy(),
+      cookie: sinon.stub(),
       locals: sinon.spy(),
       render: sinon.spy(),
     };
 
-    const retrySpy = sinon.spy(retry, 'retryCookie');
-    index.indexPage(req, res);
-    assert.equal(retrySpy.called, true);
+    index(req, res);
+    assert.equal(res.cookie.called, true);
   });
 
   it('should render the index page with the correct options', (done) => {
@@ -49,6 +47,6 @@ describe('Index Page', () => {
         done();
       },
     };
-    index.indexPage(req, res);
+    index(req, res);
   });
 });

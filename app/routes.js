@@ -1,51 +1,52 @@
-const express = require('express');
+import express from 'express';
 
-const router = new express.Router();
-const config = require('config');
+import config from 'config';
 
 // getControllers
-const esaGet = require('./controllers/get/esa');
-const methodObtainedGet = require('./controllers/get/methodObtained');
-const noEsaGet = require('./controllers/get/noEsa');
-const guidanceGet = require('./controllers/get/guidance');
-const guidancePostGet = require('./controllers/get/guidancePost');
-const takePhotoGet = require('./controllers/get/takePhoto');
-const photoAuditGet = require('./controllers/get/photoAudit');
-const photoStatusGet = require('./controllers/get/photoStatus');
-const ninoGet = require('./controllers/get/nino');
-const addressGet = require('./controllers/get/address');
-const textMessageGet = require('./controllers/get/textMessage');
-const completeGet = require('./controllers/get/complete');
-const checkYourAnswersGet = require('./controllers/get/checkYourAnswers');
-const cookiePolicyGet = require('./controllers/get/cookiePolicy');
-const cookiesDetailsGet = require('./controllers/get/cookiesDetails');
-const accessibilityGet = require('./controllers/get/accessibilityStatement');
-const unprocessableEntityGet = require('./controllers/get/photoQualityError');
-const desktopUnprocessableEntityGet = require('./controllers/get/desktopPhotoQualityError');
-const serverErrorGet = require('./controllers/get/serverError');
-const timeoutGet = require('./controllers/get/sessionTimeout');
-const sessionGet = require('./controllers/get/refresh');
+import esaGet from './controllers/get/esa.js';
+import methodObtainedGet from './controllers/get/methodObtained.js';
+import noEsaGet from './controllers/get/noEsa.js';
+import guidanceGet from './controllers/get/guidance.js';
+import guidancePostGet from './controllers/get/guidancePost.js';
+import takePhotoGet from './controllers/get/takePhoto.js';
+import photoAuditGet from './controllers/get/photoAudit.js';
+import photoStatusGet from './controllers/get/photoStatus.js';
+import ninoGet from './controllers/get/nino.js';
+import addressGet from './controllers/get/address.js';
+import textMessageGet from './controllers/get/textMessage.js';
+import completeGet from './controllers/get/complete.js';
+import checkYourAnswersGet from './controllers/get/checkYourAnswers.js';
+import cookiePolicyGet from './controllers/get/cookiePolicy.js';
+import cookiesDetailsGet from './controllers/get/cookiesDetails.js';
+import accessibilityGet from './controllers/get/accessibilityStatement.js';
+import unprocessableEntityGet from './controllers/get/photoQualityError.js';
+import desktopUnprocessableEntityGet from './controllers/get/desktopPhotoQualityError.js';
+import serverErrorGet from './controllers/get/serverError.js';
+import timeoutGet from './controllers/get/sessionTimeout.js';
+import sessionGet from './controllers/get/refresh.js';
 
 // postContollers
-const esaPost = require('./controllers/post/esa');
-const methodObtainedPost = require('./controllers/post/methodObtained');
-const photoPost = require('./controllers/post/sendPhoto');
-const guidancePost = require('./controllers/post/guidance');
-const ninoPost = require('./controllers/post/sendNino');
-const addressPost = require('./controllers/post/sendAddress');
-const textMessagePost = require('./controllers/post/sendTextMessage');
-const acceptProcessPost = require('./controllers/post/submitDeclaration');
-const checkYourAnswersPost = require('./controllers/post/checkYourAnswers');
+import esaPost from './controllers/post/esa.js';
+import methodObtainedPost from './controllers/post/methodObtained.js';
+import photoPost from './controllers/post/sendPhoto.js';
+import guidancePost from './controllers/post/guidance.js';
+import ninoPost from './controllers/post/sendNino.js';
+import addressPost from './controllers/post/sendAddress.js';
+import textMessagePost from './controllers/post/sendTextMessage.js';
+import acceptProcessPost from './controllers/post/submitDeclaration.js';
+import checkYourAnswersPost from './controllers/post/checkYourAnswers.js';
 
 // functions
-const authentication = require('./functions/isAuthenticated');
-const legal = require('./functions/hasViewedCookieMessage');
-const cookieSettings = require('./functions/updateCookieSettings');
+import authentication from './functions/isAuthenticated.js';
+import legal from './functions/hasViewedCookieMessage.js';
+import cookieSettings from './functions/updateCookieSettings.js';
 
 // middlewares
-const healthcheck = require('./middleware/healthcheck');
+import healthcheck from './middleware/healthcheck.js';
 
-const isAuthenticatedFunction = authentication.isAuthenticated;
+const router = new express.Router();
+
+const isAuthenticatedFunction = authentication;
 
 // Controller Functions
 function catchSlash(req, res) {
@@ -65,28 +66,28 @@ function catchAll(req, res) {
 
 // Get Controllers
 router.get('/', catchSlash);
-router.get('/cookie-agree/', legal.hasViewedCookieMsg);
-router.get('/cookies/cookie_policy', isAuthenticatedFunction, cookiePolicyGet.cookiePolicyPage);
-router.get('/cookies/cookies_details', isAuthenticatedFunction, cookiesDetailsGet.cookiesDetailsPage);
-router.get('/accessibility-statement', isAuthenticatedFunction, accessibilityGet.accessibilityPage);
-router.get('/refresh-session', sessionGet.refresh);
+router.get('/cookie-agree/', legal);
+router.get('/cookies/cookie_policy', isAuthenticatedFunction, cookiePolicyGet);
+router.get('/cookies/cookies_details', isAuthenticatedFunction, cookiesDetailsGet);
+router.get('/accessibility-statement', isAuthenticatedFunction, accessibilityGet);
+router.get('/refresh-session', sessionGet);
 
 // Fitnote Pages
 router.get('/index', redirectGovUk);
-router.get('/esa', esaGet.esa);
-router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet.methodObtained);
-router.get('/no-esa', isAuthenticatedFunction, noEsaGet.noEsa);
-router.get(['/guidance-digital', '/guidance-paper'], isAuthenticatedFunction, guidanceGet.guidance);
-router.get('/guidance-post', isAuthenticatedFunction, guidancePostGet.guidancePost);
-router.get('/upload', isAuthenticatedFunction, takePhotoGet.takePhotoPage);
-router.get('/photo-audit', isAuthenticatedFunction, photoAuditGet.photoAuditPage);
-router.get('/photo-status', isAuthenticatedFunction, photoStatusGet.photoStatus);
-router.get('/nino', isAuthenticatedFunction, ninoGet.ninoPage);
-router.get('/address', isAuthenticatedFunction, addressGet.addressPage);
-router.get('/change-number', isAuthenticatedFunction, textMessageGet.textMessagePage);
-router.get('/text-message', isAuthenticatedFunction, textMessageGet.textMessagePage);
-router.get('/complete', isAuthenticatedFunction, completeGet.completePage);
-router.get('/check-your-answers', isAuthenticatedFunction, checkYourAnswersGet.checkYourAnswersPage);
+router.get('/esa', esaGet);
+router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet);
+router.get('/no-esa', isAuthenticatedFunction, noEsaGet);
+router.get(['/guidance-digital', '/guidance-paper'], isAuthenticatedFunction, guidanceGet);
+router.get('/guidance-post', isAuthenticatedFunction, guidancePostGet);
+router.get('/upload', isAuthenticatedFunction, takePhotoGet);
+router.get('/photo-audit', isAuthenticatedFunction, photoAuditGet);
+router.get('/photo-status', isAuthenticatedFunction, photoStatusGet);
+router.get('/nino', isAuthenticatedFunction, ninoGet);
+router.get('/address', isAuthenticatedFunction, addressGet);
+router.get('/change-number', isAuthenticatedFunction, textMessageGet);
+router.get('/text-message', isAuthenticatedFunction, textMessageGet);
+router.get('/complete', isAuthenticatedFunction, completeGet);
+router.get('/check-your-answers', isAuthenticatedFunction, checkYourAnswersGet);
 
 // Feedback redirect to MS forms
 router.get('/feedback', (req, res) => {
@@ -96,40 +97,40 @@ router.get('/feedback', (req, res) => {
 // Accessibility Tests GET only
 
 if (config.util.getEnv('NODE_ENV') === 'test') {
-  router.get('/cookie-agree/:id', legal.hasViewedCookieMsg);
+  router.get('/cookie-agree/:id', legal);
 
   // Fitnote Pages
-  router.get('/take-a-photo/:id', isAuthenticatedFunction, takePhotoGet.takePhotoPage);
+  router.get('/take-a-photo/:id', isAuthenticatedFunction, takePhotoGet);
   // router.get('/photo-audit/:id', isAuthenticatedFunction, photoAuditGet.photoAuditPage);
-  router.get('/nino/:id', isAuthenticatedFunction, ninoGet.ninoPage);
-  router.get('/address/:id', isAuthenticatedFunction, addressGet.addressPage);
-  router.get('/text-message/:id', isAuthenticatedFunction, textMessageGet.textMessagePage);
-  router.get('/complete/:id', isAuthenticatedFunction, completeGet.completePage);
+  router.get('/nino/:id', isAuthenticatedFunction, ninoGet);
+  router.get('/address/:id', isAuthenticatedFunction, addressGet);
+  router.get('/text-message/:id', isAuthenticatedFunction, textMessageGet);
+  router.get('/complete/:id', isAuthenticatedFunction, completeGet);
 }
 
 // Post Controllers
-router.post('/esa', esaPost.esa);
-router.post('/method-obtained', methodObtainedPost.methodObtained);
-router.post('/update-cookie-settings', cookieSettings.updateCookieSettings);
-router.post('/send-photo', photoPost.sendPhoto);
-router.post(['/guidance-digital', '/guidance-paper'], guidancePost.guidance);
-router.post('/send-nino', ninoPost.sendNino);
-router.post('/send-text-message', textMessagePost.sendTextMessageConfirmation);
-router.post('/send-address', addressPost.sendAddress);
-router.post('/submit-declaration', acceptProcessPost.submitDeclaration);
-router.post('/check-your-answers', checkYourAnswersPost.acceptAndSend);
+router.post('/esa', esaPost);
+router.post('/method-obtained', methodObtainedPost);
+router.post('/update-cookie-settings', cookieSettings);
+router.post('/send-photo', photoPost);
+router.post(['/guidance-digital', '/guidance-paper'], guidancePost);
+router.post('/send-nino', ninoPost);
+router.post('/send-text-message', textMessagePost);
+router.post('/send-address', addressPost);
+router.post('/submit-declaration', acceptProcessPost);
+router.post('/check-your-answers', checkYourAnswersPost);
 
 // Endpoints
-router.get('/healthcheck', healthcheck.healthCheck);
+router.get('/healthcheck', healthcheck);
 
 // ERRORS (must be defined after all routes)
-router.get('/422', unprocessableEntityGet.photoQualityError);
-router.get('/422-desktop', desktopUnprocessableEntityGet.desktopPhotoQualityError);
-router.get('/500', serverErrorGet.serverError);
-router.get('/session-timeout', timeoutGet.sessionTimeout);
+router.get('/422', unprocessableEntityGet);
+router.get('/422-desktop', desktopUnprocessableEntityGet);
+router.get('/500', serverErrorGet);
+router.get('/session-timeout', timeoutGet);
 
 // Catch all unknown routes and redirect to 404 page
-router.use('/*', catchAll);
+router.use('/*splat', catchAll);
 
 // NOTHING AFTER THIS
-module.exports = router;
+export default router;

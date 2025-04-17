@@ -17,4 +17,4 @@ const addressMock = {
   },
 };
 
-module.exports = addressMock;
+export default addressMock;

@@ -21,7 +21,7 @@ services:
 
   localstack:
     container_name: localstack
-    image: localstack/localstack:1.0.3@sha256:06930633ef7f2ca1c2ae69e33d97cc539c1e1af0dccd92b53717231c03ef316a
+    image: localstack/localstack:1.4.0@sha256:7badf31c550f81151c485980e17542592942d7f05acc09723c5f276d41b5927d
     ports:
       - 4566:4566
     environment:

@@ -1,7 +1,7 @@
-const logger = require('../functions/bunyan');
-const {
+import logger from '../functions/bunyan.js';
+import {
   COOKIE_CONSENT_CHOICE, COOKIE_UPDATE_QUERY_PARAM,
-} = require('../constants');
+} from '../constants.js';
 
 function noChoiceMade(cookies) {
   return !cookies[COOKIE_CONSENT_CHOICE] || cookies[COOKIE_CONSENT_CHOICE] === null;
@@ -27,4 +27,4 @@ function CookieConsent(req, res, next) {
   next();
 }
 
-module.exports = CookieConsent;
+export default CookieConsent;

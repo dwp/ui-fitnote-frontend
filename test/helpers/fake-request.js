@@ -1,6 +1,6 @@
 const noop = () => {};
 
-module.exports = class Request {
+export default class Request {
   constructor() {
     this.body = {};
     this.cookies = {};
@@ -35,4 +35,4 @@ module.exports = class Request {
   get(header) {
     return this.headers[header];
   }
-};
+}

@@ -1,7 +1,8 @@
-const bunyan = require('bunyan');
-const bsyslog = require('bunyan-syslog-udp');
-const config = require('config');
+import bunyan from 'bunyan';
+import bsyslog from 'bunyan-syslog-udp';
+import config from 'config';
 
+// eslint-disable-next-line import/no-mutable-exports
 let logger = config.get('logger');
 let streamsContent;
 
@@ -35,4 +36,4 @@ logger = bunyan.createLogger({
   streams: streamsContent,
 });
 
-module.exports = logger;
+export default logger;

@@ -1,7 +1,7 @@
-const config = require('config');
-const { NotifyClient } = require('notifications-node-client');
-const logger = require('../../functions/bunyan');
-const checkHoneypot = require('../../functions/honeypot');
+import config from 'config';
+import { NotifyClient } from 'notifications-node-client';
+import logger from '../../functions/bunyan.js';
+import checkHoneypot from '../../functions/honeypot.js';
 
 const notifyProxyHost = config.get('notify.proxyHost') === 'null' ? null : config.get('notify.proxyHost');
 const notifyProxyPort = config.get('notify.proxyPort') === 'null' ? null : config.get('notify.proxyPort');
@@ -42,7 +42,7 @@ function sendFeedback(req, res) {
   const phoneRaw = req.body.phone;
   const fromPage = req.cookies.feedback || '';
   const fakePhoneRaw = req.body.phoneField;
-  const passedHoneypot = checkHoneypot.honeypot(fakePhoneRaw, 'BOT: honeypot detected a bot, Feedback Page, Phone Field');
+  const passedHoneypot = checkHoneypot(fakePhoneRaw, 'BOT: honeypot detected a bot, Feedback Page, Phone Field');
 
   const validateForm = validateFormFields(req);
   if (validateForm.ratingValid === '1' && validateForm.improvementsValid === '1' && validateForm.nameValid === '1' && validateForm.phoneValid === '1') {
@@ -78,4 +78,4 @@ function sendFeedback(req, res) {
   }
 }
 
-module.exports.sendFeedback = sendFeedback;
+export default sendFeedback;

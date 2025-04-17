@@ -1,6 +1,6 @@
-const nock = require('nock');
-const chai = require('chai');
-const refresh = require('../../../../app/controllers/get/refresh.js');
+import nock from 'nock';
+import chai from 'chai';
+import refresh from '../../../../app/controllers/get/refresh.js';
 
 const API_URL = 'http://localhost:3004';
 const API_SESSION = '/extendSession?sessionId=97w1y2guyg1we';
@@ -44,7 +44,7 @@ describe('Session expiry time reset', () => {
         };
       },
     };
-    refresh.refresh(req, res);
+    refresh(req, res);
   });
 
   it('should render the 500 error page if there is a 400 error from the api', (done) => {
@@ -61,7 +61,7 @@ describe('Session expiry time reset', () => {
         };
       },
     };
-    refresh.refresh(req, res);
+    refresh(req, res);
   });
 
   it('should reset the session expiry time and render the existing page when api call is successful', (done) => {
@@ -83,6 +83,6 @@ describe('Session expiry time reset', () => {
         assert.equal(name, 'exp');
       },
     };
-    refresh.refresh(req, res);
+    refresh(req, res);
   });
 });
