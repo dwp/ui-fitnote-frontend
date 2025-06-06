@@ -23,6 +23,9 @@
     "esa": {
         "missing": "Select yes if you have applied for or get New Style Employment and Support Allowance (ESA)"
     },
+    "fitnote-needed": {
+        "missing": "You must choose an option to continue"
+    },
     "feedback": {
         "required": "Select a satisfaction rating",
         "maxlength": "Enter improvement suggestions using 1200 characters or less",

@@ -1,0 +1,11 @@
+{
+    "h1": "Check if you need to send a fit note",
+    "hintText": "Choose which option applies to you",
+    "radioLabels": {
+        "esa": "DWP has told me that I am in the Work Related Activity Group for ESA or the Support Group for ESA",
+        "group": "I have not been told I am in a group",
+        "notSure": "I am not sure"
+    },
+    "button": "Continue",
+    "back": "Back"
+}

@@ -23,6 +23,9 @@
     "esa": {
         "missing": "Dewiswch ydw os ydych chi wedi gwneud cais am neu’n cael Lwfans Cyflogaeth a Chymorth (ESA) Dull Newydd"
     },
+    "fitnote-needed": {
+        "missing": "Rhaid i chi ddewis opsiwn i barhau"
+    },
     "feedback": {
         "required": "Dewiswch gyfradd bodlonrwydd",
         "maxlength": "Rhowch awgrymiadau gwelliant drwy ddefnyddio 1200 nod neu lai",

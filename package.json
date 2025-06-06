@@ -1,7 +1,7 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "module",
   "scripts": {
     "postinstall": "npm run build",
@@ -26,9 +26,9 @@
     "ioredis": "5.5.0"
   },
   "devDependencies": {
-    "@babel/core": "7.26.10",
-    "@babel/eslint-parser": "7.27.0",
-    "@babel/preset-env": "7.26.9",
+    "@babel/core": "7.27.1",
+    "@babel/eslint-parser": "7.27.1",
+    "@babel/preset-env": "7.27.2",
     "@dwp/eslint-config-base": "5.0.1",
     "@rollup/plugin-alias": "5.1.1",
     "@rollup/plugin-babel": "6.0.4",
@@ -42,19 +42,19 @@
     "gulp": "5.0.0",
     "hmrc-frontend-src": "https://github.com/hmrc/hmrc-frontend.git#v5.67.1",
     "html5shiv": "3.7.3",
-    "mocha": "11.1.0",
+    "mocha": "11.2.2",
     "nock": "13.5.6",
-    "npm-check-updates": "17.1.16",
+    "npm-check-updates": "17.1.18",
     "oldie": "1.3.0",
     "postcss-cli": "11.0.1",
     "postcss-url": "10.1.3",
-    "rollup": "2.79.1",
+    "rollup": "2.79.2",
     "rollup-plugin-terser": "7.0.2",
-    "sass": "1.86.0",
+    "sass": "1.87.0",
     "sinon": "19.0.5",
     "stylelint": "16.17.0",
     "stylelint-config-recommended": "15.0.0",
-    "stylelint-scss": "6.11.1"
+    "stylelint-scss": "6.12.0"
   },
   "dependencies": {
     "@dwp/govuk-casa": "7.2.6",
@@ -66,7 +66,7 @@
     "bunyan-syslog-udp": "0.2.0",
     "c8": "10.1.3",
     "chokidar": "4.0.3",
-    "config": "3.3.12",
+    "config": "4.0.0",
     "connect-timeout": "1.9.0",
     "cookie-parser": "1.4.7",
     "del": "6.1.1",
@@ -86,7 +86,7 @@
     "helmet": "8.1.0",
     "hmrc-frontend": "5.67.1",
     "home-office-kit": "1.2.0",
-    "multer": "1.4.5-lts.2",
+    "multer": "2.0.0",
     "notifications-node-client": "8.2.1",
     "nunjucks": "3.2.4",
     "nyc": "17.1.0",
@@ -105,7 +105,7 @@
       "braces": "3.0.3",
       "micromatch": "4.0.8"
     },
-    "axios": "1.8.4",
+    "axios": "1.9.0",
     "chokidar": "$chokidar",
     "express": "$express",
     "findup-sync": {
@@ -113,7 +113,7 @@
       "micromatch": "4.0.8"
     },
     "glob-parent": "6.0.2",
-    "got": "14.4.6",
+    "got": "14.4.7",
     "gulp": {
       "braces": "3.0.3"
     },

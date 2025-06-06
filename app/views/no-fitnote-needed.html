@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-20') }}{% endblock %}
+
+{% block back_link %}
+<a href="/check-fit-note-needed?ref=no-fit-note-needed" class="govuk-back-link">{{ t('app:back') }}</a>
+{% endblock %}
+
+{% block body %}
+<div class="grid-row govuk-body">
+    <div class="column-two-thirds">
+        <h1 class="govuk-heading-l">
+            {{ t('no-fitnote-needed:h1') }}
+        </h1>
+        <p class="govuk-body">
+            {{t('no-fitnote-needed:p1', { url: 'https://www.gov.uk/employment-support-allowance/change-of-circumstances' }) | safe}}
+        </p>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script>
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+</script>
+
+{% endblock %}

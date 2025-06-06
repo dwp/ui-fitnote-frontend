@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ t('app:page-title-19') }}{% endblock %}
+{% block back_link %}
+<a href="/esa?ref=check-fit-note-needed" class="govuk-back-link">{{ t('fitnote-needed:back') }}</a>
+{% endblock %}
+
+{% block body %}
+<div class="grid-row govuk-body">
+    <div class="govuk-grid-column-two-thirds">
+        {% include "includes/govuk-error-summary.html" %}
+        <form action="/check-fit-note-needed" method="post" class="form" name="fitnoteNeededForm" id="formData"
+            data-form="fitnote-needed" autocomplete="off">
+            <div id="govuk-form-group-error" class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            {{ t('fitnote-needed:h1') }}
+                        </h1>
+                    </legend>
+                    <div id="changedName-hint" class="govuk-hint">
+                        {{ t('fitnote-needed:hintText') }}
+                    </div>
+                  <p id="error-message-radioFitnoteNeeded" class="govuk-error-message" aria-hidden="true"></p>
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="radioEsa" name="fitnoteNeeded"
+                                type="radio" value="esa" {% if
+                                   previousPageCYA == -1 %} checked="checked" {% endif %} aria-describedby="error-message-radioFitnoteNeeded">
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == -1 }}" for="radioEsa">
+                                {{ t('fitnote-needed:radioLabels.esa') }}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="radioGroup" name="fitnoteNeeded"
+                                type="radio" value="group" {% if
+                                   previousPageCYA == 1 %} checked="checked" {% endif %} aria-describedby="error-message-radioFitnoteNeeded">
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 1 }}" for="radioGroup">
+                                {{ t('fitnote-needed:radioLabels.group') }}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="radioNotSure" name="fitnoteNeeded"
+                                type="radio" value="notSure" {% if
+                                   previousPageCYA == 2 %} checked="checked" {% endif %} aria-describedby="error-message-radioFitnoteNeeded">
+                            <label class="govuk-label govuk-radios__label{{ ' selected' if previousPageCYA == 2 }}" for="radioNotSure">
+                                {{ t('fitnote-needed:radioLabels.notSure') }}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <input type="submit" class="govuk-button" value="{{ t('fitnote-needed:button') }}">
+            </div>
+        </form>
+    </div>
+    {% include "includes/sidebar.html" %}
+</div>
+{% endblock %}
+
+{% block body_end %}
+{{super()}}
+<script> 
+    var lang = '{{ lang }}';
+    var expires = '{{ exp }}';
+    var errorDictionary = {{ validationErrors | safe }}
+    var errorPageTitle;
+    if (lang === 'en') {
+        errorPageTitle = 'Error: ' + "{{ t('app:page-title-19') }}";
+    } else {
+        errorPageTitle = 'Gwall: ' + "{{ t('app:page-title-19') }}";
+    }
+</script>
+<script src="/javascript/validate-fitnote-needed.js?version={{assetsVersion}}" defer></script>
+{% endblock %}

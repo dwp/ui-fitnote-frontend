@@ -38,8 +38,8 @@ describe('esa', () => {
     .post('/esa')
     .reply(200, req.body);
 
-  it('Should redirect to method-obtained route when body is Yes', (done) => {
-    const res = buildRes('/method-obtained', done);
+  it('Should redirect to check-fit-note-needed route when body is Yes', (done) => {
+    const res = buildRes('/check-fit-note-needed', done);
     esa(req, res);
   });
 

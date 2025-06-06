@@ -1,0 +1,4 @@
+{
+    "h1": "You do not need to send a fit note",
+    "p1": "If your condition changes, you should <a class=\"govuk-link\" href=\"${url}\" target=\"_blank\">tell DWP as soon as possible (opens in a new tab)</a>."
+}

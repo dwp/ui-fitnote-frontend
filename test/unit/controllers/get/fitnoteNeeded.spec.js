@@ -4,13 +4,13 @@ import config from 'config';
 import sinon from 'sinon';
 import nock from 'nock';
 
-import esa from '../../../../app/controllers/get/esa.js';
+import fitnoteNeeded from '../../../../app/controllers/get/fitnoteNeeded.js';
 
 const { assert } = chai;
 
 chai.use(chaiHttp);
 
-describe('esa', () => {
+describe('fitnoteNeeded', () => {
   const req = {
     cookies: {
       sessionId: '97w1y2guyg1wd555',
@@ -23,13 +23,13 @@ describe('esa', () => {
     body: {},
     language: 'en',
   };
+  const fitnoteNeededTemplate = 'fitnote-needed';
 
-  
-  it('should render the esa page with no-esa query ref', (done) => {
-    req.query.ref = 'no-esa';
+  it('should render the fitnoteNeeded page with no-fit-note-needed query ref', (done) => {
+    req.query.ref = 'no-fit-note-needed';
     const res = {
       render(template, options) {
-        assert.equal(template, 'esa');
+        assert.equal(template, fitnoteNeededTemplate);
         assert.equal(options.version, process.env.npm_package_version);
         assert.equal(options.previousPageCYA, -1);
         assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
@@ -39,16 +39,16 @@ describe('esa', () => {
       locals: { exp: '', lang: 'en' },
     };
     nock(config.get('api.url'))
-      .post('/esa')
+      .post('/check-fit-note-needed')
       .reply(200, req.body);
-    esa(req, res);
+    fitnoteNeeded(req, res);
   });
 
-  it('should render the esa page with check-fit-note-needed query ref', (done) => {
-    req.query.ref = 'check-fit-note-needed';
+  it('should render the fitnoteNeeded page with method-obtained query ref', (done) => {
+    req.query.ref = 'method-obtained';
     const res = {
       render(template, options) {
-        assert.equal(template, 'esa');
+        assert.equal(template, fitnoteNeededTemplate);
         assert.equal(options.version, process.env.npm_package_version);
         assert.equal(options.previousPageCYA, 1);
         assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
@@ -60,15 +60,15 @@ describe('esa', () => {
     nock(config.get('api.url'))
       .post('/esa')
       .reply(200, req.body);
-    esa(req, res);
+    fitnoteNeeded(req, res);
   });
 
-  it('should render the esa page with no query ref', (done) => {
+  it('should render the fitnoteNeeded page with no query ref', (done) => {
     delete req.query.ref;
     req.language = 'cy';
     const res = {
       render(template, options) {
-        assert.equal(template, 'esa');
+        assert.equal(template, fitnoteNeededTemplate);
         assert.equal(options.version, process.env.npm_package_version);
         assert.equal(options.previousPageCYA, 0);
         assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
@@ -78,8 +78,8 @@ describe('esa', () => {
       locals: { exp: '', lang: 'en' },
     };
     nock(config.get('api.url'))
-      .post('/esa')
+      .post('/check-fit-note-needed')
       .reply(200, req.body);
-    esa(req, res);
+    fitnoteNeeded(req, res);
   });
 });

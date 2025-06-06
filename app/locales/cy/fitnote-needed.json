@@ -1,0 +1,11 @@
+{
+    "h1": "Gwirio os oes angen i chi anfon nodyn ffitrwydd",
+    "hintText": "Dewiswch pa opsiwn sy'n berthnasol i chi",
+    "radioLabels": {
+        "esa": "Mae DWP wedi dweud wrthyf fy mod yn y Grŵp Gweithgareddau sy'n Gysylltiedig â Gwaith ar gyfer ESA neu'r Grŵp Cymorth ar gyfer ESA",
+        "group": "Nid wyf wedi cael gwybod fy mod mewn grŵp",
+        "notSure": "Nid wyf yn siwr"
+    },
+    "button": "Parhau",
+    "back": "Yn ôl"
+}

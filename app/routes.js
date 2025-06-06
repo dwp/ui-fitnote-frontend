@@ -6,6 +6,8 @@ import config from 'config';
 import esaGet from './controllers/get/esa.js';
 import methodObtainedGet from './controllers/get/methodObtained.js';
 import noEsaGet from './controllers/get/noEsa.js';
+import fitnoteNeededGet from './controllers/get/fitnoteNeeded.js';
+import noFitnoteNeededGet from './controllers/get/noFitnoteNeeded.js';
 import guidanceGet from './controllers/get/guidance.js';
 import guidancePostGet from './controllers/get/guidancePost.js';
 import takePhotoGet from './controllers/get/takePhoto.js';
@@ -27,6 +29,7 @@ import sessionGet from './controllers/get/refresh.js';
 
 // postContollers
 import esaPost from './controllers/post/esa.js';
+import fitnoteNeededPost from './controllers/post/fitnoteNeeded.js';
 import methodObtainedPost from './controllers/post/methodObtained.js';
 import photoPost from './controllers/post/sendPhoto.js';
 import guidancePost from './controllers/post/guidance.js';
@@ -77,6 +80,8 @@ router.get('/index', redirectGovUk);
 router.get('/esa', esaGet);
 router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet);
 router.get('/no-esa', isAuthenticatedFunction, noEsaGet);
+router.get('/check-fit-note-needed', isAuthenticatedFunction, fitnoteNeededGet);
+router.get('/no-fit-note-needed', isAuthenticatedFunction, noFitnoteNeededGet);
 router.get(['/guidance-digital', '/guidance-paper'], isAuthenticatedFunction, guidanceGet);
 router.get('/guidance-post', isAuthenticatedFunction, guidancePostGet);
 router.get('/upload', isAuthenticatedFunction, takePhotoGet);
@@ -110,6 +115,7 @@ if (config.util.getEnv('NODE_ENV') === 'test') {
 
 // Post Controllers
 router.post('/esa', esaPost);
+router.post('/check-fit-note-needed', fitnoteNeededPost);
 router.post('/method-obtained', methodObtainedPost);
 router.post('/update-cookie-settings', cookieSettings);
 router.post('/send-photo', photoPost);
