@@ -1,4 +1,5 @@
 import TimeoutDialog from 'hmrc-frontend-src/src/components/timeout-dialog/timeout-dialog';
+import SessionActivityService from 'hmrc-frontend-src/src/components/timeout-dialog/session-activity-service';
 
 /**
  * @param opts
@@ -11,10 +12,12 @@ function initAll (opts) {
   // Defaults to the entire document if nothing is set.
   const scope = typeof options.scope !== 'undefined' ? options.scope : document;
 
+  const sessionActivity = new SessionActivityService();
+
   // HMRC Session Timeout Dialog
   const $TimeoutDialog = scope.querySelector('meta[name="hmrc-timeout-dialog"]');
   if ($TimeoutDialog) {
-    new TimeoutDialog($TimeoutDialog).init();
+    new TimeoutDialog($TimeoutDialog, sessionActivity).init();
   }
 }
 

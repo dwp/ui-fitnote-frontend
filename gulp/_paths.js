@@ -10,6 +10,7 @@ export default {
             jsHmrc: './assets/js-hmrc/**/*',
             scssAll: './assets/scss/**/*',
             scssApp: './assets/scss/*.scss',
+            styles: './assets/styles/*.css'
         },
         nodeJs: './app/**/*.js',
         appHtml: './app/**/*.html',

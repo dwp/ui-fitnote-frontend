@@ -16,4 +16,10 @@ gulp.task('copyFonts', (done) => {
     done();
 });
 
-gulp.task('copy', gulp.series('copyImages', 'copyFonts'));
+gulp.task('copyStyles', (done) => {
+    gulp.src(`${gulpPaths.src.assets.styles}`)
+        .pipe(gulp.dest(gulpPaths.dest.css));
+    done();
+});
+
+gulp.task('copy', gulp.series('copyImages', 'copyFonts', 'copyStyles'));

@@ -185,3 +185,6 @@ Fitnote UI is currently uses a default json file (app/configs/dev.json) which ca
 | GOOGLE_TAG_MANAGER_ID | "GTM-PVWF7WT" | GTM ID |
 | GOOGLE_TAG_MANAGER_DOMAIN | localhost | Domain name for GTM cookies |
 
+## Shutter page
+- We provide Akamai with a .html file containing the content for when we plan maintenance or shutter the service, this file can be found in the root of the project `syfn-shutter.html`
+- This file is not served by our application, just stored within the repository to keep a record and then after any changes we send this file to Akamai

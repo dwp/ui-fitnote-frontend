@@ -1,7 +1,7 @@
 {
-    "h1": "Ydych chi eisiau neges testun i gadarnhau bod eich nodyn ffitrwydd wedi cael ei dderbyn?",
+    "h1": "Ydych chi eisiau neges destun pan fyddwn yn derbyn eich nodyn ffitrwydd?",
     "yes": "Oes",
     "no": "Na",
-    "mobile-number": "Eich rhif ffôn symudol",
-    "hint": "Gall gymryd hyd at 24 awr i chi gael neges tesun o gadarnhad."
+    "mobile-number": "Rhowch eich rhif ffôn symudol (gall negeseuon testun cadarnhau gymryd hyd at 24 awr i gyrraedd)",
+    "hint": "Bydd angen i chi ddarparu eich rhif ffôn symudol. Efallai y byddwn hefyd yn defnyddio'r rhif hwn i gysylltu â chi am unrhyw broblemau gyda'ch nodyn ffitrwydd."
 }

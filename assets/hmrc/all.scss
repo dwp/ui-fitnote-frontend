@@ -1,12 +1,10 @@
 /* HMRC Frontend
 -------------------------------------------------- */
-@import "hmrc-frontend-src/src/components/timeout-dialog/timeout-dialog";
+@import 'govuk-frontend/dist/govuk/index';
 
-/* MOJ */
-@import '@ministryofjustice/frontend/moj/components/ticket-panel/ticket-panel';
+@import "hmrc-frontend/hmrc/components/timeout-dialog/timeout-dialog";
 
-/* Home Office */
-@import 'govuk-frontend/govuk/components/inset-text/index';
+// /* Home Office */
 @import 'home-office-kit/sass/alert';
 
 .hmrc-timeout-dialog__message[aria-hidden="true"]{

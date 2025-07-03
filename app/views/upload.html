@@ -92,12 +92,13 @@
     }
   }
 </script>
-<script src="/govuk/all.js"></script>
-<script>
-  var ErrorSummary = window.GOVUKFrontend.ErrorSummary
+<script type="module" src="/govuk/all.js"></script>
+<script type="module">
+    window.GOVUKFrontend.initAll();
+
   var $errorSummary = document.querySelector('[data-module="govuk-error-summary"]');
   if ($errorSummary) {
-    new ErrorSummary($errorSummary).init();
+    $errorSummary.focus();
   }
 </script>
 {% endblock %}

@@ -21,8 +21,6 @@ import checkYourAnswersGet from './controllers/get/checkYourAnswers.js';
 import cookiePolicyGet from './controllers/get/cookiePolicy.js';
 import cookiesDetailsGet from './controllers/get/cookiesDetails.js';
 import accessibilityGet from './controllers/get/accessibilityStatement.js';
-import unprocessableEntityGet from './controllers/get/photoQualityError.js';
-import desktopUnprocessableEntityGet from './controllers/get/desktopPhotoQualityError.js';
 import serverErrorGet from './controllers/get/serverError.js';
 import timeoutGet from './controllers/get/sessionTimeout.js';
 import sessionGet from './controllers/get/refresh.js';
@@ -130,8 +128,6 @@ router.post('/check-your-answers', checkYourAnswersPost);
 router.get('/healthcheck', healthcheck);
 
 // ERRORS (must be defined after all routes)
-router.get('/422', unprocessableEntityGet);
-router.get('/422-desktop', desktopUnprocessableEntityGet);
 router.get('/500', serverErrorGet);
 router.get('/session-timeout', timeoutGet);
 

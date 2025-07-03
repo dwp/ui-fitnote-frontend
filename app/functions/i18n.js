@@ -53,6 +53,8 @@ export default function init(app, appLocaleDirs, supportedLocales) {
       req.i18nTranslator.t.bind(req.i18nTranslator),
     );
 
+    res.nunjucksEnvironment.addGlobal('govukRebrand', true);
+
     next();
   });
 }

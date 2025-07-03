@@ -164,8 +164,8 @@ app.use((req, res, next) => {
 });
 
 // Built-in static assets are served at /public, any other govuk-frontend assets are in node_modules
-app.use('/assets', express.static(`${appRootDirectory}/node_modules/govuk-frontend/govuk/assets`));
-app.use('/govuk/all.js', express.static(`${appRootDirectory}/node_modules/govuk-frontend/govuk/all.js`));
+app.use('/assets', express.static(`${appRootDirectory}/node_modules/govuk-frontend/dist/govuk/assets`));
+app.use('/govuk/all.js', express.static(`${appRootDirectory}/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js`));
 
 // Routes
 if (typeof (routes) !== 'function') {

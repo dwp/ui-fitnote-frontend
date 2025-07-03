@@ -17,7 +17,6 @@ export default {
     postcssurl([{
       url: 'copy',
       // base path to search assets from
-      basePath: path.resolve('node_modules'),
       // dir to copy assets
       assetsPath: 'assets',
       // using hash names for assets (generates from asset content)

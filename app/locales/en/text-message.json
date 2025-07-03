@@ -1,7 +1,7 @@
 {
-    "h1": "Do you want a text message to confirm your fit note has been received?",
+    "h1": "Do you want a text message when we receive your fit note?",
     "yes": "Yes",
     "no": "No",
-    "mobile-number": "Your mobile number",
-    "hint": "It can take up to 24 hours for you to get the confirmation text."
+    "mobile-number": "Enter your mobile number (confirmation texts can take up to 24 hours to arrive)",
+    "hint": "You will need to provide your mobile number. We may also use this number to contact you about any issues with your fit note."
 }
