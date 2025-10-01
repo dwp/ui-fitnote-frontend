@@ -19,26 +19,6 @@
     <form action="/send-photo" method="post" enctype="multipart/form-data" id="formData" name="formData"
           data-form="takeAPhoto" autocomplete="off">
       <div class="govuk-form-group">
-        <div
-          class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
-          <h2>
-            {{ t('upload:h2') }}
-          </h2>
-          <p id="file-upload-1-error" class="govuk-error-message">
-                    {% if errors.photo or errors.photoOCR %}
-                      {% for error, value in errors %}
-                          <span class="govuk-visually-hidden">Error:</span> {{value.message | striptags(true) | escape | nl2br}}
-                      {% endfor %}
-                    {% endif %}
-          </p>
-          <input type="file" accept="image/*,.heif,.heic,application/pdf" id="userPhotoID" name="userPhoto"
-                 class="govuk-file-upload" aria-describedby="file-upload-1-error">
-        </div>
-
-        <div class="govuk-form-group" aria-hidden="true">
-          <label for="imageNameID" aria-hidden="true">Leave blank</label>
-          <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value="">
-        </div>
 
         <p class="govuk-!-padding-top-2">
           {{ t('upload:text') }}
@@ -50,10 +30,30 @@
           <li>{{ t('upload:list.li3') }}</li>
         </ul>
 
+        <div
+          class="govuk-form-group {% if errors.photo or errors.photoOCR %}govuk-form-group--error{% endif %}">
+          <p id="file-upload-1-error" class="govuk-error-message">
+                    {% if errors.photo or errors.photoOCR %}
+                      {% for error, value in errors %}
+                          <span class="govuk-visually-hidden">Error:</span> {{value.message | striptags(true) | escape | nl2br}}
+                      {% endfor %}
+                    {% endif %}
+          </p>
+          <input type="file" accept="image/*,.heif,.heic,application/pdf" id="userPhotoID" name="userPhoto"
+                 class="govuk-file-upload"  style="display:none">
+        
+
+        <div class="govuk-form-group" aria-hidden="true">
+          <label for="imageNameID" aria-hidden="true">Leave blank</label>
+          <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value="">
+        </div>
+
 
         <div id="js-submitButtonContainer" class="clearfix">
-          <input type="submit" class="govuk-button" value="{{ t('upload:buttonText') }}" id="submitButton">
+          <button class="govuk-button" id="submitButton" aria-describedby="file-upload-1-error">{{ t('upload:buttonText') }}</button>
         </div>
+      </div>
+
         <div id="js-loading-message" class="display-offscreen">
           <div class="spinner">
             <div class="bounce1"></div>
@@ -70,8 +70,8 @@
         </div>
       </div>
     </form>
-  </div>
   {% include "includes/sidebar.html" %}
+  </div>
 </div>
 
 
@@ -79,7 +79,6 @@
 
 {% block body_end %}
 {{super()}}
-<script src="/javascript/get-a-photo.js?version={{assetsVersion}}"></script>
 <script>
   var lang = '{{ lang }}';
   var expires = '{{ exp }}';
@@ -91,6 +90,32 @@
       document.title = 'Gwall: ' + "{{ t('app:page-title-06') }}";
     }
   }
+
+  var form = document.getElementById('formData');
+  var fileInput = document.getElementById('userPhotoID');
+
+
+  function showLoader() {
+      var submitBtnContainer = document.getElementById('js-submitButtonContainer');
+
+      document.getElementById('js-loading-message').className += 'js-show';
+      submitBtnContainer.className = 'js-hide';
+      document.getElementById('upload-status').innerHTML+=("<p>Uploading</p>");
+      return true;
+    }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    fileInput.click();
+  })
+
+  fileInput.addEventListener('change', function() {
+    if (fileInput.files.length > 0) {
+      showLoader();
+      form.submit();
+    }
+  })
+
 </script>
 <script type="module" src="/govuk/all.js"></script>
 <script type="module">

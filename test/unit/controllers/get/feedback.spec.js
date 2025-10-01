@@ -6,7 +6,7 @@ const { assert } = chai;
 chai.use(chaiHttp);
 
 describe('Feedback Page (redirect)', () => {
-  const newFeedbackURL = 'https://forms.office.com/pages/responsepage.aspx?id=DpxP-knna0i8NIr6EGM3VsmUfSVlj39Dm5IoDLk2jmRUMThGTFhLMURFTkRISFdKMTA0U1dWUTg3NiQlQCN0PWcu';
+  const newFeedbackURL = 'https://forms.office.com/Pages/ResponsePage.aspx?id=DpxP-knna0i8NIr6EGM3VmFiZcGClyNJnyawQfMi-dVUMEs3SDg1WE1FSzJQSDlNRlhSNUM2OTUyMS4u';
 
   it('Should detect the status code 308', (done) => {
     chai.request(app)

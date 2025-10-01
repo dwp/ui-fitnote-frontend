@@ -19,6 +19,7 @@ describe('Method Obtained', () => {
 
   it('should render method obtained page', () => {
     const res = {
+      locals: { },
       render(template, options) {
         assert.equal(template, 'method-obtained');
         assert.equal(options.sessionId, '97w1y2guyg1wd555');
@@ -32,6 +33,7 @@ describe('Method Obtained', () => {
 
   it('should check if the validationErrors content is in english', () => {
     const res = {
+      locals: { },
       render(template, options) {
         assert.equal(options.validationErrors, JSON.stringify(enErrors));
       },
@@ -42,6 +44,7 @@ describe('Method Obtained', () => {
   it('should check if the validationErrors content is in welsh', () => {
     req.language = 'cy';
     const res = {
+      locals: { },
       render(template, options) {
         assert.equal(options.validationErrors, JSON.stringify(cyErrors));
       },
@@ -51,6 +54,7 @@ describe('Method Obtained', () => {
 
   it('should check if the validationErrors content is in welsh', () => {
     const res = {
+      locals: { },
       render(template, options) {
         assert.equal(options.validationErrors, JSON.stringify(cyErrors));
       },
@@ -60,6 +64,7 @@ describe('Method Obtained', () => {
 
   it('should check if the query.ref is guidance-digital', () => {
     const res = {
+      locals: { },
       render(template, options) {
         assert.equal(options.previousPageCYA, '1');
       },
@@ -70,6 +75,7 @@ describe('Method Obtained', () => {
   it('should check if the query.ref is guidance-paper', () => {
     req.query.ref = 'guidance-paper';
     const res = {
+      locals: { },
       render(template, options) {
         assert.equal(options.previousPageCYA, '2');
       },

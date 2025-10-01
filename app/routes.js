@@ -76,7 +76,7 @@ router.get('/refresh-session', sessionGet);
 // Fitnote Pages
 router.get('/index', redirectGovUk);
 router.get('/esa', esaGet);
-router.get('/method-obtained', isAuthenticatedFunction, methodObtainedGet);
+router.get('/method-obtained', methodObtainedGet);
 router.get('/no-esa', isAuthenticatedFunction, noEsaGet);
 router.get('/check-fit-note-needed', isAuthenticatedFunction, fitnoteNeededGet);
 router.get('/no-fit-note-needed', isAuthenticatedFunction, noFitnoteNeededGet);
@@ -94,7 +94,7 @@ router.get('/check-your-answers', isAuthenticatedFunction, checkYourAnswersGet);
 
 // Feedback redirect to MS forms
 router.get('/feedback', (req, res) => {
-  res.redirect(308, 'https://forms.office.com/pages/responsepage.aspx?id=DpxP-knna0i8NIr6EGM3VsmUfSVlj39Dm5IoDLk2jmRUMThGTFhLMURFTkRISFdKMTA0U1dWUTg3NiQlQCN0PWcu');
+  res.redirect(308, 'https://forms.office.com/Pages/ResponsePage.aspx?id=DpxP-knna0i8NIr6EGM3VmFiZcGClyNJnyawQfMi-dVUMEs3SDg1WE1FSzJQSDlNRlhSNUM2OTUyMS4u');
 });
 
 // Accessibility Tests GET only

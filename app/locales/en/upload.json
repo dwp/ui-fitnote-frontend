@@ -1,5 +1,5 @@
 {
-    "h1": "Choose and upload your fit note",
+    "h1": "Upload your fit note",
     "list": {
         "li1": "be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",
         "li2": "be smaller than 10MB",
@@ -8,7 +8,6 @@
     "text": "Your file must:",
     "p": "Uploading...",
     "buttonText": "Upload and continue",
-    "h2": "Choose your file first",
     "back": "Back",
     "missing": "Choose the file you want to upload",
     "invalid": "The selected file must be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF",

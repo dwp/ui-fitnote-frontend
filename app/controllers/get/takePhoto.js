@@ -33,14 +33,14 @@ function getPhotoTypeError(req) {
   if (req.query.type === '2') {
     photoTypeError = {
       message: req.i18nTranslator.t('errors:invalidFileType'),
-      field: 'userPhotoID',
+      field: 'submitButton',
     };
   }
 
   if (maxSizeError) {
     photoTypeError = {
       message: req.i18nTranslator.t('upload:tooBig'),
-      field: 'userPhotoID',
+      field: 'submitButton',
     };
   }
 
@@ -55,13 +55,7 @@ function getPhotoError(req, res) {
     case 'serviceFailed':
       photoError = {
         message: req.i18nTranslator.t('upload:serviceFail'),
-        field: 'userPhotoID',
-      };
-      break;
-    case 'noPhoto':
-      photoError = {
-        message: req.i18nTranslator.t('upload:missing'),
-        field: 'userPhotoID',
+        field: 'submitButton',
       };
       break;
     case 'ocrFailed':
@@ -74,19 +68,19 @@ function getPhotoError(req, res) {
       photoError = {
         retry: req.cookies.retry,
         message: req.i18nTranslator.t('upload:failed-ocr'),
-        field: 'userPhotoID',
+        field: 'submitButton',
       };
       break;
     case 'maxReplay':
       photoError = {
         message: req.i18nTranslator.t('upload:maxReplay'),
-        field: 'userPhotoID',
+        field: 'submitButton',
       };
       break;
     case 'password':
       photoError = {
         message: req.i18nTranslator.t('upload:password'),
-        field: 'userPhotoID',
+        field: 'submitButton',
       };
       break;
     default:
@@ -101,7 +95,7 @@ function getErrorMessage(req, res) {
   const fileError = getFileError(req);
   const photoError = getPhotoError(req, res);
   const photoTypeError = getPhotoTypeError(req);
-  if ((req.query.error !== 'noPhoto') && (req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && (req.query.error !== 'maxReplay') && (req.query.error !== 'password') && !fileError) {
+  if ((req.query.error !== 'ocrFailed') && (req.query.error !== 'serviceFailed') && (req.query.error !== 'maxReplay') && (req.query.error !== 'password') && !fileError) {
     errorMessage = '';
   } else if (req.query.error === 'ocrFailed') {
     errorMessage = {

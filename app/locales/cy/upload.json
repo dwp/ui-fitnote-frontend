@@ -1,5 +1,5 @@
 {
-  "h1": "Dewis a llwytho eich nodyn ffitrwydd",
+  "h1": "Llwytho eich nodyn ffitrwydd",
   "list": {
     "li1": "fod yn JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF neu PDF",
     "li2": "fod yn llai na 10MB",
@@ -8,7 +8,6 @@
   "text": "Rhaid i’ch ffeil:",
   "p": "Llwytho...",
   "buttonText": "Llwytho a pharhau",
-  "h2": "Dewiswch eich ffeil yn gyntaf",
   "back": "Yn ôl",
   "missing": "Dewiswch y ffeil rydych eisiau llwytho",
   "invalid": "Dylech sicrhau bod ffurf y ffeil rydych yn ei lwytho yn unai JPG, BMP, PNG, TIF neu PDF",

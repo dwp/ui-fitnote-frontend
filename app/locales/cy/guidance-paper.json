@@ -1,31 +1,42 @@
 {
     "h1": "Anfon eich nodyn ffitrwydd papur i DWP",
-    "info": "Os oes gennych nodyn ffitrwydd papur, gallwch ddefnyddio'r gwasanaeth hwn i'w anfon atom ar-lein. Os na allwch ei anfon ar-lein, ",
-    "post-link": "darganfyddwch sut i bostio eich nodyn ffitrwydd papur atom (agor mewn tab newydd).",
-    "h2": "Anfon ar-lein",
-    "online-info": "Mae dwy ffordd i anfon eich nodyn ffitrwydd papur ar-lein. Gallwch naill ai:",
-    "info-list": {
-      "li1": "dynnu lun o'ch nodyn ffitrwydd",
-      "li2": "sganio eich nodyn ffitrwydd"
+    "h2": "Edrychwch i weld bod eich nodyn ffitrwydd yn ddilys",
+    "med3-list": {
+        "li1": "Dylai eich nodyn ffitrwydd fod yn nodyn ffitrwydd Med 3 a gyhoeddwyd gan ymarferydd iechyd, fel meddyg teulu. Dylai edrych fel yr enghraifft hon:",
+        "li2": "Dylai'r sgwâr bach du a gwyn (a elwir yn matrics data) ar waelod eich nodyn ffitrwydd fod yn glir."
     },
-    "p1": "Mae'n bwysig bod llun neu sgan eich nodyn ffitrwydd yn glir fel y gellir ei ddarllen gan ein system. Os na ellir ei ddarllen, gall gael ei wrthod.",
-    "p2": "Gall y ddelwedd enghreifftiol gyda'r groes goch gael ei wrthod oherwydd bod yr ymylon ar goll. Byddai'r ddelwedd enghreifftiol gyda'r tic gwyrdd yn cael ei derbyn oherwydd bod y nodyn ffitrwydd cyfan i'w weld.",
-    "h3": "Tynnu lun o'ch nodyn ffitrwydd",
-    "list-take": {
-      "li1": "Rhowch y nodyn ffitrwydd ar wyneb gwastad, gwnewch yn siwr nad oes ganddo unrhyw gilfachau neu blygiadau a'i fod yn gorwedd yn syth.",
-      "li2": "Dylai fod wedi'i oleuo'n dda a heb unrhyw gysgodion.",
-      "li3": "Os oes gan eich nodyn ffitrwydd fatrics data (sgwâr du a gwyn sy'n edrych fel cod QR), gwnewch yn siwr ei fod i'w weld yn amlwg.",
-      "li4": "Dylai'r nodyn ffitrwydd cyfan fod yn weladwy yn y llun."
+    "uploading": {
+        "h2": "Llwytho eich nodyn ffitrwydd papur",
+        "p1": "I anfon eich nodyn ffitrwydd papur ar-lein, bydd angen i chi naill ai:",
+        "li1": "gymryd llun o'ch nodyn ffitrwydd",
+        "li2": "sganio eich nodyn ffitrwydd",
+        "p2": "Derbynnir delweddau portread neu dirwedd ond nid nodiadau ffitrwydd dwyochrog. Dim ond un nodyn ffitrwydd allwch chi ei lwytho ar y tro.",
+        "info": "Os na allwch ei anfon ar-lein,",
+        "post-link": " darganfyddwch sut i bostio'ch nodyn ffitrwydd papur atom (agor mewn tab newydd)"
     },
-    "h4": "Sganio eich nodyn ffitrwydd",
-    "list-scan": {
-      "li1": "Gwnewch yn siŵr bod y sganiwr wedi'i gysylltu â gliniadur neu ddyfais arall.",
-      "li2": "Rhowch y nodyn ffitrwydd ochr y cynnwys i lawr ar y sganiwr. Os yw'ch nodyn ffitrwydd yn 2 ochr, rhaid i chi sganio'r ochr sy'n dangos eich manylion.",
-      "li3": "Gwnewch yn siwr bod y nodyn ffitrwydd yn gorwedd yn syth ac nid oes unrhyw gilfachau neu blygiadau.",
-      "li4": "Arbedwch y ddelwedd wedi'i sganio yn rhywle sy'n hawdd dod o hyd iddo yn ddiweddarach."
+    "good-photo": {
+        "h3": "Sut i gymryd llun da",
+        "li1": "Rhowch y nodyn ffitrwydd ar wyneb gwastad, gan wneud yn siwr ei fod yn gorwedd yn fflat.",
+        "li2": "Ni ddylai fod ag unrhyw gilfachau neu blygiadau.",
+        "li3": "Gwnewch yn siwr ei fod wedi'i oleuo'n dda a heb unrhyw gysgodion.",
+        "li4": "Dylai'r nodyn ffitrwydd cyfan, yn cynnwys y 4 cornel, fod yn weladwy."
     },
-    "p3": "Efallai y gallwch sganio'ch nodyn ffitrwydd gan ddefnyddio ffôn clyfar yn hytrach na sganiwr. Os oes gennych ffôn clyfar, gwiriwch i weld a all wneud hyn.",
-    "p4": "Bydd angen i chi roi eich rhif Yswiriant Gwladol ar ôl i chi lwytho eich nodyn ffitrwydd. Gallwch ddod o hyd i hwn ar eich llythyr budd-dal, slip cyflog neu P60.",
+    "scan": {
+        "h3": "Sut i sganio eich nodyn ffitrwydd",
+        "li1": "Gwnewch yn siwr bod y sganiwr wedi'i gysylltu â gliniadur neu ddyfais arall.",
+        "li2": "Rhowch y nodyn ffitrwydd ochr y cynnwys i lawr ar y sganiwr. Os yw'ch nodyn ffitrwydd yn ddwyochrog, rhaid i chi sganio'r ochr sy'n dangos eich manylion.",
+        "li3": "Gwnewch yn siwr bod y nodyn ffitrwydd yn gorwedd yn syth ac nid oes unrhyw gilfachau neu blygiadau.",
+        "li4": "Arbedwch y ddelwedd wedi'i sganio yn rhywle sy'n hawdd dod o hyd iddo yn ddiweddarach.",
+        "p": "Mae gan rai ffonau clyfar ap sy'n gallu sganio dogfennau. Os oes gennych ffôn clyfar, edrychwch i weld a oes ganddo'r app hon."
+    },
+    "accepted": {
+        "h2": "Gwiriwch y bydd y llun neu'r sgan yn cael ei dderbyn",
+        "p1": "Dylid derbyn eich llun neu'ch sgan os:",
+        "li1": "mae'n glir ac yn hawdd i'w ddarllen",
+        "li2": "mae'r nodyn ffitrwydd cyfan yn weladwy, gan gynnwys pob un o'r pedair cornel",
+        "p2": "Gall y ddelwedd enghreifftiol gyda'r groes goch gael ei wrthod oherwydd bod yr ymylon ar goll. Byddai'r ddelwedd enghreifftiol gyda'r tic gwyrdd yn cael ei derbyn oherwydd bod y nodyn ffitrwydd cyfan yn weladwy."
+    },
+    "p": "Bydd angen i chi roi eich rhif Yswiriant Gwladol ar ôl i chi lwytho eich nodyn ffitrwydd. Gallwch ddod o hyd i hwn ar eich llythyr budd-dal, slip cyflog neu P60.",
     "buttonText": "Parhau i lwytho",
     "back": "Yn ôl"
 }

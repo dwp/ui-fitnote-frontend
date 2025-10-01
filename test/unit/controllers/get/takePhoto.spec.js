@@ -73,22 +73,6 @@ describe('Take Photo Page (upload)', () => {
     takePhoto(req, res);
   });
 
-  it('Should render the upload page with photo errors (no photo)', (done) => {
-    delete req.query.type;
-    delete req.query.ref;
-    req.query.error = 'noPhoto';
-    const res = {
-      render(template, options) {
-        assert.equal(req.i18nTranslator.t.calledWith('upload:missing'), true);
-        assert.equal(template, 'upload');
-        assert.equal(options.version, process.env.npm_package_version);
-        assert.equal(options.environment, config.util.getEnv('NODE_ENV'));
-        done();
-      },
-    };
-    takePhoto(req, res);
-  });
-
   it('Should render the upload page with photo errors (ocr failed)', (done) => {
     delete req.query.type;
     delete req.query.ref;

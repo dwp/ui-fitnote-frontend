@@ -41,6 +41,7 @@ if (config.get('service.listenonhttp') === 'true') {
       notifyValimate(true);
     },
   );
+  logger.info("Listening on HTTP");
 } else {
   credentials = {
     key: fs.readFileSync(config.get('service.key')),
@@ -63,6 +64,7 @@ if (config.get('service.listenonhttp') === 'true') {
     }\nAPI: ${config.get('api.url')
     }\nLogs: ${config.logsLocation}`);
   });
+  logger.info("Listening on HTTPS");
 }
 
 // Gracefully handle node server kill via CTRL+C

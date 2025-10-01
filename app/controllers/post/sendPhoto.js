@@ -1,7 +1,7 @@
 import rp from 'request-promise-native';
 import multer from 'multer';
 import config from 'config';
-import filesize from 'filesize';
+import { filesize } from 'filesize';
 
 import logger from '../../functions/bunyan.js';
 import encoder from '../../functions/base64Encode.js';
@@ -40,15 +40,15 @@ function apiUploadOptions(req, logType) {
 }
 
 function getFileSize(byteSize) {
-  let sizeObject = filesize.filesize(byteSize, { exponent: 2, output: 'object' });
+  let sizeObject = filesize(byteSize, { exponent: 2, output: 'object' });
   if (sizeObject.value >= 1) {
-    return filesize.filesize(byteSize, { exponent: 2, round: 1 });
+    return filesize(byteSize, { exponent: 2, round: 1 });
   }
-  sizeObject = filesize.filesize(byteSize, { exponent: 1, round: 0, output: 'object' });
+  sizeObject = filesize(byteSize, { exponent: 1, round: 0, output: 'object' });
   if (sizeObject.value >= 1) {
-    return filesize.filesize(byteSize, { exponent: 1, round: 0 });
+    return filesize(byteSize, { exponent: 1, round: 0 });
   }
-  return filesize.filesize(byteSize, { exponent: 0, round: 0, fullform: true });
+  return filesize(byteSize, { exponent: 0, round: 0, fullform: true });
 }
 
 function errorRoute(req, logType) {
@@ -120,7 +120,7 @@ function sendPhoto(req, res) {
     const { file } = req;
     if (!file) {
       logType.debug({ err }, 'No photo submitted');
-      res.redirect(`/${route}&error=noPhoto`);
+      res.redirect(`/${route}&error=serviceFailed`);
       return;
     }
 
