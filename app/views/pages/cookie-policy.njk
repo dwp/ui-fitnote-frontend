@@ -1,0 +1,50 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% block casaPageTitle %}
+  {{ t('cookie-policy:pageTitle') }}
+{% endblock %}
+
+{% block journey_form %}
+<div class="govuk-body">
+
+  <h1 class="govuk-heading-xl">{{ t('cookie-policy:h1') }}</h1>
+
+  <p>{{ t('cookie-policy:p1') }}</p>
+  <p>{{ t('cookie-policy:p2') }}</p>
+
+  <ul>
+    <li>{{ t('cookie-policy:li1') }}</li>
+    <li>{{ t('cookie-policy:li2') }}</li>
+  </ul>
+
+  <p>{{ t('cookie-policy:p3') }}</p>
+
+  <ul>
+    <li>{{ t('cookie-policy:li3') }}</li>
+    <li>{{ t('cookie-policy:li4') }}</li>
+    <li>{{ t('cookie-policy:li5') }}</li>
+  </ul>
+
+  <h2 class="govuk-heading-l">{{ t('cookie-policy:h2') }}</h2>
+
+  <h3 class="govuk-heading-s">{{ t('cookie-policy:analytics') }}</h3>
+  <p>{{ t('cookie-policy:p4') }}</p>
+
+  <h3 class="govuk-heading-s">{{ t('cookie-policy:improveService') }}</h3>
+  {{ casaGovukRadios({
+    classes: "govuk-radios--inline",
+    name: 'cookieConsent',
+    items: [{
+      text: t('common:yes'),
+      value: 'accept'
+    }, {
+      text: t('common:no'),
+      value: 'reject'
+    }],
+    casaValue: consentCookieValue,
+    casaErrors: formErrors
+  }) }}
+</div>
+{% endblock %}

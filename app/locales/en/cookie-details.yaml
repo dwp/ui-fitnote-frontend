@@ -1,0 +1,48 @@
+pageTitle: Details about cookies on this service - Send your fit note - GOV.UK
+h1: Details about cookies on this service
+p1: We need to use some essential cookies to make the 'Send your fit note for your ESA claim' website work.
+insetText: "You can <a href='/cookies/cookie_policy' class='govuk-link'>change which cookies you are happy for us to use</a>."
+h2: If your cookies are switched off
+p2: You will see an error message when you try to use the website if your cookies are disabled.
+p3: How to turn cookies on depends on the <a href='https://www.whatsmybrowser.org/' target='_blank' class='govuk-link'>browser you are using (opens in a new tab)</a> and how up to date it is.
+p4: "Find out how to change your settings for the most popular browsers, including:"
+li1: "<a href='https://support.microsoft.com/en-us/products/windows?os=windows-10' target='_blank' class='govuk-link'>Internet Explorer (opens in a new tab)</a>"
+li2: "<a href='https://www.mozilla.org/en-US/?v=a' target='_blank' class='govuk-link'>Mozilla Firefox (opens in a new tab)</a>"
+li3: "<a href='https://support.google.com/accounts/answer/61416?hl=en' target='_blank' class='govuk-link'>Google Chrome (opens in a new tab)</a>"
+li4: "<a href='https://www.apple.com/' target='_blank' class='govuk-link'>Safari (opens in a new tab)</a>, commonly used on iPads, iPhones and other Apple computers"
+p5: "Find out <a href='http://www.aboutcookies.org/Default.aspx?page=1' target='_blank' class='govuk-link'>how to manage cookies (opens in a new tab)</a> for other browsers."
+measure: Cookies that measure website use
+p6: We use Google Analytics software to collect information about how you use the website. We use this information to improve this website.
+insetText2: We do not allow Google to use or share the data about how you use this site.
+p7: "Google analytics cookies collect and store information about:"
+li5: the page you visit - what you click on when using the website
+li6: how long you spend on each page
+li7: how you got to the website
+googleAnalyticsCookies: Google analytics cookies
+table:
+  headings:
+    name: Name
+    purpose: Purpose
+    expires: Expires
+  ga:
+    purpose: "Counts how many peopel visit the website by tracking if they've visited before."
+    expires: "60 minutes or when you close your browser"
+  gat:
+    purpose: Counts how many pages are viewed and how often.
+    expires: 10 minutes
+  sessionID:
+    purpose: This is your unique generated session cookie. The service requires this to work. It will expire 30 minutes after beginning, or at the end of the service, which ever occurs first.	
+    expires: 30 mintues
+  cookies-agreed:
+    purpose: Records if the cookies message at the top of the site has been viewed, upon your first visit, so it isn't redisplayed on each subsequent visit.
+    expires: 1 year
+informationSecureCookies: Cookies that help keep your information secure
+p8: We use session cookies to keep your information secure as you move back and forward through the website.
+p9: "These cookies are automatically removed from your computer when you complete your application or if you:"
+li8: "don't do anything for 30 minutes"
+li9: close your browser
+li10: switch off your computer
+securityCookies: Security cookies
+cookiesMessage: Cookies message
+p10: "You may see a banner when you visit this website inviting you to accept cookies or review your settings. We’ll set cookies so that your computer knows you’ve seen it and not to show it again, and also to store your settings."
+serviceCookies: Service cookies

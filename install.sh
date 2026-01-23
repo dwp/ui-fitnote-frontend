@@ -16,7 +16,7 @@ brew install phantomjs
 # - Sass-lint
 # - nyc
 # - SNYK
-sudo npm install -g gulp-cli pa11y nsp broken-link-checker pageres-cli bunyan json-server valimate mocha eslint sass-lint nyc
+sudo npm ci --ignore-scripts -g gulp-cli pa11y nsp broken-link-checker pageres-cli bunyan json-server valimate mocha eslint sass-lint nyc
 
 # Install local packages
 npm update

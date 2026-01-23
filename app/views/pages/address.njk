@@ -1,0 +1,58 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+
+{% block beforeContent %}
+  {% include "partials/phase_banner_beta.njk" %}
+  {% if inEditMode %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: '/check-your-answers'
+    }) }}
+  {% endif %}
+  {% if not inEditMode and casa.journeyPreviousUrl %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: casa.journeyPreviousUrl
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block casaPageTitle %}
+  {{ t('address:pageTitle') }}
+{% endblock %}
+
+
+{% block journey_form %}
+  <h1 class="govuk-heading-l">
+    {{ t('address:h1') }}
+  </h1>
+
+  {{ casaGovukInput({
+    name: 'houseNumber',
+    value: formData['houseNumber'],
+    autocomplete: 'address-line1',
+    label: {
+      text: t('address:houseNumber')
+    },
+    classes: "govuk-!-width-two-thirds",
+    casaErrors: formErrors
+  }) }}
+
+  <div class="govuk-form-group" aria-hidden="true">
+    <label for="countyID" aria-hidden="true">Leave blank</label>
+    <input type="text" name="countyField" id="countyID" aria-hidden="true" value="">
+  </div>
+
+  {{ casaGovukInput({
+    name: 'postcode',
+    value: formData['postcode'],
+    autocomplete: 'postal-code',
+    label: {
+      text: t('address:postcode')
+    },
+    classes: "govuk-input--width-10",
+    casaErrors: formErrors
+  }) }}
+
+{% endblock %}

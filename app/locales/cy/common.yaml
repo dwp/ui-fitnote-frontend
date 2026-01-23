@@ -1,0 +1,16 @@
+serviceName: Anfonwch eich nodyn ffitrwydd ar gyfer eich cais ESA
+yes: Ydw
+no: Na
+continue: Parhau
+footer:
+  supportLinks: Dolenni cymorth
+  cookies: Cwcis
+  language: 'English'
+  accessibilityStatement: Datganiad hygyrchedd
+  privacyNotice: Preifatrwydd
+  crownCopyright: Hawlfraint y goron
+  ogl: "Open Government Licence"
+  ogl1: "Mae'r holl gynnwys ar gael o dan yr"
+  ogl2: "Open Government Licence v3.0"
+  ogl3: "ac eithro ble y dywedir yn wahanol"
+phaseBanner: 'Mae hwn yn wasanaeth newydd - bydd eich <a class="govuk-link" href="https://forms.office.com/Pages/ResponsePage.aspx?id=6fbxllcQF0GsKIDN_ob4w3yYPOnTSaJMiBKfdE1awz9UOTJPTjcyWEY4STE5WEpLVjdNSUFPVVVMTiQlQCN0PWcu" target="_blank">adborth (agor mewn ffenestr newydd)</a> yn ein helpu i’w wella.'

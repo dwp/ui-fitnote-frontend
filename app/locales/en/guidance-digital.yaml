@@ -1,0 +1,21 @@
+pageTitle: Before you upload your digital fit note - Send your fit note - GOV.UK
+h1: Before you upload your digital fit note
+h2: Check that your fit note is valid
+med3-list:
+  li1: "Your fit note should be a Med 3 fit note issued by a health practitioner, such as a GP. It should look like this example:"
+  li2: The small black and white square (called a data matrix) at the bottom of your fit note should be clear.
+accepted:
+  h2: Check that your fit note will be accepted
+  p1: "Your fit note will be rejected if:"
+  list-1:
+    li1: it is double-sided
+    li2: it is protected by a password – you should save your fit note as a new file before you upload it
+  p2: "Your fit note should be accepted if:"
+  list-2:
+    li1: all the information is on 1 page
+    li2: all the words, including your contact details, are clear and easy to read
+    li3: the image is either landscape or portrait
+    li4: the whole fit note is visible, including all four corners
+  p3: The example image with the red cross could be rejected because the edges are missing. The example image with the green tick would be accepted because the whole fit note is visible.
+p: You will need to enter your National Insurance number after you have uploaded your fit note. You can find this on your benefit letter, payslip or P60.
+buttonText: "Continue to upload"

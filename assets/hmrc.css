@@ -1,0 +1,199 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hmrc-timeout-overlay {
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  background-color: #0b0c0c;
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+}
+
+.hmrc-timeout-dialog {
+  position: fixed;
+  z-index: 1002;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 30px;
+  overflow: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: 5px solid #0b0c0c;
+  background-color: #ffffff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@media (min-width: 40.0625em) {
+  .hmrc-timeout-dialog {
+    width: 435px;
+    max-width: 100%;
+  }
+}
+.hmrc-timeout-dialog:focus {
+  outline: 3px solid #ffdd00;
+}
+
+.hmrc-timeout-dialog__message {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
+  font-display: fallback;
+}
+@media print {
+  .hmrc-timeout-dialog__message {
+    font-family: sans-serif;
+  }
+}
+.hmrc-timeout-dialog__message {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+@media (min-width: 40.0625em) {
+  .hmrc-timeout-dialog__message {
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+  }
+}
+@media print {
+  .hmrc-timeout-dialog__message {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+.hmrc-timeout-dialog__message {
+  line-height: 1.31579;
+}
+
+.hmrc-timeout-dialog__countdown {
+  display: inline-block;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hmrc-timeout-dialog__link {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media print {
+  .hmrc-timeout-dialog__link {
+    font-family: sans-serif;
+  }
+}
+.hmrc-timeout-dialog__link {
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.1111111111;
+}
+@media (min-width: 40.0625em) {
+  .hmrc-timeout-dialog__link {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+@media print {
+  .hmrc-timeout-dialog__link {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+}
+@media (min-width: 40.0625em) {
+  .hmrc-timeout-dialog__link {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25;
+    padding: 8px 10px 7px;
+  }
+}
+@media print and (min-width: 40.0625em) {
+  .hmrc-timeout-dialog__link {
+    font-family: sans-serif;
+  }
+}
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+  .hmrc-timeout-dialog__link {
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+  }
+}
+@media print and (min-width: 40.0625em) {
+  .hmrc-timeout-dialog__link {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}

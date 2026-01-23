@@ -1,0 +1,109 @@
+{% extends "casa/layouts/journey.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block head %}
+  {{ super() }}
+  {%- if consentCookieValue === "accept" -%}
+    {% include "partials/gtm-script.njk" %}
+  {%- endif %}
+  {% include "partials/styles.njk" %}
+  {% include "partials//timeout-dialog.njk" %}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+      assetsPath: assetPath + "/images",
+      serviceName: t('common:serviceName') if t else '',
+      serviceUrl: casa.mountUrl,
+      homepageUrl: "https://www.gov.uk/",
+      useTudorCrown: true
+    }) }}
+{% endblock %}
+
+{% block bodyStart %}
+  {%- if consentCookieValue === "accept" -%}
+    {% include "partials/gtm-noscript.njk" %}
+  {%- endif %}
+  {% include "partials/cookie-banner.njk" %}
+{% endblock %}
+
+
+{% block beforeContent %}
+  {% include "partials/phase_banner_beta.njk" %}
+  {% if not inEditMode and casa.journeyPreviousUrl %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: casa.journeyPreviousUrl
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if formErrorsGovukArray %}
+        {{ govukErrorSummary({
+          titleText: t("error:summary.h1"),
+          errorList: formErrorsGovukArray
+        }) }}
+      {% endif %}
+
+      {% call casaJourneyForm({
+        formUrl: formUrl,
+        csrfToken: casa.csrfToken,
+        inEditMode: inEditMode,
+        buttonBarHidden: true,
+        editOriginUrl: editOriginUrl,
+        casaMountUrl: casa.mountUrl,
+        buttonText: formButtonText
+      }) %}
+        {% block journey_form %}{% endblock %}
+        {% block journey_button %}
+          {% if casa.waypoint == 'check-your-answers' %}
+              {{ govukButton({
+                text: t('check-your-answers:continue'),
+                preventDoubleClick: true,
+                attributes: {
+                  id: 'continue-button'
+                }
+              }) }}
+          {% elif cookiePolicyPage == true %}
+              {{ govukButton({
+                text: t('cookie-policy:continue'),
+                preventDoubleClick: true,
+                attributes: {
+                  id: 'continue-button'
+                }
+              }) }}
+              <p class="govuk-body">
+                <a class="govuk-link" href="cookie-details">{{ t("cookie-policy:findOutMore") }}</a>
+              </p>
+          {% else %}
+            {{ govukButton({
+              text: t('common:continue'),
+              preventDoubleClick: true,
+              attributes: {
+                id: 'continue-button'
+              }
+            }) }}
+          {% endif %}
+        {% endblock %}
+      {% endcall %}
+    </div>
+  </div>
+
+  {% if cookiePolicyPage != true %}
+    {% include "partials/advisor.njk" %}
+  {% endif %}
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {{super()}}
+  {% include "partials/scripts.njk" %}
+{% endblock %}
+
+{% block footer %}
+  {% include "partials/footer.njk" %}
+{% endblock %}

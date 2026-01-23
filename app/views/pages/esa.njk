@@ -1,0 +1,35 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% block casaPageTitle %}
+  {{ t('esa:pageTitle') }}
+{% endblock %}
+
+{% block journey_form %}
+  {{ casaGovukRadios({
+    classes: "govuk-radios--inline",
+    name: 'esa',
+    fieldset: {
+      legend: {
+        text: t('esa:h1'),
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [{
+      text: t('common:yes'),
+      value: 'yes'
+    }, {
+      text: t('common:no'),
+      value: 'no'
+    }],
+    casaValue: formData.esa,
+    casaErrors: formErrors
+  }) }}
+{% endblock %}
+
+{% block footer %}
+  {% include "partials/footer.njk" %}
+{% endblock %}
+

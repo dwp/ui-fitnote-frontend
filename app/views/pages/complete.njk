@@ -1,0 +1,28 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+
+{% block casaPageTitle %}
+  {{ t('complete:pageTitle') }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-body">
+          {{ govukPanel({
+            titleText: t('complete:panel.title'),
+            text: t('complete:panel.text')
+          }) }}
+
+          <h2 class="govuk-heading-m">{{ t('complete:whatHappensNext.heading') }}</h2>
+          <p>{{ t('complete:whatHappensNext.p1') }}</p>
+          <p>{{ t('complete:whatHappensNext.p2') }}</p>
+          <p>{{ t('complete:whatHappensNext.p3') }}</p>
+          <p>{{ t('complete:whatHappensNext.p4') }}</p>
+          <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=6fbxllcQF0GsKIDN_ob4w3yYPOnTSaJMiBKfdE1awz9UOTJPTjcyWEY4STE5WEpLVjdNSUFPVVVMTiQlQCN0PWcu" class="govuk-link" target="_blank">{{ t('complete:feedback') }}</a>{{ t('complete:feedback-text') }}</p>
+          <p><a href="{{ t('complete:sendAnotherLink') }}" class="govuk-link">{{ t('complete:sendAnotherText') }}</a></p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

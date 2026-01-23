@@ -13,13 +13,22 @@
         },
         "minFileSize" : 500000,
         "maxFileSize" : 10000000,
-        "checkStatusDelay": 10000
+        "checkStatusDelay": 10000,
+        "disable_csp": false
     },
 
     "logger":{
         "tag": "fitnote",
         "host": "",
         "port": ""
+    },
+
+    "LOG_LEVEL": "info",
+
+    "redis": {
+        "port": 6379,
+        "host": "redis-cluster",
+        "encryptionTransit": false
     },
 
     "api" : {
@@ -34,8 +43,10 @@
     },
 
     "sessionInfo" : {
-        "expiryPeriod" : 600000,
-        "timeoutCountdown" : 300000
+        "expiryPeriod" : 1800,
+        "timeoutCountdown" : 1500,
+        "secret": "mysecret",
+        "name": "sessionID"
     },
 
     "cookieOptions": {
@@ -44,6 +55,6 @@
     },
     "GTM": {
         "id": "GTM-PVWF7WT",
-        "domain": ".gov.uk"
+        "domain": "localhost"
     }
 }

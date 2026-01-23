@@ -73,7 +73,7 @@ This mode is for production only. It won't work in a local enviornment, and is s
 Make sure you run
 
 ```
-npm install --only=production --no-optional
+npm ci --only=production --no-optional --ignore-scripts
 ```
 
 BEFORE starting the service.
@@ -108,7 +108,7 @@ npm run deps:update
 Rules are defined in `.stylelintrc.yml` file where the `stylelint-config-recommended` package rules are being used. Stylelint can be run locally after installing by using the below commands:
 
 ```
-npm install
+npm ci --ignore-scripts
 npm run quality:stylelint
 ```
 

@@ -1,6 +1,1 @@
-{
-  "1107599": {
-    "active": true,
-    "notes": "Axios is vulnerable to DoS attack through lack of data size check"
-  }
-}
+{ }

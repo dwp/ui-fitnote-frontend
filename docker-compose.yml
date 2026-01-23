@@ -8,14 +8,22 @@ networks:
 
 services:
   redis-cluster:
-    image: grokzen/redis-cluster:6.2.14@sha256:c7fa7b3889d885ed1ed63f32ac1bf0ba6acea5f3d15efabafe59b3bfce81d860
-    expose:
-      - 7000
-      - 7001
-      - 7002
-      - 7003
-      - 7004
-      - 7005
+    image: bitnami/redis-cluster@sha256:00cd760641dc73dca95826e6be8fa2b02b844086c0e1d2314bec0f78c69aefaa
+    ports:
+      - '7000:7000'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-p", "7000", "ping" ]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    environment:
+      - 'REDIS_PORT_NUMBER=7000'
+      - 'ALLOW_EMPTY_PASSWORD=yes'
+      - 'REDIS_CLUSTER_REPLICAS=0'
+      - 'REDIS_NODES=redis-cluster redis-cluster redis-cluster redis-cluster redis-cluster'
+      - 'REDIS_CLUSTER_CREATOR=yes'
+      - 'REDIS_CLUSTER_DYNAMIC_IPS=no'
+      - 'REDIS_CLUSTER_ANNOUNCE_IP=redis-cluster'
     networks:
       - qa-fitnote-ui-tests
 
@@ -85,15 +93,19 @@ services:
       - REDIS_HOST=redis-cluster
       - REDIS_PORT=7000
       - REDIS_CLUSTER=true
+      - GOOGLE_TAG_MANAGER_DOMAIN=test-ui
+      - DISABLE_CSP=true
     ports:
       - 3000:3000
     expose:
       - 3000
     networks:
       - qa-fitnote-ui-tests
+    depends_on:
+      - redis-cluster
 
   chrome:
-    image: selenium/node-chrome:4.0.0-beta-1-20210215@sha256:77ab44c15a207c2c0a859c1e1155394f4bfcb645ee338fb4c5417149f52d4acc
+    image: selenium/node-chrome:139.0-20250909@sha256:9f66d57b020744c1e731bd872496d7440c2775b146b71108bf59649cd26f95c1
     volumes:
       - /tmp:/tmp
     networks:
@@ -104,13 +116,15 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=8
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
     ports:
       - "6900:5900"
     logging:
       driver: none
 
   selenium-hub:
-    image: selenium/hub:4.0.0-beta-1-20210215@sha256:c4fe1430fd725cd4c98285f5c6edc244ca57357c27bd25cc12513cd1f4166f54
+    image: selenium/hub:4.36.0-20251001@sha256:fc1cbaefb0b97df4e64af511238aadec84551a6a5b7ce6fb11fc5db2f31f56b0
     container_name: selenium-hub
     networks:
       - qa-fitnote-ui-tests
@@ -131,10 +145,11 @@ services:
       - JAVA_OPTS=-Dselenium.LOGGER.level=NONE -DLOG_LEVEL=NONE
       - FIT_NOTE_URI=http://test-ui:3000
       - CUCUMBER_REPORTS=${PWD}/cucumber-reports
-      - MVN_SETTINGS_FILE_SAAS=$MVN_SETTINGS_FILE_SAAS
       - SUITE_XML_FILE=src/test/resources/testng/remote/chrome.xml
       - TEST_TAG=
     volumes:
+      - ${MVN_M2}:/root/.m2
+      - ${MVN_SETTINGS_FILE}:/root/.m2/settings.xml
       - ./cucumber-reports:/usr/src/mymaven/cucumber-reports
     networks:
       - qa-fitnote-ui-tests

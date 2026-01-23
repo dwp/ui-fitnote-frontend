@@ -1,0 +1,76 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "moj/components/ticket-panel/macro.njk" import mojTicketPanel %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ casa.mountUrl }}assets/moj-frontend.min.css" />
+{% endblock %}
+
+{% block casaPageTitle %}
+  {{ t('guidance-digital:pageTitle') }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+      <form method="post" class="form">
+          <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}" />
+          <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('guidance-digital:h1') }}</h1>
+          
+          <h2 class="govuk-heading-m">{{ t('guidance-digital:h2') }}</h2>
+          <ol class="govuk-list govuk-list--number">
+            <li>
+              {{ t('guidance-digital:med3-list.li1') }}
+              <br>
+              <br>
+              <img src="/assets/images/fit-note.png" height="200" alt="">
+            </li>
+            <li>
+              {{ t('guidance-digital:med3-list.li2') }}
+              <br>
+              <br>
+              <img src="/assets/images/data-matrix2.png" height="200" alt="">
+            </li>
+          </ol>
+
+          <h2 class="govuk-heading-m">{{ t('guidance-digital:accepted.h2') }}</h2>
+          <p>{{ t('guidance-digital:accepted.p1') }}</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
+            <li>{{ t('guidance-digital:accepted.list-1.li1') }}</li>
+            <li>{{ t('guidance-digital:accepted.list-1.li2') }}</li>
+          </ul>
+
+          <p>{{ t('guidance-digital:accepted.p2') }}</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
+              <li>{{ t('guidance-digital:accepted.list-2.li1') }}</li>
+              <li>{{ t('guidance-digital:accepted.list-2.li2') }}</li>
+              <li>{{ t('guidance-digital:accepted.list-2.li3') }}</li>
+              <li>{{ t('guidance-digital:accepted.list-2.li4') }}</li>
+          </ul>
+
+          <img src="/assets/images/new-digital.png" class="fit-note-zoom" alt="">
+          <br>
+
+          <p>{{ t('guidance-digital:accepted.p3') }}</p>
+          <br>
+
+
+        {{ mojTicketPanel({
+          items: [{
+            text: t('guidance-digital:p'),
+            attributes: {
+              "aria-label": "Section 1"
+            },
+            classes: "moj-ticket-panel__content--blue"
+          }]
+        }) }}
+
+        <br>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          {{ t('guidance-digital:buttonText') }}
+        </button>
+    </div>
+  </div>
+  {% include "partials/advisor.njk" %}
+{% endblock %}

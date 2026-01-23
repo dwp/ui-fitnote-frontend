@@ -1,0 +1,21 @@
+pageTitle: Upload your fit note - Send your fit note - GOV.UK
+h1: Upload your fit note
+buttonText: Upload and continue
+text: "Your file must:"
+list: 
+  li1: be a JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF or PDF
+  li2: be smaller than 10MB
+  li3: not be password protected - if your fit note has a password, you will need to save it as a new file without a password and upload it
+postalInstruction:
+  p1: If you keep having problems uploading your fit note, you should post it to us instead.
+  p2: Freepost DWP ESA 26
+  p3: You do not need a stamp.
+field:
+  userPhoto:
+    fileType: "We cannot process the type of file you selected. You will need to make another copy of your fit note in one of these file types: JPG, JPEG, BMP, PNG, TIF, HEIC, HEIF or PDF."
+    fileSize: "The file you selected is too large to be processed. It must be smaller than 10MB"
+    problem: "Sorry, there was a problem with the service"
+    serviceFailed: "Try again"
+    ocrFailed: "The selected file must be clear and readable, containing the whole fit note"
+    maxReplay: "You have tried to upload your fit note too many times. Wait 5 minutes and upload it again or you can post it to: Freepost, DWP ESA 26. You do not need a stamp."
+    password: "You cannot upload a password protected file"

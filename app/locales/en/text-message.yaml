@@ -1,0 +1,9 @@
+pageTitle: Do you want a text message when we receive your fit note? - Send your fit note - GOV.UK
+h1: Do you want a text message when we receive your fit note?
+hint: You will need to provide your mobile number. We may also use this number to contact you about any issues with your fit note.
+label: Enter your mobile number (confirmation texts can take up to 24 hours to arrive)
+field:
+  mobileNumber:
+    empty: Select Yes if you would like to receive a text message
+    format: Enter a mobile number, like 07700 900 982 or +44 7700 900 982
+yes: Yes

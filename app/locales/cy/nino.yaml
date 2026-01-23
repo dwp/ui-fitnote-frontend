@@ -1,0 +1,14 @@
+pageTitle: "Eich rhif Yswiriant Gwladol – Anfon eich nodyn ffitrwydd - GOV.UK"
+alertHeading: "Mae eich nodyn ffitrwydd wedi’i lwytho"
+alertText: "Rhaid i chi ateb y cwestiynau sy’n weddill i orffen y broses."
+h1: "Eich rhif Yswiriant Gwladol"
+hint: "Mae ar eich cerdyn Yswiriant Gwladol, llythyr budd-dal, slip cyflog neu P60. Er enghraifft, QQ 12 34 56 C."
+detailsLinkText: "Beth yw fy rhif Yswiriant Gwladol?"
+detailsLinkHiddenText: "Cliciwch am fwy o wybodaeth"
+detailsSummaryText: "Os ydych yn methu dod o hyd i’ch rhif Yswiriant Gwladol, cyfeiriwch at "
+ninoLinkText: "dod o hyd i’ch rhif Yswiriant Gwladol ar GOV.UK (agor mewn tab newydd)"
+errorSummary: Mae yna broblem
+field:
+  nino:
+    empty: "Rhowch rif Yswiriant Gwladol yn y ffurf cywir"
+    format: "Rhowch rif Yswiriant Gwladol yn y ffurf cywir"

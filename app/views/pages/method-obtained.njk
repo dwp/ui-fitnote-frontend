@@ -1,0 +1,37 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% block casaPageTitle %}
+  {{ t('method-obtained:pageTitle') }}
+{% endblock %}
+
+{% block journey_form %}
+
+  {{ casaGovukRadios({
+    name: 'methodObtained',
+    fieldset: {
+      legend: {
+        text: t('method-obtained:h1'),
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [{
+      text: t('method-obtained:radioLabels.digital'),
+      hint: {
+        text: t('method-obtained:hintTexts.digital')
+      },
+      value: 'digital'
+    }, {
+      text: t('method-obtained:radioLabels.paper'),
+      hint: {
+        text: t('method-obtained:hintTexts.paper')
+      },
+      value: 'paper'
+    }],
+    casaValue: formData.methodObtained,
+    casaErrors: formErrors
+  }) }}
+  
+{% endblock %}

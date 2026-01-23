@@ -1,0 +1,9 @@
+pageTitle: "Ydych chi eisiau neges destun pan fyddwn yn derbyn eich nodyn ffitrwydd? - Anfon eich nodyn ffitrwydd - GOV.UK"
+h1: "Ydych chi eisiau neges destun pan fyddwn yn derbyn eich nodyn ffitrwydd?"
+hint: "Bydd angen i chi ddarparu eich rhif ffôn symudol. Efallai y byddwn hefyd yn defnyddio'r rhif hwn i gysylltu â chi am unrhyw broblemau gyda'ch nodyn ffitrwydd."
+label: "Rhowch eich rhif ffôn symudol (gall negeseuon testun cadarnhau gymryd hyd at 24 awr i gyrraedd)"
+field:
+  mobileNumber:
+    empty: "Dewiswch Oes os hoffech dderbyn neges testun"
+    format: "Rhowch rif ffôn symudol, fel 07700 900 982 neu +44 7700 900 982"
+yes: "Oes"

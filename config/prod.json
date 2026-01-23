@@ -11,12 +11,16 @@
         },
         "minFileSize" : 500000,
         "maxFileSize" : 10000000,
-        "checkStatusDelay": 10000
+        "checkStatusDelay": 10000,
+        "disable_csp": false
     },
 
     "api" : {
         "url" : "http://localhost:3004"
     } ,
+
+    "LOG_LEVEL": "info",
+
 
     "notify": {
         "mailto": "",
@@ -24,8 +28,8 @@
     },
 
     "sessionInfo" : {
-        "expiryPeriod" : 1800000,
-        "timeoutCountdown" : 300000
+        "expiryPeriod" : 1800,
+        "timeoutCountdown" : 1500
     },
 
     "cookieOptions": {

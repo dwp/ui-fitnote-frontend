@@ -1,0 +1,9 @@
+heading: Cookies on Send your fit note for your ESA claim
+p1: We use some essential cookies to make this service work.
+p2: "We’d also like to use analytics cookies so we can understand how you use the service and make improvements."
+accept: Accept analytics cookies
+reject: Reject analytics cookies
+hide: Hide this message
+viewCookies: View cookies
+acceptedHtml: "<p>You’ve accepted additional cookies. You can <a class=\"govuk-link\" href='{{url}}'>change your cookie settings</a> at any time.</p>"
+rejectedHtml: "<p>You’ve rejected additional cookies. You can <a class=\"govuk-link\" href='{{url}}'>change your cookie settings</a> at any time.</p>"

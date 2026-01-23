@@ -1,0 +1,99 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ casa.mountUrl }}assets/hods.css" />
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "partials/phase_banner_beta.njk" %}
+  {% if inEditMode %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: '/check-your-answers'
+    }) }}
+  {% endif %}
+  {% if not inEditMode and casa.journeyPreviousUrl %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: '/upload'
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block casaPageTitle %}
+  {{ t('nino:pageTitle') }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+      {% if ninoError %}
+          {{ govukErrorSummary({
+              titleText: t('nino:errorSummary'),
+              errorList: [
+                {
+                  text: t(ninoError.summary),
+                  href: "#f-nino"
+                }
+              ]
+          }) }}
+        <div id="govuk-form-group-error" class="govuk-form-group govuk-form-group--error">
+      {% endif %}
+      <form method="post" class="form">
+        <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}" />
+
+        <div class="hods-alert hods-alert--success" id="ninoAlert">
+          <h2 class="hods-alert__heading">{{ t('nino:alertHeading') }}</h2>
+          <p> {{ t('nino:alertText') }}</p>
+        </div>
+
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-heading-l" for="f-nino">{{ t('nino:h1') }}</label>
+        </h1>
+        <div id ="national-insurance-number-hint" class="govuk-hint govuk-!-display-block">{{t('nino:hint') }}</div>
+
+        {{ casaGovukInput({
+          name: 'nino',
+          value: formData['nino'],
+          classes: "govuk-!-width-one-half",
+          casaValue: formData.nino,
+          casaErrors: formErrors,
+          describedBy: "national-insurance-number-hint error-message-ninoFieldID"
+        }) }}
+
+      {% if ninoError %}
+        </div>
+      {% endif %}
+
+        <div class="govuk-form-group" aria-hidden="true">
+          <label for="emailID" aria-hidden="true">Leave blank</label>
+          <input type="text" name="emailField" id="emailID" aria-hidden="true" value="">
+        </div>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                {{ t('nino:detailsLinkText') }}
+                <span class="govuk-visually-hidden">{{ t('nino:detailsLinkHiddenText') }}</span>
+              </span>
+            </summary>
+          <div class="govuk-details__text">
+              {{ t('nino:detailsSummaryText') }}
+              <a class="govuk-link" href="https://www.gov.uk/lost-national-insurance-number"
+                  target="_blank">{{ t('nino:ninoLinkText') }}</a>
+          </div>
+        </details>
+
+        <div class="govuk-form-group">
+          <input type="submit" id="add-your-details" class="govuk-button" value="{{ t('common:continue') }}">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% include "partials/advisor.njk" %}
+{% endblock %}

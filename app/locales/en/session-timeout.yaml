@@ -1,0 +1,9 @@
+pageTitle: Your session has ended due to inactivity - Send your fit note - GOV.UK
+h1: Your session has ended due to inactivity
+p1: Your session automatically ends if you don't use the service for 30 minutes.
+p2: We do this for your security. The information that you entered has not been saved.
+p3: "<p>Return to <a class='govuk-link' href=\"/\">Send your fit note for your ESA claim</a>.</p>"
+dialog: 
+  message: We will reset your application if you do not respond in
+  keepAliveButton: Get another 30 minutes
+  deleteYourAnswersButton: Start again

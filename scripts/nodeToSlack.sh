@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-npm install -g npm-check-updates
+npm install -g npm-check-updates --ignore-scripts
 PACKAGES=$(ncu -x "$IGNORE_PACKAGES" | grep " → " | awk '{print $1": "$2" -> "$4}')
 
 REPO_PATH=${CI_PIPELINE_URL%%/-*}

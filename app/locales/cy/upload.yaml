@@ -1,0 +1,21 @@
+pageTitle: Llwytho eich nodyn ffitrwydd - Anfon eich nodyn ffitrwydd - GOV.UK
+h1: Llwytho eich nodyn ffitrwydd
+buttonText: Llwytho a pharhau
+text: "Your file must:"
+list: 
+  li1: "fod yn JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF neu PDF"
+  li2: "fod yn llai na 10MB"
+  li3: "peidio â bod wedi’i ddiogelu gan gyfrinair - os oes gan eich nodyn ffitrwydd gyfrinair, bydd angen i chi ei arbed fel ffeil newydd heb gyfrinair a’i lwytho"
+postalInstruction:
+  p1: "Os ydych yn dal i gael problemau wrth lwytho'ch nodyn ffitrwydd, dylech ei bostio atom yn lle."
+  p2: "Rhadbost DWP ESA 26"
+  p3: "Nid oes angen stamp arnoch."
+field:
+  userPhoto:
+    fileType: "Ni allwn brosesu'r math o ffeil a ddewiswyd gennych. Bydd   angen i chi wneud copi arall o'ch nodyn ffitrwydd yn un o'r mathau hyn o ffeiliau: JPG, JPEG, BMP, PNG, TIF, HEIC, HEIF neu PDF."
+    fileSize: "Mae'r ffeil a ddewiswyd gennych yn rhy fawr i'w phrosesu.   Rhaid iddo fod yn llai na 10MB"
+    problem: "Yn anffodus, roedd problem gyda'r gwasanaeth"
+    serviceFailed: "Ceisiwch eto"
+    ocrFailed: "Mae’n rhaid i’r ffeil a ddewiswyd fod yn glir ac yn ddarllenadwy a chynnwys y nodyn ffitrwydd cyfan"
+    maxReplay: "Rydych wedi ceisio llwytho eich nodyn ffitrwydd gormod o weithiau. Arhoswch am 5 munud a llwythwch ef eto neu gallwch ei bostio i: Freepost, DWP ESA 26. Nid oes angen stamp arnoch."
+    password: "Ni allwch lwytho ffeil sydd wedi’i diogelu gan gyfrinair"

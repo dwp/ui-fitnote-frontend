@@ -1,0 +1,44 @@
+{% extends "casa/layouts/journey.njk" %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{% block head %}
+  {{ super() }}
+  {% include "partials/styles.njk" %}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+      assetsPath: assetPath + "/images",
+      serviceName: t('common:serviceName') if t else '',
+      serviceUrl: casa.mountUrl,
+      homepageUrl: "https://www.gov.uk/",
+      useTudorCrown: true
+    }) }}
+{% endblock %}
+
+{% block casaPageTitle %}
+  {{ t('session-timeout:pageTitle') }}
+{% endblock %}
+
+
+{% block beforeContent %}
+  {% include "partials/phase_banner_beta.njk" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-body">
+    <div class="govuk-error-summary" id="session-timeout">
+        <h1 class="govuk-heading-m" id="session-timeout-heading">{{ t('session-timeout:h1') }} </h1>
+    </div>
+    <p>{{ t('session-timeout:p1') }}</p>
+    <p>{{ t('session-timeout:p2') }}</p>
+    <p>{{ t('session-timeout:p3') | safe }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+  {% include "partials/footer.njk" %}
+{% endblock %}

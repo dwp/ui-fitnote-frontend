@@ -1,0 +1,9 @@
+pageTitle: Mae eich sesiwn wedi dod i ben oherwydd anweithgarwch - Anfon eich nodyn ffitrwydd - GOV.UK
+h1: Mae eich sesiwn wedi dod i ben oherwydd anweithgarwch
+p1: "Mae eich sesiwn yn dod i ben yn awtomatig os na fyddwch yn defnyddio’r gwasanaeth am 30 munud."
+p2: "Rydym yn gwneud hyn er eich diogelwch. Nid yw’r wybodaeth rydych wedi’i roi wedi cael ei arbed."
+p3: "<p>Dychwelyd i’r <a class='govuk-link' href=\"/\">dudalen dechrau</a>.</p>"
+dialog: 
+  message: Byddwn yn ailosod eich cais os nad ydych yn ymateb mewn
+  keepAliveButton: Cael 30 munud arall
+  deleteYourAnswersButton: Dechrau eto

@@ -1,0 +1,94 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "moj/components/ticket-panel/macro.njk" import mojTicketPanel %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ casa.mountUrl }}assets/moj-frontend.min.css" />
+{% endblock %}
+
+{% block casaPageTitle %}
+  {{ t('guidance-paper:pageTitle') }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+      <form method="post" class="form">
+          <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}" />
+          <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('guidance-paper:h1') }}</h1>
+          
+          <h2 class="govuk-heading-m">{{ t('guidance-paper:h2') }}</h2>
+            <ol class="govuk-list govuk-list--number">
+                <li>
+                  {{ t('guidance-paper:med3-list.li1') }}
+                  <br>
+                  <br>
+                  <img src="/assets/images/fit-note.png" height="200" alt="">
+                </li>
+                <li>
+                  {{ t('guidance-paper:med3-list.li2') }}
+                  <br>
+                  <br>
+                  <img src="/assets/images/data-matrix2.png" height="200" alt="">
+                </li>
+            </ol>
+
+            <h2 class="govuk-heading-m">{{ t('guidance-paper:uploading.h2') }}</h2>
+            <p>{{ t('guidance-paper:uploading.p1') }}</p>
+            <ul>
+                <li>{{ t('guidance-paper:uploading.li1') }}</li>
+                <li>{{ t('guidance-paper:uploading.li2') }}</li>
+            </ul>
+            <p>{{ t('guidance-paper:uploading.p2') }}</p>
+            <p>{{ t('guidance-paper:uploading.info') }}<a class="govuk-link" href="/guidance-post" target="_blank">{{ t('guidance-paper:uploading.post-link') }}</a>.</p>
+
+            <h3 class="govuk-heading-s">{{ t('guidance-paper:good-photo.h3') }}</h3>
+            <ol>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:good-photo.li1') }}</li>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:good-photo.li2') }}</li>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:good-photo.li3') }}</li>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:good-photo.li4') }}</li>
+            </ol>
+
+            <h3 class="govuk-heading-s">{{ t('guidance-paper:scan.h3') }}</h3>
+            <ol>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:scan.li1') }}</li>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:scan.li2') }}</li>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:scan.li3') }}</li>
+                <li class="govuk-!-padding-bottom-3">{{ t('guidance-paper:scan.li4') }}</li>
+            </ol>
+            <p>{{ t('guidance-paper:scan.p') }}</p>
+
+
+            <br>
+            <h2 class="govuk-heading-m">{{ t('guidance-paper:accepted.h2') }}</h2>
+            <p>{{ t('guidance-paper:accepted.p1') }}</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
+                <li>{{ t('guidance-paper:accepted.li1') }}</li>
+                <li>{{ t('guidance-paper:accepted.li2') }}</li>
+            </ul>
+
+            <img src="/assets/images/new-paper.png" class="fit-note-zoom" alt="">
+            <br>
+            <p>{{ t('guidance-paper:accepted.p2') }}</p>
+
+          {{ mojTicketPanel({
+            items: [{
+              text: t('guidance-paper:p'),
+              attributes: {
+                "aria-label": "Section 1"
+              },
+              classes: "moj-ticket-panel__content--blue"
+            }]
+          }) }}
+
+          <br>
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              {{ t('guidance-paper:buttonText') }}
+          </button>
+      </form>
+    </div>
+  </div>
+  {% include "partials/advisor.njk" %}
+{% endblock %}

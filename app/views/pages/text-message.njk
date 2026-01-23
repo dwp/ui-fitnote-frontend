@@ -1,0 +1,97 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+
+{% block beforeContent %}
+  {% include "partials/phase_banner_beta.njk" %}
+  {% if inEditMode %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: '/check-your-answers'
+    }) }}
+  {% endif %}
+  {% if not inEditMode and casa.journeyPreviousUrl %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: casa.journeyPreviousUrl
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% set mobileNumberHtml %}
+  {{ casaGovukInput({
+    name: "mobileNumber",
+    classes: "govuk-!-width-one-third",
+    inputmode: "numeric",
+    spellcheck: false,
+    attributes: "autofocus",
+    autocomplete: 'tel',
+    label: {
+      text: t('text-message:label')
+    },
+    value: formData['mobileNumber'],
+    casaErrors: formErrors
+  }) }}
+{% endset -%}
+
+{% block casaPageTitle %}
+  {{ t('text-message:pageTitle') }}
+{% endblock %}
+
+{% block journey_form %}
+
+  {{ casaGovukRadios({
+    name: 'textMessage',
+    hint: {
+          text: t('text-message:hint')
+    },
+    fieldset: {
+      legend: {
+        text: t('text-message:h1'),
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [{
+      text: t('text-message:yes'),
+      label: t('text-message:label'),
+      value: 'yes',
+      conditional: {
+        html: mobileNumberHtml
+      }
+    }, {
+      text: t('common:no'),
+      value: 'no'
+    }],
+    casaValue: formData.textMessage,
+    casaErrors: formErrors
+  }) }}
+
+  <div class="govuk-form-group" aria-hidden="true">
+    <label for="landlineID" aria-hidden="true">Landline</label>
+    <input type="text" name="landlineField" id="landlineID" aria-hidden="true" value="">
+  </div>
+  
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {{super()}}
+  {% include "partials/scripts.njk" %}
+
+  <script nonce="{{ cspNonce }}" type="application/javascript">
+    var yesRadio = document.getElementById('f-textMessage');
+    var mobileInput = document.getElementById('f-mobileNumber');
+
+    if (yesRadio && mobileInput) {
+      yesRadio.addEventListener('change', function () {
+        setTimeout(function () {
+          if (yesRadio.checked) {
+            mobileInput.focus();
+          }
+        }, 200);
+      });
+    }
+  </script>
+{% endblock %}

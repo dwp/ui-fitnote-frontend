@@ -1,0 +1,10 @@
+pageTitle: Eich cyfeiriad – Anfon eich nodyn ffitrwydd - GOV.UK
+h1: Eich cyfeiriad
+houseNumber: Enw neu rif tŷ
+postcode: Cod post
+field:
+  houseNumber:
+    empty: Rhowch enw neu rif eich tŷ
+  postcode:
+    empty: Rhowch eich cod post
+    format: Rhowch god post gwirioneddol

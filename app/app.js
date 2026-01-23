@@ -1,179 +1,245 @@
-/* eslint-disable no-underscore-dangle */
-// Fit Note Application
-import nunjucks from 'nunjucks';
-import favicon from 'serve-favicon';
-import helmet from 'helmet';
-import async from 'async';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import express from 'express';
-import expressSanitized from 'express-sanitized';
-import timeout from 'connect-timeout';
-import path from 'path';
-import config from 'config';
-import { fileURLToPath } from 'url';
+import ExpressJS from "express";
+import config from "config";
+import { configure } from "@dwp/govuk-casa";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
+import { RedisStore } from "connect-redis";
+import Redis from "ioredis";
+import { MemoryStore } from "express-session";
 
-import { UNSAFE_INLINE } from './constants.js';
+import pages from "./definitions/pages.js";
+import planFactory from "./definitions/plan.js";
+import logger from "./utilities/logger.js";
+import { photoStatus } from "./lib/photo-status.js";
+import { fileUpload } from "./lib/file-upload.js";
+import { complete } from "./lib/complete.js";
 
-// middleware
-import cookieConsentMW from './middleware/cookie-consent.js';
-import { generateNonce, attachNonceToLocals } from './middleware/nonce.js';
-import timeoutDialogMW from './middleware/timeout-dialog.js';
+import { cookieMiddleware } from "./middleware/cookie-message.js";
+import cookiePolicyPost from "./routes/cookie-policy.post.js";
+import sessionTimeoutMiddleware from "./middleware/session-timeout.js";
 
-import init from './functions/i18n.js';
+import {
+  COOKIE_CONSENT_NAME,
+  COOKIE_DETAILS_URL,
+  COOKIE_POLICY_URL,
+} from "./utilities/constants.js";
 
-import logger from './functions/bunyan.js';
-import routes from './routes.js';
+const { static: expressStatic } = ExpressJS;
 
-import apiCheck from './functions/checkServer.js';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const app = express();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const nonce = generateNonce();
-
-// Global Vars
-const oneYear = 31557600000;
-
-const appRootDirectory = path.join(__dirname, '/..');
-
-apiCheck(config.get('api.url'));
-
-// Initialise The Application
-// Use Async and parallel function to load in parallel
-function parallel(middlewares) {
-  return function asyncType(req, res, next) {
-    async.each(middlewares, (mw, cb) => {
-      mw(req, res, cb);
-    }, next);
+let sessionStore;
+let redisClient;
+const redisPort = config.get("redis.port");
+const redisHost = config.get("redis.host");
+const redisEncryptionTransit = config.get("redis.encryptionTransit");
+const sessionSecret = config.get("sessionInfo.secret");
+const sessionTtl = parseInt(config.get("sessionInfo.expiryPeriod"), 10);
+const sessionName = config.get("sessionInfo.name");
+const disableCsp = config.get("service.disable_csp");
+if (redisPort && redisHost) {
+  let clusterOptions = {
+    redisOptions: { db: 0 },
   };
-}
 
-function haltOnTimedout(req, res, next) {
-  return !req.timedout ? next() : null;
-}
-
-// 1. Load Helmet Security Protocols
-// 2. Load Cookie Parser
-// 3. Support JSON-encoded bodies
-// 4. Support URL-encoded bodies
-// 5. Line MUST follow express.bodyParser() to sanitize code.
-// 6. Google tag manager nonce
-// 7. ANY static content MUST be in the public area or it will not get served.
-// 8. Required to serve Favicon
-const googleAnalytics = '*.google-analytics.com';
-const googleTM = '*.googletagmanager.com';
-let upgradeInsecureRequests = [];
-
-// Only upgrade http requests in production
-if (process.env.NODE_ENV !== 'production') {
-  upgradeInsecureRequests = null;
-}
-
-app.use(parallel([
-  helmet({
-    referrerPolicy: {
-      policy: 'strict-origin-when-cross-origin',
-    },
-    contentSecurityPolicy: {
-      useDefaults: true,
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", `'${UNSAFE_INLINE}'`, googleAnalytics, googleTM, 'https://tagmanager.google.com'],
-        connectSrc: ["'self'", googleAnalytics, '*.analytics.google.com', googleTM],
-        styleSrc: ["'self'", `'${UNSAFE_INLINE}'`, 'data:', 'https://fonts.googleapis.com'],
-        fontSrc: ["'self'", 'https: data:', 'https://fonts.gstatic.com'],
-        imgSrc: ["'self'", 'data:', googleAnalytics, '*.analytics.google.com', googleTM, 'https://ssl.gstatic.com', 'https://www.gstatic.com'],
-        frameSrc: ["'self'", googleTM],
-        frameAncestors: ["'self'"],
-        formAction: ["'self'"],
-        upgradeInsecureRequests,
-      },
-    },
-    hsts: false,
-  }), // (1)
-  cookieParser(), // (2)
-  timeout(240000),
-  bodyParser.json(), // (3)
-  haltOnTimedout,
-  timeout(240000),
-  bodyParser.urlencoded({ extended: true }), // (4)
-  cookieConsentMW,
-  haltOnTimedout,
-  expressSanitized(), // (5)
-  attachNonceToLocals(nonce), // (6)
-  timeoutDialogMW,
-  express.static(`${appRootDirectory}/public`, { maxAge: oneYear }), // (7)
-  favicon('public/images/favicon.ico'), // (8)
-]));
-
-// Set Nunjucks as rendering engine for pages with .html suffix
-app.set('view engine', 'html');
-
-/**
- * Setup a nunjucks environment, per request, so we can tailor the environment
- * to the needs of the request (e.g. Using a specific language for rendering).
- *
- * This is available on all application routes, not just CASA router, so you
- * can use the same Nunjucks environment on application-specific routes.
- */
-app.use((req, res, next) => {
-  const env = nunjucks.configure([path.join(__dirname, '../app/views'), path.join(__dirname, '../node_modules/hmrc-frontend'), path.join(__dirname, '../node_modules/@ministryofjustice'), path.join(__dirname, '../node_modules/home-office-kit')], {
-    autoescape: true,
-    throwOnUndefined: false,
-    trimBlocks: false,
-    lstripBlocks: false,
-  });
-  env.addGlobal('getContext', () => this.ctx);
-  res.nunjucksEnvironment = env;
-
-  // Handling URIErrors
-  try {
-    decodeURIComponent(req.path);
-  } catch (e) {
-    res.redirect('/404');
+  if (redisEncryptionTransit) {
+    clusterOptions = {
+      dnsLookup: (address, callback) => callback(null, address),
+      redisOptions: { db: 0, tls: {} },
+    };
   }
 
-  // Customise the `render()` response method to use this specific Nunjucks
-  // environment for the current request.
-  res.render = (name, opts, callback) => {
-    const nameRender = `${name}.${app.get('view engine')}`;
-    const optsRender = { ...opts || {}, ...res.locals || {} };
-    env.render(nameRender, optsRender, callback || ((err, data) => {
-      if (err) {
-        logger.info(`Tried to render page: ${name}`);
-        logger.error(err);
-        res.redirect('/');
-      } else {
-        res.send(data);
-      }
-    }));
-  };
+  redisClient = new Redis.Cluster(
+    [
+      {
+        host: redisHost,
+        port: redisPort,
+      },
+    ],
+    clusterOptions,
+  );
 
-  next();
-});
+  let retryCount = 0;
+  const REDIS_MAX_RETRY = 20;
 
-init(app, ['app/locales'], ['en', 'cy']);
+  redisClient.on("ready", () => {
+    logger.info("Redis connection ready");
+  });
+  redisClient.on("reconnecting", () => {
+    logger.info("Redis reconnecting");
+  });
+  redisClient.on("end", () => {
+    logger.info("Redis connection ended");
+  });
+  redisClient.on("connect", () => {
+    logger.info("Redis connection established");
+  });
+  redisClient.on("warning", (e) => {
+    logger.error("Redis warning: %s", e);
+  });
+  redisClient.on("close", () => {
+    logger.info("Redis connection closed");
+  });
 
-// Make Variables in config.js available to Nunjucks templates
-app.use((req, res, next) => {
-  res.locals.assetPath = /"public"/;
-  next();
-});
+  redisClient.on("error", (e) => {
+    logger.error(e);
+    retryCount++;
+    if (retryCount > REDIS_MAX_RETRY) {
+      process.exit(1);
+    }
+  });
 
-// Built-in static assets are served at /public, any other govuk-frontend assets are in node_modules
-app.use('/assets', express.static(`${appRootDirectory}/node_modules/govuk-frontend/dist/govuk/assets`));
-app.use('/govuk/all.js', express.static(`${appRootDirectory}/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js`));
-
-// Routes
-if (typeof (routes) !== 'function') {
-  logger.error(routes.bind);
-  logger.error('Warning routes not configured correctly');
-  routes.bind(app);
+  sessionStore = new RedisStore({
+    client: redisClient,
+    secret: sessionSecret,
+    prefix: "syfn:",
+    ttl: parseInt(sessionTtl, 10),
+    logErrors: (err) => {
+      logger.error(err);
+    },
+  });
 } else {
-  app.use('/', routes);
+  logger.info("Using default session store");
+  sessionStore = new MemoryStore({
+    checkPeriod: 86400000,
+  });
 }
 
-export default app;
+const application = ({ MOUNT_URL = "/" }) => {
+  const plan = planFactory();
+
+  const { nunjucksEnv, staticRouter, csrfMiddleware, ancillaryRouter, mount } =
+    configure({
+      views: [
+        resolve(__dirname, "views"),
+        resolve(__dirname, "../node_modules/@ministryofjustice/frontend/"),
+        resolve(__dirname, "../node_modules/hmrc-frontend"),
+      ],
+      session: {
+        name: sessionName,
+        store: sessionStore,
+        secret: sessionSecret,
+        ttl: sessionTtl,
+        secure: config.get("cookieOptions.secure"),
+      },
+      i18n: {
+        dirs: [resolve(__dirname, "locales")],
+        locales: ["en", "cy"],
+      },
+      pages: pages(),
+      plan,
+    });
+
+  ancillaryRouter.use(
+    cookieMiddleware(
+      MOUNT_URL,
+      COOKIE_CONSENT_NAME,
+      COOKIE_POLICY_URL,
+      COOKIE_DETAILS_URL,
+    ),
+  );
+
+  if (disableCsp) {
+    logger.info("Disable CSP");
+    ancillaryRouter.use((req, res, next) => {
+      res.removeHeader("Content-Security-Policy");
+      next();
+    });
+  }
+
+  // Session keep alive, timeout dialog hits this end point to extend session
+  ancillaryRouter.get("/session-keep-alive", (req, res) => {
+    res.status(200).end();
+  });
+
+  // User ended session
+  ancillaryRouter.get("/session-ended", (req, res, next) => {
+    req.session.regenerate((error) => {
+      if (error) {
+        return next(error);
+      } else {
+        return req.session.save(() => res.status(200).redirect("/"));
+      }
+    });
+  });
+
+  const timeoutDialogCountdown = parseInt(
+    config.get("sessionInfo.timeoutCountdown"),
+    10,
+  );
+  sessionTimeoutMiddleware(
+    ancillaryRouter,
+    MOUNT_URL,
+    sessionTtl,
+    timeoutDialogCountdown,
+  );
+
+  nunjucksEnv.addGlobal("govukRebrand", true);
+  nunjucksEnv.addGlobal(
+    "moj",
+    resolve(__dirname, "../node_modules/@ministryofjustice/frontend"),
+  );
+
+  staticRouter.use("/assets", expressStatic(resolve(__dirname, "../assets/")));
+  staticRouter.all("/assets", (req, res) => res.status(404).send("Not found"));
+
+  // Accessibility statement
+  ancillaryRouter.get(`/accessibility-statement`, (req, res) => {
+    res.render("pages/accessibility-statement.njk");
+  });
+
+  // Cookie policy
+  ancillaryRouter.get(COOKIE_POLICY_URL, csrfMiddleware, (req, res) => {
+    res.locals.cookiePolicyPage = true;
+    res.render("pages/cookie-policy.njk");
+  });
+
+  ancillaryRouter.get(COOKIE_DETAILS_URL, csrfMiddleware, (req, res) => {
+    res.render("pages/cookie-details.njk");
+  });
+
+  // 500 error
+  ancillaryRouter.get("/500", (req, res) => {
+    res.render("casa/errors/500.njk");
+  });
+
+  ancillaryRouter.post(
+    COOKIE_POLICY_URL,
+    csrfMiddleware,
+    cookiePolicyPost(
+      COOKIE_CONSENT_NAME,
+      MOUNT_URL,
+      `${config.get("GTM.domain")}`,
+      config.get("cookieOptions.secure"),
+    ),
+  );
+
+  // Guidance post
+  ancillaryRouter.get(`/guidance-post`, (req, res) => {
+    res.render("pages/guidance-post.njk");
+  });
+
+  ancillaryRouter.get("/photo-status", photoStatus);
+
+  ancillaryRouter.get("/healthcheck", (req, res) => {
+    res.status(200).send("okay");
+  });
+
+  ancillaryRouter.prependPost("/upload", fileUpload);
+
+  ancillaryRouter.get("/complete", complete);
+
+  ancillaryRouter.use(/^\/$/, (req, res) => {
+    res.status(302).redirect("/esa");
+  });
+
+  const casaApp = ExpressJS();
+  mount(casaApp);
+
+  const app = ExpressJS();
+  app.use(MOUNT_URL, casaApp);
+
+  return app;
+};
+
+export default application;

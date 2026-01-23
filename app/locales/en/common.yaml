@@ -1,0 +1,16 @@
+serviceName: Send your fit note for your ESA claim
+yes: Yes
+no: No
+continue: Continue
+footer:
+  supportLinks: Support links
+  cookies: Cookies
+  language: 'Cymraeg'
+  accessibilityStatement: Accessibility statement
+  privacyNotice: Privacy
+  crownCopyright: Crown copyright
+  ogl: Open Government Licence"
+  ogl1: All content is available under the
+  ogl2: Open Government Licence v3.0
+  ogl3: except where otherwise stated
+phaseBanner: 'This is a new service - your <a class="govuk-link" href="https://forms.office.com/Pages/ResponsePage.aspx?id=6fbxllcQF0GsKIDN_ob4w3yYPOnTSaJMiBKfdE1awz9UOTJPTjcyWEY4STE5WEpLVjdNSUFPVVVMTiQlQCN0PWcu" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.'

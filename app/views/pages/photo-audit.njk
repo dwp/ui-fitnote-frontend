@@ -1,0 +1,78 @@
+{% extends "layouts/main.njk" %}
+
+{% block casaPageTitle %}
+  {{ t('photo-audit:pageTitle') }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-body text-centre">
+      <h1 class="govuk-heading-m">
+        {{ t('photo-audit:h1') }}
+      </h1>
+
+      <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+      </div>
+
+      <p class="govuk-body">{{ t('photo-audit:p') }}</p>
+
+      <form method="post" class="form">
+        <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}" />
+        <button type="submit" class="govuk-button" id="hidden-button" data-module="govuk-button">
+            {{ t('guidance-paper:buttonText') }}
+          </button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "casa/partials/scripts.njk" %}
+  <script {% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>
+
+    function checkStatus() {
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/photo-status', false);
+        xhr.send();
+        if (xhr.status != 200) {
+          return null;
+        } else {
+          return xhr.response;
+        }
+      } catch(err) {
+        return null;
+      }
+    }
+
+    document.addEventListener('readystatechange', async event => {
+      switch (document.readyState) {
+        case "complete":
+          var response = checkStatus();
+          while (response == "UPLOADED") {
+            const delay = (ms) => new Promise((response) => setTimeout(response, ms));
+            await delay(10000);
+            response = checkStatus();
+            if (response == null) {
+              response = '/500';
+            }
+          }
+          if (response == "/nino") {
+            document.getElementById("hidden-button").click();
+          } else {
+            window.location.href = response;
+          }
+      }
+    });
+  </script>
+{% endblock %}

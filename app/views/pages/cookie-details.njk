@@ -1,0 +1,126 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% block casaPageTitle %}
+  {{ t('cookie-details:pageTitle') }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+      <h1 class="govuk-heading-xl">
+        {{ t('cookie-details:h1') }}
+      </h1>
+
+      <p>{{ t('cookie-details:p1') }}</p>
+      <div class="govuk-inset-text">
+        {{ t('cookie-details:insetText') | safe }}
+      </div>
+
+      <h2 class="govuk-heading-m">
+        {{ t('cookie-details:h2') }}
+      </h2>
+      <p>{{ t('cookie-details:p2') }}</p>
+      <p>{{ t('cookie-details:p3') | safe }}</p>
+      <p>{{ t('cookie-details:p4') }}</p>
+
+      <ul class="govuk-!-font-size-19 govuk-list govuk-list--bullet">
+        <li>{{ t('cookie-details:li1') | safe }}</li>
+        <li>{{ t('cookie-details:li2') | safe }}</li>
+        <li>{{ t('cookie-details:li3') | safe}}</li>
+        <li>{{ t('cookie-details:li4') | safe}}</li>
+      </ul>
+
+      <p>{{ t('cookie-details:p5') | safe }}</p>
+
+      <h2 class="govuk-heading-m">
+        {{ t('cookie-details:measure') }}
+      </h2>
+      <p>{{ t('cookie-details:p6') }}</p>
+      <div class="govuk-inset-text">
+        {{ t('cookie-details:insetText2') }}
+      </div>
+      <p>{{ t('cookie-details:p7') }}</p>
+      <ul>
+        <li>{{ t('cookie-details:li5') }}</li>
+        <li>{{ t('cookie-details:li6') }}</li>
+        <li>{{ t('cookie-details:li7') }}</li>
+      </ul>
+
+      {{ govukTable({
+        caption: t('cookie-details:googleAnalyticsCookies'),
+        head: [{
+          text: t('cookie-details:table.headings.name')
+        }, {
+          text: t('cookie-details:table.headings.purpose')
+        }, {
+          text: t('cookie-details:table.headings.expires')
+        }],
+        rows: [[{
+          text: "_ga"
+        }, {
+          text: t('cookie-details:table.ga.purpose')
+        }, {
+          text: t('cookie-details:table.ga.expires')
+        }], [{
+          text: "_gat"
+        }, {
+          text: t('cookie-details:table.gat.purpose')
+        }, {
+          text: t('cookie-details:table.gat.expires')
+        }]]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        {{ t('cookie-details:informationSecureCookies') }}
+      </h2>
+      <p>{{ t('cookie-details:p8') }}</p>
+      <p>{{ t('cookie-details:p9') }}</p>
+      <ul>
+        <li>{{ t('cookie-details:li8') }}</li>
+        <li>{{ t('cookie-details:li9') }}</li>
+        <li>{{ t('cookie-details:li10') }}</li>
+      </ul>
+      {{ govukTable({
+        caption: t('cookie-details:securityCookies'),
+        head: [{
+          text: t('cookie-details:table.headings.name')
+        }, {
+          text: t('cookie-details:table.headings.purpose')
+        }, {
+          text: t('cookie-details:table.headings.expires')
+        }],
+        rows: [[{
+          text: "sessionID"
+        }, {
+          text: t('cookie-details:table.sessionID.purpose')
+        }, {
+          text: t('cookie-details:table.sessionID.expires')
+        }]]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        {{ t('cookie-details:cookiesMessage') }}
+      </h2>
+      <p>{{ t('cookie-details:p10') }}</p>
+      {{ govukTable({
+        caption: t('cookie-details:serviceCookies'),
+        head: [{
+          text: t('cookie-details:table.headings.name')
+        }, {
+          text: t('cookie-details:table.headings.purpose')
+        }, {
+          text: t('cookie-details:table.headings.expires')
+        }],
+        rows: [[{
+          text: "cookies_agreed"
+        }, {
+          text: t('cookie-details:table.cookies-agreed.purpose')
+        }, {
+          text: t('cookie-details:table.cookies-agreed.expires')
+        }]]
+      }) }}
+    </div>
+  </div>
+{% endblock %}

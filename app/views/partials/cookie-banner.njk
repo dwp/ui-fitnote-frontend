@@ -1,0 +1,59 @@
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+
+{% if not consentCookieValue or cookieChoiceMade %}
+  {% set html %}
+    <p class="govuk-body">{{ t("cookie-banner:p1") }}</p>
+    <p class="govuk-body">{{ t('cookie-banner:p2') }}</p>
+  {% endset %}
+
+  <form method="POST" action="{{ cookiePolicyUrl }}">
+    <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}">
+    {{ govukCookieBanner({
+      ariaLabel: t("common:cookieBanner:heading", { arg1: t("common:serviceName") }),
+      attributes: {
+        "data-module": "pc-cookie-banner",
+        "data-consent-cookie-name": consentCookieName,
+        "data-gtm-id": googleTagManagerId
+      },
+      messages: [{
+        headingText: t("cookie-banner:heading", { arg1: t("common:serviceName") }),
+        html: html,
+        actions: [{
+          text: t("cookie-banner:accept"),
+          type: "submit",
+          name: "cookieConsent",
+          value: "accept"
+        }, {
+          text: t("cookie-banner:reject"),
+          type: "submit",
+          name: "cookieConsent",
+          value: "reject"
+        },
+        {
+          text: t("cookie-banner:viewCookies"),
+          href: cookiePolicyUrl
+        }
+        ],
+        hidden: cookieChoiceMade
+      }, {
+        html: t("cookie-banner:acceptedHtml", { url: cookiePolicyUrl }),
+        classes: 'govuk-body',
+        actions: [{
+          text: t("cookie-banner:hide"),
+          href: currentUrl,
+          type: "button"
+        }],
+        hidden: consentCookieValue !== "accept"
+      }, {
+        html: t("cookie-banner:rejectedHtml", { url: cookiePolicyUrl }),
+        classes: 'govuk-body',
+        actions: [{
+          text: t("cookie-banner:hide"),
+          href: currentUrl,
+          type: "button"
+        }],
+        hidden: consentCookieValue !== "reject"
+      }]
+    }) }}
+  </form>
+{% endif %}

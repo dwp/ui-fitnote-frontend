@@ -1,0 +1,10 @@
+<script nonce="{{ cspNonce }}" type="module" src="{{ casa.mountUrl }}assets/js/ui-fitnote-frontend.js?{{ version }}"></script>
+
+<script nonce="{{ cspNonce }}" type="application/javascript">
+    var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+
+    if (isIE11) {
+        document.write('<script nonce="{{ cspNonce }}" src="{{ casa.mountUrl }}assets/js/ui-fitnote-frontend.js?{{ version }}"><\/script>');
+    }
+</script>
+

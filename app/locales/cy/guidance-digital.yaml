@@ -1,0 +1,21 @@
+pageTitle: Cyn i chi lwytho eich nodyn ffitrwydd digidol - Anfon eich nodyn ffitrwydd - GOV.UK
+h1: "Cyn i chi lwytho eich nodyn ffitrwydd digidol"
+h2: "Edrychwch i weld bod eich nodyn ffitrwydd yn ddilys"
+med3-list:
+  li1: "Dylai eich nodyn ffitrwydd fod yn nodyn ffitrwydd Med 3 a gyhoeddwyd gan ymarferydd iechyd, fel meddyg teulu. Dylai edrych fel yr enghraifft hon:"
+  li2: "Dylai'r sgwâr bach du a gwyn (a elwir yn matrics data) ar waelod eich nodyn ffitrwydd fod yn glir."
+accepted:
+  h2: "Edrychwch i weld os bydd eich nodyn ffitrwydd yn cael ei dderbyn"
+  p1: "Bydd eich nodyn ffitrwydd yn cael ei wrthod os:"
+  list-1:
+    li1: "mae'n ddwyochrog"
+    li2: "mae'n cael ei ddiogelu gan gyfrinair – dylech arbed eich nodyn ffitrwydd fel ffeil newydd cyn i chi ei lwytho"
+  p2: "Dylid derbyn eich nodyn ffitrwydd os:"
+  list-2:
+    li1: "mae'r holl wybodaeth ar dudalen 1"
+    li2: "mae'r holl eiriau, gan gynnwys eich manylion cyswllt, yn glir ac yn hawdd eu darllen"
+    li3: "mae'r ddelwedd naill ai'n dirwedd neu'n bortread"
+    li4: "mae'r nodyn ffitrwydd cyfan yn weladwy, gan gynnwys pob un o'r pedair cornel"
+  p3: "Gall y ddelwedd enghreifftiol gyda'r groes goch gael ei wrthod oherwydd bod yr ymylon ar goll. Byddai'r ddelwedd enghreifftiol gyda'r tic gwyrdd yn cael ei derbyn oherwydd bod y nodyn ffitrwydd cyfan i'w weld."
+p: "Bydd angen i chi roi eich rhif Yswiriant Gwladol ar ôl i chi lwytho eich nodyn ffitrwydd. Gallwch ddod o hyd i hwn ar eich llythyr budd-dal, slip cyflog neu P60."
+buttonText: "Parhau i lwytho"

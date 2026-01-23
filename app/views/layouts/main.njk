@@ -1,0 +1,42 @@
+{% extends "casa/layouts/journey.njk" %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{% block head %}
+  {{ super() }}
+  {%- if consentCookieValue === "accept" -%}
+    {% include "partials/gtm-script.njk" %}
+  {%- endif %}
+  {% include "partials/styles.njk" %}
+  {% include "partials//timeout-dialog.njk" %}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+      assetsPath: assetPath + "/images",
+      serviceName: t('common:serviceName') if t else '',
+      serviceUrl: casa.mountUrl,
+      homepageUrl: "https://www.gov.uk/",
+      useTudorCrown: true
+    }) }}
+{% endblock %}
+
+{% block bodyStart %}
+  {%- if consentCookieValue === "accept" -%}
+    {% include "partials/gtm-noscript.njk" %}
+  {%- endif %}
+  {% include "partials/cookie-banner.njk" %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {{super()}}
+  {% include "partials/scripts.njk" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "partials/phase_banner_beta.njk" %}
+{% endblock %}
+
+{% block footer %}
+  {% include "partials/footer.njk" %}
+{% endblock %}

@@ -1,0 +1,10 @@
+pageTitle: Your address - Send your fit note - GOV.UK
+h1: Your address
+houseNumber: House name or number
+postcode: Postcode
+field:
+  houseNumber:
+    empty: Enter your house name or number
+  postcode:
+    empty: Enter your postcode
+    format: Enter a real postcode

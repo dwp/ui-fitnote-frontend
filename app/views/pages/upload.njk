@@ -1,0 +1,112 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block casaPageTitle %}
+  {{ t('upload:pageTitle') }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+
+      {% if photoError %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+              {
+                text: t(photoError.summary),
+                href: "#submitButton"
+              }
+            ]
+          }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('upload:h1') }}</h1>
+
+      <form action="/upload" method="post" autocomplete="off" novalidate enctype="multipart/form-data" class="casa-journey-form" id="formData" name="formData">
+
+        <div class="govuk-form-group">
+          <p class="govuk-!-padding-top-2">
+            {{ t('upload:text') }}
+          <p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>{{ t('upload:list.li1') }}</li>
+            <li>{{ t('upload:list.li2') }}</li>
+            <li>{{ t('upload:list.li3') }}</li>
+          </ul>
+
+          <input type="file" accept="image/*,.heif,.heic,application/pdf" id="userPhotoID" name="userPhoto"
+                 class="govuk-file-upload">
+          
+          <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}" />
+
+          <div class="govuk-form-group" aria-hidden="true">
+            <label for="imageNameID" aria-hidden="true">Leave blank</label>
+            <input type="text" name="imageNameField" id="imageNameID" aria-hidden="true" value="">
+          </div>
+
+          <div class="govuk-form-group {% if photoError %}govuk-form-group--error{% endif %}">
+            {% if photoError %}
+              <p id="file-upload-1-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ t(photoError.summary) | striptags(true) | escape | nl2br}}
+              </p>
+            {% endif %}
+
+            <div id="js-submitButtonContainer" class="clearfix">
+              <button class="govuk-button" id="submitButton" formenctype="multipart/form-data" aria-describedby="file-upload-1-error">{{ t('upload:buttonText') }}</button>
+            </div>
+          </div>
+
+          <div id="js-loading-message" class="display-offscreen">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+            <div id="upload-status" aria-live="polite" aria-atomic="true"></div>
+          </div>
+
+          <div class="govuk-inset-text">
+            <p>{{ t('upload:postalInstruction.p1') }}</p>
+            <p>{{ t('upload:postalInstruction.p2') }}</p>
+            <p>{{ t('upload:postalInstruction.p3') }}</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% include "partials/advisor.njk" %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "casa/partials/scripts.njk" %}
+  <script {% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>
+
+    var form = document.getElementById('formData');
+    var fileInput = document.getElementById('userPhotoID');
+
+    function showLoader() {
+      var submitBtnContainer = document.getElementById('js-submitButtonContainer');
+
+      document.getElementById('js-loading-message').className += 'js-show';
+      submitBtnContainer.className = 'js-hide';
+      document.getElementById('upload-status').innerHTML+=("<p>Uploading</p>");
+      return true;
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fileInput.click();
+    })
+
+    fileInput.addEventListener('change', function() {
+      if (fileInput.files.length > 0) {
+        showLoader();
+        form.submit();
+      }
+    })
+  </script>
+{% endblock %}

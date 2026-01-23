@@ -17,16 +17,6 @@
       "shouldExist": true
     },
     {
-      "name": "gulp directory exists",
-      "path": "/gulp",
-      "shouldExist": true
-    },
-    {
-      "name": "public directory exists",
-      "path": "/public",
-      "shouldExist": true
-    },
-    {
       "name": "node_modules directory exists",
       "path": "/node_modules",
       "shouldExist": true
@@ -34,11 +24,6 @@
     {
       "name": "app.js exists",
       "path": "/app/app.js",
-      "shouldExist": true
-    },
-    {
-      "name": "gulpfile.js exists",
-      "path": "/gulpfile.js",
       "shouldExist": true
     },
     {
