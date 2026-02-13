@@ -28,6 +28,8 @@
     {{ t('address:h1') }}
   </h1>
 
+  <div id ="address-hint" class="govuk-hint govuk-!-display-block">{{t('address:hint') }}</div>
+
   {{ casaGovukInput({
     name: 'houseNumber',
     value: formData['houseNumber'],

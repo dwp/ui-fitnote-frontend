@@ -8,7 +8,16 @@ whatHappensNext:
   p2: "Nid oes angen i chi wneud unrhyw beth arall, na ffonio i weld beth sy'n digwydd. Os oes problem byddwn yn cysylltu â chi."
   p3: "Os ydych wedi rhoi eich rhif ffôn symudol presennol i ni, byddwch yn cael neges destun pan fyddwn yn derbyn eich nodyn ffitrwydd. Gallai hyn gymryd hyd at 24 awr i gyrraedd a bydd yn cael ei anfon rhwng dydd Llun a dydd Gwener, 8am i 8pm."
   p4: "Bydd angen i chi barhau i anfon nodiadau ffitrwydd atom am cyn hired ag ydych yn analluog i weithio. Er enghraifft, os yw’ch nodyn ffitrwydd am 14 diwrnod, bydd angen i chi anfon un arall atom pan fydd yn dod i ben. Byddwn yn dweud wrthych pryd y gallwch roi’r gorau i’w hanfon."
-feedback: "Beth yw eich barn am y gwasanaeth hwn?"
+moreInfo: "Am fwy o wybodaeth am eich cais am ESA Dull Newydd, gweler <a href='https://www.gov.uk/guidance/new-style-employment-and-support-allowance.cy#ar-l-ich-cais-gael-ei-asesu' target='_blank' class='govuk-link'>Ar ôl i’ch cais gael ei asesu (agor mewn tab newydd)</a>"
+reminderLetter: 
+  heading: Os ydych yn cael llythyr atgoffa ar ôl derbyn testun cadarnhau
+  p1: Efallai y byddwch yn cael llythyr gan DWP yn y dyddiau nesaf yn eich atgoffa bod eich nodyn ffitrwydd yn dod i ben yn fuan. Gall hyn ddigwydd am ddau reswm.
+  subHeading1: Efallai bod y llythyr wedi cael ei anfon cyn i'ch nodyn ffitrwydd newydd gael ei dderbyn
+  p2: Gwiriwch y dyddiad ar y llythyr. Os yw cyn y dyddiad y gwnaethoch lwytho'ch nodyn ffitrwydd, nid oes angen i chi lwytho'r un nodyn ffitrwydd eto. Dylech ddarllen y llythyr o hyd gan y gallai gynnwys gwybodaeth bwysig.
+  subHeading2: Rydych wedi llwytho nodyn ffitrwydd sydd wedi dod i ben neu a fydd yn dod i ben yn y 7 diwrnod nesaf
+  p3: Efallai eich bod wedi gwneud hyn i gwmpasu cyfnod o salwch yn y gorffennol.
+  p4: Mae ein system yn dweud wrthym yn awtomatig os yw nodyn ffitrwydd wedi dod i ben neu a fydd yn dod i ben yn fuan. Mae hyn er mwyn sicrhau nad yw eich  budd-daliadau'n cael eu amharu. Nid oes angen i chi uwchlwytho'r un nodyn  ffitrwydd eto ond dylech ddarllen y llythyr o hyd gan y gallai gynnwys gwybodaeth bwysig.
+feedback: "Beth yw eich barn am y gwasanaeth hwn? (agor mewn ffenestr newydd)"
 feedback-text: " (mae’n cymryd 30 eiliad)"
 sendAnotherText: "Anfon nodyn ffitrwydd arall"
 sendAnotherLink: "/esa"

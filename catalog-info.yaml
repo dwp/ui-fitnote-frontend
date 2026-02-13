@@ -12,11 +12,11 @@ metadata:
     gitlab.com/project-slug: dwp/health/fitnote/components/ui-fitnote-frontend
 
   labels:
-    dwp.gov.uk/version: 3.1.0
+    dwp.gov.uk/version: 3.2.0
     dwp.gov.uk/license: MIT
 
     dwp.gov.uk/last-verified.by: stephen.nimako
-    dwp.gov.uk/last-verified.on: 2026-01-19
+    dwp.gov.uk/last-verified.on: 2026-02-06
     dwp.gov.uk/open-source.approved: "true"
     dwp.gov.uk/open-source.location: https://github.com/dwp/ui-fitnote-frontend
     dwp.gov.uk/impacts.audit: "false"

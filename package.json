@@ -1,7 +1,7 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -24,26 +24,26 @@
     "restart": "npm run build && npm run start"
   },
   "dependencies": {
-    "@dwp/govuk-casa": "9.6.2",
+    "@dwp/govuk-casa": "9.6.4",
     "@fastify/busboy": "3.2.0",
     "@ministryofjustice/frontend": "6.0.0",
     "config": "4.1.1",
     "connect-redis": "8.1.0",
     "esmock": "2.7.3",
     "express": "5.2.1",
-    "express-session": "1.18.2",
-    "hmrc-frontend": "6.104.0",
+    "express-session": "1.19.0",
+    "hmrc-frontend": "6.112.0",
     "home-office-kit": "1.2.0",
-    "ioredis": "5.8.2",
-    "pino": "10.1.0",
+    "ioredis": "5.9.2",
+    "pino": "10.3.0",
     "querystring": "0.2.1",
-    "request-promise-native": "1.0.8",
+    "request-promise-native": "1.0.9",
     "valimate-notifier": "1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "7.28.5",
-    "@babel/eslint-parser": "7.28.5",
-    "@babel/preset-env": "7.28.5",
+    "@babel/core": "7.28.6",
+    "@babel/eslint-parser": "7.28.6",
+    "@babel/preset-env": "7.28.6",
     "@dwp/eslint-config-base": "9.0.2",
     "@dwp/eslint-config-mocha": "1.3.1",
     "@rollup/plugin-alias": "5.1.1",
@@ -53,22 +53,22 @@
     "c8": "10.1.3",
     "chai": "5.3.3",
     "chai-as-promised": "8.0.2",
-    "eslint": "9.39.1",
+    "eslint": "9.39.2",
     "mocha": "11.7.5",
     "npm-check-updates": "18.3.1",
     "rollup": "2.79.2",
-    "sass": "1.94.0",
-    "sinon": "21.0.0",
-    "stylelint": "16.25.0",
+    "sass": "1.97.3",
+    "sinon": "21.0.1",
+    "stylelint": "16.26.1",
     "stylelint-config-recommended": "17.0.0",
-    "stylelint-scss": "6.12.1"
+    "stylelint-scss": "6.14.0"
   },
   "overrides": {
     "form-data": "2.5.5",
     "tough-cookie": "4.1.4",
-    "postcss-selector-parser": "7.1.0",
-    "validator": "13.15.23",
+    "postcss-selector-parser": "7.1.1",
+    "validator": "13.15.26",
     "qs": "6.14.1",
-    "flat-cache": "6.1.19"
+    "flat-cache": "6.1.20"
   }
 }

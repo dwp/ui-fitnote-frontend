@@ -8,7 +8,16 @@ whatHappensNext:
   p2: "You do not need to do anything else, or call to check on its progress. If there’s a problem you’ll be contacted."
   p3: If you have given us your current mobile number, you will get a text when we receive your fit note. This might take up to 24 hours to arrive and will be sent between Monday and Friday, 8am to 8pm.
   p4: You will need to keep sending us fit notes as long as you're unfit for work. For example, if your fit note is for 14 days, you will need to send us another one when it runs out. We will tell you when you can stop sending them.
-feedback: What do you think of this service?
+moreInfo: "For more information about your New Style ESA claim, see <a href='https://www.gov.uk/guidance/new-style-employment-and-support-allowance#after-your-claim-is-assessed' target='_blank' class='govuk-link'>After your claim is assessed (opens in a new tab)</a>"
+reminderLetter:
+  heading: If you get a reminder letter after receiving a confirmation text
+  p1: You might get a letter from DWP in the next few days reminding you that your fit note expires soon. This can happen for two reasons.
+  subHeading1: The letter might have been posted before your new fit note had been received
+  p2: Check the date on the letter. If it’s before the date you uploaded your fit note, you do not need to upload the same fit note again. You should still read the letter as it might contain important information.
+  subHeading2: You uploaded a fit note that has expired or will expire in the next 7 days
+  p3: You might have done this to cover a period of sickness in the past.
+  p4: Our system automatically tells us if a fit note has expired or will expire soon. This is to make sure your benefits are not interrupted. You do not need to upload the same fit note again but you should still read the letter as it might contain important information.
+feedback: What do you think of this service? (opens in a new tab)
 feedback-text: " (takes 30 seconds)"
 sendAnotherText: "Send another fit note"
 sendAnotherLink: "/esa"
