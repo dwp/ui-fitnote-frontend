@@ -115,6 +115,11 @@ const application = ({ MOUNT_URL = "/" }) => {
         resolve(__dirname, "../node_modules/@ministryofjustice/frontend/"),
         resolve(__dirname, "../node_modules/hmrc-frontend"),
       ],
+      helmetConfigurator: (config) => {
+        // to allow base64 images on /image-problem page
+        config.contentSecurityPolicy.directives["img-src"].push("data:");
+        return config;
+      },
       session: {
         name: sessionName,
         store: sessionStore,
@@ -182,6 +187,15 @@ const application = ({ MOUNT_URL = "/" }) => {
 
   staticRouter.use("/assets", expressStatic(resolve(__dirname, "../assets/")));
   staticRouter.all("/assets", (req, res) => res.status(404).send("Not found"));
+
+  // Static guidance pages
+  ancillaryRouter.get(`/digital-guidance`, (req, res) => {
+    res.render("pages/static-digital-guidance.njk");
+  });
+
+  ancillaryRouter.get(`/paper-guidance`, (req, res) => {
+    res.render("pages/static-paper-guidance.njk");
+  });
 
   // Accessibility statement
   ancillaryRouter.get(`/accessibility-statement`, (req, res) => {

@@ -6,7 +6,7 @@ import addressHooks from "../../../../../app/definitions/page-hooks/address.js";
 
 const { assert } = chai;
 
-describe("addressHooks hooks", () => {
+describe("address hooks", () => {
   const hooks = addressHooks();
 
   afterEach(() => {

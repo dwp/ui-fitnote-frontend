@@ -4,20 +4,20 @@ import sinon from "sinon";
 import esmock from "esmock";
 
 describe("submit-declaration", () => {
-  let requestStub, configStub, submitDeclaration;
+  let axiosStub, configStub, submitDeclaration;
   const mockUrl = "http://mockurl.com";
 
   beforeEach(async () => {
     configStub = {
       get: sinon.stub().withArgs("api.url").returns(mockUrl),
     };
-    requestStub = sinon.stub();
+    axiosStub = sinon.stub();
 
     submitDeclaration = await esmock(
       "../../../../app/lib/submit-declaration.js",
       {
         config: configStub,
-        request: requestStub,
+        axios: axiosStub,
       },
     );
   });
@@ -42,10 +42,10 @@ describe("submit-declaration", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
+    axiosStub.resolves({ status: 200 });
     await submitDeclaration(req, res);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, {});
-    assert.equal(requestStub.calledOnce, true);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.redirect.calledOnceWith("/complete"), true);
   });
 
@@ -58,9 +58,9 @@ describe("submit-declaration", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
+    axiosStub.resolves({ status: 400 });
     await submitDeclaration(req, res);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 400 }, {});
+
     assert.equal(res.status.calledOnceWith(500), true);
     assert.equal(res.redirect.calledOnceWith("/500"), true);
   });
@@ -74,9 +74,9 @@ describe("submit-declaration", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
+    axiosStub.resolves({ status: 500 });
     await submitDeclaration(req, res);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 500 }, {});
+
     assert.equal(res.status.calledOnceWith(500), true);
     assert.equal(res.redirect.calledOnceWith("/500"), true);
   });
@@ -90,9 +90,8 @@ describe("submit-declaration", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
+    axiosStub.rejects({ message: "Network Error", isAxiosError: true });
     await submitDeclaration(req, res);
-    const cb = requestStub.getCall(0).args[1];
-    cb(new Error("request failed"), null, null);
     assert.equal(res.status.calledOnceWith(500), true);
     assert.equal(res.redirect.calledOnceWith("/500"), true);
   });

@@ -21,6 +21,12 @@ export default () => {
 
         res.locals.photoError = errors[0];
 
+        if (!req.session.uploadCount) {
+          req.session.uploadCount = 1;
+        } else {
+          req.session.uploadCount++;
+        }
+
         if (errors && errors.length > 0) {
           next();
         } else {

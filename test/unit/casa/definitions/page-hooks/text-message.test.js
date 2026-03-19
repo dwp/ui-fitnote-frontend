@@ -6,7 +6,7 @@ import textMessageHooks from "../../../../../app/definitions/page-hooks/text-mes
 
 const { assert } = chai;
 
-describe("text-message hooks", () => {
+describe("text message hooks", () => {
   const hooks = textMessageHooks();
 
   afterEach(() => {

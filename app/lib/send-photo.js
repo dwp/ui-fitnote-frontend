@@ -1,4 +1,4 @@
-import rp from "request-promise-native";
+import axios from "axios";
 import config from "config";
 import logger from "../utilities/logger.js";
 import honeypot from "../utilities/honeypot.js";
@@ -15,7 +15,6 @@ function apiUploadOptions(req) {
   return {
     url: `${config.get("api.url")}/photo`,
     method: "POST",
-    json: true,
     headers: {
       Accept: "application/json",
       "content-type": "application/json",
@@ -24,15 +23,15 @@ function apiUploadOptions(req) {
       keepAlive: true,
     },
     timeout: 240000,
-    body: {
+    data: {
       sessionId: req.sessionID,
       image: encodeImage(req),
     },
   };
 }
 
-export function sendPhoto(req, res, next) {
-  function requestUploadCallback(counter) {
+export async function sendPhoto(req, res, next) {
+  async function requestUploadCallback(counter) {
     if (typeof req.sessionID == "undefined") {
       return res.redirect("/session-timeout");
     }
@@ -45,21 +44,21 @@ export function sendPhoto(req, res, next) {
       "BOT: honeypot detected a bot, Upload Page, Image Name Field",
     );
     if (!passedHoneypot) {
-      res.status(500).redirect("/500");
+      return res.status(500).redirect("/500");
     }
 
-    rp(apiUploadOptions(req))
+    await axios(apiUploadOptions(req))
       .then((response) => {
-        if (response.sessionId != null) {
-          logger.info(
-            `API call attempts successful on: ${count} ${count > 0 ? "retry" : ""}`,
-          );
-          logger.info("Submitted image successfully");
-          next();
-        }
+        logger.info(`Response Received: ${response.status}`);
+        logger.info(
+          `API call attempts successful on: ${count} ${count > 0 ? "retry" : ""}`,
+        );
+        logger.info("Submitted image successfully");
+        next();
       })
-      .catch(() => {
+      .catch((err) => {
         if (count > 5) {
+          logger.debug(`Error${err}`);
           logger.error("Failed 5 times");
           res.status(500).redirect("/500");
         } else {

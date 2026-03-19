@@ -30,6 +30,19 @@ main[aria-hidden="true"][role="main"]{
   display: block;
 }
 
+.image-problem-key {
+    width:10%;
+}
+
+.image-problem-cross {
+    height: 35px;
+}
+
+.fitnote-preview {
+    max-height: 350px;
+    border: 2px solid #aeb1b5;
+}
+
 .text-centre  { text-align: center; }
 
 #session-timeout {

@@ -1,25 +1,25 @@
 import config from "config";
-import request from "request";
+import axios from "axios";
 import logger from "../utilities/logger.js";
 
-export function photoStatus(req, res) {
+export async function photoStatus(req, res) {
   if (typeof req.sessionID == "undefined") {
-    res.redirect("/session-timeout");
+    return res.redirect("/session-timeout");
   }
 
   const sessionId = req.sessionID;
-  const options = {
-    url: `${config.get("api.url")}/imagestatus?sessionId=${sessionId}`,
-    method: "GET",
-    json: true,
-  };
 
-  function callback(err, response, body) {
-    if (err || response.statusCode !== 200) {
-      res.status(200).send("/upload?error=serviceFailed");
-    } else {
-      logger.info(`Response received: ${response.statusCode}`);
-      const { fitnoteStatus } = body;
+  function apiOptions() {
+    return {
+      url: `${config.get("api.url")}/imagestatus?sessionId=${sessionId}`,
+      method: "GET",
+    };
+  }
+
+  await axios(apiOptions())
+    .then((response) => {
+      logger.info(`Response received: ${response.status}`);
+      const { fitnoteStatus } = response.data;
       if (fitnoteStatus === "UPLOADED") {
         res.status(200).send(fitnoteStatus);
         return;
@@ -30,7 +30,7 @@ export function photoStatus(req, res) {
           break;
         case "FAILED_IMG_OCR":
         case "FAILED_IMG_OCR_PARTIAL":
-          res.status(200).send(`/upload?error=ocrFailed`);
+          res.status(200).send(`/image-problem`);
           break;
         case "FAILED_IMG_SIZE":
           res.status(200).send(`/upload?error=fileSize`);
@@ -50,8 +50,9 @@ export function photoStatus(req, res) {
           res.status(200).send("/upload?error=serviceFailed");
           break;
       }
-    }
-  }
-
-  request(options, callback);
+    })
+    .catch((err) => {
+      logger.debug(`Error${err}`);
+      return res.status(200).send("/upload?error=serviceFailed");
+    });
 }

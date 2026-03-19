@@ -83,6 +83,8 @@
 
 {% block bodyEnd %}
   {% include "casa/partials/scripts.njk" %}
+  {% include "partials/scripts.njk" %}
+
   <script {% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>
 
     var form = document.getElementById('formData');

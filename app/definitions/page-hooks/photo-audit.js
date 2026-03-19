@@ -5,8 +5,7 @@ export default () => {
     {
       hook: "postvalidate",
       middleware: async (req, res, next) => {
-        await photoRedirect(req, res);
-        next();
+        await photoRedirect(req, res, next);
       },
     },
   ];

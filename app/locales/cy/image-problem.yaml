@@ -1,0 +1,35 @@
+pageTitle: Mae problem gyda llun eich nodyn ffitrwydd - Anfon eich nodyn ffitrwydd - GOV.UK
+h1: Mae problem gyda llun eich nodyn ffitrwydd
+p1: "Dyma'r nodyn ffitrwydd rydych wedi'i lwytho. Ni ellir ei dderbyn am y rheswm canlynol:"
+list1: 
+  heading: "Gallai hyn fod oherwydd:"
+  li1: tynnwyd y llun ar ongl
+  li2: "mae'r llun yn aneglur neu mae ganddo gysgod ar ei draws"
+  li3: "mae'r nodyn ffitrwydd yn ddwyochrog"
+list2:
+  heading: Beth allwch chi ei wneud
+  p1: Tynnwch lun arall, gan wneud yn siŵr bod y nodyn ffitrwydd cyfan yn weladwy ac yn glir.
+  p2: "Os yw'ch nodyn ffitrwydd yn ddwyochrog, ni fyddwch yn gallu ei lwytho gan ddefnyddio'r gwasanaeth hwn. <a target='_blank' class=\"govuk-link\" href=\"/guidance-post\">Darganfyddwch sut i bostio eich nodyn ffitrwydd i'r DWP (agor mewn tab newydd)</a>"
+9a:
+  errorLeft: Dim ond yr ochr chwith o'r llun sy'n weladwy
+  errorRight: Dim ond yr ochr dde o'r llun sy'n weladwy
+9b:
+  errorTopRight: Dim ond y gornel uchaf dde o'r llun sy'n weladwy
+  errorTopLeft: Dim ond y gornel uchaf chwith o'r llun sy'n weladwy
+  errorBaseRight: Dim ond y gornel isaf dde o'r llun sy'n weladwy
+  errorBaseLeft: Dim ond y gornel isaf chwith o'r llun sy'n weladwy
+9c:
+  errorTop: Dim ond yr hanner uchaf o'r llun sy'n weladwy
+  errorBottom: Dim ond yr hanner isaf o'r llun sy'n weladwy
+9d:
+  error: "Nid yw'r ffeil a ddewiswyd yn edrych fel nodyn ffitrwydd"
+  li1: "Mae'r llun yn aneglur ac ni ellir ei ddarllen"
+  li2: "Doedd y ffeil wnaethoch chi ei lwytho ddim yn nodyn ffitrwydd"
+  li3: Nid yw eich nodyn ffitrwydd yn nodyn ffitrwydd Med 3
+  li4: Tynnwch lun arall, gan wneud yn siŵr bod y nodyn ffitrwydd cyfan yn glir
+  li5: Llwytho ffeil wahanol
+  li6: "Os nad yw'ch nodyn ffitrwydd yn Med 3, <a target='_blank' class=\"govuk-link\" href=\"/guidance-post\">bydd angen i chi bostio'ch nodyn ffitrwydd i'r DWP (yn agor mewn tab newydd)</a>"
+button: Yn ôl i'r dudalen llwytho
+banner: 
+  heading: "Rydych chi wedi ceisio llwytho'ch nodyn ffitrwydd fwy nag unwaith"
+  text: "Os ydych wedi dilyn y <a target='_blank' class=\"govuk-link\" href='{{url}}'>canllawiau ar sut i anfon nodyn ffitrwydd (agor mewn tab newydd)</a> a'r cyngor ar y dudalen hon, ac os nad ydych yn siŵr beth i'w wneud nesaf, <a target='_blank' class=\"govuk-link\" href=\"/guidance-post\">gallwch bostio eich nodyn ffitrwydd i'r DWP (agor mewn tab newydd)</a>."

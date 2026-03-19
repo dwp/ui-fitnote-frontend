@@ -1,4 +1,4 @@
-import request from "request";
+import axios from "axios";
 import config from "config";
 import logger from "../utilities/logger.js";
 import honeypot from "../utilities/honeypot.js";
@@ -7,33 +7,16 @@ function apiOptions(fitnote) {
   return {
     url: `${config.get("api.url")}/mobile`,
     method: "POST",
-    json: true,
     timeout: 240000,
     headers: {
       Accept: "application/json",
       "content-type": "application/json",
     },
-    body: fitnote,
+    data: fitnote,
   };
 }
 
-function apiCallback(req, res, next) {
-  return function callback(err, response) {
-    if (!err) {
-      logger.info(`Response Received: ${response.statusCode}`);
-      if (response.statusCode === 200 || response.statusCode === 201) {
-        next();
-      } else {
-        res.status(500).redirect("/500");
-      }
-    } else {
-      logger.debug(`Error${err}`);
-      res.status(500).redirect("/500");
-    }
-  };
-}
-
-export function sendPhoneNumber(req, res, next) {
+export async function sendPhoneNumber(req, res, next) {
   if (typeof req.sessionID == "undefined") {
     return res.redirect("/session-timeout");
   }
@@ -54,8 +37,20 @@ export function sendPhoneNumber(req, res, next) {
     "BOT: honeypot detected a bot, Text Message Page, Landline Field",
   );
   if (!passedHoneypot) {
-    res.status(500).redirect("/500");
+    return res.status(500).redirect("/500");
   }
 
-  return request(apiOptions(fitnote), apiCallback(req, res, next));
+  return await axios(apiOptions(fitnote))
+    .then((response) => {
+      logger.info(`Response Received: ${response.status}`);
+      if (response.status === 200 || response.status === 201) {
+        return next();
+      } else {
+        return res.status(500).redirect("/500");
+      }
+    })
+    .catch((err) => {
+      logger.debug(`Error${err}`);
+      return res.status(500).redirect("/500");
+    });
 }

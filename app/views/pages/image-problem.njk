@@ -1,0 +1,132 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "moj/components/alert/macro.njk" import mojAlert %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ casa.mountUrl }}assets/moj-frontend.min.css" />
+{% endblock %}
+
+{% block casaPageTitle %}
+  {{ t('image-problem:pageTitle') }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "partials/phase_banner_beta.njk" %}
+    {{ govukBackLink({
+      text: t('common:back'),
+      href: '/upload'
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-body">
+
+    
+      {% if showGuidance %}
+        {{ mojAlert({
+          variant: "information",
+          title: t('image-problem:banner.heading'),
+          showTitleAsHeading: true,
+          dismissible: false,
+          html: t("image-problem:banner.text", { url: guidanceLink })
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l govuk-!-padding-bottom-2">{{ t('image-problem:h1') }}</h1>
+
+      <img src="data:image/png;base64, {{ fitnoteImg }}" class="fitnote-preview" alt="">
+
+      <p>{{ t('image-problem:p1') }}</p>
+
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key image-problem-key">
+              <img src="/assets/images/cross.png" class="fit-note-zoom image-problem-cross" alt="">
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {% if visibleRegion == 'LEFT_SIDE' or  visibleRegion == 'RIGHT_SIDE' %}
+              {% if visibleRegion == 'LEFT_SIDE' %}
+              <h2>{{ t('image-problem:9a.errorLeft') }}</h2>
+              {% else %}
+              <h2>{{ t('image-problem:9a.errorRight') }}</h2>
+              {% endif %}
+
+              <h3>{{ t('image-problem:list1.heading') }}</h3>
+              <ul>
+                <li>{{ t('image-problem:list1.li1') }}</li>
+                <li>{{ t('image-problem:list1.li2') }}</li>
+                <li>{{ t('image-problem:list1.li3') }}</li>
+              </ul>
+              <h3>{{ t('image-problem:list2.heading') }}</h3>
+              <p>{{ t('image-problem:list2.p1') }}</p>
+              <p>{{ t('image-problem:list2.p2') | safe }}</p>
+
+            {% elif visibleRegion == 'TOP_LEFT' or  visibleRegion == 'TOP_RIGHT' or visibleRegion == 'BASE_LEFT' or  visibleRegion == 'BASE_RIGHT' %}
+              {% if visibleRegion == 'TOP_LEFT' %}
+              <h2>{{ t('image-problem:9b.errorTopLeft') }}</h2>
+              {% elif visibleRegion == 'TOP_RIGHT' %}
+              <h2>{{ t('image-problem:9b.errorTopRight') }}</h2>
+              {% elif visibleRegion == 'BASE_LEFT' %}
+              <h2>{{ t('image-problem:9b.errorBaseLeft') }}</h2>
+              {% else %}
+              <h2>{{ t('image-problem:9b.errorBaseRight') }}</h2>
+              {% endif %}
+
+              <h3>{{ t('image-problem:list1.heading') }}</h3>
+              <ul>
+                <li>{{ t('image-problem:list1.li1') }}</li>
+                <li>{{ t('image-problem:list1.li2') }}</li>
+                <li>{{ t('image-problem:list1.li3') }}</li>
+              </ul>
+              <h3>{{ t('image-problem:list2.heading') }}</h3>
+              <p>{{ t('image-problem:list2.p1') }}</p>
+              <p>{{ t('image-problem:list2.p2') | safe }}</p>
+
+            {% elif visibleRegion == 'TOP_HALF' or  visibleRegion == 'BASE_HALF' %}
+              {% if visibleRegion == 'TOP_HALF' %}
+              <h2>{{ t('image-problem:9c.errorTop') }}</h2>
+              {% else %}
+              <h2>{{ t('image-problem:9c.errorBottom') }}</h2>
+              {% endif %}
+
+              <h3>{{ t('image-problem:list1.heading') }}</h3>
+              <ul>
+                <li>{{ t('image-problem:list1.li1') }}</li>
+                <li>{{ t('image-problem:list1.li2') }}</li>
+                <li>{{ t('image-problem:list1.li3') }}</li>
+              </ul>
+              <h3>{{ t('image-problem:list2.heading') }}</h3>
+              <p>{{ t('image-problem:list2.p1') }}</p>
+
+
+            {% else  %}
+              <h2>{{ t('image-problem:9d.error') }}</h2>
+              <h3>{{ t('image-problem:list1.heading') }}</h3>
+              <ul>
+                <li>{{ t('image-problem:9d.li1') }}</li>
+                <li>{{ t('image-problem:9d.li2') }}</li>
+                <li>{{ t('image-problem:9d.li3') }}</li>
+              </ul>
+              <h3>{{ t('image-problem:list2.heading') }}</h3>
+              <ul>
+                <li>{{ t('image-problem:9d.li4') }}</li>
+                <li>{{ t('image-problem:9d.li5') }}</li>
+                <li>{{ t('image-problem:9d.li6') | safe }}</li>
+              </ul>
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <a href="/upload">
+        <button class="govuk-button" data-module="govuk-button">
+          {{ t('image-problem:button') }}
+        </button>
+      </a>
+    </div>
+  </div>
+  {% include "partials/advisor.njk" %}
+{% endblock %}

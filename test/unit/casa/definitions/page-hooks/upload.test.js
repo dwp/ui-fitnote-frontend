@@ -6,7 +6,7 @@ import uploadHooks from "../../../../../app/definitions/page-hooks/upload.js";
 
 const { assert } = chai;
 
-describe("uploadHooks hooks", () => {
+describe("upload hooks", () => {
   const hooks = uploadHooks();
 
   afterEach(() => {
@@ -18,6 +18,7 @@ describe("uploadHooks hooks", () => {
       const prerender = hooks[0];
       const middleware = prerender.middleware;
       const req = {
+        session: {},
         query: {
           error: "maxReplay",
         },
@@ -46,6 +47,7 @@ describe("uploadHooks hooks", () => {
       const postvalidate = hooks[1];
       const middleware = postvalidate.middleware;
       const req = {
+        session: {},
         casa: {
           journeyContext: {
             getValidationErrorsForPage: () => {
@@ -71,6 +73,7 @@ describe("uploadHooks hooks", () => {
       const postvalidate = hooks[1];
       const middleware = postvalidate.middleware;
       const req = {
+        session: {},
         casa: {
           journeyContext: {
             getValidationErrorsForPage: () => {
@@ -87,6 +90,33 @@ describe("uploadHooks hooks", () => {
       middleware(req, res, next);
       assert.equal(postvalidate.hook, "postvalidate");
       assert.equal(res.redirect.callCount, 1);
+      assert.equal(req.session.uploadCount, 1);
+    });
+
+    it("should call sendPhoto if no errors, increment upload count", () => {
+      const postvalidate = hooks[1];
+      const middleware = postvalidate.middleware;
+      const req = {
+        session: {
+          uploadCount: 1,
+        },
+        casa: {
+          journeyContext: {
+            getValidationErrorsForPage: () => {
+              return [];
+            },
+          },
+        },
+      };
+      const res = {
+        locals: {},
+        redirect: sinon.stub(),
+      };
+      const next = sinon.stub();
+      middleware(req, res, next);
+      assert.equal(postvalidate.hook, "postvalidate");
+      assert.equal(res.redirect.callCount, 1);
+      assert.equal(req.session.uploadCount, 2);
     });
   });
 });

@@ -1,0 +1,35 @@
+pageTitle: There is a problem with the image of your fit note - Send your fit note - GOV.UK
+h1: There is a problem with the image of your fit note
+p1: "This is the fit note you have uploaded. It cannot be accepted for the following reason:"
+list1: 
+  heading: "This could be because:"
+  li1: the photo was taken at an angle
+  li2: the photo is blurry or has a shadow across it
+  li3: the fit note is double-sided
+list2:
+  heading: What you can do
+  p1: Take another photo, making sure the whole fit note is visible and clear.
+  p2: "If your fit note is double-sided, you will not be able to upload it using this service. <a target='_blank' class=\"govuk-link\" href=\"/guidance-post\">Find out how to post your fit note to DWP (opens in new tab)</a>"
+9a:
+  errorLeft: Only the left side of the image is visible
+  errorRight: Only the right side of the image is visible
+9b:
+  errorTopRight: Only the top right corner of the image is visible
+  errorTopLeft: Only the top left corner of the image is visible
+  errorBaseRight: Only the bottom right corner of the image is visible
+  errorBaseLeft: Only the bottom left corner of the image is visible
+9c:
+  errorTop: Only the top half of the image is visible
+  errorBottom: Only the bottom half of the image is visible
+9d:
+  error: The selected file does not look like a fit note
+  li1: The image is blurry and cannot be read
+  li2: The file you uploaded was not a fit note
+  li3: Your fit note is not a Med 3 fit note
+  li4: Take another photo, making sure the whole fit note is clear
+  li5: Upload a different file
+  li6: "If your fit note is not a Med 3, <a target='_blank' class=\"govuk-link\" href=\"/guidance-post\">you will need to post your fit note to DWP (opens in new tab)</a>"
+button: Back to upload page
+banner: 
+  heading: You have tried to upload your fit note more than once
+  text: "If you have followed the  <a target='_blank' class=\"govuk-link\" href='{{url}}'>guidance on how to send a fit note (opens in a new tab)</a> and the advice on this page, and are unsure what to do next you can  <a target='_blank' class=\"govuk-link\" href=\"/guidance-post\">post your fit note to DWP (opens in a new tab)</a>."

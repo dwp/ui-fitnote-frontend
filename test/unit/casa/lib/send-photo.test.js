@@ -4,17 +4,18 @@ import sinon from "sinon";
 import esmock from "esmock";
 
 describe("photo-redirect", () => {
-  let rpStub, configStub, sendPhoto;
+  let axiosStub, configStub, sendPhoto;
   const mockUrl = "http://mockurl.com";
 
   beforeEach(async () => {
     configStub = {
       get: sinon.stub().withArgs("api.url").returns(mockUrl),
     };
-    rpStub = sinon.stub().resolves({ sessionId: "123" });
+    axiosStub = sinon.stub();
+    //rpStub = sinon.stub().resolves({ sessionId: "123" });
 
     ({ sendPhoto } = await esmock("../../../../app/lib/send-photo.js", {
-      "request-promise-native": rpStub,
+      axios: axiosStub,
       config: configStub,
     }));
   });
@@ -23,16 +24,19 @@ describe("photo-redirect", () => {
     sinon.restore();
   });
 
-  it("should redirect to session-timeout if sessionID is undefined", () => {
+  it("should redirect to session-timeout if sessionID is undefined", async () => {
     const req = {};
     const res = { redirect: sinon.spy() };
-    sendPhoto(req, res);
+    await sendPhoto(req, res);
     assert.equal(res.redirect.calledOnceWith("/session-timeout"), true);
   });
 
-  it("should redirect to /500 if fails honeypot", () => {
+  it("should redirect to /500 if fails honeypot", async () => {
     const req = {
       sessionID: "123",
+      session: {
+        fitnoteImg: "123",
+      },
       file: {
         userPhoto: "123",
       },
@@ -52,13 +56,16 @@ describe("photo-redirect", () => {
       redirect: sinon.spy(),
     };
     const next = sinon.stub();
-    sendPhoto(req, res, next);
+    await sendPhoto(req, res, next);
     assert.equal(res.redirect.calledWith("/500"), true);
   });
 
-  it("should call request successfully when no errors with response", () => {
+  it("should call request successfully when no errors with response", async () => {
     const req = {
       sessionID: "123",
+      session: {
+        fitnoteImg: "123",
+      },
       file: {
         userPhoto: "123",
       },
@@ -76,15 +83,14 @@ describe("photo-redirect", () => {
       redirect: sinon.spy(),
     };
     const next = sinon.stub();
-    sendPhoto(req, res, next);
-    assert.equal(rpStub.calledOnce, true);
-    const options = rpStub.getCall(0).args[0];
+    await sendPhoto(req, res, next);
+    assert.equal(axiosStub.calledOnce, true);
+    const options = axiosStub.getCall(0).args[0];
     assert.equal(options.method, "POST");
-    assert.equal(options.json, true);
     assert.equal(options.url, `${mockUrl}/photo`);
   });
 
-  it("should call request successfully when empty image and no errors with response", () => {
+  it("should call request successfully when empty image and no errors with response", async () => {
     const req = {
       sessionID: "123",
       file: undefined,
@@ -102,11 +108,10 @@ describe("photo-redirect", () => {
       redirect: sinon.spy(),
     };
     const next = sinon.stub();
-    sendPhoto(req, res, next);
-    assert.equal(rpStub.calledOnce, true);
-    const options = rpStub.getCall(0).args[0];
+    await sendPhoto(req, res, next);
+    assert.equal(axiosStub.calledOnce, true);
+    const options = axiosStub.getCall(0).args[0];
     assert.equal(options.method, "POST");
-    assert.equal(options.json, true);
     assert.equal(options.url, `${mockUrl}/photo`);
   });
 });

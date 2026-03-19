@@ -67,7 +67,7 @@
               response = '/500';
             }
           }
-          if (response == "/nino") {
+          if (response == "/nino" || response == "/image-problem") {
             document.getElementById("hidden-button").click();
           } else {
             window.location.href = response;

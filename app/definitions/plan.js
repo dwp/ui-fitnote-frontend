@@ -36,7 +36,19 @@ export default () => {
 
   plan.setRoute("upload", "photo-audit");
 
-  plan.setRoute("photo-audit", "nino");
+  plan.setRoute(
+    "photo-audit",
+    "nino",
+    (route, context) =>
+      context.data["photo-audit"]["photoAudit"] !== "image-problem",
+  );
+
+  plan.setRoute(
+    "photo-audit",
+    "image-problem",
+    (route, context) =>
+      context.data["photo-audit"]["photoAudit"] === "image-problem",
+  );
 
   plan.setRoute("nino", "address");
 

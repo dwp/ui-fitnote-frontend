@@ -5,18 +5,18 @@ import esmock from "esmock";
 
 describe("send-address", () => {
   const next = sinon.stub();
-  let requestStub, configStub, sendAddress;
+  let axiosStub, configStub, sendAddress;
   const mockUrl = "http://mockurl.com";
 
   beforeEach(async () => {
     configStub = {
       get: sinon.stub().withArgs("api.url").returns(mockUrl),
     };
-    requestStub = sinon.stub();
+    axiosStub = sinon.stub();
 
     ({ sendAddress } = await esmock("../../../../app/lib/send-address.js", {
       config: configStub,
-      request: requestStub,
+      axios: axiosStub,
     }));
   });
 
@@ -24,14 +24,15 @@ describe("send-address", () => {
     sinon.restore();
   });
 
-  it("should redirect to session-timeout if sessionID is undefined", () => {
+  it("should redirect to session-timeout if sessionID is undefined", async () => {
     const req = {};
     const res = { redirect: sinon.spy() };
-    sendAddress(req, res);
+    await sendAddress(req, res);
+    assert.equal(axiosStub.callCount, 0);
     assert.equal(res.redirect.calledOnceWith("/session-timeout"), true);
   });
 
-  it("should call request and next successfully when no errors", () => {
+  it("should call request and next successfully when no errors", async () => {
     const req = {
       sessionID: "123",
       casa: {
@@ -50,18 +51,17 @@ describe("send-address", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    sendAddress(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, {});
-    assert.equal(requestStub.calledOnce, true);
-    const options = requestStub.getCall(0).args[0];
+    axiosStub.resolves({ status: 200 });
+    await sendAddress(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
+    const options = axiosStub.getCall(0).args[0];
     assert.equal(options.method, "POST");
-    assert.equal(options.json, true);
     assert.equal(options.url, `${mockUrl}/address`);
     assert.equal(next.callCount, 1);
   });
 
-  it("should redirect to 500 page if county field populated", () => {
+  it("should redirect to 500 page if county field populated", async () => {
     const req = {
       sessionID: "123",
       casa: {
@@ -81,12 +81,13 @@ describe("send-address", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    sendAddress(req, res, next);
+    await sendAddress(req, res, next);
+    assert.equal(axiosStub.callCount, 0);
     assert.equal(res.status.calledOnceWith(500), true);
     assert.equal(res.redirect.calledOnceWith("/500"), true);
   });
 
-  it("should redirect to 500 page if error response", () => {
+  it("should redirect to 500 page if error response", async () => {
     const req = {
       sessionID: "123",
       casa: {
@@ -95,7 +96,6 @@ describe("send-address", () => {
             address: {
               houseNumber: "123 Home Lane",
               postcode: "A00AA",
-              countyField: "ABC",
             },
           },
         },
@@ -106,15 +106,15 @@ describe("send-address", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    sendAddress(req, res, next);
+    axiosStub.rejects({ message: "Network Error", isAxiosError: true });
+    await sendAddress(req, res, next);
 
-    const cb = requestStub.getCall(0).args[1];
-    cb(new Error("request failed"), null, null);
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledWith(500), true);
     assert.equal(res.redirect.calledWith("/500"), true);
   });
 
-  it("should redirect to 500 page if status code is not 2xx", () => {
+  it("should redirect to 500 page if status code is not 2xx", async () => {
     const req = {
       sessionID: "123",
       casa: {
@@ -123,7 +123,6 @@ describe("send-address", () => {
             address: {
               houseNumber: "123 Home Lane",
               postcode: "A00AA",
-              countyField: "ABC",
             },
           },
         },
@@ -134,10 +133,10 @@ describe("send-address", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    sendAddress(req, res);
+    axiosStub.resolves({ status: 210 });
+    await sendAddress(req, res);
 
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 500 }, null);
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledWith(500), true);
     assert.equal(res.redirect.calledWith("/500"), true);
   });

@@ -5,18 +5,18 @@ import esmock from "esmock";
 
 describe("photo-status", () => {
   const next = sinon.stub();
-  let requestStub, configStub, photoStatus;
+  let axiosStub, configStub, photoStatus;
   const mockUrl = "http://mockurl.com";
 
   beforeEach(async () => {
     configStub = {
       get: sinon.stub().withArgs("api.url").returns(mockUrl),
     };
-    requestStub = sinon.stub();
+    axiosStub = sinon.stub();
 
     ({ photoStatus } = await esmock("../../../../app/lib/photo-status.js", {
       config: configStub,
-      request: requestStub,
+      axios: axiosStub,
     }));
   });
 
@@ -24,14 +24,14 @@ describe("photo-status", () => {
     sinon.restore();
   });
 
-  it("should redirect to session-timeout if sessionID is undefined", () => {
+  it("should redirect to session-timeout if sessionID is undefined", async () => {
     const req = {};
     const res = { redirect: sinon.spy() };
-    photoStatus(req, res);
+    await photoStatus(req, res);
     assert.equal(res.redirect.calledOnceWith("/session-timeout"), true);
   });
 
-  it("should send UPLOADED status when response is UPLOADED", () => {
+  it("should send UPLOADED status when response is UPLOADED", async () => {
     const req = {
       sessionID: "123",
     };
@@ -40,18 +40,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "UPLOADED" });
-    assert.equal(requestStub.calledOnce, true);
-    const options = requestStub.getCall(0).args[0];
+    axiosStub.resolves({ status: 200, data: { fitnoteStatus: "UPLOADED" } });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
+    const options = axiosStub.getCall(0).args[0];
     assert.equal(options.method, "GET");
     assert.equal(options.url, `${mockUrl}/imagestatus?sessionId=123`);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("UPLOADED"), true);
   });
 
-  it("should send to nino page when response is SUCCEEDED", () => {
+  it("should send to nino page when response is SUCCEEDED", async () => {
     const req = {
       sessionID: "123",
     };
@@ -60,15 +60,15 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "SUCCEEDED" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({ status: 200, data: { fitnoteStatus: "SUCCEEDED" } });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("/nino"), true);
   });
 
-  it("should send to upload with error as serviceFailed if error response", () => {
+  it("should send to upload with error as serviceFailed if error response", async () => {
     const req = {
       sessionID: "123",
       casa: {
@@ -88,15 +88,14 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
+    axiosStub.rejects({ message: "Network Error", isAxiosError: true });
+    await photoStatus(req, res, next);
 
-    const cb = requestStub.getCall(0).args[1];
-    cb(new Error("request failed"), null, null);
     assert.equal(res.status.calledWith(200), true);
     assert.equal(res.send.calledWith("/upload?error=serviceFailed"), true);
   });
 
-  it("should send to upload with error as ocrFailed if response is FAILED_IMG_OCR", () => {
+  it("should send to image-problem if response is FAILED_IMG_OCR", async () => {
     const req = {
       sessionID: "123",
     };
@@ -105,15 +104,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_IMG_OCR" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({
+      status: 200,
+      data: { fitnoteStatus: "FAILED_IMG_OCR" },
+    });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
-    assert.equal(res.send.calledOnceWith("/upload?error=ocrFailed"), true);
+    assert.equal(res.send.calledOnceWith("/image-problem"), true);
   });
 
-  it("should send to upload with error as ocrFailed if response is FAILED_IMG_OCR_PARTIAL", () => {
+  it("should send to image-problem if response is FAILED_IMG_OCR_PARTIAL", async () => {
     const req = {
       sessionID: "123",
     };
@@ -122,15 +124,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_IMG_OCR_PARTIAL" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({
+      status: 200,
+      data: { fitnoteStatus: "FAILED_IMG_OCR_PARTIAL" },
+    });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
-    assert.equal(res.send.calledOnceWith("/upload?error=ocrFailed"), true);
+    assert.equal(res.send.calledOnceWith("/image-problem"), true);
   });
 
-  it("should send to upload with error as fileSize if response is FAILED_IMG_SIZE", () => {
+  it("should send to upload with error as fileSize if response is FAILED_IMG_SIZE", async () => {
     const req = {
       sessionID: "123",
     };
@@ -139,15 +144,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_IMG_SIZE" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({
+      status: 200,
+      data: { fitnoteStatus: "FAILED_IMG_SIZE" },
+    });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("/upload?error=fileSize"), true);
   });
 
-  it("should send to upload with error as maxReplay if response is FAILED_IMG_MAX_REPLAY", () => {
+  it("should send to upload with error as maxReplay if response is FAILED_IMG_MAX_REPLAY", async () => {
     const req = {
       sessionID: "123",
     };
@@ -156,15 +164,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_IMG_MAX_REPLAY" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({
+      status: 200,
+      data: { fitnoteStatus: "FAILED_IMG_MAX_REPLAY" },
+    });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("/upload?error=maxReplay"), true);
   });
 
-  it("should send to upload with error as password if response is FAILED_IMG_PASSWORD", () => {
+  it("should send to upload with error as password if response is FAILED_IMG_PASSWORD", async () => {
     const req = {
       sessionID: "123",
     };
@@ -173,15 +184,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_IMG_PASSWORD" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({
+      status: 200,
+      data: { fitnoteStatus: "FAILED_IMG_PASSWORD" },
+    });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("/upload?error=password"), true);
   });
 
-  it("should send to upload with error as fileType if response is FAILED_ERROR", () => {
+  it("should send to upload with error as fileType if response is FAILED_ERROR", async () => {
     const req = {
       sessionID: "123",
     };
@@ -190,15 +204,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_ERROR" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({
+      status: 200,
+      data: { fitnoteStatus: "FAILED_ERROR" },
+    });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("/upload?error=fileType"), true);
   });
 
-  it("should send to upload with error as fileType if response is FAILED_IMG_FILE_TYPE", () => {
+  it("should send to upload with error as fileType if response is FAILED_IMG_FILE_TYPE", async () => {
     const req = {
       sessionID: "123",
     };
@@ -207,15 +224,18 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_IMG_FILE_TYPE" });
-    assert.equal(requestStub.calledOnce, true);
+    axiosStub.resolves({
+      status: 200,
+      data: { fitnoteStatus: "FAILED_IMG_FILE_TYPE" },
+    });
+    await photoStatus(req, res, next);
+
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("/upload?error=fileType"), true);
   });
 
-  it("should send to upload with error as fileType if response is FAILED_IMG_FILE_TYPE", () => {
+  it("should send to upload with error as serviceFailed if response is FAILED", async () => {
     const req = {
       sessionID: "123",
     };
@@ -224,27 +244,10 @@ describe("photo-status", () => {
       send: sinon.spy(),
       redirect: sinon.spy(),
     };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED_IMG_FILE_TYPE" });
-    assert.equal(requestStub.calledOnce, true);
-    assert.equal(res.status.calledOnceWith(200), true);
-    assert.equal(res.send.calledOnceWith("/upload?error=fileType"), true);
-  });
+    axiosStub.resolves({ status: 200, data: { fitnoteStatus: "FAILED" } });
+    await photoStatus(req, res, next);
 
-  it("should send to upload with error as serviceFailed if response is FAILED", () => {
-    const req = {
-      sessionID: "123",
-    };
-    const res = {
-      status: sinon.stub().returnsThis(),
-      send: sinon.spy(),
-      redirect: sinon.spy(),
-    };
-    photoStatus(req, res, next);
-    const cb = requestStub.getCall(0).args[1];
-    cb(null, { statusCode: 200 }, { fitnoteStatus: "FAILED" });
-    assert.equal(requestStub.calledOnce, true);
+    assert.equal(axiosStub.calledOnce, true);
     assert.equal(res.status.calledOnceWith(200), true);
     assert.equal(res.send.calledOnceWith("/upload?error=serviceFailed"), true);
   });

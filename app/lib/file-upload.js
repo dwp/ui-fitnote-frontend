@@ -1,6 +1,7 @@
 import Busboy from "@fastify/busboy";
 import { uploadValidationErrors } from "../definitions/validators/file-validator.js";
 import logger from "../utilities/logger.js";
+import { filesize } from "filesize";
 
 export function fileUpload(req, res, next) {
   const maxFileSize = 10000000;
@@ -11,6 +12,7 @@ export function fileUpload(req, res, next) {
     fields: 2,
     files: 1,
   };
+  const sessionId = req.sessionID;
 
   const busboy = new Busboy({ headers: req.headers, limits });
   req.file = Object.create(null);
@@ -33,7 +35,9 @@ export function fileUpload(req, res, next) {
     }
 
     if (!validMimeTypes.test(mimetype) && mimetype !== "application/pdf") {
-      logger.warn("fileUpload(): File type is not accepted, discard file");
+      logger.warn(
+        `File type (${mimetype}) is invalid, for sessionId ${sessionId}`,
+      );
       req.body[fileField] = uploadValidationErrors.BAD_TYPE;
       file.resume();
       return;
@@ -47,6 +51,11 @@ export function fileUpload(req, res, next) {
     };
 
     file.on("limit", () => {
+      let imageSize = parseInt(req.headers["content-length"], 10);
+      imageSize = filesize(imageSize, { exponent: 2, round: 1 });
+      logger.warn(
+        `File size ${imageSize} is invalid, for sessionId ${sessionId}`,
+      );
       req.body[fileField] = uploadValidationErrors.SIZE;
       file.resume();
     });
@@ -102,6 +111,14 @@ export function fileUpload(req, res, next) {
     req.body[fileField] ??= "missing";
     if (req.file[fileField]) {
       logger.info("fileUpload(): File received successfully");
+      logger.info(
+        `File type is ${req.body[fileField].type}, for sessionId ${sessionId}`,
+      );
+      const imageSize = filesize(req.body[fileField].size, {
+        exponent: 2,
+        round: 1,
+      });
+      logger.info(`File size is ${imageSize}, for sessionId ${sessionId}`);
     } else {
       logger.info(`fileUpload(): File invalid, reason: ${req.body[fileField]}`);
     }

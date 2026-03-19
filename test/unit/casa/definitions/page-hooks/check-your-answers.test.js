@@ -6,7 +6,7 @@ import checkYourAnswersHooks from "../../../../../app/definitions/page-hooks/che
 
 const { assert } = chai;
 
-describe("checkYourAnswersHooks hooks", () => {
+describe("check your answers hooks", () => {
   const hooks = checkYourAnswersHooks();
 
   afterEach(() => {

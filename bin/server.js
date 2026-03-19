@@ -14,7 +14,7 @@ if (config.get("service.listenonhttp") === "true") {
     logger.info(`Provider: ${config.get("service.provider")}`);
     logger.info(`Name: ${config.get("service.name")}`);
     logger.info(`Version: ${process.env.npm_package_version}`);
-    logger.info(`Environment: ${config.util.getEnv("NODE_ENV")}`);
+    logger.info(`Environment: ${process.env.NODE_ENV}`);
     logger.info(`Service: localhost:${port}`);
     logger.info(`API: ${config.get("api.url")}`);
     logger.info("Listening on http server");
@@ -41,7 +41,7 @@ if (config.get("service.listenonhttp") === "true") {
     logger.info(`Provider: ${config.get("service.provider")}`);
     logger.info(`Name: ${config.get("service.name")}`);
     logger.info(`Version: ${process.env.npm_package_version}`);
-    logger.info(`Environment: ${config.util.getEnv("NODE_ENV")}`);
+    logger.info(`Environment: ${process.env.NODE_ENV}`);
     logger.info(`Service: localhost:${port}`);
     logger.info(`API: ${config.get("api.url")}`);
     logger.info("Listening on https server");

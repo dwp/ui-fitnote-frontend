@@ -8,6 +8,7 @@ import textMessageFields from "./fields/text-message.js";
 import esaHooks from "./page-hooks/esa.js";
 import uploadHooks from "./page-hooks/upload.js";
 import photoAuditHooks from "./page-hooks/photo-audit.js";
+import imageProblemHooks from "./page-hooks/image-problem.js";
 import ninoHooks from "./page-hooks/nino.js";
 import addressHooks from "./page-hooks/address.js";
 import textMessageHooks from "./page-hooks/text-message.js";
@@ -47,6 +48,11 @@ export default () => [
     waypoint: "photo-audit",
     view: "pages/photo-audit.njk",
     hooks: photoAuditHooks(),
+  },
+  {
+    waypoint: "image-problem",
+    view: "pages/image-problem.njk",
+    hooks: imageProblemHooks(),
   },
   {
     waypoint: "nino",

@@ -1,4 +1,3 @@
-import qs from "querystring";
 import { COOKIE_POLICY_URL } from "../utilities/constants.js";
 
 export function cookieMiddleware(
@@ -49,9 +48,9 @@ export function cookieMiddleware(
         "/cookies/cookie-details?backto=%2F",
         "",
       );
-      res.locals.cookiePolicyUrl = `${cookiePolicyUrl}?${qs.stringify({ backto: originalBackUrl })}`;
+      res.locals.cookiePolicyUrl = `${cookiePolicyUrl}?${new URLSearchParams({ backto: originalBackUrl }).toString()}`;
     } else {
-      res.locals.cookiePolicyUrl = `${cookiePolicyUrl}?${qs.stringify({ backto: currentUrl })}`;
+      res.locals.cookiePolicyUrl = `${cookiePolicyUrl}?${new URLSearchParams({ backto: currentUrl }).toString()}`;
     }
     next();
   };
