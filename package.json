@@ -1,7 +1,7 @@
 {
   "name": "FitNote",
   "description": "Fit Note Front-end",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "restart": "npm run build && npm run start"
   },
   "dependencies": {
-    "@dwp/govuk-casa": "9.6.4",
+    "@dwp/govuk-casa": "9.6.5",
     "@fastify/busboy": "3.2.0",
     "@ministryofjustice/frontend": "6.0.0",
     "config": "4.4.1",
@@ -32,12 +32,12 @@
     "esmock": "2.7.3",
     "express": "5.2.1",
     "express-session": "1.19.0",
-    "hmrc-frontend": "7.0.0",
+    "hmrc-frontend": "7.2.0",
     "filesize": "11.0.13",
     "home-office-kit": "1.2.0",
-    "ioredis": "5.10.0",
+    "ioredis": "5.10.1",
     "pino": "10.3.1",
-    "axios": "1.13.6",
+    "axios": "1.15.0",
     "valimate-notifier": "1.0.2"
   },
   "devDependencies": {
@@ -64,7 +64,7 @@
     "stylelint-scss": "6.14.0"
   },
   "overrides": {
-    "lodash": "4.17.23",
+    "lodash": "4.18.1",
     "form-data": "2.5.5",
     "tough-cookie": "4.1.4",
     "postcss-selector-parser": "7.1.1",
@@ -73,6 +73,7 @@
     "flat-cache": "6.1.20",
     "serialize-javascript":"7.0.3",
     "immutable":"5.1.5",
-    "minimatch": "10.2.3"
+    "minimatch": "10.2.3",
+    "flatted": "3.4.2"
   }
 }

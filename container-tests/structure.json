@@ -3,32 +3,32 @@
   "fileExistenceTests": [
     {
       "name": "app directory exists",
-      "path": "/app",
+      "path": "/app/app",
       "shouldExist": true
     },
     {
       "name": "assets directory exists",
-      "path": "/assets",
+      "path": "/app/assets",
       "shouldExist": true
     },
     {
       "name": "bin directory exists",
-      "path": "/bin",
+      "path": "/app/bin",
       "shouldExist": true
     },
     {
       "name": "node_modules directory exists",
-      "path": "/node_modules",
+      "path": "/app/node_modules",
       "shouldExist": true
     },
     {
       "name": "app.js exists",
-      "path": "/app/app.js",
+      "path": "/app/app/app.js",
       "shouldExist": true
     },
     {
       "name": "package.json exists",
-      "path": "/package.json",
+      "path": "/app/package.json",
       "shouldExist": true
     }
   ]
