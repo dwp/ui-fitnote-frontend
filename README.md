@@ -188,3 +188,51 @@ Fitnote UI is currently uses a default json file (app/configs/dev.json) which ca
 ## Shutter page
 - We provide Akamai with a .html file containing the content for when we plan maintenance or shutter the service, this file can be found in the root of the project `syfn-shutter.html`
 - This file is not served by our application, just stored within the repository to keep a record and then after any changes we send this file to Akamai
+
+## Running `fitnote-test-harness` Locally
+
+To run the `fitnote-test-harness` locally, use the local Docker Compose file:
+
+```bash
+docker compose -f docker-compose-local.yml down && docker compose -f docker-compose-local.yml up --exit-code-from fitnote-test-harness
+```
+
+This command will:
+
+- Stop and remove any existing local Compose containers
+- Start the services defined in `docker-compose-local.yml`
+- Exit using the exit code from the `fitnote-test-harness` service
+
+### Building the UI Test Image Locally
+
+If you want to build the UI test image locally, run the following command from the `qa-fitnote-ui-tests` repository:
+
+```bash
+docker build --platform linux/amd64 -t ui-test:local .
+```
+
+After the image has been built, update the `fitnote-test-harness` service in `docker-compose-local.yml` so that the `image` field points to your local image:
+
+```yaml
+services:
+  fitnote-test-harness:
+    image: ui-test:local
+```
+
+You can then run the test harness using the same Docker Compose command:
+
+```bash
+docker compose -f docker-compose-local.yml down && docker compose -f docker-compose-local.yml up --exit-code-from fitnote-test-harness
+```
+
+### Building Other Images Locally
+
+The same approach can be used for the other images referenced in `docker-compose-local.yml`: build the image locally, then update the relevant service’s `image` field to point to the local image tag.
+
+However, building the other images locally may have additional challenges, particularly around:
+
+- Certificates
+- Dynatrace configuration
+- Repository-specific Docker build requirements
+
+If the local Docker build succeeds for the other repositories, you can update the corresponding image references in `docker-compose-local.yml` and run the test harness locally in the same way.

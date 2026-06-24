@@ -3,7 +3,7 @@
 {% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
 {% from "casa/components/input/macro.njk" import casaGovukInput with context %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {% include "partials/phase_banner_beta.njk" %}
   {% if inEditMode %}
     {{ govukBackLink({

@@ -4,7 +4,7 @@ import logger from "../utilities/logger.js";
 import { filesize } from "filesize";
 
 export function fileUpload(req, res, next) {
-  const maxFileSize = 10000000;
+  const maxFileSize = 15000000;
   const fileField = "userPhoto";
   const validMimeTypes = new RegExp("^image/");
   const limits = {
@@ -15,6 +15,7 @@ export function fileUpload(req, res, next) {
   const sessionId = req.sessionID;
 
   const busboy = new Busboy({ headers: req.headers, limits });
+  req.body = {};
   req.file = Object.create(null);
   logger.info("fileUpload(): Starting file upload");
 
@@ -51,9 +52,12 @@ export function fileUpload(req, res, next) {
     };
 
     file.on("limit", () => {
-      let imageSize = parseInt(req.headers["content-length"], 10);
-      imageSize = filesize(imageSize, { exponent: 2, round: 1 });
+      const imageSizeBytes = parseInt(req.headers["content-length"], 10);
+      let imageSize = filesize(imageSizeBytes, { exponent: 2, round: 1 });
       logger.warn(
+        {
+          rejectedSize: imageSizeBytes,
+        },
         `File size ${imageSize} is invalid, for sessionId ${sessionId}`,
       );
       req.body[fileField] = uploadValidationErrors.SIZE;
@@ -114,11 +118,18 @@ export function fileUpload(req, res, next) {
       logger.info(
         `File type is ${req.body[fileField].type}, for sessionId ${sessionId}`,
       );
-      const imageSize = filesize(req.body[fileField].size, {
+      const imageBytes = req.body[fileField].size;
+      const imageSize = filesize(imageBytes, {
         exponent: 2,
         round: 1,
       });
-      logger.info(`File size is ${imageSize}, for sessionId ${sessionId}`);
+      logger.info(
+        {
+          acceptedSize: imageBytes,
+          sessionId,
+        },
+        `File size is ${imageSize}, for sessionId ${sessionId}`,
+      );
     } else {
       logger.info(`fileUpload(): File invalid, reason: ${req.body[fileField]}`);
     }

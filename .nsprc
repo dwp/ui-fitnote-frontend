@@ -1,10 +1,10 @@
 {
-   "CVE-2024-10491": {
-      "active": true,
-      "notes": " ignore express"
-    },
-    "sonatype-2021-0078": {
-          "active": true,
-          "notes": "ignore express"
-    }
+  "CVE-2024-10491": {
+    "active": true,
+    "notes": "ignore express"
+  },
+  "sonatype-2021-0078": {
+    "active": true,
+    "notes": "ignore express"
+  }
 }

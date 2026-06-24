@@ -105,7 +105,7 @@ services:
       - redis-cluster
 
   chrome:
-    image: selenium/node-chrome:139.0-20250909@sha256:9f66d57b020744c1e731bd872496d7440c2775b146b71108bf59649cd26f95c1
+    image: selenium/node-chrome:148.0-20260505@sha256:b215aa1d42e96fb97ded0b30684b51452e85d4a57d859e5713f5c5bc42d9ba1e
     volumes:
       - /tmp:/tmp
     networks:
@@ -124,7 +124,7 @@ services:
       driver: none
 
   selenium-hub:
-    image: selenium/hub:4.36.0-20251001@sha256:fc1cbaefb0b97df4e64af511238aadec84551a6a5b7ce6fb11fc5db2f31f56b0
+    image: selenium/hub:4.44.0@sha256:37f188dde0218827c3bf7dabb331f84606e54f0b5b831c32133aec23ab041a85
     container_name: selenium-hub
     networks:
       - qa-fitnote-ui-tests

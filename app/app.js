@@ -4,7 +4,7 @@ import { configure } from "@dwp/govuk-casa";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import { RedisStore } from "connect-redis";
-import Redis from "ioredis";
+import { createCluster } from "redis";
 import { MemoryStore } from "express-session";
 
 import pages from "./definitions/pages.js";
@@ -37,66 +37,97 @@ const sessionSecret = config.get("sessionInfo.secret");
 const sessionTtl = parseInt(config.get("sessionInfo.expiryPeriod"), 10);
 const sessionName = config.get("sessionInfo.name");
 const disableCsp = config.get("service.disable_csp");
+const REDIS_MAX_RETRY = 20;
+
 if (redisPort && redisHost) {
-  let clusterOptions = {
-    redisOptions: { db: 0 },
-  };
+  let retryCount = 0;
 
-  if (redisEncryptionTransit) {
-    clusterOptions = {
-      dnsLookup: (address, callback) => callback(null, address),
-      redisOptions: { db: 0, tls: {} },
-    };
-  }
+  const dnsLookup = (address, callback) => callback(null, address);
 
-  redisClient = new Redis.Cluster(
-    [
+  redisClient = createCluster({
+    rootNodes: [
       {
-        host: redisHost,
-        port: redisPort,
+        url: redisEncryptionTransit
+          ? `rediss://${redisHost}:${redisPort}`
+          : `redis://${redisHost}:${redisPort}`,
       },
     ],
-    clusterOptions,
-  );
 
-  let retryCount = 0;
-  const REDIS_MAX_RETRY = 20;
+    defaults: {
+      socket: {
+        connectTimeout: 10000,
+        tls: !!redisEncryptionTransit,
+        // retry strategy (handles reconnects)
+        reconnectStrategy: (retries) => {
+          console.log("Redis reconnecting...");
+
+          if (retries > REDIS_MAX_RETRY) {
+            console.error("Redis exceeded max retries. Exiting...");
+            process.exit(1);
+          }
+
+          // exponential backoff
+          return Math.min(retries * 100, 2000);
+        },
+      },
+    },
+    dnsLookup,
+  });
+
+  //Events
+  redisClient.on("connect", () => {
+    console.log("Redis connection established");
+  });
 
   redisClient.on("ready", () => {
-    logger.info("Redis connection ready");
-  });
-  redisClient.on("reconnecting", () => {
-    logger.info("Redis reconnecting");
-  });
-  redisClient.on("end", () => {
-    logger.info("Redis connection ended");
-  });
-  redisClient.on("connect", () => {
-    logger.info("Redis connection established");
-  });
-  redisClient.on("warning", (e) => {
-    logger.error("Redis warning: %s", e);
-  });
-  redisClient.on("close", () => {
-    logger.info("Redis connection closed");
+    console.log("Redis connection ready");
   });
 
-  redisClient.on("error", (e) => {
-    logger.error(e);
+  redisClient.on("reconnecting", () => {
+    console.log("Redis reconnecting");
+  });
+
+  redisClient.on("end", () => {
+    console.log("Redis reconnecting");
+  });
+
+  redisClient.on("error", (err) => {
+    console.error("Redis error", err);
+
     retryCount++;
     if (retryCount > REDIS_MAX_RETRY) {
+      console.log("Redis error retry limit reached. Exiting...");
       process.exit(1);
     }
   });
+
+  // Connect explicitly (REQUIRED in node-redis)
+  await redisClient.connect();
+
+  setTimeout(async () => {
+    let success = false;
+
+    for (let i = 0; i < 3; i++) {
+      try {
+        await redisClient.ping();
+        console.log("Redis warmed up");
+        success = true;
+        break; // exit ONLY on success
+      } catch (e) {
+        console.error("Redis error", e);
+        console.warn(`Ping attempt ${i + 1} failed`);
+      }
+    }
+    if (!success) {
+      console.error(" Redis warmup failed after retries");
+    }
+  }, 1000);
 
   sessionStore = new RedisStore({
     client: redisClient,
     secret: sessionSecret,
     prefix: "syfn:",
     ttl: parseInt(sessionTtl, 10),
-    logErrors: (err) => {
-      logger.error(err);
-    },
   });
 } else {
   logger.info("Using default session store");

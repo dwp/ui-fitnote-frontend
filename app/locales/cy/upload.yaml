@@ -4,7 +4,7 @@ buttonText: Llwytho a pharhau
 text: "Your file must:"
 list: 
   li1: "fod yn JPG, JPEG, HEIC, HEIF, BMP, PNG, TIF neu PDF"
-  li2: "fod yn llai na 10MB"
+  li2: "fod yn llai na 15MB"
   li3: "peidio â bod wedi’i ddiogelu gan gyfrinair - os oes gan eich nodyn ffitrwydd gyfrinair, bydd angen i chi ei arbed fel ffeil newydd heb gyfrinair a’i lwytho"
 postalInstruction:
   p1: "Os ydych yn dal i gael problemau wrth lwytho'ch nodyn ffitrwydd, dylech ei bostio atom yn lle."
@@ -13,7 +13,7 @@ postalInstruction:
 field:
   userPhoto:
     fileType: "Ni allwn brosesu'r math o ffeil a ddewiswyd gennych. Bydd   angen i chi wneud copi arall o'ch nodyn ffitrwydd yn un o'r mathau hyn o ffeiliau: JPG, JPEG, BMP, PNG, TIF, HEIC, HEIF neu PDF."
-    fileSize: "Mae'r ffeil a ddewiswyd gennych yn rhy fawr i'w phrosesu.   Rhaid iddo fod yn llai na 10MB"
+    fileSize: "Mae'r ffeil a ddewiswyd gennych yn rhy fawr i'w phrosesu.   Rhaid iddo fod yn llai na 15MB"
     problem: "Yn anffodus, roedd problem gyda'r gwasanaeth"
     serviceFailed: "Ceisiwch eto"
     ocrFailed: "Mae’n rhaid i’r ffeil a ddewiswyd fod yn glir ac yn ddarllenadwy a chynnwys y nodyn ffitrwydd cyfan"

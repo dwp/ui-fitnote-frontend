@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ casa.mountUrl }}assets/hods.css" />
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {% include "partials/phase_banner_beta.njk" %}
   {% if inEditMode %}
     {{ govukBackLink({
