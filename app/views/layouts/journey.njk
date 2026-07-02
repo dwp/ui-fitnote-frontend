@@ -11,14 +11,16 @@
   {% include "partials//timeout-dialog.njk" %}
 {% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
-      assetsPath: assetPath + "/images",
+    homepageUrl: "https://www.gov.uk/"
+  }) }}
+  {% block serviceNavigation %}
+    {{ govukServiceNavigation({
       serviceName: t('common:serviceName') if t else '',
-      serviceUrl: casa.mountUrl,
-      homepageUrl: "https://www.gov.uk/",
-      useTudorCrown: true
+      serviceUrl: casa.mountUrl
     }) }}
+  {% endblock %}
 {% endblock %}
 
 {% block bodyStart %}

@@ -32,12 +32,12 @@
     "esmock": "2.7.6",
     "express": "5.2.1",
     "express-session": "1.19.0",
-    "hmrc-frontend": "7.20.0",
+    "hmrc-frontend": "7.23.0",
     "filesize": "11.0.17",
     "home-office-kit": "1.2.0",
     "redis": "6.0.0",
     "pino": "10.3.1",
-    "axios": "1.18.0",
+    "axios": "1.18.1",
     "valimate-notifier": "1.0.2"
   },
   "devDependencies": {
