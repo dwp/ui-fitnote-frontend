@@ -1,54 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .hmrc-timeout-overlay {
   position: fixed;
   z-index: 1001;
@@ -87,7 +36,7 @@
   }
 }
 .hmrc-timeout-dialog:focus {
-  outline: 3px solid #ffdd00;
+  outline: 3px solid var(--govuk-focus-colour, #ffdd00);
 }
 
 .hmrc-timeout-dialog__message {
@@ -100,15 +49,15 @@
   font-family: "GDS Transport";
   font-style: normal;
   font-weight: normal;
-  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
   font-display: fallback;
+  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
 }
 @font-face {
   font-family: "GDS Transport";
   font-style: normal;
   font-weight: bold;
-  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
   font-display: fallback;
+  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
 }
 @media print {
   .hmrc-timeout-dialog__message {
@@ -117,14 +66,8 @@
 }
 .hmrc-timeout-dialog__message {
   font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.25;
-}
-@media (min-width: 40.0625em) {
-  .hmrc-timeout-dialog__message {
-    font-size: 1.1875rem;
-    line-height: 1.3157894737;
-  }
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
 }
 @media print {
   .hmrc-timeout-dialog__message {
@@ -154,8 +97,8 @@
 }
 .hmrc-timeout-dialog__link {
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.1111111111;
+  font-size: 1.3125rem;
+  line-height: 1.1904761905;
 }
 @media (min-width: 40.0625em) {
   .hmrc-timeout-dialog__link {
@@ -175,20 +118,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.25;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
     padding: 8px 10px 7px;
   }
 }
 @media print and (min-width: 40.0625em) {
   .hmrc-timeout-dialog__link {
     font-family: sans-serif;
-  }
-}
-@media (min-width: 40.0625em) and (min-width: 40.0625em) {
-  .hmrc-timeout-dialog__link {
-    font-size: 1.1875rem;
-    line-height: 1.3157894737;
   }
 }
 @media print and (min-width: 40.0625em) {
